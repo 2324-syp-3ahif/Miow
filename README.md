@@ -1,15 +1,7 @@
 # Pflichtenheft MIOW 
 
 ## Inhaltsverzeichnis
-
-- [Pflichtenheft MIOW
-diesen usecase werden wir geimeinsam implementiren
-zu* zuerst die gui und den generellen aufbau der webseite
-* dann die funktionen dass man hizwischen verscden verschiddenen viws wehchseln kann
-* dann dass man die sachen eintragen kann
-* un d zu gut derlettzt der ie speicherung und die implementation einen s account systemsx
-<>img sr c= c = " usecase01-gui.png"
-() logo ist in arbeit](#pflichtenheft-miow)
+- [Pflichtenheft MIOW](#pflichtenheft-miow)
   - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [1. Ausgangslage](#1-ausgangslage)
     - [1.1. Ist-Situation](#11-ist-situation)
@@ -17,12 +9,21 @@ zu* zuerst die gui und den generellen aufbau der webseite
   - [2. Zielsetzung](#2-zielsetzung)
   - [3. Funktionale Anforderungen](#3-funktionale-anforderungen)
     - [3.1. Use Case Überblick](#31-use-case-überblick)
-    - [3.2. Use Case A](#32-use-case-a)
+    - [3.2 Use Case A - Login](#32-use-case-a---login)
       - [3.2.1 GUI-Design](#321-gui-design)
       - [3.2.2 Workflow](#322-workflow)
-    - [3.3 Use Case B](#33-use-case-b)
-      - [3.3.1 GUI Design](#331-gui-design)
+    - [3.3 Use Case B - Tägliche einträge](#33-use-case-b---tägliche-einträge)
+      - [3.3.1 GUI-Design](#331-gui-design)
       - [3.3.2 Workflow](#332-workflow)
+    - [3.4 Use Case C - Auswerten der Einträge](#34-use-case-c---auswerten-der-einträge)
+      - [3.4.1 GUI -Design](#341-gui--design)
+      - [3.4.2 Workflow](#342-workflow)
+    - [3.5 Use Case D - Vorhersagen der Periode](#35-use-case-d---vorhersagen-der-periode)
+      - [3.5.1 GUI Design](#351-gui-design)
+      - [3.5.2 Workflow](#352-workflow)
+    - [3.6  Use Case E - Settings](#36--use-case-e---settings)
+      - [3.6.1 GUI-Design](#361-gui-design)
+      - [3.6.2 Workflow](#362-workflow)
   - [4. Nicht-funktionale Anforderungen](#4-nicht-funktionale-anforderungen)
     - [`Usability`: Benutzbarkeitsanforderung](#usability-benutzbarkeitsanforderung)
     - [`Efficiency`: Effizienzanforderung](#efficiency-effizienzanforderung)
@@ -50,38 +51,100 @@ Unser Ziel ist es, eine umfassende Online-Plattform mit dem Namen "MIOW"(Mood In
 
 ## 3. Funktionale Anforderungen
 ### 3.1. Use Case Überblick
-<img src="usecase.png">
-Der Usecase 1 betrifft jeden benutzer, der usecase 2, wo die Menstruationszyklusdaten erfasst werden nur diejenigern die es in den einstelllungen enabled haben.
+<img src="Usecase overviw.png">
+der benutzer hat die usecases
 
-### 3.2. Use Case A
-Möglichkeit, tägliche Einträge zu verfassen, Stimmungen auszuwählen und Aktivitäten hinzuzufügen. Anpassbare Einträge für persönliche Vorlieben und Bedürfnisse. Dies soll anhand Anpassbaren "Blöcken" passieren, wo man bestimmte "Icons"(zum beispiel happy oder stressed), jeden tag auswählen kann, wenn diese zutreffen. Diese Blöcke soll man personalisieren können, (welche überschrift welche icons etc). Es soll feste definierte blöcke geben wie mood(1-5) oder stimmung(happy etc) oder einen täglichen text.Daraus entsteht eine art Blockset, das jeden tag neu ausgefüllt werden kann und man in Verschiedenen views(anualy, monthly, weekly daily) sehen soll.
-Anually: man soll die mood sehen in farben(year in pixels).
-Monthly: jeden monat soll man von jeden tag auch wieder die mood sehen, aber nicht in pixeln, sondern in bestimmten styles(zb im oktober Pumpkins oder weihnachten Weihnachtskugeln etc)
-weekly: kurze zusammenfassung, der tage die schon eingetragen wurden sind.(normale kalenderansicht)
-daily: man sieht alle blöcke, des tages
+ * Login
+ * Tägliche einträge machen
+ ->hier hat man ein fenster wo man an einem tag seine Stimmung, einen Text, Periodendaten und weitere personalisierbaren faktoren eingeben
+ * Auswerten des Tagebuches
+-> hier sieht man pro woche und monat und jahr wie die stimmung verläuft in einem kalender view
+ * Nächste Periode vorhersagen
+  -> hier sieht man in einem monatliches kalender die periodendaten ( normal day, period, ovulating, predicted period und predicted ovulating)
+
+### 3.2 Use Case A - Login
+Man kann sich Anmelden und Registriren
 #### 3.2.1 GUI-Design
-
-<img src = "usecase01-gui.png">
-( logo ist in arbeit)
+<img src = "UsecaseAGUI.png">
+hier kann man zwischen den fenstern login und create a new account wechseln und das jeweils machen.
 
 #### 3.2.2 Workflow
+
+### 3.3 Use Case B - Tägliche einträge
+Möglichkeit, tägliche Einträge zu verfassen, Stimmungen auszuwählen und Aktivitäten hinzuzufügen. 
+Anpassbare Einträge für persönliche Vorlieben und Bedürfnisse(Usecase Settings). 
+Es soll feste definierte blöcke geben wie mood(1-5) oder stimmung(happy etc) und einen täglichen text.Daraus entsteht eine art Blockset, das jeden tag neu ausgefüllt werden kann.
+#### 3.3.1 GUI-Design
+<img src = "UsecaseBGUI.png">
+hier hat man an einem tag ein "blockset"(kann man in den einstellungen festlegen, kommen wir später dazu)
+die fixen blöcke sind Mood, Daily entry und Period(settings)
+
+den rest kann man in den einstellung personalisieren
+
+#### 3.3.2 Workflow
 diesen usecase werden wir gemeinsam implementiren
 * zuerst die gui und den generellen aufbau der webseite
 * dann die funktionen dass man zwischen den verschiddenen viws wechseln kann
 * dann dass man die sachen eintragen kann
 * und zu gut derletzt die speicherung und die implementation eines account systems
 
-### 3.3 Use Case B
-Der usecase ist wie gesagt nur für diejenigen die es enabled haben, hier hat man eine übericht darüber wann man eingegen hat wenn man seine periode hat und wann es vorgesagt wird dass man ovulated. die eingabe passiert beim täglichen eintragen und hier kann man nur schauen.
-#### 3.3.1 GUI Design
-<img src = "Usecase02-gui.png">
+### 3.4 Use Case C - Auswerten der Einträge
+man hat verschiedene ansichen wo man jeweils den vortschritt seiner einträge sieht:
+* Jährlich: Man soll die Stimmung in Farben sehen(Jahr in Pixel). 
+* Monatlich: jeden Monat soll man von jedem Tag auch wieder die Stimmung sehen, aber nicht in Pixeln, sondern in bestimmten Stilen (zb im Oktober Kürbisse oder Weihnachten Weihnachtskugeln etc) 
+* wöchentlich: kurze Zusammenfassung, der Tage die schon eingetragen wurden sind.(normale Kalenderansicht ) 
+  ->in dieser ansicht kann man  auch seine wöchentlichen ziele notiren.
+#### 3.4.1 GUI -Design
+<img src = "UsecaseCGUI.png">
+hier sieht man nur die Stimmung an den jeweiligen tagen
+<img src = "UsecaseCGUI2.png">
+hier sieht man in welcher woche man ist, die wöchentlichen ziele und von jedem tag eine kurze zusammenfassung bestehend aus der Stimmung, Perioden-Status(settings...), weiteren ausgewählten sachen, und die ersten paar worte des daily logs.
 
-#### 3.3.2 Workflow
+#### 3.4.2 Workflow
+
+### 3.5 Use Case D - Vorhersagen der Periode
+Der usecase ist wie gesagt nur für diejenigen die es enabled haben, hier hat man eine übericht darüber wann man eingegen hat wenn man seine periode hat und wann es vorgesagt wird dass man ovulated. die eingabe passiert beim täglichen eintragen und hier kann man nur schauen.
+#### 3.5.1 GUI Design
+<img src = "UsecaseDGUI.png">
+hier hat man einen monatlichen kalender, wo der Status des Menstruations zyklus dargestellt wird
+
+#### 3.5.2 Workflow
 den usecase übernimmt Lina zunehmend
 * zuerst werde ich mich genau darüber informiren wie man alles ausrechnet
 * danach werde ich die gui implmentiren
 * und schauen dass man zwischen monaten wechseln kann
 * danach werde ich implementiren dass die jeweiligen tage angezeigt werden
+
+### 3.6  Use Case E - Settings
+Hier stellt man die verschiedensten sachen ein:
+* Account Settings
+  * Abmelden
+  * Passwort Löschen
+  * Daten Löschen
+* Appearence
+  * wir haben 6 Themes zwischen denen man hier wechseln kann
+* Daily Log Settings
+  * hier kann man festlegen was jeden tag eingetragen werden kann
+  * das passiert in "blöcken" also eine gruppe an "habbits" (ein Habbit besteht aus einem Icon und einem Namen und man kann ein Habbit an einem Tag entweder auswählen oder nicht)
+    * hier gibt es vorgefertigte blöcke, die man selber noch konfigurieren kann
+      * Emotions
+      * Weather
+      * Sleep
+      * Health
+      * School
+      * Work
+      * Chores
+      * Selfcare
+    * und man kann selber blöcke definieren, und habbits
+* Privacy and Security
+* About us
+  * hier wird erklährt wiso wir dieses projekt machen etc
+#### 3.6.1 GUI-Design
+<img src ="UsecaseEGUI.png">
+hier hat man einfach die verschiedenen tabs an settings
+Konkret die Daily Log stettings
+
+#### 3.6.2 Workflow
 
 ## 4. Nicht-funktionale Anforderungen
 ### `Usability`: Benutzbarkeitsanforderung
