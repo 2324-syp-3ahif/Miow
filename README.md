@@ -50,14 +50,26 @@ Unser Ziel ist es, eine umfassende Online-Plattform mit dem Namen "MIOW"(Mood In
 
 ## 3. Funktionale Anforderungen
 ### 3.1. Use Case Überblick
-<img src="Usecase overviw.png">
+<img src="usecase.png">
 Der Usecase 1 betrifft jeden benutzer, der usecase 2, wo die Menstruationszyklusdaten erfasst werden nur diejenigern die es in den einstelllungen enabled haben.
 
 ### 3.2. Use Case A
-
+Möglichkeit, tägliche Einträge zu verfassen, Stimmungen auszuwählen und Aktivitäten hinzuzufügen. Anpassbare Einträge für persönliche Vorlieben und Bedürfnisse. Dies soll anhand Anpassbaren "Blöcken" passieren, wo man bestimmte "Icons"(zum beispiel happy oder stressed), jeden tag auswählen kann, wenn diese zutreffen. Diese Blöcke soll man personalisieren können, (welche überschrift welche icons etc). Es soll feste definierte blöcke geben wie mood(1-5) oder stimmung(happy etc) oder einen täglichen text.Daraus entsteht eine art Blockset, das jeden tag neu ausgefüllt werden kann und man in Verschiedenen views(anualy, monthly, weekly daily) sehen soll.
+Anually: man soll die mood sehen in farben(year in pixels).
+Monthly: jeden monat soll man von jeden tag auch wieder die mood sehen, aber nicht in pixeln, sondern in bestimmten styles(zb im oktober Pumpkins oder weihnachten Weihnachtskugeln etc)
+weekly: kurze zusammenfassung, der tage die schon eingetragen wurden sind.(normale kalenderansicht)
+daily: man sieht alle blöcke, des tages
 #### 3.2.1 GUI-Design
-#### 3.2.2 Workflow
 
+<img src = "usecase01-gui.png">
+( logo ist in arbeit)
+
+#### 3.2.2 Workflow
+diesen usecase werden wir gemeinsam implementiren
+* zuerst die gui und den generellen aufbau der webseite
+* dann die funktionen dass man zwischen den verschiddenen viws wechseln kann
+* dann dass man die sachen eintragen kann
+* und zu gut derletzt die speicherung und die implementation eines account systems
 
 ### 3.3 Use Case B
 Der usecase ist wie gesagt nur für diejenigen die es enabled haben, hier hat man eine übericht darüber wann man eingegen hat wenn man seine periode hat und wann es vorgesagt wird dass man ovulated. die eingabe passiert beim täglichen eintragen und hier kann man nur schauen.
