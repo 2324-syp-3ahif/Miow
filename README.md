@@ -70,6 +70,10 @@ hier kann man zwischen den fenstern login und create a new account wechseln und 
 
 #### 3.2.2 Workflow
 
+Workflow mit ACD:
+
+<img style="width: 500px" src = "Login_Register_Workflow.jpg">
+
 ### 3.3 Use Case B - Tägliche einträge
 Möglichkeit, tägliche Einträge zu verfassen, Stimmungen auszuwählen und Aktivitäten hinzuzufügen. 
 Anpassbare Einträge für persönliche Vorlieben und Bedürfnisse(Usecase Settings). 
@@ -101,6 +105,9 @@ hier sieht man nur die Stimmung an den jeweiligen tagen
 hier sieht man in welcher woche man ist, die wöchentlichen ziele und von jedem tag eine kurze zusammenfassung bestehend aus der Stimmung, Perioden-Status(settings...), weiteren ausgewählten sachen, und die ersten paar worte des daily logs.
 
 #### 3.4.2 Workflow
+Workflow mit ACD:
+
+<img style="width: 500px" src = "Entries_Workflow.jpg">
 
 ### 3.5 Use Case D - Vorhersagen der Periode
 Der usecase ist wie gesagt nur für diejenigen die es enabled haben, hier hat man eine übericht darüber wann man eingegen hat wenn man seine periode hat und wann es vorgesagt wird dass man ovulated. die eingabe passiert beim täglichen eintragen und hier kann man nur schauen.
@@ -109,6 +116,11 @@ Der usecase ist wie gesagt nur für diejenigen die es enabled haben, hier hat ma
 hier hat man einen monatlichen kalender, wo der Status des Menstruations zyklus dargestellt wird
 
 #### 3.5.2 Workflow
+
+ACD:
+
+<img style="width: 500px" src = "Period_Worklfow.jpg">
+
 den usecase übernimmt Lina zunehmend
 * zuerst werde ich mich genau darüber informiren wie man alles ausrechnet
 * danach werde ich die gui implmentiren
@@ -145,6 +157,10 @@ hier hat man einfach die verschiedenen tabs an settings
 Konkret die Daily Log stettings
 
 #### 3.6.2 Workflow
+
+Workflow mit ACD:
+
+<img style="width: 500px" src = "Settings.jpg">
 
 ## 4. Nicht-funktionale Anforderungen
 ### `Usability`: Benutzbarkeitsanforderung
