@@ -86,11 +86,7 @@ die fixen blöcke sind Mood, Daily entry und Period(settings)
 den rest kann man in den einstellung personalisieren
 
 #### 3.3.2 Workflow
-diesen usecase werden wir gemeinsam implementiren
-* zuerst die gui und den generellen aufbau der webseite
-* dann die funktionen dass man zwischen den verschiddenen viws wechseln kann
-* dann dass man die sachen eintragen kann
-* und zu gut derletzt die speicherung und die implementation eines account systems
+Man Wählt den richtigen tag aus, trägt alles ein und es wird automatisch gespeichert
 
 ### 3.4 Use Case C - Auswerten der Einträge
 man hat verschiedene ansichen wo man jeweils den vortschritt seiner einträge sieht:
