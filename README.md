@@ -56,11 +56,11 @@ der benutzer hat die usecases
 
  * Login
  * Tägliche einträge machen
- ->hier hat man ein fenster wo man an einem tag seine Stimmung, einen Text, Periodendaten und weitere personalisierbaren faktoren eingeben
+ ->hier hat man ein fenster wo man an einem tag seine Stimmung, einen Text, Periodendaten und weitere personalisierbaren faktoren eingeben kann
  * Auswerten des Tagebuches
 -> hier sieht man pro woche und monat und jahr wie die stimmung verläuft in einem kalender view
  * Nächste Periode vorhersagen
-  -> hier sieht man in einem monatliches kalender die periodendaten ( normal day, period, ovulating, predicted period und predicted ovulating)
+  -> hier sieht man in einem monatlichem kalender die periodendaten ( normal day, period, ovulating, predicted period und predicted ovulating)
 
 ### 3.2 Use Case A - Login
 Man kann sich Anmelden und Registriren
