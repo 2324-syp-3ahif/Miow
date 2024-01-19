@@ -56,11 +56,11 @@ der benutzer hat die usecases
 
  * Login
  * Tägliche einträge machen
- ->hier hat man ein fenster wo man an einem tag seine Stimmung, einen Text, Periodendaten und weitere personalisierbaren faktoren eingeben
+ ->hier hat man ein fenster wo man an einem tag seine Stimmung, einen Text, Periodendaten und weitere personalisierbaren faktoren eingeben kann
  * Auswerten des Tagebuches
 -> hier sieht man pro woche und monat und jahr wie die stimmung verläuft in einem kalender view
  * Nächste Periode vorhersagen
-  -> hier sieht man in einem monatliches kalender die periodendaten ( normal day, period, ovulating, predicted period und predicted ovulating)
+  -> hier sieht man in einem monatlichem kalender die periodendaten ( normal day, period, ovulating, predicted period und predicted ovulating)
 
 ### 3.2 Use Case A - Login
 Man kann sich Anmelden und Registriren
@@ -86,11 +86,7 @@ die fixen blöcke sind Mood, Daily entry und Period(settings)
 den rest kann man in den einstellung personalisieren
 
 #### 3.3.2 Workflow
-diesen usecase werden wir gemeinsam implementiren
-* zuerst die gui und den generellen aufbau der webseite
-* dann die funktionen dass man zwischen den verschiddenen viws wechseln kann
-* dann dass man die sachen eintragen kann
-* und zu gut derletzt die speicherung und die implementation eines account systems
+Man Wählt den richtigen tag aus, trägt alles ein und es wird automatisch gespeichert
 
 ### 3.4 Use Case C - Auswerten der Einträge
 man hat verschiedene ansichen wo man jeweils den vortschritt seiner einträge sieht:
