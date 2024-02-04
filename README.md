@@ -54,13 +54,14 @@ Unser Ziel ist es, eine umfassende Online-Plattform mit dem Namen "MIOW"(Mood In
 <img src="Usecase overviw.png">
 der benutzer hat die usecases
 
- * Login
- * Tägliche einträge machen
+ * A) Login
+ * B)Tägliche einträge machen
  ->hier hat man ein fenster wo man an einem tag seine Stimmung, einen Text, Periodendaten und weitere personalisierbaren faktoren eingeben kann
- * Auswerten des Tagebuches
--> hier sieht man pro woche und monat und jahr wie die stimmung verläuft in einem kalender view
- * Nächste Periode vorhersagen
-  -> hier sieht man in einem monatlichem kalender die periodendaten ( normal day, period, ovulating, predicted period und predicted ovulating)
+ * C)Auswerten des Tagebuches
+-> hier sieht man pro woche und monat wie die stimmung verläuft in einem kalender view
+ * D)Nächste Periode vorhersagen
+  -> hier sieht man in einem monatlichem kalender die periodendaten 
+* E) Settings
 
 ### 3.2 Use Case A - Login
 Man kann sich Anmelden und Registriren
@@ -77,7 +78,8 @@ Workflow mit ACD:
 ### 3.3 Use Case B - Tägliche einträge
 Möglichkeit, tägliche Einträge zu verfassen, Stimmungen auszuwählen und Aktivitäten hinzuzufügen. 
 Anpassbare Einträge für persönliche Vorlieben und Bedürfnisse(Usecase Settings). 
-Es soll feste definierte blöcke geben wie mood(1-5) oder stimmung(happy etc) und einen täglichen text.Daraus entsteht eine art Blockset, das jeden tag neu ausgefüllt werden kann.
+Es soll feste definierte blöcke wie mood(1-5), stimmung(happy etc) und einen täglichen text geben. Aber auch definierbare Templates. Daraus ensteht eine art Blockset, die man dan Jeden tag ausfüllen kann.
+Hier kann man mit Pfeiltasten zurück/nach vorne. Einträge kann man in der vergangenheit/ heute machen.
 #### 3.3.1 GUI-Design
 <img src = "UsecaseBGUI.png">
 hier hat man an einem tag ein "blockset"(kann man in den einstellungen festlegen, kommen wir später dazu)
@@ -90,15 +92,13 @@ Man Wählt den richtigen tag aus, trägt alles ein und es wird automatisch gespe
 
 ### 3.4 Use Case C - Auswerten der Einträge
 man hat verschiedene ansichen wo man jeweils den vortschritt seiner einträge sieht:
-* Jährlich: Man soll die Stimmung in Farben sehen(Jahr in Pixel). 
-* Monatlich: jeden Monat soll man von jedem Tag auch wieder die Stimmung sehen, aber nicht in Pixeln, sondern in bestimmten Stilen (zb im Oktober Kürbisse oder Weihnachten Weihnachtskugeln etc) 
-* wöchentlich: kurze Zusammenfassung, der Tage die schon eingetragen wurden sind.(normale Kalenderansicht ) 
+* Monatlich: jeden Monat soll man von jedem Tag auch wieder die Stimmung sehen 
+* Wöchentlich: kurze Zusammenfassung, der Tage die schon eingetragen wurden sind.(normale Kalenderansicht ) 
   ->in dieser ansicht kann man  auch seine wöchentlichen ziele notiren.
 #### 3.4.1 GUI -Design
 <img src = "UsecaseCGUI.png">
-hier sieht man nur die Stimmung an den jeweiligen tagen
-<img src = "UsecaseCGUI2.png">
-hier sieht man in welcher woche man ist, die wöchentlichen ziele und von jedem tag eine kurze zusammenfassung bestehend aus der Stimmung, Perioden-Status(settings...), weiteren ausgewählten sachen, und die ersten paar worte des daily logs.
+
+
 
 #### 3.4.2 Workflow
 Workflow mit ACD:
@@ -106,22 +106,14 @@ Workflow mit ACD:
 <img style="width: 500px" src = "Entries_Workflow.jpg">
 
 ### 3.5 Use Case D - Vorhersagen der Periode
-Der usecase ist wie gesagt nur für diejenigen die es enabled haben, hier hat man eine übericht darüber wann man eingegen hat wenn man seine periode hat und wann es vorgesagt wird dass man ovulated. die eingabe passiert beim täglichen eintragen und hier kann man nur schauen.
+Der usecase ist wie gesagt nur für diejenigen die es enabled haben, hier hat man eine übericht darüber wenn man seine periode hat. die eingabe passiert beim täglichen eintragen und hier kann man nur schauen.
 #### 3.5.1 GUI Design
-<img src = "UsecaseDGUI.png">
+wie in Usecase C - die Umrandung zeit den Status an 
 hier hat man einen monatlichen kalender, wo der Status des Menstruations zyklus dargestellt wird
 
 #### 3.5.2 Workflow
-
 ACD:
-
 <img style="width: 500px" src = "Period_Worklfow.jpg">
-
-den usecase übernimmt Lina zunehmend
-* zuerst werde ich mich genau darüber informiren wie man alles ausrechnet
-* danach werde ich die gui implmentiren
-* und schauen dass man zwischen monaten wechseln kann
-* danach werde ich implementiren dass die jeweiligen tage angezeigt werden
 
 ### 3.6  Use Case E - Settings
 Hier stellt man die verschiedensten sachen ein:
