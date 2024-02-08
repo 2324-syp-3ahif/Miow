@@ -126,24 +126,24 @@ Hier stellt man die verschiedensten sachen ein:
 * Daily Log Settings
   * hier kann man festlegen was jeden tag eingetragen werden kann
   * das passiert in "blöcken" also eine gruppe an "habbits" (ein Habbit besteht aus einem Icon und einem Namen und man kann ein Habbit an einem Tag entweder auswählen oder nicht)
-    * hier gibt es vorgefertigte blöcke, die man selber noch konfigurieren kann
-      * Emotions
-      * Weather
-      * Sleep
-      * Health
-      * School
-      * Work
-      * Chores
-      * Selfcare
-    * und man kann selber blöcke definieren, und habbits
+  * hier gibt es vorgefertigte blöcke, die man selber noch konfigurieren kann
+  * und man kann selber blöcke definieren, und habbits
+  * hier gibt es die fixen blöcke Mood Period und daily log, wenn man Period oder daily log nicht haben will, kann man
+  * die blöcke mit den drei strichen nach unten in den bereich "not shown" zihen
+  * die icons werden von uns noch gemacht.
+
 * Privacy and Security
 * About us
   * hier wird erklährt wiso wir dieses projekt machen etc
 #### 3.6.1 GUI-Design
+hier sieht man das auswählen der themes
 <img src ="UsecaseEGUI.png">
-hier hat man einfach die verschiedenen tabs an settings
-Konkret die Daily Log stettings
-
+heir sieht man das konfigurieren des Blocksets
+<img src = "UsecaseEGUI2.png">
+hier sieht man das editen des blocksets
+<img src = "UsecaseEGUI3.png">
+hier sieht man welche vorgefertigten blöcke es gibt(nur zum sehen.)
+<img src = "UsecaseEGUI4.png">
 #### 3.6.2 Workflow
 
 Workflow mit ACD:
