@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "server-dev": "npx nodemon ./brain/app.ts",
+    "server-dev": "npx nodemon ./backend/brain/app.ts",
     "client-dev": "npx tsc --watch --project frontend",
     "prestart": "npx tsc --project frontend",
     "start": "npx ts-node ./brain/app.ts"

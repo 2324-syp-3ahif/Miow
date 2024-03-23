@@ -1,0 +1,13 @@
+@apiUrl = http://localhost:3000/api
+
+###
+GET {{apiUrl}}/auth/users HTTP/1.1
+
+###
+POST {{apiUrl}}/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "admin",
+    "password": "pw4admin"
+}

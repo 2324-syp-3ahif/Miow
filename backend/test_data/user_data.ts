@@ -2,14 +2,11 @@ import {saltRounds, User} from "../interfaces/user";
 import bcrypt from "bcrypt";
 export const users: User[] = [
     {
-        fullname: "Administrator",
-        username: "admin@fruits.at",
+        username: "admin",
         password: bcrypt.hashSync("pw4admin", saltRounds),
     },
     {
-        fullname: "John Doe",
-        username: "john@doe.at",
+        username: "john",
         password: bcrypt.hashSync("pw4user", saltRounds),
     },
 ];
-
