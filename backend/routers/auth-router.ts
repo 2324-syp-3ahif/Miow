@@ -6,14 +6,23 @@ import dotenv from "dotenv";
 import {User, UserCredentials} from "../interfaces/user";
 import {isAuthenticated} from "../middleware/auth-handlers";
 import {saltRounds} from "../interfaces/user";
-import {addUser, loadUsersFromFile} from "../brain/user_repo";
+import {addUser, deleteUserByUsername, loadUsersFromFile} from "../brain/user_repo";
 dotenv.config();
 
 export const authRouter = express.Router();
 
-authRouter.get("/users", isAuthenticated, (request, response) => {
-    response.status(StatusCodes.OK).json(loadUsersFromFile());
+//lets you delete a user, if authenticated
+authRouter.delete("/users/:username", isAuthenticated, (request, response) => {
+    const usernameToDelete = request.params.username;
+    const success = deleteUserByUsername(usernameToDelete);
+    if (success) {
+        response.status(StatusCodes.OK).json({ message: "User deleted successfully" });
+    } else {
+        response.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
+    }
 });
+
+//lets you register a user
 authRouter.post("/register", (req, res) => {
     let users: User[] = loadUsersFromFile();
     const newUser: UserCredentials = req.body;
@@ -30,6 +39,7 @@ authRouter.post("/register", (req, res) => {
     });
 });
 
+//lets you log in
 authRouter.post("/login", (req, res) => {
     const loginUser: UserCredentials = req.body;
     const users: User[] = loadUsersFromFile();

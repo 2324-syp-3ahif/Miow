@@ -1,9 +1,5 @@
 [
   {
-    "username": "admin",
-    "password": "$2b$08$8W0JywWGpHuqOjPZKyQgue54.xZnmS9h9D9H30o8l8qYBdWZ53DJW"
-  },
-  {
     "username": "john",
     "password": "$2b$08$bjeoNw3kaZXzcKG4yqYu3.qKH61OwPH.wnJ5owY6JZR/c0iSP42si"
   }

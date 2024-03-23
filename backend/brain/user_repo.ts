@@ -4,6 +4,16 @@ import { saltRounds, User } from '../interfaces/user';
 
 const USERS_FILE_PATH = './backend/test_data/users.json';
 
+export function deleteUserByUsername(username: string): boolean {
+    let users: User[] = loadUsersFromFile();
+    const index = users.findIndex(u => u.username === username);
+    if (index !== -1) {
+        users.splice(index, 1);
+        saveUsersToFile(users);
+        return true;
+    }
+    return false;
+}
 export function loadUsersFromFile(): User[] {
     try {
         const data = fs.readFileSync(USERS_FILE_PATH, 'utf-8');

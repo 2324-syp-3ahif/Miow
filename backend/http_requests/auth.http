@@ -1,7 +1,25 @@
 @apiUrl = http://localhost:3000/api
-@token = use token trom login
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExMjI2NTE1LjcyMiwiaWF0IjoxNzExMjIyOTE1fQ.Zbii98kp2jJHJuYrU0MjXGHmFAXDHXjO_GHMJ3svznA
 
-###
+### register user john
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "john",
+  "password": "pw4user"
+}
+
+### register user admin
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "pw4admin"
+}
+
+### log in user admin
 POST {{apiUrl}}/auth/login HTTP/1.1
 content-type: application/json
 
@@ -11,26 +29,6 @@ content-type: application/json
 }
 
 ###
-GET {{apiUrl}}/auth/users HTTP/1.1
-
-###
-GET {{apiUrl}}/auth/users HTTP/1.1
+DELETE {{apiUrl}}/auth/users/admin
 Authorization: Bearer {{token}}
 
-###
-POST http://localhost:3000/api/auth/register HTTP/1.1
-Content-Type: application/json
-
-{
-  "username": "john",
-  "password": "pw4user"
-}
-
-###
-POST http://localhost:3000/api/auth/register HTTP/1.1
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "pw4admin"
-}
