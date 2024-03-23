@@ -30,7 +30,7 @@ authRouter.post("/login", (req, res) => {
     const userClaims = {
         email: user.username,
     };
-    const minutes = 15;
+    const minutes = 30;
     const expiresAt = new Date(Date.now() + minutes * 60000);
     const token = jwt.sign(
         {

@@ -2,7 +2,6 @@ export const saltRounds = 8;
 
 export interface User {
     username: string;
-    role: string;
     fullname: string;
     password: string;
 }
