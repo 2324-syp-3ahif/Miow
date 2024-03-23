@@ -8,7 +8,6 @@ export const isAuthenticated = (req: Request, res: Response, next: NextFunction)
         if (!token) {
             throw new Error("No bearer token available");
         }
-        // check if the token is valid => otherwise an error is thrown
         jwt.verify(token, dotenv.config().parsed!.SECRET_KEY);
         next();
     } catch (err) {
