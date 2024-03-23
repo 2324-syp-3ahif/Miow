@@ -1,6 +1,6 @@
 import express from "express";
 import {authRouter} from "../routers/auth-router";
-
+require('dotenv').config();
 export const app = express();
 app.use(express.json());
 app.use(express.static("public"));
