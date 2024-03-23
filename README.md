@@ -63,7 +63,7 @@ Kernfunktionen bieten:
 
 ## 3. Funktionale Anforderungen
 ### 3.1. Use Case Überblick
-<img src="Usecase overviw.png">
+<img src = "pflichtenheft/img/Usecase overviw.png">
 der benutzer hat die usecases
 
  * A) Login
@@ -78,14 +78,14 @@ der benutzer hat die usecases
 ### 3.2 Use Case A - Login
 Anmelden und Registrieren
 #### 3.2.1 GUI-Design
-<img src = "UsecaseAGUI.png">
+<img src = "pflichtenheft/img/UsecaseAGUI.png">
 hier kann man zwischen den fenstern login und create a new account wechseln und das jeweils machen.
 
 #### 3.2.2 Workflow
 
 Workflow mit ACD:
 
-<img style="width: 500px" src = "Login_Register_Workflow.jpg">
+<img style="width: 500px" src = "pflichtenheft/img/Login_Register_Workflow.jpg">
 
 ### 3.3 Use Case B - Tägliche einträge
 Möglichkeit, tägliche Einträge zu verfassen, Stimmungen auszuwählen und Aktivitäten hinzuzufügen. 
@@ -93,7 +93,7 @@ Anpassbare Einträge für persönliche Vorlieben und Bedürfnisse(Usecase Settin
 Es soll feste definierte blöcke wie Mood(1-5), Stimmung(happy etc) und einen täglichen Text geben. Aber auch definierbare Templates. Daraus ensteht eine Art Blockset, die man danm jeden Tag ausfüllen kann.
 Man kann mit Pfeiltasten zurück/nach vorne gehen. Einträge kann man in der Vergangenheit/Gegenwart machen.
 #### 3.3.1 GUI-Design
-<img src = "UsecaseBGUI.png">
+<img src = "pflichtenheft/img/UsecaseBGUI.png">
 Hier hat man an einem Tag einen "Blockset"(kann man in den Einstellungen festlegen, wird später erklärt).
 die fertigen Böcke sind Mood, Daily-Entry und Period(Settings).
 
@@ -108,14 +108,14 @@ Man hat verschiedene Ansichtten, wo man jeweils den Fortschritt seiner Einträge
 * Wöchentlich: Eine kurze Zusammenfassung, der Tage, die schon eingetragen worden sind.(normale Kalenderansicht ) 
   ->in dieser Ansicht kann man auch seine wöchentlichen Ziele notieren.
 #### 3.4.1 GUI -Design
-<img src = "UsecaseCGUI.png">
+<img src = "pflichtenheft/img/UsecaseCGUI.png">
 
 
 
 #### 3.4.2 Workflow
 Workflow mit ACD:
 
-<img style="width: 500px" src = "Entries_Workflow.jpg">
+<img style="width: 500px" src = "pflichtenheft/img/Entries_Workflow.jpg">
 
 ### 3.5 Use Case D - Vorhersagen der Periode
 Der Usecase ist wie gesagt, nur für diejenigen, die es berechtigt habe. Hier hat man eine Übersicht darüber, wenn man seine Periode hat. Die Eingabe passiert beim täglichen Eintragen und man kann sich das nur ansehen.
@@ -125,7 +125,7 @@ Hier hat man einen monatlichen kalender, wo der Status des Menstruations-Zyklus 
 
 #### 3.5.2 Workflow
 ACD:
-<img style="width: 500px" src = "Period_Worklfow.jpg">
+<img style="width: 500px" src = "pflichtenheft/img/Period_Worklfow.jpg">
 
 ### 3.6  Use Case E - Settings
 Hier stellt man die verschiedensten Sachen ein:
@@ -149,18 +149,18 @@ Hier stellt man die verschiedensten Sachen ein:
   * hier wird erklärt, wieso wir an diesem Projekt arbeiten.
 #### 3.6.1 GUI-Design
 hier sieht man das auswählen der themes
-<img src ="UsecaseEGUI.png">
+<img src ="pflichtenheft/img/UsecaseEGUI.png">
 heir sieht man das konfigurieren des Blocksets
-<img src = "UsecaseEGUI2.png">
+<img src = "pflichtenheft/img/UsecaseEGUI2.png">
 hier sieht man das editen des blocksets
-<img src = "UsecaseEGUI3.png">
+<img src = "pflichtenheft/img/UsecaseEGUI3.png">
 hier sieht man welche vorgefertigten blöcke es gibt(nur zum sehen.)
-<img src = "UsecaseEGUI4.png">
+<img src = "pflichtenheft/img/UsecaseEGUI4.png">
 #### 3.6.2 Workflow
 
 Workflow mit ACD:
 
-<img style="width: 500px" src = "Settings.jpg">
+<img style="width: 500px" src = "pflichtenheft/img/Settings.jpg">
 
 ## 4. Nicht-funktionale Anforderungen
 ### `Usability`: Benutzbarkeitsanforderung
@@ -171,4 +171,5 @@ Workflow mit ACD:
 ## 5. Mengengerüst
 ## 6. Systemarchitektur
 ### 6.1 Deployment-Diagramm
+<img src= "pflichtenheft/img/DeploymentDiagram.png">
 ### 6.2 Datenmodell
