@@ -37,12 +37,31 @@ content-type: application/json
   "password": "pw4user"
 }
 
-### lejla
-POST http://localhost:3000/api/auth/login2
+###Test changing username
+PUT http://localhost:3000/api/auth/change-username
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEyOTY2MDAuMzEzLCJpYXQiOjE3MTEyOTMwMDB9.5wbT6gOQOS81WWsAiWpyC5alaXePNRdTGlcr1c46iLo
+
+{
+  "newUsername": "newJohn"
+}
+
+###Test changing password
+PUT http://localhost:3000/api/auth/change-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEyOTY2MDAuMzEzLCJpYXQiOjE3MTEyOTMwMDB9.5wbT6gOQOS81WWsAiWpyC5alaXePNRdTGlcr1c46iLo
+
+{
+  "newPassword": "newpassword123"
+}
 
 ### delete user admin (log in and paste token)
 DELETE http://localhost:3000/api/auth/delete HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExMjg3ODY3Ljc1OSwiaWF0IjoxNzExMjg0MjY3fQ.FPYKrdpVOIsLzlkAc04-k1bEAI97AH3YRpc9ez2km9Y
+
 ### delete user john (log in and paste token)
 DELETE http://localhost:3000/api/auth/delete HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEyODc4ODcuNjQ0LCJpYXQiOjE3MTEyODQyODd9.3-NzllpcJ67KjbIrjYGKb0wIYFqmSERAAWc1IRJG1XA
+
+### lejla
+POST http://localhost:3000/api/auth/login2

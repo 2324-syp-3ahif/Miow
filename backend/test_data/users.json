@@ -1,6 +1,14 @@
 [
   {
-    "username": "john",
+    "username": "newJohn",
     "password": "$2b$08$C8Dgx1iXZ4edP1HG7QKpQOfUOQe05w9coj8mFqgM2Q9pTiqD8UyrK"
+  },
+  {
+    "username": "admin",
+    "password": "$2b$08$hSr.NfualBQnfW7ZqhDf9eDFM.oHCHl0g3L23dPKeinr.YAw4tAJa"
+  },
+  {
+    "username": "john",
+    "password": "$2b$08$vJvKhi2B6nFRInAjWMWKl.JmXwjvIoW8x7.dWmeH7x2Rcg5qCGvyy"
   }
 ]

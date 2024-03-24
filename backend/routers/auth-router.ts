@@ -6,13 +6,52 @@ import dotenv from "dotenv";
 import {User, UserCredentials} from "../interfaces/user";
 import {isAuthenticated} from "../middleware/auth-handlers";
 import {saltRounds} from "../interfaces/user";
-import {addUser, deleteUserByUsername, loadUsersFromFile} from "../brain/user_repo";
+import {
+    addUser,
+    deleteUserByUsername,
+    loadUsersFromFile,
+    updateUserByUsername,
+    updateUserPassword
+} from "../brain/user_repo";
 
 import {writev} from "fs";
 import path from "path";
 dotenv.config();
 
 export const authRouter = express.Router();
+authRouter.put("/change-username", isAuthenticated, (req, res) => {
+    const { newUsername } = req.body;
+    const currentUser = req.user.username;
+
+    if (newUsername === currentUser) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ error: "New username must be different from the current one" });
+    }
+
+    const updated = updateUserByUsername(currentUser, newUsername);
+    if (updated) {
+        return res.status(StatusCodes.OK).json({ message: "Username updated successfully" });
+    } else {
+        return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
+    }
+});
+
+// Endpoint to change password
+authRouter.put("/change-password", isAuthenticated, (req, res) => {
+    const { newPassword } = req.body;
+    const username = req.user.username;
+
+    bcrypt.hash(newPassword, saltRounds, (err, hash) => {
+        if (err) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: "Error hashing password" });
+        }
+        const updated = updateUserPassword(username, hash);
+        if (updated) {
+            return res.status(StatusCodes.OK).json({ message: "Password updated successfully" });
+        } else {
+            return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
+        }
+    });
+});
 
 //lets you delete a user
 authRouter.delete("/delete", isAuthenticated, (req, res) => {
