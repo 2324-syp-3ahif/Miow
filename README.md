@@ -153,10 +153,22 @@ Workflow mit ACD:
 
 # <img src="pflichtenheft/Headers/nFuntionales.png" style="width: 100%;">
 ### `Usability`: Benutzbarkeitsanforderung
-### `Efficiency`: Effizienzanforderung
-### `Maintenance`: Wartbarkeits- und Portierbarkeitsanforderung
+- Die Benutzeroberfläche von MIOW wird intuitiv gestaltet sein, um eine angenehme Benutzererfahrung zu gewährleisten.
+- Die Anwendung sollte einfach zu navigieren sein, sodass Benutzer ihre täglichen Einträge mühelos verfassen können.
+- Die Ästhetik der Anwendung sollte ansprechend sein und die Benutzer dazu ermutigen, regelmäßig Tagebucheinträge zu machen.
+- Die Personalisierungsoptionen sollten umfangreich sein, um den individuellen Vorlieben der Benutzer gerecht zu werden.
+
+Dies wollen wir mithilfe von rückmeldungen von Testpersonen machen.
+
 ### `Security`: Sicherheitsanforderung
+- MIOW muss robuste Sicherheitsmaßnahmen implementieren, um die Vertraulichkeit und Integrität der Benutzerdaten zu gewährleisten.
+- Es sollten geeignete Verschlüsselungstechniken verwendet werden, um sensible Informationen zu schützen, insbesondere im Zusammenhang mit sensiblen Daten.
+- Zugriffskontrollen sollten implementiert werden, um sicherzustellen, dass nur autorisierte Benutzer auf die Funktionen zugreifen können.
 ### `Legal`: Gesetzliche Anforderung
+- MIOW muss die Datenschutzbestimmungen, insbesondere die Datenschutz-Grundverordnung (DSGVO) und das Datenschutzgesetz (DSG), vollständig einhalten.
+- Die Anwendung sollte transparent sein bezüglich der Datenspeicherung und -verarbeitung und die Zustimmung der Benutzer zur Erfassung ihrer persönlichen Daten einholen, gemäß den Anforderungen der DSGVO.
+- Es werden Mechanismen vorhanden sein, um Benutzerdaten sicher zu löschen, falls sie dies wünschen oder im Einklang mit geltenden Datenschutzgesetzen erforderlich ist.
+- Es werden Tearms of Service und eine Privacy Policy eingeführt, die man mit dem signing up akzeptiert.
 
 # <img src="pflichtenheft/Headers/Mengengerüst.png" style="width: 100%;">
 ### Wieviele User werden erwartet?
