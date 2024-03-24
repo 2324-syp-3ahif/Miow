@@ -3,7 +3,27 @@ import bcrypt from 'bcrypt';
 import { saltRounds, User } from '../interfaces/user';
 
 const USERS_FILE_PATH = './backend/test_data/users.json';
+export function updateUserByUsername(currentUsername: string, newUsername: string): boolean {
+    let users: User[] = loadUsersFromFile();
+    const index = users.findIndex(u => u.username === currentUsername);
+    if (index !== -1) {
+        users[index].username = newUsername;
+        saveUsersToFile(users);
+        return true;
+    }
+    return false;
+}
 
+export function updateUserPassword(username: string, newPasswordHash: string): boolean {
+    let users: User[] = loadUsersFromFile();
+    const index = users.findIndex(u => u.username === username);
+    if (index !== -1) {
+        users[index].password = newPasswordHash;
+        saveUsersToFile(users);
+        return true;
+    }
+    return false;
+}
 export function deleteUserByUsername(username: string): boolean {
     let users: User[] = loadUsersFromFile();
     const index = users.findIndex(u => u.username === username);
