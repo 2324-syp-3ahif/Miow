@@ -169,7 +169,18 @@ Workflow mit ACD:
 ### `Security`: Sicherheitsanforderung
 ### `Legal`: Gesetzliche Anforderung
 ## 5. Mengengerüst
+### Wieviele User werden erwartet?
+Da das Projekt darauf abzielt, eine umfassende Online-Plattform anzubieten, könnte man davon ausgehen, dass eine beträchtliche Anzahl von Benutzern erwartet wird. Vorerst schätzen wir diese auf ca. 400-550 Personen.
+### Datenmenge pro Benutzer:
+Pro Benutzer könnten wir folgende Daten erwarten:
+* Tägliche Einträge: Annahme von durchschnittlich 2 KB pro Eintrag.
+* Einstellungen: Annahme von durchschnittlich 50 KB pro Benutzer.
+
+Somit ergibt sich eine geschätzte Datenmenge von etwa 1 MB pro Benutzer pro Jahr.
+### Anfrage-Frequenz: 
+Wir können annehmen, dass user 1x pro tag auf die Plattform zugreifen.
 ## 6. Systemarchitektur
 ### 6.1 Deployment-Diagramm
 <img src= "pflichtenheft/img/DeploymentDiagram.png">
+
 ### 6.2 Datenmodell

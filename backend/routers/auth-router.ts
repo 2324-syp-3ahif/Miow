@@ -19,14 +19,14 @@ import path from "path";
 dotenv.config();
 
 export const authRouter = express.Router();
+
+// Endpoint to change password
 authRouter.put("/change-username", isAuthenticated, (req, res) => {
     const { newUsername } = req.body;
     const currentUser = req.user.username;
-
     if (newUsername === currentUser) {
         return res.status(StatusCodes.BAD_REQUEST).json({ error: "New username must be different from the current one" });
     }
-
     const updated = updateUserByUsername(currentUser, newUsername);
     if (updated) {
         return res.status(StatusCodes.OK).json({ message: "Username updated successfully" });
@@ -39,7 +39,6 @@ authRouter.put("/change-username", isAuthenticated, (req, res) => {
 authRouter.put("/change-password", isAuthenticated, (req, res) => {
     const { newPassword } = req.body;
     const username = req.user.username;
-
     bcrypt.hash(newPassword, saltRounds, (err, hash) => {
         if (err) {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: "Error hashing password" });
@@ -113,17 +112,12 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
     });
 });
 
-const mjwt = require("jsonwebtoken");
-
-
 //lejlas testing code DONT CHANGE
-
+const mjwt = require("jsonwebtoken");
 authRouter.post("/login2", (req, res) => {
     const {username, password} = req.body;
     const users: User[] = loadUsersFromFile();
-
     const user = users.find((u) => u.username === username);
-
     if (user){
      const accesToken = mjwt.sign({username: user.username}, "secretkey");
      res.json({accesToken: accesToken,
@@ -132,7 +126,4 @@ authRouter.post("/login2", (req, res) => {
     else {
         res.json({message: "User not found"});
     }
-
-
 });
-

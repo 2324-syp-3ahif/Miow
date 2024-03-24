@@ -7,6 +7,7 @@ dotenv.config();
 
 const secretKey = process.env.SECRET_KEY;
 
+//checks if given toke is provided, good formatet and valid
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization;
     if (!token) {
