@@ -1,5 +1,5 @@
 http://localhost:3000/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExMjI2NTE1LjcyMiwiaWF0IjoxNzExMjIyOTE1fQ.Zbii98kp2jJHJuYrU0MjXGHmFAXDHXjO_GHMJ3svznA
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExMjg3MDIyLjkyOSwiaWF0IjoxNzExMjgzNDIyfQ.et3U1kUgHor8jYdcAqSr6jTeBjSMY-pIuY_Rtxx_vu4
 
 ### register user john
 POST http://localhost:3000/api/auth/register HTTP/1.1
@@ -28,8 +28,21 @@ content-type: application/json
   "password": "pw4admin"
 }
 
-###
+### login user john
+POST http://localhost:3000/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "john",
+  "password": "pw4user"
+}
+
+### lejla
 POST http://localhost:3000/api/auth/login2
-###
-DELETE http://localhost:3000/api/auth/users/admin
-Authorization: Bearer {{token}}
+
+### delete user admin (log in and paste token)
+DELETE http://localhost:3000/api/auth/delete HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExMjg3ODY3Ljc1OSwiaWF0IjoxNzExMjg0MjY3fQ.FPYKrdpVOIsLzlkAc04-k1bEAI97AH3YRpc9ez2km9Y
+### delete user john (log in and paste token)
+DELETE http://localhost:3000/api/auth/delete HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEyODc4ODcuNjQ0LCJpYXQiOjE3MTEyODQyODd9.3-NzllpcJ67KjbIrjYGKb0wIYFqmSERAAWc1IRJG1XA

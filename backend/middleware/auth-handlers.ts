@@ -1,17 +1,27 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { StatusCodes } from "http-status-codes";
+
+dotenv.config();
+
+const secretKey = process.env.SECRET_KEY;
 
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const token = req.header('Authorization')?.replace('Bearer ', '');
-        if (!token) {
-            throw new Error("No bearer token available");
-        }
-        jwt.verify(token, dotenv.config().parsed!.SECRET_KEY);
-        next();
-    } catch (err) {
-        res.status(401).send(`Please authenticate! ${err}`);
+    const token = req.headers.authorization;
+    if (!token) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ error: "Token not provided" });
     }
-    next();
+    const tokenParts = token.split(" ");
+    if (tokenParts.length !== 2 || tokenParts[0] !== "Bearer") {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ error: "Invalid token format" });
+    }
+    const tokenValue = tokenParts[1];
+    jwt.verify(tokenValue, secretKey!, (err: any, decoded: any) => {
+        if (err) {
+            return res.status(StatusCodes.UNAUTHORIZED).json({ error: "Invalid token" });
+        }
+        req.user = decoded.user;
+        next();
+    });
 };

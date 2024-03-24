@@ -10,3 +10,10 @@ export interface UserCredentials {
     password: string;
 }
 
+declare global {
+    namespace Express {
+        interface Request {
+            user?: any;
+        }
+    }
+}

@@ -14,16 +14,14 @@ dotenv.config();
 
 export const authRouter = express.Router();
 
-
-
-//lets you delete a user, if authenticated
-authRouter.delete("/users/:username", isAuthenticated, (request, response) => {
-    const usernameToDelete = request.params.username;
-    const success = deleteUserByUsername(usernameToDelete);
-    if (success) {
-        response.status(StatusCodes.OK).json({ message: "User deleted successfully" });
+//lets you delete a user
+authRouter.delete("/delete", isAuthenticated, (req, res) => {
+    const usernameToDelete = req.user.username; // Extract username from authenticated user
+    const deleted = deleteUserByUsername(usernameToDelete);
+    if (deleted) {
+        return res.status(StatusCodes.OK).json({ message: "User deleted successfully" });
     } else {
-        response.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
+        return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
     }
 });
 
@@ -74,7 +72,6 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
         expiresAt: expiresAt.getTime(),
         accessToken: token,
     });
-
 });
 
 
