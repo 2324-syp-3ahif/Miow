@@ -1,15 +1,11 @@
 {
-  "exclude": [
-    ""
-  ],
+  "include": ["**/*.ts"], // Specifies an array of filenames or patterns to include in the program.
   "compilerOptions": {
-    "target": "es6",                    /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "commonjs",               /* Specify what module code is generated. */
-    "moduleResolution": "node",         /* Specify how TypeScript looks up a file from a given module specifier. */
-    "esModuleInterop": true,            /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
-    "strict": true,                     /* Enable all strict type-checking options. */
-  },
-  "ts-node": {
-    "preferTsExts": true
+    "target": "es2021", // Set the JavaScript language version for emitted JavaScript and include compatible library declarations.
+    "module": "ESNext", // Specify what module code is generated.
+    "moduleResolution": "node", // Specify how TypeScript looks up a file from a given module specifier.
+    "strict": true, // Enable all strict type-checking options.
+    "sourceMap": true, // Create source map files for emitted JavaScript files.
+    "strictNullChecks": false // When type checking, dont't take into account null and undefined
   }
 }

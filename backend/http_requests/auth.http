@@ -1,4 +1,4 @@
-@apiUrl = http://localhost:3000/api
+http://localhost:3000/api
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExMjI2NTE1LjcyMiwiaWF0IjoxNzExMjIyOTE1fQ.Zbii98kp2jJHJuYrU0MjXGHmFAXDHXjO_GHMJ3svznA
 
 ### register user john
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ### log in user admin
-POST {{apiUrl}}/auth/login HTTP/1.1
+POST http://localhost:3000/api/auth/login HTTP/1.1
 content-type: application/json
 
 {
@@ -29,6 +29,7 @@ content-type: application/json
 }
 
 ###
-DELETE {{apiUrl}}/auth/users/admin
+POST http://localhost:3000/api/auth/login2
+###
+DELETE http://localhost:3000/api/auth/users/admin
 Authorization: Bearer {{token}}
-

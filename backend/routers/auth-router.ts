@@ -7,9 +7,14 @@ import {User, UserCredentials} from "../interfaces/user";
 import {isAuthenticated} from "../middleware/auth-handlers";
 import {saltRounds} from "../interfaces/user";
 import {addUser, deleteUserByUsername, loadUsersFromFile} from "../brain/user_repo";
+
+import {writev} from "fs";
+import path from "path";
 dotenv.config();
 
 export const authRouter = express.Router();
+
+
 
 //lets you delete a user, if authenticated
 authRouter.delete("/users/:username", isAuthenticated, (request, response) => {
@@ -23,7 +28,7 @@ authRouter.delete("/users/:username", isAuthenticated, (request, response) => {
 });
 
 //lets you register a user
-authRouter.post("/register", (req, res) => {
+authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , res) => {
     let users: User[] = loadUsersFromFile();
     const newUser: UserCredentials = req.body;
     const existingUser = users.find(u => u.username === newUser.username);
@@ -40,7 +45,7 @@ authRouter.post("/register", (req, res) => {
 });
 
 //lets you log in
-authRouter.post("/login", (req, res) => {
+authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) => {
     const loginUser: UserCredentials = req.body;
     const users: User[] = loadUsersFromFile();
     const user = users.find((u) => u.username === loginUser.username);
@@ -69,4 +74,26 @@ authRouter.post("/login", (req, res) => {
         expiresAt: expiresAt.getTime(),
         accessToken: token,
     });
+
 });
+
+
+
+//lejlas testing code DONT CHANGE
+
+authRouter.post("/login2", (req, res) => {
+    const {username, password} = req.body;
+    const users: User[] = loadUsersFromFile();
+
+    const user = users.find((u) => u.username === username);
+
+    if (user){
+      res.json({message: "User found"});
+    }
+    else {
+        res.json({message: "User not found"});
+    }
+
+
+});
+
