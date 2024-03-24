@@ -1,41 +1,30 @@
-# Pflichtenheft MIOW 
+# <img src="pflichtenheft/Headers/1Pflichtenheft.png" style="width: 100%;">
 
 ## Inhaltsverzeichnis
-- [Pflichtenheft MIOW](#pflichtenheft-miow)
+- [Pflichtenheft MIOW](#img-srcpflichtenheftheaders1pflichtenheftpng-stylewidth-100)
   - [Inhaltsverzeichnis](#inhaltsverzeichnis)
-  - [1. Ausgangslage](#1-ausgangslage)
+  - [1. Ausgangslage](#img-srcpflichtenheftheadersausgangslagepng-stylewidth-100)
     - [1.1. Ist-Situation](#11-ist-situation)
     - [1.2. Verbesserungspotenziale](#12-verbesserungspotenziale)
-  - [2. Zielsetzung](#2-zielsetzung)
-  - [3. Funktionale Anforderungen](#3-funktionale-anforderungen)
+  - [2. Zielsetzung](#img-srcpflichtenheftheaderszielpng-stylewidth-100)
+  - [3. Funktionale Anforderungen](#img-srcpflichtenheftheadersfunktionalespng-stylewidth-100)
     - [3.1. Use Case Überblick](#31-use-case-überblick)
     - [3.2 Use Case A - Login](#32-use-case-a---login)
-      - [3.2.1 GUI-Design](#321-gui-design)
-      - [3.2.2 Workflow](#322-workflow)
     - [3.3 Use Case B - Tägliche einträge](#33-use-case-b---tägliche-einträge)
-      - [3.3.1 GUI-Design](#331-gui-design)
-      - [3.3.2 Workflow](#332-workflow)
     - [3.4 Use Case C - Auswerten der Einträge](#34-use-case-c---auswerten-der-einträge)
-      - [3.4.1 GUI -Design](#341-gui--design)
-      - [3.4.2 Workflow](#342-workflow)
     - [3.5 Use Case D - Vorhersagen der Periode](#35-use-case-d---vorhersagen-der-periode)
-      - [3.5.1 GUI Design](#351-gui-design)
-      - [3.5.2 Workflow](#352-workflow)
     - [3.6  Use Case E - Settings](#36--use-case-e---settings)
-      - [3.6.1 GUI-Design](#361-gui-design)
-      - [3.6.2 Workflow](#362-workflow)
-  - [4. Nicht-funktionale Anforderungen](#4-nicht-funktionale-anforderungen)
+  - [4. Nicht-funktionale Anforderungen](#img-srcpflichtenheftheadersnfuntionalespng-stylewidth-100)
     - [`Usability`: Benutzbarkeitsanforderung](#usability-benutzbarkeitsanforderung)
-    - [`Efficiency`: Effizienzanforderung](#efficiency-effizienzanforderung)
-    - [`Maintenance`: Wartbarkeits- und Portierbarkeitsanforderung](#maintenance-wartbarkeits--und-portierbarkeitsanforderung)
     - [`Security`: Sicherheitsanforderung](#security-sicherheitsanforderung)
     - [`Legal`: Gesetzliche Anforderung](#legal-gesetzliche-anforderung)
-  - [5. Mengengerüst](#5-mengengerüst)
-  - [6. Systemarchitektur](#6-systemarchitektur)
+  - [5. Mengengerüst](#img-srcpflichtenheftheadersmengengerüstpng-stylewidth-100)
+  - [6. Systemarchitektur](#img-srcpflichtenheftheaderssystemapng-stylewidth-100)
     - [6.1 Deployment-Diagramm](#61-deployment-diagramm)
     - [6.2 Datenmodell](#62-datenmodell)
 
-## 1. Ausgangslage
+
+# <img src="pflichtenheft/Headers/Ausgangslage.png" style="width: 100%;">
 
 ### 1.1. Ist-Situation
 
@@ -53,7 +42,8 @@ nicht besitzt.
 
 Es besteht Bedarf an einem Online-Tool, das nicht nur die Funktion des Dokumentierens erfüllt, sondern auch ästhetische Möglichkeiten bietet, um die persönlichen Aufzeichnungen ansprechend zu gestalten. Ein All-in-One-Tool könnte beispielsweise einen Periodentracker sowie andere spezifische Funktionen integrieren, um den Anforderungen der Nutzer gerecht zu werden.
 
-## 2. Zielsetzung
+# <img src="pflichtenheft/Headers/ziel.png" style="width: 100%;">
+
 
 Unser Ziel ist es, eine umfassende Online-Plattform mit dem Namen "MIOW"
 (Mood Insighting & Organizing Webapp) zu entwickeln, die es den Benutzern ermöglicht, ein digitales
@@ -61,7 +51,8 @@ Tagebuch zu führen, um ihre Stimmungen, Emotionen und Aktivitäten festzuhalten
 haben, es zu ermöglichen ihre Periode einzutragen, verfolgen und zu vorhersagen. Wir wollen mit MIOW folgende
 Kernfunktionen bieten:
 
-## 3. Funktionale Anforderungen
+# <img src="pflichtenheft/Headers/Funktionales.png" style="width: 100%;">
+
 ### 3.1. Use Case Überblick
 <img src = "pflichtenheft/img/Usecase overviw.png">
 der benutzer hat die usecases
@@ -78,14 +69,14 @@ der benutzer hat die usecases
 ### 3.2 Use Case A - Login
 Anmelden und Registrieren
 #### 3.2.1 GUI-Design
-<img src = "pflichtenheft/img/UsecaseAGUI.png">
+<img src = "pflichtenheft/img/UsecaseAGUI.png" >
 hier kann man zwischen den fenstern login und create a new account wechseln und das jeweils machen.
 
 #### 3.2.2 Workflow
 
 Workflow mit ACD:
 
-<img style="width: 500px" src = "pflichtenheft/img/Login_Register_Workflow.jpg">
+<img style="width: 300px" src = "pflichtenheft/img/Login_Register_Workflow.jpg">
 
 ### 3.3 Use Case B - Tägliche einträge
 Möglichkeit, tägliche Einträge zu verfassen, Stimmungen auszuwählen und Aktivitäten hinzuzufügen. 
@@ -109,8 +100,6 @@ Man hat verschiedene Ansichtten, wo man jeweils den Fortschritt seiner Einträge
   ->in dieser Ansicht kann man auch seine wöchentlichen Ziele notieren.
 #### 3.4.1 GUI -Design
 <img src = "pflichtenheft/img/UsecaseCGUI.png">
-
-
 
 #### 3.4.2 Workflow
 Workflow mit ACD:
@@ -162,13 +151,14 @@ Workflow mit ACD:
 
 <img style="width: 500px" src = "pflichtenheft/img/Settings.jpg">
 
-## 4. Nicht-funktionale Anforderungen
+# <img src="pflichtenheft/Headers/nFuntionales.png" style="width: 100%;">
 ### `Usability`: Benutzbarkeitsanforderung
 ### `Efficiency`: Effizienzanforderung
 ### `Maintenance`: Wartbarkeits- und Portierbarkeitsanforderung
 ### `Security`: Sicherheitsanforderung
 ### `Legal`: Gesetzliche Anforderung
-## 5. Mengengerüst
+
+# <img src="pflichtenheft/Headers/Mengengerüst.png" style="width: 100%;">
 ### Wieviele User werden erwartet?
 Da das Projekt darauf abzielt, eine umfassende Online-Plattform anzubieten, könnte man davon ausgehen, dass eine beträchtliche Anzahl von Benutzern erwartet wird. Vorerst schätzen wir diese auf ca. 400-550 Personen.
 ### Datenmenge pro Benutzer:
@@ -179,7 +169,9 @@ Pro Benutzer könnten wir folgende Daten erwarten:
 Somit ergibt sich eine geschätzte Datenmenge von etwa 1 MB pro Benutzer pro Jahr.
 ### Anfrage-Frequenz: 
 Wir können annehmen, dass user 1x pro tag auf die Plattform zugreifen.
-## 6. Systemarchitektur
+
+# <img src="pflichtenheft/Headers/systema.png" style="width: 100%;">
+
 ### 6.1 Deployment-Diagramm
 <img src= "pflichtenheft/img/DeploymentDiagram.png">
 
