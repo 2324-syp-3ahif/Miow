@@ -74,6 +74,7 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
     });
 });
 
+const mjwt = require("jsonwebtoken");
 
 
 //lejlas testing code DONT CHANGE
@@ -85,7 +86,9 @@ authRouter.post("/login2", (req, res) => {
     const user = users.find((u) => u.username === username);
 
     if (user){
-      res.json({message: "User found"});
+     const accesToken = mjwt.sign({username: user.username}, "secretkey");
+     res.json({accesToken: accesToken,
+     username: user.username});
     }
     else {
         res.json({message: "User not found"});
