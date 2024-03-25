@@ -1,6 +1,7 @@
 import fs from 'fs';
 import bcrypt from 'bcrypt';
 import { saltRounds, User } from '../interfaces/user';
+import {BaseSettings} from "../interfaces/Setting";
 
 const USERS_FILE_PATH = './backend/test_data/users.json';
 
@@ -64,6 +65,13 @@ function saveUsersToFile(users: User[]) {
 //ading a user to the data
 export function addUser(username: string, password: string) {
     let users: User[] = loadUsersFromFile();
-    users.push({ username, password});
+    users.push(
+        {
+            username:username,
+            password:password,
+            entries:[],
+            weeks:[],
+            settings:BaseSettings
+        });
     saveUsersToFile(users);
 }
