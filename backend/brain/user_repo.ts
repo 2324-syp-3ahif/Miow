@@ -64,6 +64,12 @@ function saveUsersToFile() {
     }
 }
 
+//saving a user to data and
+export function saveUsers(u:User[]) {
+        users=u;
+        saveUsersToFile();
+}
+
 //ading a user to the data
 export function addUser(username: string, password: string) {
     users.push(

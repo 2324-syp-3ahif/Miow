@@ -2,7 +2,23 @@
   {
     "username": "john",
     "password": "$2b$08$MbvXZb1RgT4Ui1qL6Xq2PeDDbfEEOSz4Q3.gBXD/cPIBAy8ktMv9i",
-    "entries": [],
+    "entries": [
+      {
+        "fixed_blocks": {
+          "date": "2024-03-25",
+          "mood": 4,
+          "emotions": {
+            "happy": 0,
+            "sad": 1,
+            "grumpy": 1
+          },
+          "text": "Feeling good today",
+          "period": 1
+        },
+        "icon_blocks": [],
+        "number_blocks": []
+      }
+    ],
     "weeks": [],
     "settings": {
       "aboutUs": "",
