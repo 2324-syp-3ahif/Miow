@@ -94,8 +94,31 @@
   {
     "username": "admin",
     "password": "$2b$08$ftAlgiGFgcHRpPsBD.VqBeItN8QfoNqVmoGFLKx5dbrUt0lNsdQd2",
-    "entries": [],
-    "weeks": [],
+    "entries": [
+      {
+        "fixed_blocks": {
+          "date": "2024-03-25",
+          "mood": 4,
+          "emotions": {
+            "happy": 0,
+            "sad": 1,
+            "grumpy": 1
+          },
+          "text": "Feeling good today",
+          "period": 1
+        },
+        "icon_blocks": [],
+        "number_blocks": []
+      }
+    ],
+    "weeks": [
+      {
+        "year": 2024,
+        "startday": "03-25",
+        "endday": "",
+        "text": "Sample weekly entry text"
+      }
+    ],
     "settings": {
       "aboutUs": "",
       "entrySettings": {

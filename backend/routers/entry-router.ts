@@ -1,6 +1,6 @@
 import express from "express";
 import {isAuthenticated} from "../middleware/auth-handlers";
-import {addEntry, getEntryByUserAndDate} from "../brain/entry_repo";
+import {addEntry, addWeekEntry, getEntryByUserAndDate, getWeekEntries} from "../brain/entry_repo";
 import {StatusCodes} from "http-status-codes";
 
 export const entryRouter = express.Router();
@@ -26,5 +26,30 @@ entryRouter.post("/day", isAuthenticated, (req, res) => {
         return res.status(StatusCodes.OK).json("Succsessfully added Entry!");
     } else {
         return res.status(StatusCodes.BAD_REQUEST).json({ error: "Failed to add entry" });
+    }
+});
+
+// GET retrieve the users weekly entries
+entryRouter.get("/week/:date", isAuthenticated, (req, res) => {
+    const currentUser = req.user.username;
+    const requestedDate = req.params.date;
+    const weekEntries = getWeekEntries(currentUser, requestedDate);
+    if (weekEntries) {
+        return res.status(200).json(weekEntries);
+    } else {
+        return res.status(404).json({ error: "Week entries not found" });
+    }
+});
+
+// POST  add a weekly entry for a specific date
+entryRouter.post("/week/:date", isAuthenticated, (req,res) => {
+    const { date } = req.params;
+    const { entryData } = req.body;
+    const currentUser = req.user.username;
+    const addedEntry = addWeekEntry(currentUser, date, entryData);
+    if (addedEntry) {
+        return res.status(StatusCodes.OK).json("Successfully added weekly entry!");
+    } else {
+        return res.status(StatusCodes.BAD_REQUEST).json({ error: "Failed to add weekly entry" });
     }
 });

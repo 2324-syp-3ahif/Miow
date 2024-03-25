@@ -1,12 +1,11 @@
 ### GET entry by date (yyyy-mm-dd)
 GET http://localhost:3000/api/entry/day/2024-03-25 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEzOTEwODMuNDg0LCJpYXQiOjE3MTEzODc0ODN9.mdeW1_-L92L1TzgpAZbyYO4tnrht4uqkBw8rOCGmJ24
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExMzk4NTE0LjE4LCJpYXQiOjE3MTEzOTQ5MTR9.aPbg4krXXPpfp1RVHrf5bnnbD-_APHnzJxDqnstwwxM
 
-
-### POST add entry
+### POST add day entry
 POST http://localhost:3000/api/entry/day HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEzOTEwODMuNDg0LCJpYXQiOjE3MTEzODc0ODN9.mdeW1_-L92L1TzgpAZbyYO4tnrht4uqkBw8rOCGmJ24
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExMzk4NTE0LjE4LCJpYXQiOjE3MTEzOTQ5MTR9.aPbg4krXXPpfp1RVHrf5bnnbD-_APHnzJxDqnstwwxM
 
 {
  "fixed_blocks": {
@@ -22,4 +21,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
   },
   "icon_blocks": [],
   "number_blocks": []
+}
+
+### Get week data
+GET http://localhost:3000/api/entry/week/2024-03-25 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTE0MDAyNDcuNTU0LCJpYXQiOjE3MTEzOTY2NDd9.LBWPc5jhZ0Fyj84V9gAG4S-FUTU1H0dApysAOATxoFk
+
+### post week data
+POST http://localhost:3000/api/entry/week/2024-03-25
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzExNDAwMTczLjg3LCJpYXQiOjE3MTEzOTY1NzN9.hWfRdk564BvsqC0rfxRxaBbjg-D1ExFFXwuNdwzejO4
+
+{
+  "entryData": "Sample weekly entry text"
 }
