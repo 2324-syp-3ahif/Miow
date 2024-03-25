@@ -18,15 +18,9 @@ settingsRouter.put("", isAuthenticated, (req, res) => {
         return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
     }
     const user: User = users[userIndex];
-    if ("ThemeNR" in settingsData) {
-        user.settings.themeNR = settingsData.ThemeNR;
-    }
-    if ("entrySettings" in settingsData) {
-        user.settings.entrySettings = settingsData.entrySettings;
-    }
-    if ("trackPeriod" in settingsData) {
-        user.settings.trackPeriod = settingsData.trackPeriod;
-    }
+    user.settings.themeNR = settingsData.ThemeNR;
+    user.settings.entrySettings = settingsData.entrySettings;
+    user.settings.trackPeriod = settingsData.trackPeriod;
     user.settings.privacyPolicy= privacyPolicy;
     user.settings.aboutUs=aboutUs;
     user.settings.termsOfService=termsOfService;
