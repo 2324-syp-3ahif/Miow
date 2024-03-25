@@ -109,6 +109,20 @@
         },
         "icon_blocks": [],
         "number_blocks": []
+      },      {
+        "fixed_blocks": {
+          "date": "2024-03-26",
+          "mood": 4,
+          "emotions": {
+            "happy": 0,
+            "sad": 1,
+            "grumpy": 1
+          },
+          "text": "Feeling good today",
+          "period": 1
+        },
+        "icon_blocks": [],
+        "number_blocks": []
       }
     ],
     "weeks": [
