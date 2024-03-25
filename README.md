@@ -188,3 +188,4 @@ Wir können annehmen, dass user 1x pro tag auf die Plattform zugreifen.
 <img src= "pflichtenheft/img/DeploymentDiagram.png">
 
 ### 6.2 Datenmodell
+<img src = "pflichtenheft/img/6.2.png">

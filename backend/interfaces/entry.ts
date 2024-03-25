@@ -1,6 +1,6 @@
 interface Entry {
     fixed_blocks: FixedBlocks;
-    icon_blocks: IconBlock[];
+    icons:Icon[];
     number_blocks: NumberBlock[];
 }
 interface FixedBlocks {
@@ -9,9 +9,6 @@ interface FixedBlocks {
     emotions: Emotions;
     text: string;
     period: number;//0.. not tracking period, 1.. period, 2.. no period, 3.. predicted period
-}
-interface IconBlock{
-    icons:Icon[];
 }
 interface Icon{
     name: string;
