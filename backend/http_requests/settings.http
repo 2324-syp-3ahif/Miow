@@ -20,3 +20,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
   },
   "trackPeriod": true
 }
+
+###
+GET http://localhost:3000/api/settings
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTE0MDUwOTAuODQzLCJpYXQiOjE3MTE0MDE0OTB9.fOkMetVqOvBtnFEPGS3wVVDifWauF__bt50ArZ-gogY

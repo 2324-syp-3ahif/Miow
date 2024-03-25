@@ -8,7 +8,7 @@ import {aboutUs, privacyPolicy, termsOfService} from "../brain/setting_repo";
 export const settingsRouter = express.Router();
 
 
-// PUT endpoint to update user settings
+// PUT update user settings
 settingsRouter.put("", isAuthenticated, (req, res) => {
     const currentUser = req.user.username;
     const settingsData = req.body;
@@ -27,4 +27,16 @@ settingsRouter.put("", isAuthenticated, (req, res) => {
     users[userIndex] = user;
     saveUsers(users);
     return res.status(StatusCodes.OK).json({ message: "Settings updated successfully" });
+});
+
+// GET retrieve user settings
+settingsRouter.get("", isAuthenticated, (req, res) => {
+    const currentUser = req.user.username;
+    const users: User[] = getUsers();
+    const user = users.find(user => user.username === currentUser);
+    if (!user) {
+        return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
+    }
+    const { aboutUs, termsOfService, privacyPolicy, ...userSettings } = user.settings;
+    return res.status(StatusCodes.OK).json({ ...userSettings, aboutUs, termsOfService, privacyPolicy });
 });
