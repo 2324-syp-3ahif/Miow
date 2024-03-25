@@ -4,14 +4,13 @@ import { saltRounds, User } from '../interfaces/user';
 import {BaseSettings} from "../interfaces/Setting";
 
 const USERS_FILE_PATH = './backend/test_data/users.json';
-
+let users :User[]=loadUsersFromFile();
 //changing the password of user, returns tru if succsessfull
 export function updateUserByUsername(currentUsername: string, newUsername: string): boolean {
-    let users: User[] = loadUsersFromFile();
     const index = users.findIndex(u => u.username === currentUsername);
     if (index !== -1) {
         users[index].username = newUsername;
-        saveUsersToFile(users);
+        saveUsersToFile();
         return true;
     }
     return false;
@@ -19,11 +18,10 @@ export function updateUserByUsername(currentUsername: string, newUsername: strin
 
 //changing the password of a user, returns tru if succsessfull
 export function updateUserPassword(username: string, newPasswordHash: string): boolean {
-    let users: User[] = loadUsersFromFile();
     const index = users.findIndex(u => u.username === username);
     if (index !== -1) {
         users[index].password = newPasswordHash;
-        saveUsersToFile(users);
+        saveUsersToFile();
         return true;
     }
     return false;
@@ -31,11 +29,10 @@ export function updateUserPassword(username: string, newPasswordHash: string): b
 
 //deleting a user from db, returns tru if succsessfull
 export function deleteUserByUsername(username: string): boolean {
-    let users: User[] = loadUsersFromFile();
     const index = users.findIndex(u => u.username === username);
     if (index !== -1) {
         users.splice(index, 1);
-        saveUsersToFile(users);
+        saveUsersToFile();
         return true;
     }
     return false;
@@ -52,8 +49,13 @@ export function loadUsersFromFile(): User[] {
     }
 }
 
+//returns users
+export function getUsers(){
+    return users;
+}
+
 //saving a user to data
-function saveUsersToFile(users: User[]) {
+function saveUsersToFile() {
     try {
         fs.writeFileSync(USERS_FILE_PATH, JSON.stringify(users, null, 2));
         console.log('Users saved to file.');
@@ -64,7 +66,6 @@ function saveUsersToFile(users: User[]) {
 
 //ading a user to the data
 export function addUser(username: string, password: string) {
-    let users: User[] = loadUsersFromFile();
     users.push(
         {
             username:username,
@@ -73,5 +74,5 @@ export function addUser(username: string, password: string) {
             weeks:[],
             settings:BaseSettings
         });
-    saveUsersToFile(users);
+    saveUsersToFile();
 }

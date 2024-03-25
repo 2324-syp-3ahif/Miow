@@ -1,14 +1,154 @@
 [
   {
-    "username": "newJohn",
-    "password": "$2b$08$C8Dgx1iXZ4edP1HG7QKpQOfUOQe05w9coj8mFqgM2Q9pTiqD8UyrK"
+    "username": "john",
+    "password": "$2b$08$MbvXZb1RgT4Ui1qL6Xq2PeDDbfEEOSz4Q3.gBXD/cPIBAy8ktMv9i",
+    "entries": [],
+    "weeks": [],
+    "settings": {
+      "aboutUs": "",
+      "entrySettings": {
+        "fixed_blocks": {
+          "date": "",
+          "mood": 0,
+          "emotions": {
+            "exited": 0,
+            "relaxed": 0,
+            "proud": 0,
+            "hopefull": 0,
+            "happy": 0,
+            "pit_a_pet": 0,
+            "hungry": 0,
+            "gloomy": 0,
+            "lonely": 0,
+            "depressed": 0,
+            "anxious": 0,
+            "sad": 0,
+            "angry": 0,
+            "tired": 0
+          },
+          "text": "",
+          "period": 2
+        },
+        "icon_blocks": [
+          {
+            "name": "Weather",
+            "icons": [
+              {
+                "name": "Sunny",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Cloudy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Rainy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Snowy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Windy",
+                "value": false,
+                "iconPicID": 0
+              }
+            ]
+          }
+        ],
+        "number_blocks": [
+          {
+            "name": "Water drunken:",
+            "unit": "Glasses",
+            "amount": 0
+          }
+        ]
+      },
+      "privacyPolicy": "Privacy is Important...",
+      "termsOfService": "AGBS...",
+      "themeNR": 1,
+      "trackPeriod": true
+    }
   },
   {
     "username": "admin",
-    "password": "$2b$08$hSr.NfualBQnfW7ZqhDf9eDFM.oHCHl0g3L23dPKeinr.YAw4tAJa"
-  },
-  {
-    "username": "john",
-    "password": "$2b$08$vJvKhi2B6nFRInAjWMWKl.JmXwjvIoW8x7.dWmeH7x2Rcg5qCGvyy"
+    "password": "$2b$08$ftAlgiGFgcHRpPsBD.VqBeItN8QfoNqVmoGFLKx5dbrUt0lNsdQd2",
+    "entries": [],
+    "weeks": [],
+    "settings": {
+      "aboutUs": "",
+      "entrySettings": {
+        "fixed_blocks": {
+          "date": "",
+          "mood": 0,
+          "emotions": {
+            "exited": 0,
+            "relaxed": 0,
+            "proud": 0,
+            "hopefull": 0,
+            "happy": 0,
+            "pit_a_pet": 0,
+            "hungry": 0,
+            "gloomy": 0,
+            "lonely": 0,
+            "depressed": 0,
+            "anxious": 0,
+            "sad": 0,
+            "angry": 0,
+            "tired": 0
+          },
+          "text": "",
+          "period": 2
+        },
+        "icon_blocks": [
+          {
+            "name": "Weather",
+            "icons": [
+              {
+                "name": "Sunny",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Cloudy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Rainy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Snowy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Windy",
+                "value": false,
+                "iconPicID": 0
+              }
+            ]
+          }
+        ],
+        "number_blocks": [
+          {
+            "name": "Water drunken:",
+            "unit": "Glasses",
+            "amount": 0
+          }
+        ]
+      },
+      "privacyPolicy": "Privacy is Important...",
+      "termsOfService": "AGBS...",
+      "themeNR": 1,
+      "trackPeriod": true
+    }
   }
 ]

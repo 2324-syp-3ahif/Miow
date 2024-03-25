@@ -9,7 +9,7 @@ import {saltRounds} from "../interfaces/user";
 import {
     addUser,
     deleteUserByUsername,
-    loadUsersFromFile,
+    getUsers,
     updateUserByUsername,
     updateUserPassword
 } from "../brain/user_repo";
@@ -65,7 +65,7 @@ authRouter.delete("/delete", isAuthenticated, (req, res) => {
 
 //lets you register a user
 authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , res) => {
-    let users: User[] = loadUsersFromFile();
+    let users: User[] = getUsers();
     const newUser: UserCredentials = req.body;
     const existingUser = users.find(u => u.username === newUser.username);
     if (existingUser) {
@@ -83,7 +83,7 @@ authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , 
 //lets you log in
 authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) => {
     const loginUser: UserCredentials = req.body;
-    const users: User[] = loadUsersFromFile();
+    const users: User[] = getUsers();
     const user = users.find((u) => u.username === loginUser.username);
     if (user === undefined) {
         res.status(StatusCodes.UNAUTHORIZED).json("User does not exist");
@@ -116,7 +116,7 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
 const mjwt = require("jsonwebtoken");
 authRouter.post("/login2", (req, res) => {
     const {username, password} = req.body;
-    const users: User[] = loadUsersFromFile();
+    const users: User[] = getUsers();
     const user = users.find((u) => u.username === username);
     if (user){
      const accesToken = mjwt.sign({username: user.username}, "secretkey");
