@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="stylesheet" href="styles/test.css">
+    <script src="src/login.js"></script>
+    <title>Testing</title>
 </head>
 <body>
-<h1>Hello, World!</h1>
+<div class="login">
+    <h1>Login</h1>
+    <form action="api/auth/login" method="POST" id="login-form">
+        <div class="input-box">
+            <label >
+                <input type="text" placeholder="Username" id="username">
+            </label>
+        </div>
+        <div class="input-box">
+            <label>
+                <input type="password" placeholder="Password" id="password" required>
+            </label>
+        </div>
+        <p id="error" style="color: red;"></p>
+        <button class="btn" value="submit">Login</button>
+    </form>
+
+    <script>
+        login();
+    </script>
+    <p>New here? Register!</p>
+
+    <button class="btn">Register</button>
+
+</div>
+
+
 </body>
 </html>

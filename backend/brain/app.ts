@@ -18,6 +18,7 @@ app.use(express.static("frontend"));
 //routers
 app.use("/api/auth",authRouter);
 app.use("/api/entry",entryRouter);
+app.use(express.static(path.join(__dirname, "/../../frontend")));
 
 app.listen(3000, () => {
     console.log("Server is listening at http://localhost:3000");

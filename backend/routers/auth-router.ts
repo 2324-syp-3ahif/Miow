@@ -103,27 +103,13 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
             user: userClaims,
             exp: expiresAt.getTime() / 1000,
         },
-        dotenv.config().parsed!.SECRET_KEY
+       "secretkey"
     );
     res.status(StatusCodes.OK).json({
         userClaims: userClaims,
         expiresAt: expiresAt.getTime(),
         accessToken: token,
     });
-});
 
-//lejlas testing code DONT CHANGE
-const mjwt = require("jsonwebtoken");
-authRouter.post("/login2", (req, res) => {
-    const {username, password} = req.body;
-    const users: User[] = getUsers();
-    const user = users.find((u) => u.username === username);
-    if (user){
-     const accesToken = mjwt.sign({username: user.username}, "secretkey");
-     res.json({accesToken: accesToken,
-     username: user.username});
-    }
-    else {
-        res.json({message: "User not found"});
-    }
+    res.send("Login successful");
 });
