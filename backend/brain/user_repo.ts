@@ -4,12 +4,18 @@ import {BaseSettings} from "../interfaces/Setting";
 
 const USERS_FILE_PATH = './backend/test_data/users.json';
 let users :User[]=loadUsersFromFile();
+
+process.on('SIGINT', () => {
+    console.log('Server is shutting down...');
+    saveUsersToFile();
+    process.exit(0);
+});
+
 //changing the password of user, returns tru if succsessfull
 export function updateUserByUsername(currentUsername: string, newUsername: string): boolean {
     const index = users.findIndex(u => u.username === currentUsername);
     if (index !== -1) {
         users[index].username = newUsername;
-        saveUsersToFile();
         return true;
     }
     return false;
@@ -20,7 +26,6 @@ export function updateUserPassword(username: string, newPasswordHash: string): b
     const index = users.findIndex(u => u.username === username);
     if (index !== -1) {
         users[index].password = newPasswordHash;
-        saveUsersToFile();
         return true;
     }
     return false;
@@ -31,7 +36,6 @@ export function deleteUserByUsername(username: string): boolean {
     const index = users.findIndex(u => u.username === username);
     if (index !== -1) {
         users.splice(index, 1);
-        saveUsersToFile();
         return true;
     }
     return false;
@@ -65,15 +69,16 @@ function saveUsersToFile() {
 
 //ading a user to the data
 export function addUser(username: string, password: string) {
-    users.push(
-        {
-            username:username,
-            password:password,
-            entries:[],
-            weeks:[],
-            settings:BaseSettings
-        });
-    saveUsersToFile();
+    if(!doesUserExist(username)){
+        users.push(
+            {
+                username:username,
+                password:password,
+                entries:[],
+                weeks:[],
+                settings:BaseSettings
+            });
+    }
 }
 
 //updating a user
@@ -81,7 +86,6 @@ export function updateUser(u: User): boolean {
     const index = users.findIndex(user => user.username === u.username);
     if (index !== -1) {
         users[index] = u;
-        saveUsersToFile();
         return true;
     }
     return false;
@@ -89,5 +93,5 @@ export function updateUser(u: User): boolean {
 
 //does user exist?
 export function doesUserExist(user:string){
-    return users.find(u => u.username === user);
+    return users.some(u => u.username === user);
 }
