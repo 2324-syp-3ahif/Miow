@@ -14,8 +14,6 @@ import {
     updateUserPassword
 } from "../brain/user_repo";
 
-import {writev} from "fs";
-import path from "path";
 dotenv.config();
 
 export const authRouter = express.Router();

@@ -1,7 +1,6 @@
 import express from "express";
 import {authRouter} from "../routers/auth-router";
 import dotenv from "dotenv";
-import path from "path";
 import {entryRouter} from "../routers/entry-router";
 import {evaluateRouter} from "../routers/evaluate-router";
 import {settingsRouter} from "../routers/setting-router";
