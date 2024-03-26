@@ -1,6 +1,5 @@
 import fs from 'fs';
-import bcrypt from 'bcrypt';
-import { saltRounds, User } from '../interfaces/user';
+import { User } from '../interfaces/user';
 import {BaseSettings} from "../interfaces/Setting";
 
 const USERS_FILE_PATH = './backend/test_data/users.json';
@@ -50,8 +49,8 @@ export function loadUsersFromFile(): User[] {
 }
 
 //returns users
-export function getUsers(){
-    return users;
+export function getUser(u:string){
+    return users.find(user => user.username === u);
 }
 
 //saving a user to data
@@ -62,12 +61,6 @@ function saveUsersToFile() {
     } catch (error) {
         console.error('Error saving users to file:', error);
     }
-}
-
-//saving a user to data and
-export function saveUsers(u:User[]) {
-        users=u;
-        saveUsersToFile();
 }
 
 //ading a user to the data
@@ -81,4 +74,20 @@ export function addUser(username: string, password: string) {
             settings:BaseSettings
         });
     saveUsersToFile();
+}
+
+//updating a user
+export function updateUser(u: User): boolean {
+    const index = users.findIndex(user => user.username === u.username);
+    if (index !== -1) {
+        users[index] = u;
+        saveUsersToFile();
+        return true;
+    }
+    return false;
+}
+
+//does user exist?
+export function doesUserExist(user:string){
+    return users.find(u => u.username === user);
 }

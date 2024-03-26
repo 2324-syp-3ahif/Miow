@@ -3,13 +3,13 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 import dotenv from "dotenv";
-import {User, UserCredentials} from "../interfaces/user";
+import {UserCredentials} from "../interfaces/user";
 import {isAuthenticated} from "../middleware/auth-handlers";
 import {saltRounds} from "../interfaces/user";
 import {
     addUser,
-    deleteUserByUsername,
-    getUsers,
+    deleteUserByUsername, doesUserExist,
+    getUser,
     updateUserByUsername,
     updateUserPassword
 } from "../brain/user_repo";
@@ -65,10 +65,8 @@ authRouter.delete("/delete", isAuthenticated, (req, res) => {
 
 //lets you register a user
 authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , res) => {
-    let users: User[] = getUsers();
     const newUser: UserCredentials = req.body;
-    const existingUser = users.find(u => u.username === newUser.username);
-    if (existingUser) {
+    if (doesUserExist(newUser.username)) {
         return res.status(StatusCodes.BAD_REQUEST).json({ error: "Username already exists" });
     }
     bcrypt.hash(newUser.password, saltRounds, (err, hash) => {
@@ -83,8 +81,7 @@ authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , 
 //lets you log in
 authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) => {
     const loginUser: UserCredentials = req.body;
-    const users: User[] = getUsers();
-    const user = users.find((u) => u.username === loginUser.username);
+    const user = getUser(loginUser.username);
     if (user === undefined) {
         res.status(StatusCodes.UNAUTHORIZED).json("User does not exist");
         return;

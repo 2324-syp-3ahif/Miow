@@ -1,10 +1,9 @@
 import {User} from "../interfaces/user";
-import {getUsers} from "./user_repo";
+import {getUser} from "./user_repo";
 
 //retrieve month data for the specified user and date
 export function getMonthData(username: string, date: string): { Date: string; values: { [day: string]: { mood: number; period: number } } } | null {
-    const users: User[] = getUsers();
-    const user: User | undefined = users.find(user => user.username === username);
+    const user: User | undefined = getUser(username);
     if (!user) {
         return null; // no user? insert megamind meme here
     }
