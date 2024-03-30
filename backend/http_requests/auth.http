@@ -63,5 +63,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 DELETE http://localhost:3000/api/auth/delete HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEyODc4ODcuNjQ0LCJpYXQiOjE3MTEyODQyODd9.3-NzllpcJ67KjbIrjYGKb0wIYFqmSERAAWc1IRJG1XA
 
-### lejla
-POST http://localhost:3000/api/auth/login2
+### Accessing home page securely
+GET http://localhost:3000/api/auth/home.html HTTP/1.1

@@ -105,6 +105,8 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
         expiresAt: expiresAt.getTime(),
         accessToken: token,
     });
+});
 
-    res.send("Login successful");
+authRouter.get('/home.html',isAuthenticated ,(req, res) => {
+    res.sendFile('home.html', { root: '../../frontend' })
 });
