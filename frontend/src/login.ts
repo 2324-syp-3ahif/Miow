@@ -32,7 +32,7 @@ async function login(): Promise<void> {
             const { token } = data;
 
             localStorage.setItem('token', token);
-
+            localStorage.setItem('username', username);
 
             window.location.href = '/home.html';
         } catch (error) {
