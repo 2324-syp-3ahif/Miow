@@ -17,7 +17,14 @@ async function login(): Promise<void> {
             });
 
             if (!response.ok) {
-                passwordIsWrong()
+                if (response.status === 404) {
+                    passwordIsWrong("User does not exist")
+                    return;
+                }
+                if (response.status === 401) {
+                    passwordIsWrong("Password is wrong")
+                    return;
+                }
                 throw new Error('Login failed');
             }
 
@@ -34,9 +41,9 @@ async function login(): Promise<void> {
     });
 }
 
-function passwordIsWrong(): void {
+function passwordIsWrong(message : string): void {
     const errorElement = document.getElementById('error');
-    errorElement.textContent = 'Password is wrong';
+    errorElement.textContent = message;
 }
 
 login();
