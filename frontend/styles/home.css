@@ -1,0 +1,40 @@
+.note-book {
+  font-family: "Roboto", sans-serif;
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffb9c2;
+  color: #603636;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.note-book .inner-notebook {
+  min-height: inherit;
+  height: 97%;
+  position: relative;
+  background-color: #fff9d6;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.note-book .left-site {
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.note-book .right-side {
+  width: 50%;
+  height: 100%;
+  float: right;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=home.css.map */

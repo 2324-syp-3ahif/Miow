@@ -26,15 +26,20 @@ async function login(): Promise<void> {
                     return;
                 }
                 throw new Error('Login failed');
+            }else {
+                const data = await response.json();
+                console.log(data);
+
+                if (data && data.accessToken) {
+                    const token = data.accessToken;
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('username', username);
+                    window.location.href = '/home.html';
+                } else {
+                    console.error('Token not found in response');
+                }
             }
 
-            const data = await response.json();
-            const { token } = data;
-
-            localStorage.setItem('token', token);
-            localStorage.setItem('username', username);
-
-            window.location.href = '/home.html';
         } catch (error) {
             console.error('Login failed:', error);
         }

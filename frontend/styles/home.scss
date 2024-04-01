@@ -1,0 +1,53 @@
+$primary_color: #ffb9c2;
+$inner_color: #fff9d6;
+$font_color: #603636;
+$main_font: 'Roboto', sans-serif;
+
+.note-book{
+
+    font-family: $main_font;
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: $primary_color;
+    color: $font_color;
+
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
+    .inner-notebook
+    {
+        min-height: inherit;
+        height: 97%;
+        position: relative;
+        background-color: $inner_color;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .left-site
+    {
+        width: 50%;
+        height: 100%;
+        float: left;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .right-side
+    {
+        width: 50%;
+        height: 100%;
+        float: right;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+}

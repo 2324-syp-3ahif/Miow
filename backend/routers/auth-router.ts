@@ -2,7 +2,6 @@ import express from  "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
-import dotenv from "dotenv";
 import {UserCredentials} from "../interfaces/user";
 import {isAuthenticated} from "../middleware/auth-handlers";
 import {saltRounds} from "../interfaces/user";
@@ -14,8 +13,8 @@ import {
     updateUserPassword
 } from "../brain/user_repo";
 
+const dotenv = require('dotenv');
 dotenv.config();
-
 export const authRouter = express.Router();
 
 // Endpoint to change password
@@ -80,13 +79,20 @@ authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , 
 authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) => {
     const loginUser: UserCredentials = req.body;
     const user = getUser(loginUser.username);
+
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!jwtSecret) {
+        throw new Error("JWT_SECRET is not defined in the environment variables.");
+    }
+
+    const key : string = jwtSecret;
     if (user === undefined) {
         res.status(StatusCodes.NOT_FOUND).json("User does not exist");
         return;
     }
     if (!bcrypt.compareSync(loginUser.password, user.password)) { // Compare plaintext password with stored hashed password
         res.status(StatusCodes.UNAUTHORIZED).json("Wrong password");
-        return;
+        return; // Stop execution
     }
     const userClaims = {
         username: user.username
@@ -98,7 +104,7 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
             user: userClaims,
             exp: expiresAt.getTime() / 1000,
         },
-       "secretkey"
+        key
     );
     res.status(StatusCodes.OK).json({
         userClaims: userClaims,
