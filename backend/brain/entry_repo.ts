@@ -38,6 +38,7 @@ function isValidEntry(entryData: Entry): boolean {
         entryData.fixed_blocks &&
         entryData.icon_blocks &&
         entryData.number_blocks &&
+        entryData.fixed_blocks.text.length>=0&&entryData.fixed_blocks.text.length<=250&&
         entryData.fixed_blocks.date && isValidDateFormat(entryData.fixed_blocks.date) &&
         entryData.fixed_blocks.mood >= 0 && entryData.fixed_blocks.mood <= 5 &&
         entryData.fixed_blocks.emotions &&
@@ -136,6 +137,7 @@ export function addWeekEntry(username: string, date: string, entryData: string):
         return false;
     }
     if(entryData.length>500||entryData.length<0){
+        console.log("text too long")
         return false;
     }
     const existingWeekIndex: number = user.weeks.findIndex(week => week.startday === date.slice(5));
