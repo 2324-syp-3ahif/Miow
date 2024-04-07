@@ -130,10 +130,12 @@ export function getWeekEntries(username: string, date: string): { year: number; 
 }
 
 // add a weekly entry for a specific user and date
-//TODO: check if entrydata is valid
 export function addWeekEntry(username: string, date: string, entryData: string): boolean {
     const user: User | undefined = getUser(username);
     if (!user) {
+        return false;
+    }
+    if(entryData.length>500||entryData.length<0){
         return false;
     }
     const existingWeekIndex: number = user.weeks.findIndex(week => week.startday === date.slice(5));
