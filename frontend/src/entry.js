@@ -1,32 +1,27 @@
-import {Entry} from "../interfaces/entry";
-
 async function getDate() {
-  try {
-    const response = await fetch('http://localhost:3000/day');
-
-    if (!response.ok) {
-      console.error(`Error: ${response.status}`);
-      return;
+    try {
+        const response = await fetch('http://localhost:3000/day');
+        if (!response.ok) {
+            console.error(`Error: ${response.status}`);
+            return;
+        }
+        const data = await response.json();
+        const date = data.date;
+        document.getElementById('date').textContent = date;
     }
-
-    const data = await response.json();
-
-    const date = data.date;
-    document.getElementById('date').textContent = date;
-  } catch (error) {
-    console.error('Error:', error);
-  }
+    catch (error) {
+        console.error('Error:', error);
+    }
 }
-
-export async function submitNote(): Promise<void> {
-    const token: string | null = localStorage.getItem('token');
-    const username: string | null = localStorage.getItem('username');
+export async function submitNote() {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
     if (!token || !username) {
         console.error('Token or username not found in localStorage');
         return;
     }
-    const noteContent: HTMLTextAreaElement | null = document.getElementById('note-content') as HTMLTextAreaElement;
-    const entry: Entry = {
+    const noteContent = document.getElementById('note-content');
+    const entry = {
         fixed_blocks: {
             date: new Date().toISOString().split('T')[0],
             mood: -1,
@@ -66,7 +61,9 @@ export async function submitNote(): Promise<void> {
             return;
         }
         console.log('Note submitted successfully');
-    } catch (error) {
+    }
+    catch (error) {
         console.error('Error submitting note:', error);
     }
 }
+//# sourceMappingURL=entry.js.map
