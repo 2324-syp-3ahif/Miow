@@ -15,9 +15,10 @@ export function getEntryByUserAndDate(username: string, date: string): Entry | n
 
 // Function to add an entry for a specific user
 export function addEntry(username: string, entryData: Entry) {
+    /*
     if (!isValidEntry(entryData)) {
         return null;
-    }
+    }*/
     const user: User | undefined = getUser(username);
     if (!user) {
         return null;
@@ -39,15 +40,20 @@ function isValidEntry(entryData: Entry): boolean {
         entryData.icon_blocks &&
         entryData.number_blocks &&
         entryData.fixed_blocks.text.length>=0&&entryData.fixed_blocks.text.length<=250&&
-        entryData.fixed_blocks.date && isValidDateFormat(entryData.fixed_blocks.date) &&
+        entryData.fixed_blocks.date &&
         entryData.fixed_blocks.mood >= 0 && entryData.fixed_blocks.mood <= 5 &&
         entryData.fixed_blocks.emotions &&
-        entryData.fixed_blocks.period >= -1 && entryData.fixed_blocks.period <= 3 &&
-        isValidIconBlocks(entryData.icon_blocks) && isValidNumberblocks(entryData.number_blocks)
+        entryData.fixed_blocks.period >= -1 && entryData.fixed_blocks.period <= 3
+
     ) {
-        return true;
-    }
-    return false;
+        if(isValidDateFormat(entryData.fixed_blocks.date) &&isValidIconBlocks(entryData.icon_blocks) && isValidNumberblocks(entryData.number_blocks)){
+            return true;
+        }
+            else{return false;}
+        }
+
+    else{
+    return false;}
 }
 //validate numberblocks
 function isValidNumberblocks(numberBlocks: NumberBlock[]): boolean {
@@ -66,8 +72,34 @@ function isValidNumberblocks(numberBlocks: NumberBlock[]): boolean {
 }
 //checks if string is in format "yyyy-mm-ddy"
 function isValidDateFormat(dateString: string): boolean {
-    const dateFormatRegex: RegExp = /^\d{4}-\d{2}-\d{2}$/;//regex :(
-    return dateFormatRegex.test(dateString);
+    const parts = dateString.split('-');
+    if (parts.length !== 3) {
+        return false;
+    }
+    const year = parseInt(parts[0]);
+    const month = parseInt(parts[1]);
+    const day = parseInt(parts[2]);
+    if (
+        isNaN(year) || isNaN(month) || isNaN(day) ||
+        year < 0 || month < 1 || month > 12 || day < 1 || day > 31
+    ) {
+        return false;
+    }
+    if ([4, 6, 9, 11].includes(month) && day > 30) {
+        return false;
+    }
+    if (month === 2) {
+        if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+            if (day > 29) {
+                return false;
+            }
+        } else {
+            if (day > 28) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 //checks if iconblock valid
 function isValidIconBlocks(iconBlocks: IconBlock[]): boolean {
