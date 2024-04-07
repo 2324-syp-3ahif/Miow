@@ -13,6 +13,7 @@ export function getEntryByUserAndDate(username: string, date: string): Entry | n
 }
 
 // Function to add an entry for a specific user
+//TODO: look if entrydata is valid
 export function addEntry(username:string, entryData:Entry) {
     const user: User | undefined = getUser(username);
     if (!user) {
@@ -69,6 +70,7 @@ export function getWeekEntries(username: string, date: string): { year: number; 
 }
 
 // add a weekly entry for a specific user and date
+//TODO: check if entrydata is valid
 export function addWeekEntry(username: string, date: string, entryData: string): boolean {
     const user: User | undefined = getUser(username);
     if (!user) {

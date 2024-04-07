@@ -2,7 +2,7 @@ export var BaseEntry:Entry= {
     fixed_blocks: {
         date: "",
         mood: 0,
-        emotions: {
+        emotions: {//
             exited: 0,
             relaxed: 0,
             proud: 0,
@@ -71,7 +71,7 @@ interface FixedBlocks {
     mood: number;//1-5, 1 is best, 0 is not choosen jet
     emotions: Emotions;
     text: string;
-    period: number;//0.. not tracking period, 1.. period, 2.. no period, 3.. predicted period
+    period: number;//0.. not tracking period, 1.. period, 2.. no period, 3.. predicted period, -1 not set
 }
 interface IconBlock{
     name:string;

@@ -71,7 +71,7 @@ authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , 
         if (err) {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: "Error hashing password" });
         }
-        addUser(newUser.username, hash); // Store hashed password
+        addUser(newUser.username, hash);
         return res.status(StatusCodes.CREATED).json({ message: "User registered successfully" });
     });
 });
