@@ -1,4 +1,4 @@
-import {Emotions, Entry, IconBlock, NumberBlock} from "../interfaces/entry";
+import {Entry, IconBlock, NumberBlock} from "../interfaces/entry";
 import {User} from "../interfaces/user";
 import {getUser, updateUser} from "./user_repo";
 import {Week} from "../interfaces/week";
