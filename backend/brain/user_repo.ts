@@ -11,7 +11,8 @@ process.on('SIGINT', () => {
     process.exit(0);
 });
 
-//changing the password of user, returns tru if succsessfull
+//changing the name of user, returns tru if succsessfull
+//TODO: festlegen ob user name restrictions hat
 export function updateUserByUsername(currentUsername: string, newUsername: string): boolean {
     const index = users.findIndex(u => u.username === currentUsername);
     if (index !== -1) {
@@ -22,6 +23,7 @@ export function updateUserByUsername(currentUsername: string, newUsername: strin
 }
 
 //changing the password of a user, returns tru if succsessfull
+//TODO: festlegen ob pw restrictions hat
 export function updateUserPassword(username: string, newPasswordHash: string): boolean {
     const index = users.findIndex(u => u.username === username);
     if (index !== -1) {
@@ -68,6 +70,7 @@ function saveUsersToFile() {
 }
 
 //ading a user to the data
+//TODO festlegen ob es resrtictions für username/pw gibt und festlegen
 export function addUser(username: string, password: string) {
     if(!doesUserExist(username)){
         users.push(

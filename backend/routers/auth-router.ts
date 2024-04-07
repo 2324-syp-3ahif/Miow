@@ -12,6 +12,7 @@ import {
     updateUserByUsername,
     updateUserPassword
 } from "../brain/user_repo";
+import {STATUS_CODES} from "node:http";
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -70,7 +71,7 @@ authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , 
         if (err) {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: "Error hashing password" });
         }
-        addUser(newUser.username, hash); // Store hashed password
+        addUser(newUser.username, hash);
         return res.status(StatusCodes.CREATED).json({ message: "User registered successfully" });
     });
 });
@@ -78,6 +79,9 @@ authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , 
 //lets you log in
 authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) => {
     const loginUser: UserCredentials = req.body;
+    if(loginUser.username===undefined){
+        res.status(StatusCodes.NOT_FOUND).json("no user :(")
+    }
     const user = getUser(loginUser.username);
 
     const jwtSecret = process.env.JWT_SECRET;

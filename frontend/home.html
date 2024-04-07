@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="src/home.js"></script>
-    <script src ="src/entry.js"></script>
+    <script type="module" src="src/home.js"></script>
+    <script type="module" src ="src/entry.js"></script>
 
     <link rel="stylesheet" href="styles/home.css">
 
@@ -71,7 +71,7 @@
             <div class="daily-entry">
             <label for="note-content"></label>
             <textarea id="note-content" cols="30" rows="10" required></textarea>
-            <button onclick="submitNote()">Submit Note</button>
+            <button id="submitbtn">Submit Note</button>
             </div>
 
         </div>

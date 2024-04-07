@@ -1,4 +1,4 @@
-import {Entry} from "../interfaces/entry";
+import {Entry, IconBlock, NumberBlock} from "../interfaces/entry";
 import {User} from "../interfaces/user";
 import {getUser, updateUser} from "./user_repo";
 import {Week} from "../interfaces/week";
@@ -12,26 +12,86 @@ export function getEntryByUserAndDate(username: string, date: string): Entry | n
     return entry ? entry : null;
 }
 
+
 // Function to add an entry for a specific user
-export function addEntry(username:string, entryData:Entry) {
+export function addEntry(username: string, entryData: Entry) {
+    if (!isValidEntry(entryData)) {
+        return null;
+    }
     const user: User | undefined = getUser(username);
     if (!user) {
         return null;
     }
     const existingEntryIndex = user.entries.findIndex(entry => entry.fixed_blocks.date === entryData.fixed_blocks.date);
-    if (existingEntryIndex == -1) {
-        return null;
+    if (existingEntryIndex != -1) {
+        user.entries.splice(existingEntryIndex, 1);
     }
-    user.entries.splice(existingEntryIndex, 1);
-    const newEntry = {
-        fixed_blocks:entryData.fixed_blocks,
-        icon_blocks: entryData.icon_blocks,
-        number_blocks: entryData.number_blocks
-    };
+    const newEntry = entryData;
     user.entries.push(newEntry);
     updateUser(user);
     return newEntry;
 }
+// Function to validate entry data
+function isValidEntry(entryData: Entry): boolean {
+    if (
+        entryData &&
+        entryData.fixed_blocks &&
+        entryData.icon_blocks &&
+        entryData.number_blocks &&
+        entryData.fixed_blocks.date && isValidDateFormat(entryData.fixed_blocks.date) &&
+        entryData.fixed_blocks.mood >= 0 && entryData.fixed_blocks.mood <= 5 &&
+        entryData.fixed_blocks.emotions &&
+        entryData.fixed_blocks.period >= -1 && entryData.fixed_blocks.period <= 3 &&
+        isValidIconBlocks(entryData.icon_blocks) && isValidNumberblocks(entryData.number_blocks)
+    ) {
+        return true;
+    }
+    return false;
+}
+//validate numberblocks
+function isValidNumberblocks(numberBlocks: NumberBlock[]): boolean {
+    if(numberBlocks.length<0||numberBlocks.length>5){
+        return false;
+    }
+    for (const numberBlock of numberBlocks) {
+        if (numberBlock.name.length < 1 || numberBlock.name.length > 15) {
+            return false;
+        }
+        if (numberBlock.unit.length < 1 || numberBlock.unit.length > 15) {
+            return false;
+        }
+    }
+    return true;
+}
+//checks if string is in format "yyyy-mm-ddy"
+function isValidDateFormat(dateString: string): boolean {
+    const dateFormatRegex: RegExp = /^\d{4}-\d{2}-\d{2}$/;//regex :(
+    return dateFormatRegex.test(dateString);
+}
+//checks if iconblock valid
+function isValidIconBlocks(iconBlocks: IconBlock[]): boolean {
+    if(iconBlocks.length<0||iconBlocks.length>5){
+        return false;
+    }
+    for (const iconBlock of iconBlocks) {
+        if (iconBlock.name.length < 1 || iconBlock.name.length > 20) {
+            return false;
+        }
+        if (iconBlock.icons.length < 1||iconBlock.icons.length>15) {
+            return false;
+        }
+        for (const icon of iconBlock.icons) {
+            if (icon.name.length < 1 || icon.name.length > 15) {
+                return false;
+            }
+            if (icon.iconPicID < 0 || icon.iconPicID > 100) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 
 //calculate the last day of the week
 function getLastDayOfWeek(date: Date): Date {
@@ -73,6 +133,9 @@ export function getWeekEntries(username: string, date: string): { year: number; 
 export function addWeekEntry(username: string, date: string, entryData: string): boolean {
     const user: User | undefined = getUser(username);
     if (!user) {
+        return false;
+    }
+    if(entryData.length>500||entryData.length<0){
         return false;
     }
     const existingWeekIndex: number = user.weeks.findIndex(week => week.startday === date.slice(5));

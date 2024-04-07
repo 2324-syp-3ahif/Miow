@@ -5,7 +5,7 @@ import { StatusCodes } from "http-status-codes";
 
 dotenv.config();
 
-const secretKey = process.env.SECRET_KEY;
+const secretKey = process.env.JWT_SECRET;
 
 //checks if given toke is provided, good formatet and valid
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {

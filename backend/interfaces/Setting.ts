@@ -7,6 +7,6 @@ export interface Setting{
 }
 export let BaseSettings :Setting = {
     entrySettings: BaseEntry,
-    themeNR: 1,
+    themeNR: 1,//1-6
     trackPeriod: true
 }
