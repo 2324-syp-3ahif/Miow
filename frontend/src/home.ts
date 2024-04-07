@@ -1,11 +1,7 @@
 function logout() {
-    const logoutButton = document.getElementById('logout');
-
     localStorage.removeItem('token');
     localStorage.removeItem('username');
-
     window.location.href = '/';
-
 }
 
 function getName() {
@@ -22,4 +18,9 @@ function getName() {
 
 window.onload = function () {
     getName();
+    const logoutButton = document.getElementById('logout-btn');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', logout);
+    }
 }
+
