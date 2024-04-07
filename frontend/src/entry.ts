@@ -17,8 +17,8 @@ async function getDate() {
     console.error('Error:', error);
   }
 }
-
-export async function submitNote(): Promise<void> {
+const submitbutton = document.getElementById("submitbtn");
+submitbutton.addEventListener('click',async()=> {
     const token: string | null = localStorage.getItem('token');
     const username: string | null = localStorage.getItem('username');
     if (!token || !username) {
@@ -69,4 +69,4 @@ export async function submitNote(): Promise<void> {
     } catch (error) {
         console.error('Error submitting note:', error);
     }
-}
+});

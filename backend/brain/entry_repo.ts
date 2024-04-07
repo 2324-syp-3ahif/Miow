@@ -19,10 +19,9 @@ export function addEntry(username:string, entryData:Entry) {
         return null;
     }
     const existingEntryIndex = user.entries.findIndex(entry => entry.fixed_blocks.date === entryData.fixed_blocks.date);
-    if (existingEntryIndex == -1) {
-        return null;
+    if (existingEntryIndex != -1) {
+        user.entries.splice(existingEntryIndex, 1);
     }
-    user.entries.splice(existingEntryIndex, 1);
     const newEntry = {
         fixed_blocks:entryData.fixed_blocks,
         icon_blocks: entryData.icon_blocks,

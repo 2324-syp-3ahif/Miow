@@ -13,7 +13,8 @@ async function getDate() {
         console.error('Error:', error);
     }
 }
-export async function submitNote() {
+const submitbutton = document.getElementById("submitbtn");
+submitbutton.addEventListener('click', async () => {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
     if (!token || !username) {
@@ -65,5 +66,6 @@ export async function submitNote() {
     catch (error) {
         console.error('Error submitting note:', error);
     }
-}
+});
+export {};
 //# sourceMappingURL=entry.js.map
