@@ -49,5 +49,7 @@ function passwordIsWrong(message) {
     const errorElement = document.getElementById('error');
     errorElement.textContent = message;
 }
-login();
+window.onload = function () {
+    login();
+};
 //# sourceMappingURL=login.js.map

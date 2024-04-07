@@ -51,4 +51,6 @@ function passwordIsWrong(message : string): void {
     errorElement.textContent = message;
 }
 
-login();
+window.onload = function() {
+    login();
+}
