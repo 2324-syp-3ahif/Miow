@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
         const logoutButton = document.getElementById('logout-btn');
         if (logoutButton) {
-            console.log('Adding event listener to logout button');
             logoutButton.addEventListener('click', () => {
                 console.log('Logout button clicked');
                 try {
@@ -31,7 +30,24 @@ function getName() {
     nameElement.textContent = username;
 }
 
+async function getDate() {
+    try {
+        const dateElemt = document.getElementById("date");
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        dateElemt.textContent = `${day}/${month}/${year}`;
+    }
+    catch (e) {
+        console.log("error setting date", e);
+    }
+
+}
+
 window.onload = function () {
     getName();
+    getDate();
 }
+
 

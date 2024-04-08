@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="src/home.js"></script>
+    <script type="module" src="src/home.js"></script>
     <script type="module" src ="src/entry.js"></script>
 
     <link rel="stylesheet" href="styles/home.css">
@@ -15,17 +15,12 @@
 <!--Navbar -->
 <div class="navbar">
 </div>
-
-<div class="header">
-    <h1>Welcom <span id="username"></span>!!:3</h1>
+<div class="logout">
+    <button id="logout-btn">Logout</button>
 </div>
 
 <div class="note-book">
     <div class="inner-notebook">
-
-        <div class="logout">
-            <button id="logout-btn">Logout</button>
-        </div>
         <div class="left-site">
             <div id="Header">
                 <h1>Daily Log</h1>
@@ -65,7 +60,7 @@
                 <span>Weather:</span>
             </div>
 
-
+            <p>Logged in as <span id="username"></span> :3</p>
         </div>
 
         <div class="vl">
