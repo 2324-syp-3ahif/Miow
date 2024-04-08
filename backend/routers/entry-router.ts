@@ -13,7 +13,7 @@ entryRouter.get("/day/:date",isAuthenticated,(req, res) =>{
     if (entry) {
         return res.status(StatusCodes.OK).json(entry);
     } else {
-        return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found or Entry not found" });
+        return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
     }
 });
 

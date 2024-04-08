@@ -2,23 +2,30 @@ import {Entry, IconBlock, NumberBlock} from "../interfaces/entry";
 import {User} from "../interfaces/user";
 import {getUser, updateUser} from "./user_repo";
 import {Week} from "../interfaces/week";
+import {ReturnHelper} from "../interfaces/returnHelper";
+import {StatusCodes} from "http-status-codes";
+
 // Returns the Entry by User and Date
 export function getEntryByUserAndDate(username: string, date: string): Entry | null {
     const user: User | undefined = getUser(username);
     if (!user) {
         return null;
     }
-    const entry: Entry | undefined = user.entries.find((entry) => entry.fixed_blocks.date === date);
+    var entry: Entry | undefined = user.entries.find((entry) => entry.fixed_blocks.date === date);
+    if(entry==undefined){
+        entry = getUser(username)?.settings.entrySettings;
+        // @ts-ignore
+        entry?.fixed_blocks.date= Date.now();
+    }
     return entry ? entry : null;
 }
 
 
 // Function to add an entry for a specific user
 export function addEntry(username: string, entryData: Entry) {
-    /*
     if (!isValidEntry(entryData)) {
         return null;
-    }*/
+    }
     const user: User | undefined = getUser(username);
     if (!user) {
         return null;
@@ -33,27 +40,44 @@ export function addEntry(username: string, entryData: Entry) {
     return newEntry;
 }
 // Function to validate entry data
-function isValidEntry(entryData: Entry): boolean {
-    if (
-        entryData &&
-        entryData.fixed_blocks &&
-        entryData.icon_blocks &&
-        entryData.number_blocks &&
-        entryData.fixed_blocks.text.length>=0&&entryData.fixed_blocks.text.length<=250&&
-        entryData.fixed_blocks.date &&
-        entryData.fixed_blocks.mood >= 0 && entryData.fixed_blocks.mood <= 5 &&
-        entryData.fixed_blocks.emotions &&
-        entryData.fixed_blocks.period >= -1 && entryData.fixed_blocks.period <= 3
-
-    ) {
-        if(isValidDateFormat(entryData.fixed_blocks.date) &&isValidIconBlocks(entryData.icon_blocks) && isValidNumberblocks(entryData.number_blocks)){
-            return true;
-        }
-            else{return false;}
-        }
-
-    else{
-    return false;}
+function isValidEntry(entryData: Entry): ReturnHelper {
+    if(!entryData){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Entrydata missing"}
+    }
+    else if(!entryData.fixed_blocks){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Fixedblockdata missing"}
+    }
+    else if(!entryData.icon_blocks){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: iconblocks missing"}
+    }
+    else if(!entryData.number_blocks){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: numberblocks missing"}
+    }
+    else if(entryData.fixed_blocks.text.length>250){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Daily Text is too long(max 250)"}
+    }
+    else if(!entryData.fixed_blocks.date){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: date is missing"}
+    }
+    else if(!isValidDateFormat(entryData.fixed_blocks.date)){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: date is wrongly formattet"}
+    }
+    else if(entryData.fixed_blocks.mood<0||entryData.fixed_blocks.mood>5){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Mood is not in Range(0-5)"}
+    }
+    else if(!entryData.fixed_blocks.emotions){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: emotions missing"}
+    }
+    else if(entryData.fixed_blocks.period<0||entryData.fixed_blocks.period>3){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Period not in range(0-3)"}
+    }
+    else if(!isValidIconBlocks(entryData.icon_blocks)){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: iconblocks wrong"}
+    }
+    else if(!isValidNumberblocks(entryData.number_blocks)){
+        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: numberblocks wrong"}
+    }
+    return {status:StatusCodes.OK,response:"Entry should be valid"}
 }
 //validate numberblocks
 function isValidNumberblocks(numberBlocks: NumberBlock[]): boolean {
@@ -163,20 +187,19 @@ export function getWeekEntries(username: string, date: string): { year: number; 
 }
 
 // add a weekly entry for a specific user and date
-export function addWeekEntry(username: string, date: string, entryData: string): boolean {
+export function addWeekEntry(username: string, date: string, entryData: string): ReturnHelper {
     const user: User | undefined = getUser(username);
     if (!user) {
-        return false;
+        return {status:StatusCodes.BAD_REQUEST,response:"user not found"}
     }
     if(entryData.length>500||entryData.length<0){
-        console.log("text too long")
-        return false;
+        return {status:StatusCodes.BAD_REQUEST,response:"entrydata too long (500 characters max)"}
     }
     const existingWeekIndex: number = user.weeks.findIndex(week => week.startday === date.slice(5));
     if (existingWeekIndex !== -1) {
         user.weeks[existingWeekIndex].text = entryData;
         updateUser(user);
-        return true;
+        return {status:StatusCodes.ACCEPTED,response:"weekly entry added"}
     }
     const newWeekEntry: Week = {
         year: parseInt(date.slice(0, 4)),
@@ -186,5 +209,5 @@ export function addWeekEntry(username: string, date: string, entryData: string):
     };
     user.weeks.push(newWeekEntry);
     updateUser(user)
-    return true;
+    return {status:StatusCodes.ACCEPTED,response:"weekly entry added"}
 }

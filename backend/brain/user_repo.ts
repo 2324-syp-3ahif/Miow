@@ -1,6 +1,8 @@
 import fs from 'fs';
-import { User } from '../interfaces/user';
+import {User} from '../interfaces/user';
 import {BaseSettings} from "../interfaces/Setting";
+import {StatusCodes} from "http-status-codes";
+import {ReturnHelper} from "../interfaces/returnHelper";
 
 const USERS_FILE_PATH = './backend/test_data/users.json';
 let users :User[]=loadUsersFromFile();
@@ -10,27 +12,46 @@ process.on('SIGINT', () => {
     saveUsersToFile();
     process.exit(0);
 });
-
-//changing the name of user, returns tru if succsessfull
-//TODO: festlegen ob user name restrictions hat
-export function updateUserByUsername(currentUsername: string, newUsername: string): boolean {
-    const index = users.findIndex(u => u.username === currentUsername);
-    if (index !== -1) {
-        users[index].username = newUsername;
-        return true;
+//is username valid3-20 characters
+function isUserNameValid(username:string):boolean{
+    let res:boolean=true;
+    if(username.length<=3||username.length>=20) {
+        res = false;
     }
-    return false;
+    return res;
+}
+//is password valid? 8-25 characters
+function isPasswordValid(username:string):boolean{
+    let res:boolean=true;
+    if(username.length<=8||username.length>=25) {
+        res = false;
+    }
+    return res;
+}
+//changing the name of user, returns tru if succsessfull
+export function updateUserByUsername(currentUsername: string, newUsername: string): ReturnHelper {
+    const index = users.findIndex(u => u.username === currentUsername);
+    if (index == -1) {
+        return {response:"User not found",status:StatusCodes.BAD_REQUEST}
+    }
+    else if(!isUserNameValid(newUsername)){
+        return {response:"New Username Not Valid(3-20 characters)",status:StatusCodes.BAD_REQUEST}
+    }
+    users[index].username = newUsername;
+    return {response:"Username Updated Succsessfully",status:StatusCodes.ACCEPTED}
 }
 
 //changing the password of a user, returns tru if succsessfull
-//TODO: festlegen ob pw restrictions hat
-export function updateUserPassword(username: string, newPasswordHash: string): boolean {
+export function updateUserPassword(username: string, newPw: string, newPasswordHash:string): ReturnHelper {
     const index = users.findIndex(u => u.username === username);
-    if (index !== -1) {
-        users[index].password = newPasswordHash;
-        return true;
+    if (index === -1) {
+        return {response:"User not found",status:StatusCodes.BAD_REQUEST}
     }
-    return false;
+    else if(!isPasswordValid(newPw)){
+        return {response:"New Password not Valid(8-25 characters",status:StatusCodes.BAD_REQUEST}
+    }
+    users[index].password = newPasswordHash;
+    return {response:"Password Updated Succsessfully",status:StatusCodes.ACCEPTED}
 }
 
 //deleting a user from db, returns tru if succsessfull
@@ -70,18 +91,22 @@ function saveUsersToFile() {
 }
 
 //ading a user to the data
-//TODO festlegen ob es resrtictions für username/pw gibt und festlegen
-export function addUser(username: string, password: string) {
-    if(!doesUserExist(username)){
-        users.push(
-            {
-                username:username,
-                password:password,
-                entries:[],
-                weeks:[],
-                settings:BaseSettings
-            });
+export function addUser(username: string, password: string,hash:string):ReturnHelper {
+    if(isPasswordValid(password)){
+        if(isUserNameValid(username)){
+            users.push(
+                {
+                    username:username,
+                    password:hash,
+                    entries:[],
+                    weeks:[],
+                    settings:BaseSettings
+                });
+            return {status:StatusCodes.ACCEPTED,response:"Succsessfully Added User"}
+        }
+        return{status:StatusCodes.BAD_REQUEST,response:"New Username is not Valid (3-20 characters)"}
     }
+    return {status:StatusCodes.BAD_REQUEST,response:"New Password is not valid(3-20 characters"}
 }
 
 //updating a user
