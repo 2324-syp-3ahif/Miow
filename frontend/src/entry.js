@@ -1,17 +1,10 @@
 async function getDate() {
-    try {
-        const response = await fetch('http://localhost:3000/day');
-        if (!response.ok) {
-            console.error(`Error: ${response.status}`);
-            return;
-        }
-        const data = await response.json();
-        const date = data.date;
-        document.getElementById('date').textContent = date;
-    }
-    catch (error) {
-        console.error('Error:', error);
-    }
+    const dateElemt = document.getElementById("date");
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    dateElemt.textContent = `${day}/${month}/${year}`;
 }
 const submitbutton = document.getElementById("submitbtn");
 submitbutton.addEventListener('click', async () => {
@@ -67,5 +60,8 @@ submitbutton.addEventListener('click', async () => {
         console.error('Error submitting note:', error);
     }
 });
+window.onload = function () {
+    getDate();
+};
 export {};
 //# sourceMappingURL=entry.js.map
