@@ -1,14 +1,5 @@
 import {Entry} from "../interfaces/entry";
 
-async function getDate() {
-  const dateElemt = document.getElementById("date");
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    dateElemt.textContent = `${day}/${month}/${year}`;
-
-}
 const submitbutton = document.getElementById("submitbtn");
 submitbutton.addEventListener('click',async()=> {
     const token: string | null = localStorage.getItem('token');
@@ -62,8 +53,3 @@ submitbutton.addEventListener('click',async()=> {
         console.error('Error submitting note:', error);
     }
 });
-
-window.onload = function () {
-    getDate();
-
-}
