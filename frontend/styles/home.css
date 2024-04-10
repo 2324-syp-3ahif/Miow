@@ -1,3 +1,43 @@
+.tags {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0);
+  background-color: inherit;
+  appearance: none;
+}
+.tags img {
+  height: 87px;
+  cursor: pointer;
+}
+.tags button {
+  margin: 34px 0 0 0;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.tags #daily-tag {
+  filter: invert(62%) sepia(45%) saturate(4630%) hue-rotate(321deg) brightness(116%) contrast(102%);
+}
+.tags #weekly-tag {
+  filter: invert(87%) sepia(30%) saturate(1205%) hue-rotate(296deg) brightness(88%) contrast(137%);
+}
+.tags #monthly-tag {
+  filter: invert(87%) sepia(99%) saturate(3038%) hue-rotate(290deg) brightness(103%) contrast(105%);
+}
+.tags #yearly-tag {
+  filter: invert(88%) sepia(62%) saturate(914%) hue-rotate(290deg) brightness(106%) contrast(133%);
+}
+.tags #predicting-tag {
+  filter: invert(97%) sepia(85%) saturate(1151%) hue-rotate(290deg) brightness(121%) contrast(106%);
+}
+.tags #settings-tag {
+  filter: invert(96%) sepia(10%) saturate(884%) hue-rotate(296deg) brightness(101%) contrast(107%);
+}
+
 .note-book {
   font-family: "Roboto", sans-serif;
   width: 90%;
@@ -22,14 +62,14 @@
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-.note-book .left-site {
+.note-book #daily-notebook .left-site {
   width: 50%;
   height: 100%;
   float: left;
   padding: 10px 10px 10px 40px;
   box-sizing: border-box;
 }
-.note-book .left-site .mood {
+.note-book #daily-notebook .left-site .mood {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,13 +79,13 @@
   border-radius: 10px;
   margin: 30px 0;
 }
-.note-book .left-site .mood p {
+.note-book #daily-notebook .left-site .mood p {
   margin: 10px 0;
 }
-.note-book .left-site .mood span {
+.note-book #daily-notebook .left-site .mood span {
   margin-left: 10px;
 }
-.note-book .left-site .mood .mood-circle {
+.note-book #daily-notebook .left-site .mood .mood-circle {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -53,32 +93,32 @@
   position: relative;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-.note-book .left-site .mood #very-good {
+.note-book #daily-notebook .left-site .mood #very-good {
   background-color: #22ec22;
   border-radius: 50%;
   display: inline-block;
 }
-.note-book .left-site .mood #good {
+.note-book #daily-notebook .left-site .mood #good {
   background-color: #a3ff95;
   border-radius: 50%;
   display: inline-block;
 }
-.note-book .left-site .mood #meh {
+.note-book #daily-notebook .left-site .mood #meh {
   background-color: #ffda0c;
   border-radius: 50%;
   display: inline-block;
 }
-.note-book .left-site .mood #bad {
+.note-book #daily-notebook .left-site .mood #bad {
   background-color: #ffa056;
   border-radius: 50%;
   display: inline-block;
 }
-.note-book .left-site .mood #very-bad {
+.note-book #daily-notebook .left-site .mood #very-bad {
   background-color: #ff4d4d;
   border-radius: 50%;
   display: inline-block;
 }
-.note-book .left-site .period {
+.note-book #daily-notebook .left-site .period {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,23 +128,23 @@
   border-radius: 10px;
   margin: 30px 0;
 }
-.note-book .left-site .period #predicting {
+.note-book #daily-notebook .left-site .period #predicting {
   color: #ffacac;
 }
-.note-book .left-site .period p {
+.note-book #daily-notebook .left-site .period p {
   margin: 10px 0;
 }
-.note-book .left-site .period span {
+.note-book #daily-notebook .left-site .period span {
   margin-left: 10px;
 }
-.note-book .left-site .period img {
+.note-book #daily-notebook .left-site .period img {
   align-self: center;
   justify-self: right;
   width: 50px;
   margin-left: 10px;
   display: inline-block;
 }
-.note-book .left-site .emotions {
+.note-book #daily-notebook .left-site .emotions {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -114,7 +154,7 @@
   border-radius: 10px;
   margin: 30px 0;
 }
-.note-book .left-site .weather {
+.note-book #daily-notebook .left-site .weather {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,14 +164,14 @@
   border-radius: 10px;
   margin: 30px 0;
 }
-.note-book .right-side {
+.note-book #daily-notebook .right-side {
   width: 50%;
   height: 100%;
   float: right;
   padding: 10px;
   box-sizing: border-box;
 }
-.note-book .right-side .sleep {
+.note-book #daily-notebook .right-side .sleep {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -141,7 +181,7 @@
   border-radius: 10px;
   margin: 30px 0;
 }
-.note-book .right-side .water {
+.note-book #daily-notebook .right-side .water {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -151,7 +191,7 @@
   border-radius: 10px;
   margin: 30px 0;
 }
-.note-book .right-side .selfcare {
+.note-book #daily-notebook .right-side .selfcare {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -161,7 +201,7 @@
   border-radius: 10px;
   margin: 30px 0;
 }
-.note-book .right-side .daily-entry {
+.note-book #daily-notebook .right-side .daily-entry {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -171,7 +211,7 @@
   border-radius: 10px;
   margin: 30px 0;
 }
-.note-book .right-side .daily-entry textarea {
+.note-book #daily-notebook .right-side .daily-entry textarea {
   width: 100%;
   height: 300px;
   border: none;

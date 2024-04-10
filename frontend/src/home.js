@@ -25,7 +25,6 @@ function getName() {
         window.location.href = '/';
         return;
     }
-    console.log('Username:', username);
     const nameElement = document.getElementById('username');
     nameElement.textContent = username;
 }
@@ -37,10 +36,28 @@ async function getDate() {
         const month = date.getMonth() + 1;
         const year = date.getFullYear();
         dateElemt.textContent = `${day}/${month}/${year}`;
-        console.log("date set");
     }
     catch (e) {
         console.log("error setting date", e);
+    }
+}
+function showNotebook(id) {
+    const notebooks = ['daily-notebook', 'weekly-notebook', 'monthly-notebook', "yearly-notebook", "predicting-notebook", "settings-notebook"];
+    for (let notebook of notebooks) {
+        const element = document.getElementById(notebook);
+        if (element) {
+            element.style.display = "none";
+        }
+        else {
+            console.log("element not found");
+        }
+    }
+    const notebookShow = document.getElementById(id);
+    if (notebookShow) {
+        notebookShow.style.display = "block";
+    }
+    else {
+        console.log("element not found");
     }
 }
 window.onload = function () {

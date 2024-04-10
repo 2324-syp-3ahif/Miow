@@ -45,6 +45,28 @@ async function getDate() {
 
 }
 
+function showNotebook(id : string){
+    const notebooks = ['daily-notebook', 'weekly-notebook', 'monthly-notebook', "yearly-notebook", "predicting-notebook", "settings-notebook"];
+    for (let notebook of notebooks){
+        const element = document.getElementById(notebook);
+        if(element){
+            element.style.display = "none";
+        }
+        else{
+            console.log("element not found");
+        }
+    }
+
+    const notebookShow = document.getElementById(id);
+    if(notebookShow){
+        notebookShow.style.display = "block";
+    }
+    else{
+        console.log("element not found");
+    }
+}
+
+
 window.onload = function () {
     getName();
     getDate();
