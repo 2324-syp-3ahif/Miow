@@ -5,11 +5,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 ### POST add day entry
 POST http://localhost:3000/api/entry/day HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzEyNTEwNjcwLjg4NiwiaWF0IjoxNzEyNTA3MDcwfQ.qcN8KuIz0PLukCBlNCWjzY-vNzy_Wp5i9mR-gzZk5Z0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI4NDM4NzYuMzksImlhdCI6MTcxMjg0MDI3Nn0.XVoTXg9XSIuU-xrj3fjZOEPxCTrNqHgqvW30nqTnMZk
 
 {
  "fixed_blocks": {
-    "date": "2024-03-25",
+    "date": "2024-03-26",
     "mood": 4,
     "emotions": {
       "happy": 0,
