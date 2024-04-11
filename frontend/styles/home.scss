@@ -13,13 +13,16 @@ $yearly_tag: #FFCBCB;
 $predicting_tag: #FFE4E4;
 $settings_tag: #FFF1F1;
 
+.active{
+    z-index: 2;
+}
 
 .tags{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     position: absolute;
-    z-index: 1;
+    z-index: 0;
     color: rgba(255, 255, 255, 0);
     background-color: inherit;
     appearance: none;
@@ -65,7 +68,6 @@ $settings_tag: #FFF1F1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     background-color: $primary_color;
     color: $font_color;
 
@@ -77,6 +79,7 @@ $settings_tag: #FFF1F1;
 
     .inner-notebook
     {
+        z-index: 1;
         min-height: inherit;
         height: 97%;
         position: relative;

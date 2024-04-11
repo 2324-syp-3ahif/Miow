@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily View</title>
+
+</head>
+<body>
+<div class="page">
+    <div id="daily-notebook">
+        <div class="left-site">
+            <div id="Header">
+                <h1>Daily Log</h1>
+            </div>
+
+            <div id="todays-date">
+                <p>Date: <span id="date"></span></p>
+            </div>
+            <div class="mood">
+                <span>Mood:</span>
+                <span class="mood-circle" id="very-good"></span>
+                <span class="mood-circle" id="good"></span>
+                <span class="mood-circle" id="meh"></span>
+                <span class="mood-circle" id="bad"></span>
+                <span class="mood-circle" id="very-bad"></span>
+
+            </div>
+
+            <div class="period">
+                <span>
+                    Period:
+                </span>
+                <span id="predicting">
+                    Predicting
+                </span>
+                <img src="images/grey_drop.png" alt="grey drop">
+                <img src="images/light_red_drop.png" alt="light red drop">
+                <img src="images/red_drop.png" alt="dark red drop">
+            </div>
+
+            <div class="emotions">
+                <span>Emotions:</span>
+            </div>
+
+            <div class="weather">
+                <span>Weather:</span>
+            </div>
+
+            <p>Logged in as <span id="username"></span> :3</p>
+        </div>
+
+        <div class="vl">
+            <!-- Vertical line -->
+        </div>
+        <div class="right-side">
+            <div class="sleep">
+                <span>Sleep:</span>
+            </div>
+
+            <div class="water">
+                <span>Water:</span>
+            </div>
+
+            <div class="selfcare">
+                <span>Selfcare:</span>
+            </div>
+
+            <div class="daily-entry">
+
+                <label for="note-content"></label>
+                <textarea id="note-content" cols="30" rows="10" placeholder="Daily Entry:" required></textarea>
+                <button id="submitbtn">Submit Note</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,9 +1,13 @@
+.active {
+  z-index: 2;
+}
+
 .tags {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   color: rgba(255, 255, 255, 0);
   background-color: inherit;
   appearance: none;
@@ -54,6 +58,7 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 .note-book .inner-notebook {
+  z-index: 1;
   min-height: inherit;
   height: 97%;
   position: relative;
