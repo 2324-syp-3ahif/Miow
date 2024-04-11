@@ -1,5 +1,10 @@
 export interface MenstrualCycle {
-    startDate: Date;
-    endDate: Date;
+    startDate: Date | null;
+    endDate: Date | null;
     periodLength: number;
+    cycleLength:number;
+}
+export interface CalcCycle{
+    PeriodLength:number;
+    CycleLength:number;
 }

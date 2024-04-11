@@ -1,3 +1,8 @@
-###
-GET http://localhost:3000/api/evaluate/2024-03
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI4NDM4NzYuMzksImlhdCI6MTcxMjg0MDI3Nn0.XVoTXg9XSIuU-xrj3fjZOEPxCTrNqHgqvW30nqTnMZk
+### test in january
+GET http://localhost:3000/api/evaluate/2024-01-01
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI4NTcwNzUuMjk1LCJpYXQiOjE3MTI4NTM0NzV9.6WDFLH12Bl_YRqcMs7z2foV1zkIy7BNZEP4GnQ7pSoA
+
+### test for everything else
+GET http://localhost:3000/api/evaluate/2024-04-15
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI4NzA3NjkuODczLCJpYXQiOjE3MTI4NjcxNjl9.h-VoIsW9RY2rP2I3l2MCCpoPh3fWwXenXZ3Ur4Rwmmo
+

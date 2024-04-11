@@ -1,18 +1,8 @@
 import { User } from "../interfaces/user";
 import { getUser } from "./user_repo";
-import {Entry} from "../interfaces/entry";
-import {MenstrualCycle} from "../interfaces/evaluate";
+import {CalcCycle, MenstrualCycle} from "../interfaces/evaluate";
 
 // Retrieve period data for the specified user and date(yyyy-mm-dd)
-//TODO: algotithmus entwickeln zum berechenen des zyklus
-//steps:
-//1. go back from the current date, dont count the current cycle and save the last 4 cycles ( not current one) in a MenstrualClycle[] object
-//  (achtung, es kann jänner sein) + die everage zyklus und perioden daten ausrechnen
-//2. schauen ob die stimmen können
-// 	(2-8 tage periode und 25-45 tage zyklus, sonst nehm ich die max/min daten)
-// 	(wenn ich keine daten hab/zu wenig hab, nehm ich 5 tage auf 28 tage)
-//3. vom beginn des letzen fertigen zyklus, die average dauer an tagen dazurechnen
-//4. die neu erechneten daten dazutuhen
 export function getMonthData(username: string, date: string): any {
     const userData: User | undefined = getUser(username);
     const [year, month,day] = date.split('-');
@@ -38,21 +28,27 @@ export function getMonthData(username: string, date: string): any {
     //bitte ignorieren ich brauch das nacher zum aufrufen des WIP perioden aloritmus
     return monthData;
 }
-
+//TODO: algotithmus entwickeln zum berechenen des zyklus
+//steps(teile und herrsche!!!~die griechen):
+//1. go back from the current date, dont count the current cycle and save the last 4 cycles ( not current one) in a MenstrualClycle[] object
+//  (achtung, es kann jänner sein) + die everage zyklus und perioden daten ausrechnen
+//2. schauen ob die stimmen können
+// 	(genug datensätze,2-8 tage periode und 25-45 tage zyklus, sonst nehm ich die max/min daten)
+// 	(wenn ich keine daten hab/zu wenig hab, nehm ich 5 tage auf 28 tage)
+//3. vom beginn des letzen fertigen zyklus, die average dauer an tagen dazurechnen
+//4. die neu erechneten daten dazutuhen
 function calculatePeriodsForThisMonth(monthData: any, username: string, year: string, month: string,day:string): any {
-    const user = getUser(username);
-    const lastFourMonthsData: MenstrualCycle[] = getLastFourMonthsData(username, year, month,day);
-    const reasonableData = checkReasonableData(lastFourMonthsData);
-    const updatedLastCycle = updateLastCycle(lastFourMonthsData[lastFourMonthsData.length - 1], averageCycleLength);
-    addCalculatedDataToMonthData(monthData, updatedLastCycle, reasonableData);
+    /*step 1:*/const lastFourMonthsData: MenstrualCycle[] = getLastFourMonthsData(username, year, month,day);
+    /*step 2:*/const reasonableData = checkReasonableData(lastFourMonthsData);
+    /*step 3:*///const updatedLastCycle = updateLastCycle(lastFourMonthsData[lastFourMonthsData.length - 1], averageCycleLength);
+    /*step 4:*///addCalculatedDataToMonthData(monthData, updatedLastCycle, reasonableData);
     return monthData;
 }
 function getLastFourMonthsData(username: string, year: string, month: string,day:string): MenstrualCycle[] {
     const lastFourMonthsData: MenstrualCycle[] = [];
     let currentYear = parseInt(year);
     let currentMonth = parseInt(month);
-    let currentday:number=parseInt(day)
-    let get_nessesery_data:boolean=false;
+    let currentday:number=parseInt(day);
     let save_index:number = 130;
     let user_entries=getUser(username)?.entries;
     let lastperioddaybehandelt:string="";
@@ -62,11 +58,8 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
     }
     let periodlength=0;
     let i =-1;
-    while(!get_nessesery_data&&save_index>0){
+    while(save_index>0){
         save_index--;
-        if(save_index===1){
-            console.log(currentYear+"-"+currentMonth+"-"+currentday);
-        }
         let helpday=currentday.toString();
         let helpmonth=currentMonth.toString();
         if(currentday.toString().length==1){
@@ -76,9 +69,6 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
             helpmonth='0'+currentMonth.toString();
         }
         const targetDate = `${currentYear}-${helpmonth}-${helpday}`;
-        if(targetDate==="2023-12-29"){
-            console.log("uwu")
-        }
         let thisday = user_entries.find(u => u.fixed_blocks.date === targetDate);
         if(thisday){
             if(thisday?.fixed_blocks.period==1){//gerade tag ist periode
@@ -115,14 +105,38 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
             currentday=maxAmountOfDaysInMonth((currentYear+"-"+currentMonth).toString());
         }
     }
+    lastFourMonthsData.pop();
     lastFourMonthsData.forEach(lfmd=>{
         lfmd.periodLength=howLong(lfmd.startDate!,lfmd.endDate!);
     });
-    if(lastFourMonthsData.length<2){
-        return [];
-    }
     return lastFourMonthsData;
 }
+
+function checkReasonableData(periodData: MenstrualCycle[]):CalcCycle{
+    if (periodData.length === 0) return { PeriodLength: 5, CycleLength: 28 };
+    let allPeriodLengths=0;
+    let allCycleLengths=0;
+    periodData.forEach(pd=>{
+        allPeriodLengths+=pd.periodLength;
+        allCycleLengths+=pd.cycleLength;
+    });
+    let avgPeriodLength=allPeriodLengths/periodData.length;
+    let avgCycleLength=allCycleLengths/periodData.length;
+    const calcPeriodLength = (avgPeriodLength >= 3 && avgPeriodLength <= 7) ? avgPeriodLength : 5;
+    const calcCycleLength = (avgCycleLength >= 25 && avgCycleLength <= 50) ? avgCycleLength : 28;
+    return {PeriodLength:calcPeriodLength,CycleLength:calcCycleLength};
+}
+
+function updateLastCycle(lastCycle: MenstrualCycle, averageCycleLength: number): MenstrualCycle {
+    // Placeholder implementation
+    return lastCycle;
+}
+
+function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle, reasonableData: boolean): void {
+    // Placeholder implementation
+}
+
+//Hilsffuntkionen:
 function howLong(startDate: Date, endDate: Date): number {
     const differenceInMs = endDate.getTime() - startDate.getTime();
     const days = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24));
@@ -133,17 +147,4 @@ function maxAmountOfDaysInMonth(date: string): number {
     const lastDayOfMonth = new Date(year, month, 0);
     const maxDays = lastDayOfMonth.getDate();
     return maxDays;
-}
-function checkReasonableData(periodData: number[]): boolean {
-    // Placeholder implementation
-    return true;
-}
-
-function updateLastCycle(lastCycle: MenstrualCycle, averageCycleLength: number): MenstrualCycle {
-    // Placeholder implementation
-    return lastCycle;
-}
-
-function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle, reasonableData: boolean): void {
-    // Placeholder implementation
 }
