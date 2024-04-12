@@ -7,4 +7,5 @@ export interface MenstrualCycle {
 export interface CalcCycle{
     PeriodLength:number;
     CycleLength:number;
+    Message:string
 }
