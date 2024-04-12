@@ -6,25 +6,41 @@ import {CalcCycle, MenstrualCycle} from "../interfaces/evaluate";
 export function getMonthData(username: string, date: string) {
     const userData: User | undefined = getUser(username);
     const [year, month,day] = date.split('-');
-    var monthData: any = {
-        Date: `${year}-${month}`,
-        values: []
-    };
+    var monthData: any;
+    if(userData!.settings.trackPeriod){
+        monthData= {
+            Date: `${year}-${month}`,
+            values: new Array(maxAmountOfDaysInMonth(year+"-"+month)).fill(null).map((_, index) => ({
+                day: (index + 1).toString().padStart(2, '0'),
+                mood: 0,
+                period: 2
+            }))
+        };
+    }
+    else{
+        monthData= {
+            Date: `${year}-${month}`,
+            values: new Array(maxAmountOfDaysInMonth(year+"-"+month)).fill(null).map((_, index) => ({
+                day: (index + 1).toString().padStart(2, '0'),
+                mood: 0,
+                period: 0
+            }))
+        };
+    }
+    let index = 1;
     for (const entry of userData!.entries) {
         const entryDate = entry.fixed_blocks.date;
         const [entryYear, entryMonth] = entryDate.split('-');
         if (entryYear === year && entryMonth === month) {
-            const day = entryDate.split('-')[2];
-            monthData.values[day] = {
-                mood: entry.fixed_blocks.mood,
-                period: entry.fixed_blocks.period
-            };
+            const entryDay = parseInt(entryDate.split('-')[2]);
+            monthData.values[entryDay-1].mood=entry.fixed_blocks.mood;
+            monthData.values[entryDay-1].period=entry.fixed_blocks.period
         }
+        index++;
     }
-    if (userData!.settings.trackPeriod&&new Date(Date.now())<new Date(date)) {//i gotta add this in this
+    if (userData!.settings.trackPeriod&&new Date(Date.now())<new Date(date)) {
         monthData = calculatePeriodsForThisMonth(monthData,username,year,month,day);
     }
-    monthData.sort;
     return monthData;
 }
 //TODO: algotithmus entwickeln zum berechenen des zyklus
@@ -166,26 +182,17 @@ function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: Menstrua
                 dayswhereperiodinmonth.push(dayswhereperiod[i]);
             }
         }
-        for (let i = 0; i < monthendday.getDay(); i++) {
-            if(i==)
-        }
-
-        for (let i = 0; i < dayswhereperiodinmonth.length; i++) {
-            if(monthData.values[dayswhereperiodinmonth[i].getDay()]){
-                monthData.values[dayswhereperiodinmonth[i].getDay()].period=3
-            }
-            else{
-                monthData.values.push({
-                    period:3,
-                    mood:null
-                })
+        //save in monthData every day thats under dayswhereperiodmonth period=3
+        for (const day of dayswhereperiodinmonth) {
+            const dayNumber = (day.getDate()-1).toString();
+            if (!monthData.values[dayNumber]) {
+                monthData.values[dayNumber].period= 3;
+            } else {
+                    monthData.values[dayNumber].period = 3;
             }
         }
     }
-    console.log("help")
 }
-
-
 
 //Hilsffuntkionen:
 function howLong(startDate: Date, endDate: Date): number {
