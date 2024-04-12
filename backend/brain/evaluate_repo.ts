@@ -40,7 +40,7 @@ export function getMonthData(username: string, date: string): any {
 function calculatePeriodsForThisMonth(monthData: any, username: string, year: string, month: string,day:string): any {
     /*step 1:*/const lastFourMonthsData: MenstrualCycle[] = getLastFourMonthsData(username, year, month,day);
     /*step 2:*/const reasonableData = checkReasonableData(lastFourMonthsData);
-    /*step 3:*///const updatedLastCycle = updateLastCycle(lastFourMonthsData[lastFourMonthsData.length - 1], averageCycleLength);
+    /*step 3:*/const calculateNextCycle = calcNextCycle(lastFourMonthsData[0], reasonableData);
     /*step 4:*///addCalculatedDataToMonthData(monthData, updatedLastCycle, reasonableData);
     return monthData;
 }
@@ -127,9 +127,13 @@ function checkReasonableData(periodData: MenstrualCycle[]):CalcCycle{
     return {PeriodLength:calcPeriodLength,CycleLength:calcCycleLength};
 }
 
-function updateLastCycle(lastCycle: MenstrualCycle, averageCycleLength: number): MenstrualCycle {
-    // Placeholder implementation
-    return lastCycle;
+function calcNextCycle(lastfullCycle: MenstrualCycle, averageCycleLength: CalcCycle): MenstrualCycle {
+    return {
+        cycleLength: averageCycleLength.CycleLength,
+        periodLength: averageCycleLength.PeriodLength,
+        startDate:new Date(lastfullCycle.endDate!.getDate()+1),
+        endDate:new Date(lastfullCycle.endDate!.getDate()+averageCycleLength.CycleLength,
+        )};
 }
 
 function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle, reasonableData: boolean): void {

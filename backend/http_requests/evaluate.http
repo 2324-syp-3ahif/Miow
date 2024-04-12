@@ -4,5 +4,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 
 ### test for everything else
 GET http://localhost:3000/api/evaluate/2024-04-15
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI4NzA3NjkuODczLCJpYXQiOjE3MTI4NjcxNjl9.h-VoIsW9RY2rP2I3l2MCCpoPh3fWwXenXZ3Ur4Rwmmo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5MTE1NjIuMDQyLCJpYXQiOjE3MTI5MDc5NjJ9.U4FpeSZ5RtxFW6D-bwdpQ8slM80slGgpOGjy5cppE3g
 
