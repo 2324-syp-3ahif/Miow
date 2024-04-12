@@ -3,12 +3,12 @@ import { getUser } from "./user_repo";
 import {CalcCycle, MenstrualCycle} from "../interfaces/evaluate";
 
 // Retrieve period data for the specified user and date(yyyy-mm-dd)
-export function getMonthData(username: string, date: string): any {
+export function getMonthData(username: string, date: string) {
     const userData: User | undefined = getUser(username);
     const [year, month,day] = date.split('-');
     var monthData: any = {
         Date: `${year}-${month}`,
-        values: {}
+        values: []
     };
     for (const entry of userData!.entries) {
         const entryDate = entry.fixed_blocks.date;
@@ -21,11 +21,10 @@ export function getMonthData(username: string, date: string): any {
             };
         }
     }
-
-    if (userData!.settings.trackPeriod) {
+    if (userData!.settings.trackPeriod&&new Date(Date.now())<new Date(date)) {//i gotta add this in this
         monthData = calculatePeriodsForThisMonth(monthData,username,year,month,day);
     }
-    //bitte ignorieren ich brauch das nacher zum aufrufen des WIP perioden aloritmus
+    monthData.sort;
     return monthData;
 }
 //TODO: algotithmus entwickeln zum berechenen des zyklus
@@ -42,9 +41,8 @@ function calculatePeriodsForThisMonth(monthData: any, username: string, year: st
     if(lastFourMonthsData.length>0){//ich brauch mindestens einen vollen zyklus zum kalkulierren
         /*step 2:*/const reasonableData = checkReasonableData(lastFourMonthsData);
         /*step 3:*/const calculatedCycle = calcNextCycle(lastFourMonthsData[0], reasonableData);
-        /*step 4:*/addCalculatedDataToMonthData(monthData, calculatedCycle);
+        /*step 4:*/addCalculatedDataToMonthData(monthData, calculatedCycle,year+"-"+month+"-"+day);
     }
-
     return monthData;
 }
 function getLastFourMonthsData(username: string, year: string, month: string,day:string): MenstrualCycle[] {
@@ -143,9 +141,51 @@ function calcNextCycle(lastfullCycle: MenstrualCycle, averageCycleLength: CalcCy
     }
     return m;
 }
-function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle[]): void {
-    // Placeholder implementation
+function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle[], date: string): void {
+    const [year, month] = date.split('-');// Extracting the current date
+    const montnstartday = new Date(year+"-"+month+"-"+"01");
+    const monthendday=new Date(year+"-"+month+"-"+maxAmountOfDaysInMonth(date));
+    const currentDate = new Date(date); //new Date(Date.now()); //in real usage, use the current date
+    // Iterate through each menstrual cycle in the updatedLastCycle array
+    for (const cycle of updatedLastCycle) {
+        if (!cycle.startDate || !cycle.endDate) continue;
+        const cycleStartDate = new Date(cycle.startDate);
+        const cycleEndDate = new Date(cycle.endDate);
+        // If the cycle's end date is before the current date or its start date is after the current month's end date, skip it
+        if (cycleEndDate < currentDate || cycleStartDate > new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)) continue;
+        const dayswhereperiod:Date[] = [];
+        for (let i = 0; i < cycle.periodLength; i++) {
+            const dayToAdd:Date = new Date(cycleStartDate);
+            dayToAdd.setDate(cycleStartDate.getDate() + i);
+            dayswhereperiod.push(dayToAdd);
+        }
+        //aussortiren, welche tage im relevanten monat sind
+        const dayswhereperiodinmonth=[];
+        for (let i = 0; i < dayswhereperiod.length; i++) {
+            if(dayswhereperiod[i]>=montnstartday && dayswhereperiod[i]<=monthendday){
+                dayswhereperiodinmonth.push(dayswhereperiod[i]);
+            }
+        }
+        for (let i = 0; i < monthendday.getDay(); i++) {
+            if(i==)
+        }
+
+        for (let i = 0; i < dayswhereperiodinmonth.length; i++) {
+            if(monthData.values[dayswhereperiodinmonth[i].getDay()]){
+                monthData.values[dayswhereperiodinmonth[i].getDay()].period=3
+            }
+            else{
+                monthData.values.push({
+                    period:3,
+                    mood:null
+                })
+            }
+        }
+    }
+    console.log("help")
 }
+
+
 
 //Hilsffuntkionen:
 function howLong(startDate: Date, endDate: Date): number {

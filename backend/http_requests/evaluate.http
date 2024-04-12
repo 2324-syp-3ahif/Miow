@@ -4,4 +4,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 
 ### test for everything else
 GET http://localhost:3000/api/evaluate/2024-04-15
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5MTU1MTcuODg1LCJpYXQiOjE3MTI5MTE5MTd9.1IkJG4MJGnA9x2ftnGI2pH-MxL8z3MJamWsxu__yYJc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5MjQzNDcuODQ5LCJpYXQiOjE3MTI5MjA3NDd9.jumkWT7n28VI5erVuIU2zVe1RH3FtvAa1KqottLISzg
+
+### test for future
+GET http://localhost:3000/api/evaluate/2024-05-01
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5MzY1MzIuMTE3LCJpYXQiOjE3MTI5MzI5MzJ9.PfofIttjuz-tN1bIwngbjDdQg0CvuacpzyNW1U8mJ4w
+
+### test for future but future like idk
+GET http://localhost:3000/api/evaluate/2024-04-03
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5MjQzNDcuODQ5LCJpYXQiOjE3MTI5MjA3NDd9.jumkWT7n28VI5erVuIU2zVe1RH3FtvAa1KqottLISzg
