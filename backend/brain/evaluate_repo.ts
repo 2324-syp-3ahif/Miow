@@ -39,9 +39,12 @@ export function getMonthData(username: string, date: string): any {
 //4. die neu erechneten daten dazutuhen
 function calculatePeriodsForThisMonth(monthData: any, username: string, year: string, month: string,day:string): any {
     /*step 1:*/const lastFourMonthsData: MenstrualCycle[] = getLastFourMonthsData(username, year, month,day);
-    /*step 2:*/const reasonableData = checkReasonableData(lastFourMonthsData);
-    /*step 3:*/const calculateNextCycle = calcNextCycle(lastFourMonthsData[0], reasonableData);
-    /*step 4:*///addCalculatedDataToMonthData(monthData, updatedLastCycle, reasonableData);
+    if(lastFourMonthsData.length>0){//ich brauch mindestens einen vollen zyklus zum kalkulierren
+        /*step 2:*/const reasonableData = checkReasonableData(lastFourMonthsData);
+        /*step 3:*/const calculatedCycle = calcNextCycle(lastFourMonthsData[0], reasonableData);
+        /*step 4:*/addCalculatedDataToMonthData(monthData, calculatedCycle);
+    }
+
     return monthData;
 }
 function getLastFourMonthsData(username: string, year: string, month: string,day:string): MenstrualCycle[] {
@@ -49,14 +52,14 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
     let currentYear = parseInt(year);
     let currentMonth = parseInt(month);
     let currentday:number=parseInt(day);
-    let save_index:number = 130;
+    let save_index:number = 150;
     let user_entries=getUser(username)?.entries;
     let lastperioddaybehandelt:string="";
     let tomorrow:string="";
     if(!user_entries){
         return lastFourMonthsData;
     }
-    let periodlength=0;
+    let cyclelength=0;
     let i =-1;
     while(save_index>0){
         save_index--;
@@ -71,9 +74,9 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
         const targetDate = `${currentYear}-${helpmonth}-${helpday}`;
         let thisday = user_entries.find(u => u.fixed_blocks.date === targetDate);
         if(thisday){
+            cyclelength++;
             if(thisday?.fixed_blocks.period==1){//gerade tag ist periode
                 lastperioddaybehandelt=targetDate;
-                periodlength++;
             }
             else{//gerade tag ist nicht periode
                 if(tomorrow!=""&&lastperioddaybehandelt!=""&&tomorrow==lastperioddaybehandelt){
@@ -81,7 +84,8 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
                     i++;
                     if(lastFourMonthsData.length!=0){//hier setz ich den anfang der vorherigen periode, wenn es eine gab
                         lastFourMonthsData[i-1].startDate=new Date(tomorrow);
-                        lastFourMonthsData[i-1].periodLength=periodlength
+                        lastFourMonthsData[i-1].periodLength=cyclelength-1;
+
                     }
                     lastFourMonthsData.push({
                         endDate:new Date(targetDate),
@@ -90,7 +94,7 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
                         cycleLength:-1
                     });
                 }
-                periodlength=0;
+                cyclelength=0;
             }
         }
         tomorrow=targetDate;
@@ -107,11 +111,10 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
     }
     lastFourMonthsData.pop();
     lastFourMonthsData.forEach(lfmd=>{
-        lfmd.periodLength=howLong(lfmd.startDate!,lfmd.endDate!);
+        lfmd.cycleLength=howLong(lfmd.startDate!,lfmd.endDate!);
     });
     return lastFourMonthsData;
 }
-
 function checkReasonableData(periodData: MenstrualCycle[]):CalcCycle{
     if (periodData.length === 0) return { PeriodLength: 5, CycleLength: 28 };
     let allPeriodLengths=0;
@@ -126,17 +129,21 @@ function checkReasonableData(periodData: MenstrualCycle[]):CalcCycle{
     const calcCycleLength = (avgCycleLength >= 25 && avgCycleLength <= 50) ? avgCycleLength : 28;
     return {PeriodLength:calcPeriodLength,CycleLength:calcCycleLength};
 }
-
-function calcNextCycle(lastfullCycle: MenstrualCycle, averageCycleLength: CalcCycle): MenstrualCycle {
-    return {
-        cycleLength: averageCycleLength.CycleLength,
-        periodLength: averageCycleLength.PeriodLength,
-        startDate:new Date(lastfullCycle.endDate!.getDate()+1),
-        endDate:new Date(lastfullCycle.endDate!.getDate()+averageCycleLength.CycleLength,
-        )};
+function calcNextCycle(lastfullCycle: MenstrualCycle, averageCycleLength: CalcCycle): MenstrualCycle []{
+    let m:MenstrualCycle[]=[];
+    for (let i = 0; i < 6; i++) {
+        let newCycle = {
+            cycleLength: averageCycleLength.CycleLength,
+            periodLength: averageCycleLength.PeriodLength,
+            startDate:addDays(lastfullCycle.endDate!,1),
+            endDate:addDays(lastfullCycle.endDate!,averageCycleLength.CycleLength)
+            };
+        m.push(newCycle);
+        lastfullCycle=newCycle
+    }
+    return m;
 }
-
-function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle, reasonableData: boolean): void {
+function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle[]): void {
     // Placeholder implementation
 }
 
@@ -151,4 +158,9 @@ function maxAmountOfDaysInMonth(date: string): number {
     const lastDayOfMonth = new Date(year, month, 0);
     const maxDays = lastDayOfMonth.getDate();
     return maxDays;
+}
+function addDays(date: Date, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
 }
