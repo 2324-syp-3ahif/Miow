@@ -2,7 +2,7 @@ import { User } from "../interfaces/user";
 import { getUser } from "./user_repo";
 import {CalcCycle, MenstrualCycle} from "../interfaces/evaluate";
 
-// Retrieve period data for the specified user and date(yyyy-mm-dd)
+// Retrieve month data for the specified user and date(yyyy-mm-dd)
 export function getMonthData(username: string, date: string) {
     const userData: User | undefined = getUser(username);
     const [year, month,day] = date.split('-');
@@ -43,15 +43,16 @@ export function getMonthData(username: string, date: string) {
     }
     return monthData;
 }
-//TODO: algotithmus entwickeln zum berechenen des zyklus
 //steps(teile und herrsche!!!~die griechen):
-//1. go back from the current date, dont count the current cycle and save the last 4 cycles ( not current one) in a MenstrualClycle[] object
+//1. go back from the current date, dont count the current cycle and save the last 6 or so cycles ( not current one) in a MenstrualClycle[] object
 //  (achtung, es kann jänner sein) + die everage zyklus und perioden daten ausrechnen
 //2. schauen ob die stimmen können
 // 	(genug datensätze,2-8 tage periode und 25-45 tage zyklus, sonst nehm ich die max/min daten)
 // 	(wenn ich keine daten hab/zu wenig hab, nehm ich 5 tage auf 28 tage)
-//3. vom beginn des letzen fertigen zyklus, die average dauer an tagen dazurechnen
+//3. vom beginn des letzen fertigen zyklus, die average dauer an tagen dazurechnen(ich liebe arrays)
 //4. die neu erechneten daten dazutuhen
+
+//this is the controller function that coordinates the period calculation
 function calculatePeriodsForThisMonth(monthData: any, username: string, year: string, month: string,day:string): any {
     /*step 1:*/const lastFourMonthsData: MenstrualCycle[] = getLastFourMonthsData(username, year, month,day);
     if(lastFourMonthsData.length>0){//ich brauch mindestens einen vollen zyklus zum kalkulierren
@@ -61,6 +62,7 @@ function calculatePeriodsForThisMonth(monthData: any, username: string, year: st
     }
     return monthData;
 }
+//retieves the last 150days of data
 function getLastFourMonthsData(username: string, year: string, month: string,day:string): MenstrualCycle[] {
     const lastFourMonthsData: MenstrualCycle[] = [];
     let currentYear = parseInt(year);
@@ -129,6 +131,7 @@ function getLastFourMonthsData(username: string, year: string, month: string,day
     });
     return lastFourMonthsData;
 }
+//schaut die avg daten an und schaut ob die ok sind
 function checkReasonableData(periodData: MenstrualCycle[]):CalcCycle{
     if (periodData.length === 0) return { PeriodLength: 5, CycleLength: 28 };
     let allPeriodLengths=0;
@@ -143,6 +146,7 @@ function checkReasonableData(periodData: MenstrualCycle[]):CalcCycle{
     const calcCycleLength = (avgCycleLength >= 25 && avgCycleLength <= 50) ? avgCycleLength : 28;
     return {PeriodLength:calcPeriodLength,CycleLength:calcCycleLength};
 }
+//i forgot what dis was fore lol
 function calcNextCycle(lastfullCycle: MenstrualCycle, averageCycleLength: CalcCycle): MenstrualCycle []{
     let m:MenstrualCycle[]=[];
     for (let i = 0; i < 6; i++) {
@@ -157,6 +161,7 @@ function calcNextCycle(lastfullCycle: MenstrualCycle, averageCycleLength: CalcCy
     }
     return m;
 }
+//this just adds the calculated cycles to this months data
 function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle[], date: string): void {
     const [year, month] = date.split('-');// Extracting the current date
     const montnstartday = new Date(year+"-"+month+"-"+"01");
