@@ -155,7 +155,7 @@ function checkReasonableData(periodData: MenstrualCycle[]):CalcCycle{
     if(avgCycleLength>25){
         msg+="Cycle is very short"
     }
-    else if(avgCycleLength>40){
+    else if(avgCycleLength<40){
         msg+="Cycle is very long"
     }
     if(msg===""){
