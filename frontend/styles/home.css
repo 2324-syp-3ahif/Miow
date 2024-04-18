@@ -1,7 +1,3 @@
-.active {
-  z-index: 2;
-}
-
 .tags {
   display: flex;
   justify-content: space-around;

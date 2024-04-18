@@ -30,7 +30,7 @@ function getName() {
     nameElement.textContent = username;
 }
 
-async function getDate() {
+function getDate() {
     try {
         const dateElemt = document.getElementById("date");
         const date = new Date();
@@ -38,6 +38,7 @@ async function getDate() {
         const month = date.getMonth() + 1;
         const year = date.getFullYear();
         dateElemt.textContent = `${day}/${month}/${year}`;
+        localStorage.setItem('date', `${day}/${month}/${year}`);
     }
     catch (e) {
         console.log("error setting date", e);
@@ -66,10 +67,47 @@ function showNotebook(id : string){
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const notebooks = ["#daily-notebook", "#weekly-notebook", "#monthly-notebook", "#yearly-notebook", "#predicting-notebook", "#settings-notebook"];
+
+    const hideAllNotebooks = () => {
+        notebooks.forEach(notebook => {
+            const element = document.querySelector(notebook) as HTMLElement;
+            if (element) {
+                element.style.display = 'none';
+            }
+        });
+    }
+
+    hideAllNotebooks();
+    const dailyNotebook = document.querySelector("#daily-notebook") as HTMLElement;
+    if (dailyNotebook) {
+        dailyNotebook.style.display = 'block';
+    }
+
+    notebooks.forEach(notebook => {
+        const tag = notebook.replace("-notebook", "-tag");
+        const tagElement = document.querySelector(tag) as HTMLElement;
+        if (tagElement) {
+            tagElement.addEventListener('click', () => {
+                hideAllNotebooks();
+                const notebookElement = document.querySelector(notebook) as HTMLElement;
+                if (notebookElement) {
+                    notebookElement.style.display = 'block';
+                }
+
+                const activeElements = document.querySelectorAll(".tags img.active");
+                activeElements.forEach(element => {
+                    (element as HTMLElement).classList.remove("active");
+                });
+
+                tagElement.classList.add("active");
+            });
+        }
+    });
+});
 
 window.onload = function () {
-    getName();
-    getDate();
+   getName();
+   getDate();
 }
-
-
