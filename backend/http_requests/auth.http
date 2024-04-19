@@ -65,3 +65,39 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 
 ### Accessing home page securely
 GET http://localhost:3000/api/auth/home.html HTTP/1.1
+
+### register user elfride
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "elfride",
+  "password": "pww4"
+}
+
+### log in user elfride
+POST http://localhost:3000/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "elfride",
+  "password": "pww4"
+}
+
+### register user jasmin
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "jasmin",
+  "password": "pww4"
+}
+
+### log in user jasmin
+POST http://localhost:3000/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "jasmin",
+  "password": "pww4"
+}

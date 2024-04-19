@@ -13,7 +13,7 @@ export function getMonthData(username: string, date: string) {
         monthData= {
             Message:"Ok",
             Date: `${year}-${month}`,
-            values: new Array(maxAmountOfDaysInMonth(year+"-"+month)).map((_, index) => ({
+            values: new Array(maxAmountOfDaysInMonth(year+"-"+month)).fill(null).map((_, index) => ({
                 day: (index + 1).toString().padStart(2, '0'),
                 mood: 0,
                 period: 2
@@ -24,7 +24,7 @@ export function getMonthData(username: string, date: string) {
         monthData= {
             Message:"Ok",
             Date: `${year}-${month}`,
-            values: new Array(maxAmountOfDaysInMonth(year+"-"+month)).map((_, index) => ({
+            values: new Array(maxAmountOfDaysInMonth(year+"-"+month)).fill(null).map((_, index) => ({
                 day: (index + 1).toString().padStart(2, '0'),
                 mood: 0,
                 period: 0
@@ -46,7 +46,7 @@ export function getMonthData(username: string, date: string) {
     }
 
 
-    return userData.settings.trackPeriod && new Date(Date.now()) < new Date(date) ? calculatePeriodsForThisMonth(monthData, username, year, month, day): monthData;
+    return userData.settings.trackPeriod /*&& new Date(Date.now()) < new Date(date)*/ ? calculatePeriodsForThisMonth(monthData, username, year, month, day): monthData;
 }
 //steps(teile und herrsche!!!~die griechen):
 //1. go back from the current date, dont count the current cycle and save the last 6 or so cycles ( not current one) in a MenstrualClycle[] object
@@ -135,7 +135,23 @@ function checkReasonableData(periodData: MenstrualCycle[]): CalcCycle {
     });
     let avgPeriodLength = allPeriodLengths / periodData.length;
     let avgCycleLength = allCycleLengths / periodData.length;
-    return {PeriodLength: avgPeriodLength, CycleLength: avgCycleLength, Message: ((avgPeriodLength < 3 ? "Period is very short" : avgPeriodLength > 7 ? "Period is very long" : "") + (avgCycleLength > 25 ? "Cycle is very short" : avgCycleLength < 40 ? "Cycle is very long" : "") || "All OK"),};
+    let msg:string="";
+    if(avgPeriodLength < 3){
+        msg+=" Period is very short"
+    }
+    else if(avgPeriodLength>7){
+        msg+="Period is very long"
+    }
+    if(avgCycleLength>25){
+        msg+="Cycle is very short"
+    }
+    else if(avgCycleLength<40){
+        msg+="Cycle is very long"
+    }
+    if(msg===""){
+        msg="All oK"
+    }
+    return {PeriodLength:avgPeriodLength,CycleLength:avgCycleLength,Message:msg};
 }
 //i forgot what dis was fore lol
 function calcNextCycle(lastFullCycle: MenstrualCycle, averageCycleLength: CalcCycle): MenstrualCycle [] {
@@ -201,7 +217,9 @@ function maxAmountOfDaysInMonth(date: string): number {
 }
 
 function addDays(date: Date, days: number): Date {
-    return new Date(date.getDate() + days);
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
 }
 
 //ich hasse ts das is so dumm :(

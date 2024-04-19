@@ -23,7 +23,7 @@ function isUserNameValid(username:string):boolean{
 //is password valid? 8-25 characters
 function isPasswordValid(username:string):boolean{
     let res:boolean=true;
-    if(username.length<=8||username.length>=25) {
+    if(username.length<=3||username.length>=25) {
         res = false;
     }
     return res;
@@ -106,7 +106,7 @@ export function addUser(username: string, password: string,hash:string):ReturnHe
         }
         return{status:StatusCodes.BAD_REQUEST,response:"New Username is not Valid (3-20 characters)"}
     }
-    return {status:StatusCodes.BAD_REQUEST,response:"New Password is not valid(3-20 characters"}
+    return {status:StatusCodes.BAD_REQUEST,response:"New Password is not valid(3-20 characters)"}
 }
 
 //updating a user
