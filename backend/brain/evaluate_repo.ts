@@ -6,31 +6,15 @@ export function getMonthData(username: string, date: string) {
     const userData: User | undefined = getUser(username);
     if (!userData) return null;
     const [year, month, day] = date.split('-');
-
-
-    var monthData: any;
-    if(userData!.settings.trackPeriod){
-        monthData= {
-            Message:"Ok",
-            Date: `${year}-${month}`,
-            values: new Array(maxAmountOfDaysInMonth(year+"-"+month)).fill(null).map((_, index) => ({
-                day: (index + 1).toString().padStart(2, '0'),
-                mood: 0,
-                period: 2
-            }))
-        };
-    }
-    else{
-        monthData= {
-            Message:"Ok",
-            Date: `${year}-${month}`,
-            values: new Array(maxAmountOfDaysInMonth(year+"-"+month)).fill(null).map((_, index) => ({
-                day: (index + 1).toString().padStart(2, '0'),
-                mood: 0,
-                period: 0
-            }))
-        };
-    }
+    const monthData = {
+        Message: "Ok",
+        Date: `${year}-${month}`,
+        values: new Array(maxAmountOfDaysInMonth(year + "-" + month)).fill(null).map((_, index) => ({
+            day: (index + 1).toString().padStart(2, "0"),
+            mood: 0,
+            period: userData!.settings.trackPeriod ? 2 : 0
+        }))
+    };
 
 
 
@@ -135,23 +119,13 @@ function checkReasonableData(periodData: MenstrualCycle[]): CalcCycle {
     });
     let avgPeriodLength = allPeriodLengths / periodData.length;
     let avgCycleLength = allCycleLengths / periodData.length;
-    let msg:string="";
-    if(avgPeriodLength < 3){
-        msg+=" Period is very short"
-    }
-    else if(avgPeriodLength>7){
-        msg+="Period is very long"
-    }
-    if(avgCycleLength>25){
-        msg+="Cycle is very short"
-    }
-    else if(avgCycleLength<40){
-        msg+="Cycle is very long"
-    }
-    if(msg===""){
-        msg="All oK"
-    }
-    return {PeriodLength:avgPeriodLength,CycleLength:avgCycleLength,Message:msg};
+    let msg: string = "";
+    if (avgPeriodLength < 3) msg += " Period is very short";
+    else if (avgPeriodLength > 7) msg += " Period is very long";
+    if (avgCycleLength > 25) msg += " Cycle is very short";
+    else if (avgCycleLength < 40) msg += " Cycle is very long";
+    if (!msg) msg = "All OK";
+    return { PeriodLength: avgPeriodLength, CycleLength: avgCycleLength, Message: msg };
 }
 //i forgot what dis was fore lol
 function calcNextCycle(lastFullCycle: MenstrualCycle, averageCycleLength: CalcCycle): MenstrualCycle [] {
