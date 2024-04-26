@@ -76,7 +76,7 @@ export function loadUsersFromFile(): User[] {
 }
 
 //returns users
-export function getUser(u:string){
+export function getUser(u:string): User | undefined {
     return users.find(user => user.username === u);
 }
 

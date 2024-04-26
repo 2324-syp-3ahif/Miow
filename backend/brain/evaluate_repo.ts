@@ -1,24 +1,23 @@
 import {User} from "../interfaces/user";
 import {getUser} from "./user_repo";
 import {CalcCycle, MenstrualCycle} from "../interfaces/evaluate";
+import {MonthData} from "../interfaces/monthdata";
 // Retrieve month data for the specified user and date(yyyy-mm-dd)
 export function getMonthData(username: string, date: string) {
     const userData: User | undefined = getUser(username);
     if (!userData) return null;
     const [year, month, day] = date.split('-');
-    const monthData = {
+    const monthData: MonthData = {
         Message: "Ok",
         Date: `${year}-${month}`,
-        values: new Array(maxAmountOfDaysInMonth(year + "-" + month)).fill(null).map((_, index) => ({
-            day: (index + 1).toString().padStart(2, "0"),
-            mood: 0,
-            period: userData!.settings.trackPeriod ? 2 : 0
-        }))
+        values: new Array(maxAmountOfDaysInMonth(year + "-" + month))
+            .fill(null)
+            .map((_, index) => ({
+                day: (index + 1).toString().padStart(2, "0"),
+                mood: 0,
+                period: userData!.settings.trackPeriod ? 2 : 0
+            }))
     };
-
-
-
-
     for (const entry of userData!.entries) {
         const entryDate = entry.fixed_blocks.date;
         const [entryYear, entryMonth] = entryDate.split('-');
@@ -28,8 +27,6 @@ export function getMonthData(username: string, date: string) {
             monthData.values[entryDay-1].period=entry.fixed_blocks.period
         }
     }
-
-
     return userData.settings.trackPeriod /*&& new Date(Date.now()) < new Date(date)*/ ? calculatePeriodsForThisMonth(monthData, username, year, month, day): monthData;
 }
 //steps(teile und herrsche!!!~die griechen):
@@ -41,7 +38,7 @@ export function getMonthData(username: string, date: string) {
 //3. vom beginn des letzen fertigen zyklus, die average dauer an tagen dazurechnen(ich liebe arrays)
 //4. die neu erechneten daten dazutuhen
 //this is the controller function that coordinates the period calculation
-function calculatePeriodsForThisMonth(monthData: any, username: string, year: string, month: string, day: string): any {
+function calculatePeriodsForThisMonth(monthData: MonthData, username: string, year: string, month: string, day: string): MonthData {
     const lastFourMonthsData: MenstrualCycle[] = getLastFiveMonthsData(username, year, month, day);
     if (lastFourMonthsData.length > 0) {
         const reasonableData = checkReasonableData(lastFourMonthsData);
@@ -51,12 +48,12 @@ function calculatePeriodsForThisMonth(monthData: any, username: string, year: st
     }
     return monthData;
 }
-//retieves the last 150days of data
+//retrieves the last 150days of data
 function getLastFiveMonthsData(username: string, year: string, month: string, day: string): MenstrualCycle[] {
     const lastFourMonthsData: MenstrualCycle[] = [];
     let currentYear = parseInt(year);
     let currentMonth = parseInt(month);
-    let currentday: number = parseInt(day);
+    let currentDay: number = parseInt(day);
     let user_entries = getUser(username)?.entries;
     let lastperioddaybehandelt: string = "";
     let tomorrow: string = "";
@@ -66,7 +63,7 @@ function getLastFiveMonthsData(username: string, year: string, month: string, da
     let cyclelength = 0;
     let i = -1;
     for (let j = 150; j >0; j--) {
-        let helpday = currentday.toString().length !== 1 ? currentday.toString() : 0 + currentday.toString();
+        let helpday = currentDay.toString().length !== 1 ? currentDay.toString() : 0 + currentDay.toString();
         let helpmonth = currentMonth.toString().length !== 1 ? currentMonth.toString():'0'+currentMonth;
         const targetDate = `${currentYear}-${helpmonth}-${helpday}`;
         let thisday = user_entries.find(u => u.fixed_blocks.date === targetDate);
@@ -93,15 +90,15 @@ function getLastFiveMonthsData(username: string, year: string, month: string, da
             }
         }
         tomorrow = targetDate;
-        currentday--;
-        if (currentday === 0) {
+        currentDay--;
+        if (currentDay === 0) {
             currentMonth--;
-            currentday = maxAmountOfDaysInMonth((currentYear + "-" + currentMonth).toString());
+            currentDay = maxAmountOfDaysInMonth((currentYear + "-" + currentMonth).toString());
         }
         if (currentMonth === 0) {
             currentMonth = 12;
             currentYear--;
-            currentday = maxAmountOfDaysInMonth((currentYear + "-" + currentMonth).toString());
+            currentDay = maxAmountOfDaysInMonth((currentYear + "-" + currentMonth).toString());
         }
     }
     lastFourMonthsData.pop();
@@ -117,8 +114,8 @@ function checkReasonableData(periodData: MenstrualCycle[]): CalcCycle {
         allPeriodLengths += pd.periodLength;
         allCycleLengths += pd.cycleLength;
     });
-    let avgPeriodLength = allPeriodLengths / periodData.length;
-    let avgCycleLength = allCycleLengths / periodData.length;
+    let avgPeriodLength: number = allPeriodLengths / periodData.length;
+    let avgCycleLength: number = allCycleLengths / periodData.length;
     let msg: string = "";
     if (avgPeriodLength < 3) msg += " Period is very short";
     else if (avgPeriodLength > 7) msg += " Period is very long";
@@ -142,17 +139,17 @@ function calcNextCycle(lastFullCycle: MenstrualCycle, averageCycleLength: CalcCy
     }
     return m;
 }
-//this just adds the calculated cycles to this months data
-function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: MenstrualCycle[], date: string): void {
+//this just adds the calculated cycles to this month's data
+function addCalculatedDataToMonthData(monthData: MonthData, updatedLastCycle: MenstrualCycle[], date: string): void {
     const [year, month] = date.split('-');// Extracting the current date
-    const montnstartday = new Date(year + "-" + month + "-" + "01");
-    const monthendday = new Date(year + "-" + month + "-" + maxAmountOfDaysInMonth(date));
-    const currentDate = new Date(date); //new Date(Date.now()); //in real usage, use the current date
+    const monthStartDay: Date = new Date(year + "-" + month + "-" + "01");
+    const monthEndDay: Date = new Date(year + "-" + month + "-" + maxAmountOfDaysInMonth(date));
+    const currentDate: Date = new Date(date); //new Date(Date.now()); //in real usage, use the current date
     // Iterate through each menstrual cycle in the updatedLastCycle array
     for (const cycle of updatedLastCycle) {
         if (!cycle.startDate || !cycle.endDate) continue;
-        const cycleStartDate = new Date(cycle.startDate)
-        const cycleEndDate =  new Date(cycle.endDate);
+        const cycleStartDate: Date = new Date(cycle.startDate)
+        const cycleEndDate: Date =  new Date(cycle.endDate);
         // If the cycle's end date is before the current date or its start date is after the current month's end date, skip it
         if (cycleEndDate < currentDate || cycleStartDate > new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)) continue;
         const dayswhereperiod: Date[] = [];
@@ -161,16 +158,16 @@ function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: Menstrua
             dayToAdd.setDate(cycleStartDate.getDate() + i);
             dayswhereperiod.push(dayToAdd);
         }
-        //aussortiren, welche tage im relevanten monat sind
-        const dayswhereperiodinmonth = [];
+        // get days of relevant month
+        const dayswhereperiodinmonth: Date[] = [];
         for (let i = 0; i < dayswhereperiod.length; i++) {
-            if (dayswhereperiod[i] >= montnstartday && dayswhereperiod[i] <= monthendday) {
+            if (dayswhereperiod[i] >= monthStartDay && dayswhereperiod[i] <= monthEndDay) {
                 dayswhereperiodinmonth.push(dayswhereperiod[i]);
             }
         }
         //save in monthData every day thats under dayswhereperiodmonth period=3
         for (const day of dayswhereperiodinmonth) {
-            const dayNumber = (day.getDate() - 1).toString();
+            const dayNumber: number = (day.getDate() - 1);
             if (!monthData.values[dayNumber]) {
                 monthData.values[dayNumber].period = 3;
             } else {
@@ -179,9 +176,9 @@ function addCalculatedDataToMonthData(monthData: any, updatedLastCycle: Menstrua
         }
     }
 }
-//Hilsffuntkionen:
+// Helper functions:
 function howLong(startDate: Date, endDate: Date): number {
-    const differenceInMs = endDate.getTime() - startDate.getTime();
+    const differenceInMs: number = endDate.getTime() - startDate.getTime();
     return Math.ceil(differenceInMs / (1000 * 60 * 60 * 24));
 }
 
@@ -191,12 +188,7 @@ function maxAmountOfDaysInMonth(date: string): number {
 }
 
 function addDays(date: Date, days: number): Date {
-    const result = new Date(date);
+    const result: Date = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
-}
-
-//ich hasse ts das is so dumm :(
-function padValue(value:any) {
-    return (value < 10) ? "0" + value : value;
 }
