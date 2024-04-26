@@ -19,7 +19,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 export const authRouter = express.Router();
 
-
 // Endpoint to change username
 authRouter.put("/change-username", isAuthenticated, (req, res) => {
     const { newUsername } = req.body;
@@ -107,8 +106,3 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
         accessToken: token,
     });
 });
-
-authRouter.get('/home',(req, res) => {
-    res.sendFile('home.html', { root: 'frontend' });
-});
-

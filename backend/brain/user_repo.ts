@@ -28,6 +28,8 @@ function isPasswordValid(username:string):boolean{
     }
     return res;
 }
+
+//TODO: SQL
 //changing the name of user, returns tru if succsessfull
 export function updateUserByUsername(currentUsername: string, newUsername: string): ReturnHelper {
     const index = users.findIndex(u => u.username === currentUsername);

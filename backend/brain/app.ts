@@ -11,10 +11,10 @@ export const app = express();
 app.use(express.json());
 app.use(express.static("frontend"));
 //routers
-app.use("/api/auth",authRouter);
-app.use("/api/entry",entryRouter);
-app.use("/api/evaluate",evaluateRouter);
-app.use("/api/settings",settingsRouter);
+app.use("/auth",authRouter);
+app.use("/entry",entryRouter);
+app.use("/evaluate",evaluateRouter);
+app.use("/settings",settingsRouter);
 app.listen(3000, () => {
     console.log("Server is listening at http://localhost:3000");
 });
