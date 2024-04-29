@@ -27,7 +27,7 @@ export function getMonthData(username: string, date: string) {
             monthData.values[entryDay-1].period=entry.fixed_blocks.period
         }
     }
-    return userData.settings.trackPeriod /*&& new Date(Date.now()) < new Date(date)*/ ? calculatePeriodsForThisMonth(monthData, username, year, month, day): monthData;
+    return userData.settings.trackPeriod && new Date(Date.now()) < new Date(date) ? calculatePeriodsForThisMonth(monthData, username, year, month, day): monthData;
 }
 //steps(teile und herrsche!!!~die griechen):
 //1. go back from the current date, dont count the current cycle and save the last 6 or so cycles ( not current one) in a MenstrualClycle[] object

@@ -43,8 +43,8 @@ entryRouter.get("/week", isAuthenticated, (req, res) => {
 
 // POST  add a weekly entry for a specific date
 entryRouter.post("/week", isAuthenticated, (req,res) => {
-    const { date } = req.body.date;
-    const { entryData } = req.body.entryData;
+    const  date  = req.body.date;
+    const  entryData  = req.body.entryData;
     const currentUser = req.user.username;
     const addedEntry = addWeekEntry(currentUser, date, entryData);
     if (addedEntry) {
