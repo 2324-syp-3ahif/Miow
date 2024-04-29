@@ -8,7 +8,7 @@ async function login() {
         const username = usernameInput.value;
         const password = passwordInput.value;
         try {
-            const response = await fetch('/api/auth/login', {
+            const response = await fetch('/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ async function login() {
                     const token = data.accessToken;
                     localStorage.setItem('token', token);
                     localStorage.setItem('username', username);
-                    window.location.href = '/api/auth/home';
+                    window.location.href = '/home.html';
                 }
                 else {
                     console.error('Token not found in response');

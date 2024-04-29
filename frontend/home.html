@@ -7,7 +7,7 @@
     <script src="src/home.js" ></script>
     <script src ="src/entry.js"  ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- loading html files with jquery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles/home.css">
 
     <title>-`♡´- Home</title>
@@ -15,9 +15,6 @@
 <body>
 <!--Navbar -->
 <div class="navbar">
-</div>
-<div class="logout">
-    <button id="logout-btn">Logout</button>
 </div>
 
 <div class="tags">
@@ -29,9 +26,6 @@
     </button>
     <button>
         <img id="monthly-tag" src="images/tag.png" alt="">
-    </button>
-    <button>
-        <img  id="yearly-tag" src="images/tag.png" alt="">
     </button>
     <button>
         <img  id="predicting-tag" src="images/tag.png" alt="">
@@ -64,14 +58,6 @@
             <script>
                 $(function(){
                     $("#monthly-notebook").load("Notebook_sites/monthly-site.html");
-                });
-            </script>
-        </div>
-
-        <div id="yearly-notebook">
-            <script>
-                $(function(){
-                    $("#yearly-notebook").load("Notebook_sites/yearly-site.html");
                 });
             </script>
         </div>

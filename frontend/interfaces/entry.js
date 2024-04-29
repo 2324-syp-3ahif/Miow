@@ -1,4 +1,7 @@
-export var BaseEntry = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BaseEntry = void 0;
+exports.BaseEntry = {
     fixed_blocks: {
         date: "",
         mood: 0,

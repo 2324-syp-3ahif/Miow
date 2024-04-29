@@ -13,7 +13,7 @@
   cursor: pointer;
 }
 .tags button {
-  margin: 34px 0 0 0;
+  margin: 54px 0 0 0;
   background-color: inherit;
   border: none;
   cursor: pointer;
@@ -28,14 +28,11 @@
 .tags #monthly-tag {
   filter: invert(87%) sepia(99%) saturate(3038%) hue-rotate(290deg) brightness(103%) contrast(105%);
 }
-.tags #yearly-tag {
+.tags #predicting-tag {
   filter: invert(88%) sepia(62%) saturate(914%) hue-rotate(290deg) brightness(106%) contrast(133%);
 }
-.tags #predicting-tag {
-  filter: invert(97%) sepia(85%) saturate(1151%) hue-rotate(290deg) brightness(121%) contrast(106%);
-}
 .tags #settings-tag {
-  filter: invert(96%) sepia(10%) saturate(884%) hue-rotate(296deg) brightness(101%) contrast(107%);
+  filter: invert(97%) sepia(85%) saturate(1151%) hue-rotate(290deg) brightness(121%) contrast(106%);
 }
 
 .note-book {
