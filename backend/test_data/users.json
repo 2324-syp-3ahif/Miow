@@ -984,17 +984,6 @@
       },
       {
         "fixed_blocks": {
-          "date": "2024-03-26",
-          "mood": 4,
-          "emotions": {},
-          "text": "me text",
-          "period": 2
-        },
-        "icon_blocks": [],
-        "number_blocks": []
-      },
-      {
-        "fixed_blocks": {
           "date": "2024-03-27",
           "mood": 4,
           "emotions": {},
@@ -1377,9 +1366,31 @@
         },
         "icon_blocks": [],
         "number_blocks": []
+      },
+      {
+        "fixed_blocks": {
+          "date": "2024-03-26",
+          "mood": 4,
+          "emotions": {
+            "happy": 0,
+            "sad": 1,
+            "grumpy": 1
+          },
+          "text": "Feeling good todaiy",
+          "period": 1
+        },
+        "icon_blocks": [],
+        "number_blocks": []
       }
     ],
-    "weeks": [],
+    "weeks": [
+      {
+        "year": 2024,
+        "startday": "03-25",
+        "endday": "03_30",
+        "text": "Sample weekly entry text"
+      }
+    ],
     "settings": {
       "aboutUs": "",
       "entrySettings": {

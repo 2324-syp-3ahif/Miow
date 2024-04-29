@@ -1,25 +1,17 @@
-### test in january john
-GET http://localhost:3000/api/evaluate/2024-01-01
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5NDU5NzQuNzEyLCJpYXQiOjE3MTI5NDIzNzR9.PZTqOEo-B9KwomNC3JQ0TdFdIVwn3dagq8fzyQO3uA4
+### test in john
+GET http://localhost:3000/evaluate
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTQzNzk5NjEuMTgxLCJpYXQiOjE3MTQzNzYzNjF9.JAnMKFLWUL4u6wBLXrkt-RsvRCo6vkpJ05h-D3Fwnq8
 
-### test for everything else john
-GET http://localhost:3000/api/evaluate/2024-04-15
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5NDU5NzQuNzEyLCJpYXQiOjE3MTI5NDIzNzR9.PZTqOEo-B9KwomNC3JQ0TdFdIVwn3dagq8fzyQO3uA4
-
+{
+  "date": "2024-03-25"
+}
 
 ### test for future john
-GET http://localhost:3000/api/evaluate/2024-05-01
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTM1NDY0MTkuNjc0LCJpYXQiOjE3MTM1NDI4MTl9.kXKWZK2B8iJtx04KQi-NIAd5MBlYkE76yknn8EUuQbo
+GET http://localhost:3000/evaluate
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTQzNzk5NjEuMTgxLCJpYXQiOjE3MTQzNzYzNjF9.JAnMKFLWUL4u6wBLXrkt-RsvRCo6vkpJ05h-D3Fwnq8
 
-### test for future but future like idk john
-GET http://localhost:3000/api/evaluate/2024-04-03
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5NDU5NzQuNzEyLCJpYXQiOjE3MTI5NDIzNzR9.PZTqOEo-B9KwomNC3JQ0TdFdIVwn3dagq8fzyQO3uA4
-
-### test for future more month john
-GET http://localhost:3000/api/evaluate/2024-05-09
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTI5NDU5NzQuNzEyLCJpYXQiOjE3MTI5NDIzNzR9.PZTqOEo-B9KwomNC3JQ0TdFdIVwn3dagq8fzyQO3uA4
-
-###test for elfride/jasmin
-GET http://localhost:3000/api/evaluate/2024-06-09
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiamFzbWluIn0sImV4cCI6MTcxMzU1MDYzMi45MTYsImlhdCI6MTcxMzU0NzAzMn0.LZvdvWkKmiO7jJOnv0nhxkTxtFAvlY_um7vWy1Fdc4k
-
+{
+  "date": "2024-05-01"
+}
