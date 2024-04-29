@@ -8,7 +8,7 @@ async function login(): Promise<void> {
         const password = passwordInput.value;
 
         try {
-            const response = await fetch('/api/auth/login', {
+            const response = await fetch('/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -26,6 +26,7 @@ async function login(): Promise<void> {
                     return;
                 }
                 throw new Error('Login failed');
+
             }else {
                 const data = await response.json();
                 console.log(data);
@@ -34,7 +35,7 @@ async function login(): Promise<void> {
                     const token = data.accessToken;
                     localStorage.setItem('token', token);
                     localStorage.setItem('username', username);
-                    window.location.href = '/api/auth/home';
+                    window.location.href = '/home.html';
 
                 } else {
                     console.error('Token not found in response');

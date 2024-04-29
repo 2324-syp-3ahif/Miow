@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
             });
         } else {
-            console.error('Logout button not found');
         }
     });
 
@@ -29,10 +28,9 @@ function getName() {
     const nameElement = document.getElementById('username');
     nameElement.textContent = username;
 }
-
-function getDate() {
+ function getDate() {
     try {
-        const dateElemt = document.getElementById("date");
+        const dateElemt = document.getElementById("date") as HTMLElement;
         const date = new Date();
         const day = date.getDate();
         const month = date.getMonth() + 1;
@@ -68,7 +66,7 @@ function showNotebook(id : string){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const notebooks = ["#daily-notebook", "#weekly-notebook", "#monthly-notebook", "#yearly-notebook", "#predicting-notebook", "#settings-notebook"];
+    const notebooks = ["#daily-notebook", "#weekly-notebook", "#monthly-notebook", "#predicting-notebook", "#settings-notebook"];
 
     const hideAllNotebooks = () => {
         notebooks.forEach(notebook => {
@@ -107,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-window.onload = function () {
-   getName();
-   getDate();
+window.onload = function() {
+    getName();
+    getDate();
 }

@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
     else {
-        console.error('Logout button not found');
     }
 });
 function getName() {
@@ -62,7 +61,7 @@ function showNotebook(id) {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    const notebooks = ["#daily-notebook", "#weekly-notebook", "#monthly-notebook", "#yearly-notebook", "#predicting-notebook", "#settings-notebook"];
+    const notebooks = ["#daily-notebook", "#weekly-notebook", "#monthly-notebook", "#predicting-notebook", "#settings-notebook"];
     const hideAllNotebooks = () => {
         notebooks.forEach(notebook => {
             const element = document.querySelector(notebook);
