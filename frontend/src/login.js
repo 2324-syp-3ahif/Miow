@@ -50,6 +50,6 @@ function passwordIsWrong(message) {
     errorElement.textContent = message;
 }
 window.onload = function () {
-    login();
+    login().then(r => console.log("logged in"));
 };
 //# sourceMappingURL=login.js.map

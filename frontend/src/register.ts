@@ -1,5 +1,5 @@
-async function login(): Promise<void> {
-    const form = document.getElementById('login-form') as HTMLFormElement;
+async function register():Promise<void>{
+    const form = document.getElementById('register-form') as HTMLFormElement;
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const usernameInput = document.getElementById('username') as HTMLInputElement;
@@ -8,7 +8,7 @@ async function login(): Promise<void> {
         const password = passwordInput.value;
 
         try {
-            const response = await fetch('/auth/login', {
+            const response = await fetch('/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -17,17 +17,12 @@ async function login(): Promise<void> {
             });
 
             if (!response.ok) {
-                if (response.status === 404) {
-                    passwordIsWrong("User does not exist")
+                if (response.status === 400) {
+                    passwordIsWrong("Username already exists")
                     return;
                 }
-                if (response.status === 401) {
-                    passwordIsWrong("Password is wrong")
-                    return;
-                }
-                throw new Error('Login failed');
-
-            }else {
+                throw new Error('Register failed');
+            } else {
                 const data = await response.json();
                 console.log(data);
 
@@ -43,16 +38,7 @@ async function login(): Promise<void> {
             }
 
         } catch (error) {
-            console.error('Login failed:', error);
+            console.error('Register failed:', error);
         }
     });
-}
-
-function passwordIsWrong(message : string): void {
-    const errorElement = document.getElementById('error');
-    errorElement.textContent = message;
-}
-
-window.onload = function() {
-    login().then(r => console.log("logged in"));
 }
