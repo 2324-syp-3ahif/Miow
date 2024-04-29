@@ -6,9 +6,9 @@ import {StatusCodes} from "http-status-codes";
 export const entryRouter = express.Router();
 
 //(yyyy-mm-dd) returns the entry from this day(so the user can edit it)
-entryRouter.get("/day/:date",isAuthenticated,(req, res) =>{
+entryRouter.get("/day",isAuthenticated,(req, res) =>{
     const currentUser = req.user.username;
-    const requestedDate = req.params.date;
+    const requestedDate = req.body.date;
     const entry = getEntryByUserAndDate(currentUser,requestedDate);
     if (entry) {
         return res.status(StatusCodes.OK).json(entry);
@@ -30,9 +30,9 @@ entryRouter.post("/day", isAuthenticated, (req, res) => {
 });
 
 // GET retrieve the users weekly entries
-entryRouter.get("/week/:date", isAuthenticated, (req, res) => {
+entryRouter.get("/week", isAuthenticated, (req, res) => {
     const currentUser = req.user.username;
-    const requestedDate = req.params.date;
+    const requestedDate = req.body.date;
     const weekEntries = getWeekEntries(currentUser, requestedDate);
     if (weekEntries) {
         return res.status(200).json(weekEntries);
@@ -42,9 +42,9 @@ entryRouter.get("/week/:date", isAuthenticated, (req, res) => {
 });
 
 // POST  add a weekly entry for a specific date
-entryRouter.post("/week/:date", isAuthenticated, (req,res) => {
-    const { date } = req.params;
-    const { entryData } = req.body;
+entryRouter.post("/week", isAuthenticated, (req,res) => {
+    const { date } = req.body.date;
+    const { entryData } = req.body.entryData;
     const currentUser = req.user.username;
     const addedEntry = addWeekEntry(currentUser, date, entryData);
     if (addedEntry) {
