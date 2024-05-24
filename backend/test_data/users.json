@@ -1577,5 +1577,224 @@
       "themeNR": 1,
       "trackPeriod": true
     }
+  },
+  {
+    "username": "jasmin",
+    "password": "$2b$08$p8jrUZOqmLpm5jKaIzbhuuYm9HEi/lx5L69yTGHnvSOUnCfFYFiF6",
+    "entries": [],
+    "weeks": [],
+    "settings": {
+      "entrySettings": {
+        "fixed_blocks": {
+          "date": "",
+          "mood": 0,
+          "emotions": {
+            "exited": false,
+            "relaxed": false,
+            "proud": false,
+            "hopefull": false,
+            "happy": false,
+            "pit_a_pet": false,
+            "hungry": false,
+            "gloomy": false,
+            "lonely": false,
+            "depressed": false,
+            "anxious": false,
+            "sad": false,
+            "angry": false,
+            "tired": false
+          },
+          "text": "",
+          "period": 2
+        },
+        "icon_blocks": [
+          {
+            "name": "Weather",
+            "icons": [
+              {
+                "name": "Sunny",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Cloudy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Rainy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Snowy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Windy",
+                "value": false,
+                "iconPicID": 0
+              }
+            ]
+          }
+        ],
+        "number_blocks": [
+          {
+            "name": "Water drunken:",
+            "unit": "Glasses",
+            "amount": 0
+          }
+        ]
+      },
+      "themeNR": 1,
+      "trackPeriod": true
+    }
+  },
+  {
+    "username": "ffff",
+    "password": "$2b$08$BxBBGJqtvtrmN2rXnhR/xO5FgL.jHx9FvjAMKI7/pEJtUZr3xwF..",
+    "entries": [],
+    "weeks": [],
+    "settings": {
+      "entrySettings": {
+        "fixed_blocks": {
+          "date": "",
+          "mood": 0,
+          "emotions": {
+            "exited": false,
+            "relaxed": false,
+            "proud": false,
+            "hopefull": false,
+            "happy": false,
+            "pit_a_pet": false,
+            "hungry": false,
+            "gloomy": false,
+            "lonely": false,
+            "depressed": false,
+            "anxious": false,
+            "sad": false,
+            "angry": false,
+            "tired": false
+          },
+          "text": "",
+          "period": 2
+        },
+        "icon_blocks": [
+          {
+            "name": "Weather",
+            "icons": [
+              {
+                "name": "Sunny",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Cloudy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Rainy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Snowy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Windy",
+                "value": false,
+                "iconPicID": 0
+              }
+            ]
+          }
+        ],
+        "number_blocks": [
+          {
+            "name": "Water drunken:",
+            "unit": "Glasses",
+            "amount": 0
+          }
+        ]
+      },
+      "themeNR": 1,
+      "trackPeriod": true
+    }
+  },
+  {
+    "username": "qqqq",
+    "password": "$2b$08$WwGUjPi6XkajLmJ4yWVv5eMXGZldHrV3wMhUN67DB6NRbRcm1oy3.",
+    "entries": [],
+    "weeks": [],
+    "settings": {
+      "entrySettings": {
+        "fixed_blocks": {
+          "date": "",
+          "mood": 0,
+          "emotions": {
+            "exited": false,
+            "relaxed": false,
+            "proud": false,
+            "hopefull": false,
+            "happy": false,
+            "pit_a_pet": false,
+            "hungry": false,
+            "gloomy": false,
+            "lonely": false,
+            "depressed": false,
+            "anxious": false,
+            "sad": false,
+            "angry": false,
+            "tired": false
+          },
+          "text": "",
+          "period": 2
+        },
+        "icon_blocks": [
+          {
+            "name": "Weather",
+            "icons": [
+              {
+                "name": "Sunny",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Cloudy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Rainy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Snowy",
+                "value": false,
+                "iconPicID": 0
+              },
+              {
+                "name": "Windy",
+                "value": false,
+                "iconPicID": 0
+              }
+            ]
+          }
+        ],
+        "number_blocks": [
+          {
+            "name": "Water drunken:",
+            "unit": "Glasses",
+            "amount": 0
+          }
+        ]
+      },
+      "themeNR": 1,
+      "trackPeriod": true
+    }
   }
 ]

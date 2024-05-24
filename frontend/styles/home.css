@@ -1,3 +1,12 @@
+button {
+  border: none;
+  background-color: inherit;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
 .tags {
   display: flex;
   justify-content: space-around;

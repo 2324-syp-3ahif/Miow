@@ -4,8 +4,15 @@ async function register():Promise<void>{
         e.preventDefault();
         const usernameInput = document.getElementById('username') as HTMLInputElement;
         const passwordInput = document.getElementById('password') as HTMLInputElement;
+        const confirmPasswordInput = document.getElementById('confirm-password') as HTMLInputElement;
         const username = usernameInput.value;
         const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (password !== confirmPassword) {
+            console.error('Passwords do not match');
+            return;
+        }
 
         try {
             const response = await fetch('/auth/register', {
@@ -16,6 +23,7 @@ async function register():Promise<void>{
                 body: JSON.stringify({ username, password })
             });
 
+            console.log({ username, password });
             if (!response.ok) {
                 if (response.status === 400) {
                     passwordIsWrong("Username already exists")
@@ -41,4 +49,7 @@ async function register():Promise<void>{
             console.error('Register failed:', error);
         }
     });
+}
+window.onload = function() {
+    register().then(r => console.log("registered"));
 }
