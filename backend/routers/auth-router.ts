@@ -58,7 +58,7 @@ authRouter.delete("/delete", isAuthenticated, (req, res) => {
 authRouter.post("/register", (req : express.Request<{}, {}, UserCredentials>  , res) => {
     const newUser: UserCredentials = req.body;
     if (doesUserExist(newUser.username)) {
-        return res.status(StatusCodes.BAD_REQUEST).json({ error: "Username already exists" });
+        return res.status(StatusCodes.CONFLICT).json({ error: "Username already exists" });
     }
     bcrypt.hash(newUser.password, saltRounds, (err, hash) => {
         if (err) {

@@ -25,8 +25,8 @@ async function register():Promise<void>{
 
             console.log({ username, password });
             if (!response.ok) {
-                if (response.status === 400) {
-                    passwordIsWrong("Username already exists")
+                if (response.status === 409){
+                    message("Username already exists")
                     return;
                 }
                 throw new Error('Register failed');

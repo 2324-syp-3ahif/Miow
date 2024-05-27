@@ -1,5 +1,5 @@
 "use strict";
-document.addEventListener('DOMContentLoaded', (event) => {
+function logout() {
     const logoutButton = document.getElementById('logout-btn');
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     else {
     }
-});
+}
 function getName() {
     const username = localStorage.getItem('username');
     if (username === null) {

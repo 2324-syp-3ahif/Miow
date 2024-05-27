@@ -1,21 +1,20 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-        const logoutButton = document.getElementById('logout-btn');
-        if (logoutButton) {
-            logoutButton.addEventListener('click', () => {
-                console.log('Logout button clicked');
-                try {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('username');
-                    window.location.href = '/';
-                } catch (error) {
-                    console.error('An error occurred during logout:', error);
-                    alert('An error occurred during logout. Please try again.');
-                }
-            });
-        } else {
-        }
-    });
-
+function logout(){
+    const logoutButton = document.getElementById('logout-btn');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            console.log('Logout button clicked');
+            try {
+                localStorage.removeItem('token');
+                localStorage.removeItem('username');
+                window.location.href = '/';
+            } catch (error) {
+                console.error('An error occurred during logout:', error);
+                alert('An error occurred during logout. Please try again.');
+            }
+        });
+    } else {
+    }
+}
 
 function getName() {
     const username = localStorage.getItem('username');

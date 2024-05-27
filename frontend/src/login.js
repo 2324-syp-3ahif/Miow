@@ -17,11 +17,11 @@ async function login() {
             });
             if (!response.ok) {
                 if (response.status === 404) {
-                    passwordIsWrong("User does not exist");
+                    message("User does not exist");
                     return;
                 }
                 if (response.status === 401) {
-                    passwordIsWrong("Password is wrong");
+                    message("Password is wrong");
                     return;
                 }
                 throw new Error('Login failed');
@@ -45,7 +45,7 @@ async function login() {
         }
     });
 }
-function passwordIsWrong(message) {
+function message(message) {
     const errorElement = document.getElementById('error');
     errorElement.textContent = message;
 }
