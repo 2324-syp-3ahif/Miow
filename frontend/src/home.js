@@ -94,6 +94,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+$(document).ready(function () {
+    const contents = document.querySelectorAll('.content div');
+    contents.forEach(content => {
+        content.style.display = 'none';
+    });
+    const accountSettingsContent = document.getElementById('account-settings-content');
+    if (accountSettingsContent) {
+        accountSettingsContent.style.display = 'block';
+    }
+    $('.opt-button').click(function () {
+        contents.forEach(content => {
+            content.style.display = 'none';
+        });
+        var buttonId = $(this).attr('id');
+        const content = document.getElementById(buttonId + '-content');
+        if (content) {
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            }
+            else {
+                content.style.display = 'block';
+            }
+        }
+    });
+});
 window.onload = function () {
     getName();
     getDate();

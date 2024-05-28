@@ -230,6 +230,25 @@ button:hover {
   color: #603636;
   border-radius: 5px;
 }
+.note-book #settings-notebook .options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  float: left;
+}
+.note-book #settings-notebook .options button {
+  padding: 35px;
+  font-size: 20px;
+  color: #603636;
+}
+.note-book #settings-notebook #content {
+  float: right;
+  margin: 30px;
+}
+.note-book #settings-notebook .opt-button:hover {
+  background-color: #ffd6d6;
+  color: #603636;
+}
 .note-book .vl {
   border-left: 2px solid rgba(211, 169, 139, 0.38);
   height: 100%;

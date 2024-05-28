@@ -104,6 +104,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+$(document).ready(function() {
+    const contents = document.querySelectorAll('.content div');
+      contents.forEach(content => {
+        (content as HTMLElement).style.display = 'none';
+    });
+
+    const accountSettingsContent = document.getElementById('account-settings-content');
+    if (accountSettingsContent) {
+        (accountSettingsContent as HTMLElement).style.display = 'block';
+    }
+
+    $('.opt-button').click(function() {
+
+        contents.forEach(content => {
+            (content as HTMLElement).style.display = 'none';
+        });
+
+        var buttonId = $(this).attr('id');
+        const content = document.getElementById(buttonId + '-content');
+        if (content) {
+            if ((content as HTMLElement).style.display === 'block') {
+                (content as HTMLElement).style.display = 'none';
+            } else {
+                (content as HTMLElement).style.display = 'block';
+
+            }
+        }
+    });
+});
+
+
 window.onload = function() {
     getName();
     getDate();
