@@ -1,3 +1,7 @@
+body {
+  background-color: #CDFCFF;
+}
+
 button {
   border: none;
   background-color: inherit;
@@ -241,9 +245,9 @@ button:hover {
   font-size: 20px;
   color: #603636;
 }
-.note-book #settings-notebook #content {
-  float: right;
-  margin: 30px;
+.note-book #settings-notebook .content {
+  padding: 20px;
+  margin-left: 250px;
 }
 .note-book #settings-notebook .opt-button:hover {
   background-color: #ffd6d6;

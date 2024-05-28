@@ -10,71 +10,76 @@
 <body>
 <h1>Settings</h1>
 
-<div class="options">
-    <button class="opt-button" id="account-settings">Account Settings</button>
-    <button class="opt-button" id="appearance">Appearance</button>
-    <button class="opt-button" id="daily-log">Daily Log Settings</button>
-    <button class="opt-button" id="privacy-and-safety">Privacy and Safety</button>
-    <button class="opt-button" id="notification">Notification</button>
-    <button class="opt-button" id="language">Language</button>
-    <button class="opt-button" id="about-us">About us</button>
+<div class="page">
+    <div id="settings-notebook">
+        <div class="options">
+            <button class="opt-button" id="account-settings">Account Settings</button>
+            <button class="opt-button" id="appearance">Appearance</button>
+            <button class="opt-button" id="daily-log">Daily Log Settings</button>
+            <button class="opt-button" id="privacy-and-safety">Privacy and Safety</button>
+            <button class="opt-button" id="notification">Notification</button>
+            <button class="opt-button" id="language">Language</button>
+            <button class="opt-button" id="about-us">About us</button>
+        </div>
+
+        <div class="content">
+            <div id="account-settings-content">
+                <form id="account-settings-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required><br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br><br>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+            <div id="appearance-content">
+                <p>themes:</p>
+            </div>
+            <div id="daily-log-content">
+                <form id="daily-log-form">
+                    <label for="daily-log-time">Daily Log Time:</label>
+                    <input type="time" id="daily-log-time" name="daily-log-time" required><br><br>
+                    <label for="daily-log-reminder">Daily Log Reminder:</label>
+                    <input type="checkbox" id="daily-log-reminder" name="daily-log-reminder"><br><br>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+            <div id="privacy-and-safety-content">
+                <p>wowie</p>
+            </div>
+            <div id="notification-content">
+                <form id="notification-form">
+                    <label for="notification-time">Notification Time:</label>
+                    <input type="time" id="notification-time" name="notification-time" required><br><br>
+                    <label for="notification-reminder">Notification Reminder:</label>
+                    <input type="checkbox" id="notification-reminder" name="notification-reminder"><br><br>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+            <div id="language-content">
+                <form id="language-form">
+                    <label for="language">Language:</label>
+                    <select id="language-select" name="language" required>
+                        <option value="english">English</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                        <option value="german">German</option>
+                        <option value="japanese">Japanese</option>
+                    </select><br><br>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+            <div id="about-us-content">
+                <p>about us</p>
+
+            </div>
+        </div>
+
+    </div>
+
 </div>
-
-<div class="content">
-    <div id="account-settings-content">
-        <form id="account-settings-form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <button type="submit">Save</button>
-        </form>
-    </div>
-    <div id="appearance-content">
-        <p>themes:</p>
-    </div>
-    <div id="daily-log-content">
-        <form id="daily-log-form">
-            <label for="daily-log-time">Daily Log Time:</label>
-            <input type="time" id="daily-log-time" name="daily-log-time" required><br><br>
-            <label for="daily-log-reminder">Daily Log Reminder:</label>
-            <input type="checkbox" id="daily-log-reminder" name="daily-log-reminder"><br><br>
-            <button type="submit">Save</button>
-        </form>
-    </div>
-    <div id="privacy-and-safety-content">
-      <p>wowie</p>
-    </div>
-    <div id="notification-content">
-        <form id="notification-form">
-            <label for="notification-time">Notification Time:</label>
-            <input type="time" id="notification-time" name="notification-time" required><br><br>
-            <label for="notification-reminder">Notification Reminder:</label>
-            <input type="checkbox" id="notification-reminder" name="notification-reminder"><br><br>
-            <button type="submit">Save</button>
-        </form>
-    </div>
-    <div id="language-content">
-        <form id="language-form">
-            <label for="language">Language:</label>
-            <select id="language-select" name="language" required>
-                <option value="english">English</option>
-                <option value="spanish">Spanish</option>
-                <option value="french">French</option>
-                <option value="german">German</option>
-                <option value="japanese">Japanese</option>
-            </select><br><br>
-            <button type="submit">Save</button>
-        </form>
-    </div>
-    <div id="about-us-content">
-        <p>about us</p>
-
-    </div>
-</div>
-
 
 
 <div class="logout">

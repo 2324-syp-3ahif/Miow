@@ -13,7 +13,9 @@ $yearly_tag: #FFCBCB;
 $predicting_tag: #FFE4E4;
 $settings_tag: #FFF1F1;
 
-
+body{
+    background-color: #CDFCFF;
+}
 button{
     border: none;
     background-color: inherit;
@@ -305,9 +307,9 @@ button:hover{
             color: #603636;
         }
 
-        #content{
-            float: right;
-            margin: 30px;
+        .content{
+            padding: 20px;
+            margin-left: 250px;
         }
 
         .opt-button:hover{
