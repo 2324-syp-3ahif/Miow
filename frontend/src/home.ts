@@ -27,20 +27,31 @@ function getName() {
     const nameElement = document.getElementById('username');
     nameElement.textContent = username;
 }
- function getDate() {
-    try {
-        const dateElemt = document.getElementById("date") as HTMLElement;
-        const date = new Date();
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        dateElemt.textContent = `${day}/${month}/${year}`;
-        localStorage.setItem('date', `${day}/${month}/${year}`);
-    }
-    catch (e) {
-        console.log("error setting date", e);
+
+
+function getDate() {
+    const token = localStorage.getItem('token');
+    if (token === null) {
+        window.location.href = '/';
+        return;
     }
 
+    const today = new Date();
+    const dateString = today.toISOString().split('T')[0];
+
+    fetch('http://localhost:3000/entry/day', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ date: dateString })
+    })
+        .then(response => response.json())
+        .then(data => {
+            const dateElement = document.getElementById('date');
+            dateElement.textContent = data.date;
+        })
 }
 
 function showNotebook(id : string){
@@ -134,8 +145,6 @@ $(document).ready(function() {
     });
 });
 
-
-window.onload = function() {
-    getName();
+window.onclick = function(event) {
     getDate();
 }
