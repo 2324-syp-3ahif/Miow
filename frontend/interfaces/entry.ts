@@ -1,105 +1,56 @@
 export var BaseEntry:Entry= {
-    fixed_blocks: {
-        date: "",
-        mood: 0,
-        emotions: {
-            exited: 0,
-            relaxed: 0,
-            proud: 0,
-            hopefull: 0,
-            happy: 0,
-            pit_a_pet: 0,
-            hungry: 0,
-            gloomy: 0,
-            lonely: 0,
-            depressed: 0,
-            anxious: 0,
-            sad: 0,
-            angry: 0,
-            tired: 0
-        },
-        text: "",
-        period: 2
+    date: "",
+    mood: 3,
+    period: 2,
+    emotions: {
+        exited: false,
+        relaxed: false,
+        proud: false,
+        hopefull: false,
+        happy: false,
+        lonely: false,
+        emo: false,
+        anxious: false,
+        sad: false,
+        angry: false,
+        tired: false
     },
-    icon_blocks: [
-        {
-            name: "Weather",
-            icons: [
-                {
-                    name:"Sunny",
-                    value:false,
-                    iconPicID:0
-                },
-                {
-                    name:"Cloudy",
-                    value:false,
-                    iconPicID:0
-                },
-                {
-                    name:"Rainy",
-                    value:false,
-                    iconPicID:0
-                },
-                {
-                    name:"Snowy",
-                    value:false,
-                    iconPicID:0
-                },
-                {
-                    name:"Windy",
-                    value:false,
-                    iconPicID:0
-                },
-            ]
-        }
-    ],
-    number_blocks: [
-        {
-            name:"Water drunken:",
-            unit:"Glasses",
-            amount:0
-        }
-    ]
+    weather:{
+        sunny:false,
+        windy:false,
+        rainy:false,
+        snowy:false,
+        cloudy:false
+    },
+    sleep:0,
+    water:2,
+    text: ""
 }
 export interface Entry {
-    fixed_blocks: FixedBlocks;
-    icon_blocks:IconBlock[];
-    number_blocks: NumberBlock[];
-}
-interface FixedBlocks {
-    date: string;//yyyy-mm-dd
-    mood: number;//1-5, 1 is best, 0 is not choosen jet
-    emotions: Emotions;
-    text: string;
-    period: number;//0.. not tracking period, 1.. period, 2.. no period, 3.. predicted period
-}
-interface IconBlock{
-    name:string;
-    icons:Icon[];
-}
-interface Icon{
-    name: string;
-    value: boolean;
-    iconPicID:number;
-}
-interface NumberBlock {
-    name:string;
-    unit: string;
-    amount: number;
-}
-interface Emotions {//0.. no, 1.. yes
-    exited: number;
-    relaxed: number;
-    proud: number;
-    hopefull: number;
-    happy: number;
-    pit_a_pet: number;
-    hungry: number;
-    gloomy: number;
-    lonely: number;
-    depressed: number;
-    anxious: number;
-    sad: number;
-    angry: number;
-    tired: number;
+    date:string,
+    mood: number,
+    period: number,
+    emotions: {
+        exited: boolean,
+        relaxed: boolean,
+        proud: boolean,
+        hopefull: boolean,
+        happy: boolean,
+        lonely: boolean,
+        emo: boolean,
+        anxious: boolean,
+        sad: boolean,
+        angry: boolean,
+        tired: boolean
+    },
+    weather:{
+        sunny:boolean,
+        windy:boolean,
+        rainy:boolean,
+        snowy:boolean,
+        cloudy:boolean
+    },
+    sleep:number,
+    water:number,
+    text: string
 }

@@ -1,0 +1,104 @@
+[
+  {
+    "username": "john",
+    "password": "$2b$08$ua5QC.Q8beBQCy5N/JNNW.mgrSUOwjuml7k0G.V7LH25.ObBTcIsK",
+    "entries": [
+      {
+        "date": "2020-03-25",
+        "mood": 3,
+        "period": 2,
+        "emotions": {
+          "exited": false,
+          "relaxed": true,
+          "proud": false,
+          "hopefull": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": true,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "rainy": true,
+          "snowy": false,
+          "cloudy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": "test"
+      },
+      {
+        "date": "2024-03-25",
+        "mood": 3,
+        "period": 2,
+        "emotions": {
+          "exited": false,
+          "relaxed": true,
+          "proud": false,
+          "hopefull": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": true,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "rainy": true,
+          "snowy": false,
+          "cloudy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": "test"
+      },
+      {
+        "date": "",
+        "mood": 3,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": true,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": true,
+          "angry": false,
+          "tired": true
+        },
+        "weather": {
+          "sunny": false,
+          "windy": true,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": true
+        },
+        "sleep": 6,
+        "water": 4,
+        "text": "test"
+      }
+    ],
+    "weeks": [
+      {
+        "year": 2024,
+        "startday": "03-25",
+        "endday": "03_30",
+        "text": "Sample weekly entry text"
+      }
+    ],
+    "settings": {
+      "themeNR": 1,
+      "trackPeriod": true
+    }
+  }
+]

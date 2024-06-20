@@ -66,6 +66,10 @@ button:hover {
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+.note-book #daily-notebook {
+  /* Helligkeit verringern, wenn nicht ausgewählt */
+  /* Kein Helligkeitseffekt, wenn ausgewählt */
+}
 .note-book #daily-notebook .left-site {
   width: 50%;
   height: 100%;
@@ -253,6 +257,12 @@ button:hover {
   background-color: #ffb6b6;
   font-size: 20px;
   font-color: #603636;
+}
+.note-book #daily-notebook .emotion_button:not(.selected), .note-book #daily-notebook .weather_button:not(.selected) {
+  filter: brightness(70%);
+}
+.note-book #daily-notebook .emotion_button.selected, .note-book #daily-notebook .weather_button.selected {
+  filter: brightness(100%);
 }
 .note-book #daily-notebook .daily_number_input {
   width: 60px;

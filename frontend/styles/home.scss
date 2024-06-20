@@ -92,6 +92,10 @@ button:hover{
     }
 
     #daily-notebook{
+
+
+
+
         .left-site
         {
             width: 50%;
@@ -120,7 +124,7 @@ button:hover{
 
                 }
 
-                .mood-circle{
+                .mood_button{
                     width: $circle-size;
                     height: $circle-size;
                     border-radius: 50%;
@@ -314,15 +318,21 @@ button:hover{
         }
 
 
-        .daily_number_input{
-            width: 60px;
-            height: 30px;
-            font-size: 20px;
-            justify-content: center;
-            margin-left: 10px;
-            border-color: rgba(204, 204, 204, 0);
-            background-color: $input_color_two;
-            border-radius: 10px;
+
+        /* Helligkeit verringern, wenn nicht ausgewählt */
+        .emotion_button:not(.selected),
+        .weather_button:not(.selected),
+        .mood_button:not(.selected),
+        .period-button:not(.selected) {
+            filter: brightness(70%);
+        }
+
+        /* Kein Helligkeitseffekt, wenn ausgewählt */
+        .emotion_button.selected,
+        .weather_button.selected,
+        .mood_button.selected,
+        .period-button.selected {
+            filter: brightness(100%);
         }
 
     }
