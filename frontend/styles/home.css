@@ -70,7 +70,7 @@ button:hover {
   position: relative;
   background-color: #FFF6F6;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 .note-book #daily-notebook .left-site {

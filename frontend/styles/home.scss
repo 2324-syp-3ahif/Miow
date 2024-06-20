@@ -56,9 +56,6 @@ button:hover{
     #monthly-tag {
         filter: invert(87%) sepia(99%) saturate(3038%) hue-rotate(290deg) brightness(103%) contrast(105%);
     }
-    #predicting-tag {
-        filter: invert(88%) sepia(62%) saturate(914%) hue-rotate(290deg) brightness(106%) contrast(133%);
-    }
     #settings-tag {
         filter: invert(97%) sepia(85%) saturate(1151%) hue-rotate(290deg) brightness(121%) contrast(106%);
     }
@@ -89,7 +86,7 @@ button:hover{
         position: relative;
         background-color: $inner_color;
         padding: 10px;
-        border-radius: 5px;
+        border-radius: 20px;
         box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
 

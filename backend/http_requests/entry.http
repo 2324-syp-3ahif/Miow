@@ -11,7 +11,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 ### POST add day entry
 POST http://localhost:3000/entry/day HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTQzNzk5NjEuMTgxLCJpYXQiOjE3MTQzNzYzNjF9.JAnMKFLWUL4u6wBLXrkt-RsvRCo6vkpJ05h-D3Fwnq8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTgzMTEwMTkuMzAyLCJpYXQiOjE3MTgzMDc0MTl9.Csc0UyWPOVEgS_jxPmQ8vKCgqG-3pkXZymGjp8xXc78
 
 {
  "fixed_blocks": {

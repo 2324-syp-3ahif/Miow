@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import {entryRouter} from "../routers/entry-router";
 import {evaluateRouter} from "../routers/evaluate-router";
 import {settingsRouter} from "../routers/setting-router";
+import {keineahnung} from "./dbrepo";
+import cors from "cors";
 
 dotenv.config();
 require('dotenv').config();
@@ -15,6 +17,8 @@ app.use("/auth",authRouter);
 app.use("/entry",entryRouter);
 app.use("/evaluate",evaluateRouter);
 app.use("/settings",settingsRouter);
-app.listen(3000, () => {
+app.use(cors());
+app.listen(3000, async () => {
     console.log("Server is listening at http://localhost:3000");
+    await keineahnung();
 });
