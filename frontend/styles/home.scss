@@ -172,6 +172,7 @@ button:hover{
 
                 #predicting{
                     color: #ffacac;
+                    font-size: 0.8em;
                 }
                 p{
                     margin: 10px 0;
@@ -195,24 +196,13 @@ button:hover{
 
             .emotions{
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
+                flex-wrap: wrap;
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 10px;
+                border-radius: 20px;
                 margin: 30px 0;
-            }
-
-            .weather{
-                display: flex;
-                justify-content: space-between;
                 align-items: center;
-                padding: 20px;
-                font-size: $font_size;
-                background-color: $input_color;
-                border-radius: 10px;
-                margin: 30px 0;
             }
 
         }
@@ -225,26 +215,37 @@ button:hover{
             padding: 10px;
             box-sizing: border-box;
 
+            .weather{
+                display: flex;
+                flex-wrap: wrap;
+                padding: 20px;
+                font-size: $font_size;
+                background-color: $input_color;
+                border-radius: 20px;
+                margin: 30px 0;
+                align-items: center;
+            }
+
             .sleep{
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
+                flex-wrap: wrap;
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
                 border-radius: 10px;
                 margin: 30px 0;
+                align-items: center;
             }
 
             .water{
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
+                flex-wrap: wrap;
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
                 border-radius: 10px;
                 margin: 30px 0;
+                align-items: center;
             }
 
             .selfcare{
@@ -285,6 +286,43 @@ button:hover{
         }
 
     }
+
+    .emotion_button {
+        width: 80px;
+        height: 80px;
+        border-radius: 50px;
+        border: none;
+        margin: 5px;
+        display: inline-block;
+        text-align: center;
+        line-height: 50px;
+        background-color: $monthly_tag ;
+        font-size: 20px;
+        font-color: $font_color;
+    }
+
+    .weather_button {
+        width: 80px;
+        height: 80px;
+        border-radius: 50px;
+        border: none;
+        margin: 5px;
+        display: inline-block;
+        text-align: center;
+        line-height: 50px;
+        background-color: $monthly_tag ;
+        font-size: 20px;
+        font-color: $font_color;
+    }
+
+
+    .daily_number_input{
+            width: 60px;
+            height: 30px;
+            font-size: 16px;
+            margin-left: 10px;
+    }
+
 
     #weekly-notebook{
 

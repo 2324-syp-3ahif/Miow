@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 function logout() {
     const logoutButton = document.getElementById('logout-btn');
     if (logoutButton) {
@@ -70,6 +79,7 @@ function showNotebook(id) {
 }
 document.addEventListener('DOMContentLoaded', () => {
     const notebooks = ["#daily-notebook", "#weekly-notebook", "#monthly-notebook", "#predicting-notebook", "#settings-notebook"];
+    const day = getDate();
     const hideAllNotebooks = () => {
         notebooks.forEach(notebook => {
             const element = document.querySelector(notebook);
@@ -127,7 +137,21 @@ $(document).ready(function () {
         }
     });
 });
-window.onclick = function (event) {
-    getDate();
-};
+function fetchRestEndpoint(route, method, data) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const options = { method };
+        if (data) {
+            options.headers = { "Content-Type": "application/json" };
+            options.body = JSON.stringify(data);
+        }
+        const res = yield fetch(route, options);
+        if (!res.ok) {
+            const error = new Error(`${method} ${res.url} ${res.status} (${res.statusText})`);
+            throw error;
+        }
+        if (res.status !== 204) {
+            return yield res.json();
+        }
+    });
+}
 //# sourceMappingURL=home.js.map

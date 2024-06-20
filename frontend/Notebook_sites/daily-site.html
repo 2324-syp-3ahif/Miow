@@ -33,53 +33,67 @@
                 </span>
                 <button><img src="images/grey_drop.png" alt="grey drop"></button>
                 <button><img src="images/light_red_drop.png" alt="light red drop"></button>
-                <button>  <img src="images/red_drop.png" alt="dark red drop"></button>
-
+                <button><img src="images/red_drop.png" alt="dark red drop"></button>
             </div>
 
             <div class="emotions">
                 <span>Emotions:</span>
+                <button class="emotion_button" id="excited">Excited</button>
+                <button class="emotion_button" id="relaxed">Relaxed</button>
+                <button class="emotion_button" id="proud">Proud</button>
+                <button class="emotion_button" id="hopeful">Hopeful</button>
+                <button class="emotion_button" id="happy">Happy</button>
+                <button class="emotion_button" id="lonely">Lonely</button>
+                <button class="emotion_button" id="depressed">Emo</button>
+                <button class="emotion_button" id="anxious">Anxious</button>
+                <button class="emotion_button" id="sad">Sad</button>
+                <button class="emotion_button" id="angry">Angry</button>
+                <button class="emotion_button" id="tired">Tired</button>
             </div>
-
-            <div class="weather">
-                <span>Weather:</span>
-            </div>
-
-            <p>Logged in as <span id="username"></span> :3</p>
+            <br>
+            <button id="prev">Previous Day</button>
+            <button id="next">Next Day</button>
+            <button id="submitbtn">Submit Note</button>
         </div>
 
         <div class="vl">
             <!-- Vertical line -->
         </div>
         <div class="right-side">
+            <div class="weather">
+                <span>Weather:</span>
+                <button class="weather_button" id="sunny">Sunny</button>
+                <button class="weather_button" id="windy">Windy</button>
+                <button class="weather_button" id="cloudy">Cloudy</button>
+                <button class="weather_button" id="snowy">Snowy</button>
+                <button class="weather_button" id="rainy">Rainy</button>
+            </div>
+
+
             <div class="sleep">
-                <span>Sleep:</span>
+                <label for="sleep-input">Sleep:</label>
+                <input class="daily_number_input" type="number" id="sleep-input" name="sleep-input" value="8" min="0" max="24"> Hours of Sleep
             </div>
 
             <div class="water">
-                <span>Water:</span>
+                <label for="water-input">Water:</label>
+                <input class="daily_number_input" type="number" id="water-input" name="water-input" value="2" min="0"> Glasses
             </div>
 
-            <div class="selfcare">
-                <span>Selfcare:</span>
-            </div>
+
 
             <div class="daily-entry">
-
                 <label for="note-content"></label>
                 <textarea id="note-content" cols="30" rows="10" placeholder="Daily Entry:" required></textarea>
-                <button id="submitbtn">Submit Note</button>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
 
-<button id="prev">Previous Day</button>
-<button id="next">Next Day</button>
+
 <div id="date-test"></div>
 <div id="entry"></div>
-
 
 </body>
 </html>
