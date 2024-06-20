@@ -1,5 +1,17 @@
 [
   {
+    "username": "lela",
+    "password": "$2b$08$PhimQtSK8r9qlPVAcj2FEukec0lQBZiKP50jFhZZ3wiVsSYN2VRaS",
+    "entries": [],
+    "weeks": [],
+    "settings": {
+      "themeNR": 1,
+      "trackPeriod": true
+    }
+  }
+]
+[
+  {
     "username": "john",
     "password": "$2b$08$ua5QC.Q8beBQCy5N/JNNW.mgrSUOwjuml7k0G.V7LH25.ObBTcIsK",
     "entries": [
