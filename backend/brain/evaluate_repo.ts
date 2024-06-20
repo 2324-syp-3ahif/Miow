@@ -19,12 +19,12 @@ export function getMonthData(username: string, date: string) {
             }))
     };
     for (const entry of userData!.entries) {
-        const entryDate = entry.fixed_blocks.date;
+        const entryDate = entry.date;
         const [entryYear, entryMonth] = entryDate.split('-');
         if (entryYear === year && entryMonth === month) {
             const entryDay = parseInt(entryDate.split('-')[2]);
-            monthData.values[entryDay-1].mood=entry.fixed_blocks.mood;
-            monthData.values[entryDay-1].period=entry.fixed_blocks.period
+            monthData.values[entryDay-1].mood=entry.mood;
+            monthData.values[entryDay-1].period=entry.period
         }
     }
     return userData.settings.trackPeriod && new Date(Date.now()) < new Date(date) ? calculatePeriodsForThisMonth(monthData, username, year, month, day): monthData;
@@ -66,10 +66,10 @@ function getLastFiveMonthsData(username: string, year: string, month: string, da
         let helpday = currentDay.toString().length !== 1 ? currentDay.toString() : 0 + currentDay.toString();
         let helpmonth = currentMonth.toString().length !== 1 ? currentMonth.toString():'0'+currentMonth;
         const targetDate = `${currentYear}-${helpmonth}-${helpday}`;
-        let thisday = user_entries.find(u => u.fixed_blocks.date === targetDate);
+        let thisday = user_entries.find(u => u.date === targetDate);
         if (thisday) {
             cyclelength++;
-            if (thisday?.fixed_blocks.period == 1) {//gerade tag ist periode
+            if (thisday?.period == 1) {//gerade tag ist periode
                 lastperioddaybehandelt = targetDate;
             } else {//gerade tag ist nicht periode
                 if (tomorrow != "" && lastperioddaybehandelt != "" && tomorrow == lastperioddaybehandelt) {

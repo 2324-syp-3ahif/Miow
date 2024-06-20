@@ -1,6 +1,7 @@
 $primary_color: #ffb9c2;
 $inner_color: #FFF6F6;
-$input_color: #ffffff;
+$input_color: rgb(255, 255, 255);
+$input_color_two: rgba(255, 185, 185, 0.27);
 $font_color: #603636;
 $main_font: 'Roboto', sans-serif;
 $circle-size: 80px;
@@ -271,7 +272,7 @@ button:hover{
 
                 textarea{
                     width: 100%;
-                    height: 300px;
+                    height: 250px;
                     border: none;
                     background-color: $input_color;
                     font-size: 1em;
@@ -284,44 +285,49 @@ button:hover{
                 }
             }
         }
+        .emotion_button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50px;
+            border: none;
+            margin: 5px;
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+            background-color: $monthly_tag ;
+            font-size: 20px;
+            font-color: $font_color;
+        }
 
-    }
-
-    .emotion_button {
-        width: 80px;
-        height: 80px;
-        border-radius: 50px;
-        border: none;
-        margin: 5px;
-        display: inline-block;
-        text-align: center;
-        line-height: 50px;
-        background-color: $monthly_tag ;
-        font-size: 20px;
-        font-color: $font_color;
-    }
-
-    .weather_button {
-        width: 80px;
-        height: 80px;
-        border-radius: 50px;
-        border: none;
-        margin: 5px;
-        display: inline-block;
-        text-align: center;
-        line-height: 50px;
-        background-color: $monthly_tag ;
-        font-size: 20px;
-        font-color: $font_color;
-    }
+        .weather_button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50px;
+            border: none;
+            margin: 5px;
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+            background-color: $monthly_tag ;
+            font-size: 20px;
+            font-color: $font_color;
+        }
 
 
-    .daily_number_input{
+        .daily_number_input{
             width: 60px;
             height: 30px;
-            font-size: 16px;
+            font-size: 20px;
+            justify-content: center;
             margin-left: 10px;
+            border-color: rgba(204, 204, 204, 0);
+            background-color: $input_color_two;
+            border-radius: 10px;
+        }
+
     }
+
+
 
 
     #weekly-notebook{

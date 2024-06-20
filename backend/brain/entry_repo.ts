@@ -1,4 +1,4 @@
-import {Entry, IconBlock, NumberBlock} from "../interfaces/entry";
+import {BaseEntry, Entry} from "../interfaces/entry";
 import {User} from "../interfaces/user";
 import {getUser, updateUser} from "./user_repo";
 import {Week} from "../interfaces/week";
@@ -11,11 +11,9 @@ export function getEntryByUserAndDate(username: string, date: string): Entry | n
     if (!user) {
         return null;
     }
-    var entry: Entry | undefined = user.entries.find((entry) => entry.fixed_blocks.date === date);
+    var entry: Entry | undefined = user.entries.find((entry) => entry.date === date);
     if(entry==undefined){
-        entry = getUser(username)?.settings.entrySettings;
-        // @ts-ignore
-        entry?.fixed_blocks.date= Date.now();
+        entry= BaseEntry;
     }
     return entry ? entry : null;
 }
@@ -30,7 +28,7 @@ export function addEntry(username: string, entryData: Entry) {
     if (!user) {
         return null;
     }
-    const existingEntryIndex = user.entries.findIndex(entry => entry.fixed_blocks.date === entryData.fixed_blocks.date);
+    const existingEntryIndex = user.entries.findIndex(entry => entry.date === entryData.date);
     if (existingEntryIndex != -1) {
         user.entries.splice(existingEntryIndex, 1);
     }
@@ -44,55 +42,25 @@ function isValidEntry(entryData: Entry): ReturnHelper {
     if(!entryData){
         return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Entrydata missing"}
     }
-    else if(!entryData.fixed_blocks){
-        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Fixedblockdata missing"}
-    }
-    else if(!entryData.icon_blocks){
-        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: iconblocks missing"}
-    }
-    else if(!entryData.number_blocks){
-        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: numberblocks missing"}
-    }
-    else if(entryData.fixed_blocks.text.length>250){
+    else if(entryData.text.length>250){
         return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Daily Text is too long(max 250)"}
     }
-    else if(!entryData.fixed_blocks.date){
+    else if(!entryData.date){
         return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: date is missing"}
     }
-    else if(!isValidDateFormat(entryData.fixed_blocks.date)){
+    else if(!isValidDateFormat(entryData.date)){
         return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: date is wrongly formattet"}
     }
-    else if(entryData.fixed_blocks.mood<0||entryData.fixed_blocks.mood>5){
+    else if(entryData.mood<0||entryData.mood>5){
         return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Mood is not in Range(0-5)"}
     }
-    else if(!entryData.fixed_blocks.emotions){
+    else if(!entryData.emotions){
         return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: emotions missing"}
     }
-    else if(entryData.fixed_blocks.period<0||entryData.fixed_blocks.period>3){
+    else if(entryData.period<0||entryData.period>3){
         return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: Period not in range(0-3)"}
     }
-    else if(!isValidIconBlocks(entryData.icon_blocks)){
-        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: iconblocks wrong"}
-    }
-    else if(!isValidNumberblocks(entryData.number_blocks)){
-        return {status:StatusCodes.BAD_REQUEST,response:"Unvalid Entrydata: numberblocks wrong"}
-    }
     return {status:StatusCodes.OK,response:"Entry should be valid"}
-}
-//validate numberblocks
-function isValidNumberblocks(numberBlocks: NumberBlock[]): boolean {
-    if(numberBlocks.length<0||numberBlocks.length>5){
-        return false;
-    }
-    for (const numberBlock of numberBlocks) {
-        if (numberBlock.name.length < 1 || numberBlock.name.length > 15) {
-            return false;
-        }
-        if (numberBlock.unit.length < 1 || numberBlock.unit.length > 15) {
-            return false;
-        }
-    }
-    return true;
 }
 //checks if string is in format "yyyy-mm-ddy"
 function isValidDateFormat(dateString: string): boolean {
@@ -125,29 +93,6 @@ function isValidDateFormat(dateString: string): boolean {
     }
     return true;
 }
-//checks if iconblock valid
-function isValidIconBlocks(iconBlocks: IconBlock[]): boolean {
-    if(iconBlocks.length<0||iconBlocks.length>5){
-        return false;
-    }
-    for (const iconBlock of iconBlocks) {
-        if (iconBlock.name.length < 1 || iconBlock.name.length > 20) {
-            return false;
-        }
-        if (iconBlock.icons.length < 1||iconBlock.icons.length>15) {
-            return false;
-        }
-        for (const icon of iconBlock.icons) {
-            if (icon.name.length < 1 || icon.name.length > 15) {
-                return false;
-            }
-            if (icon.iconPicID < 0 || icon.iconPicID > 100) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
 
 
 //calculate the last day of the week
@@ -164,7 +109,7 @@ export function getWeekEntries(username: string, date: string): { year: number; 
         return null; // no user? insert megamind meme here
     }
     const weekEntries: Entry[] = user.entries.filter(entry => {
-        const entryDate = new Date(entry.fixed_blocks.date);
+        const entryDate = new Date(entry.date);
         const requestedDate = new Date(date);
         const firstDayOfWeek = new Date(requestedDate);
         firstDayOfWeek.setDate(firstDayOfWeek.getDate() - firstDayOfWeek.getDay());

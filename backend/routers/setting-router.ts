@@ -19,7 +19,6 @@ settingsRouter.put("", isAuthenticated, (req, res) => {
         return res.status(StatusCodes.BAD_REQUEST).json("Unvalid: theme number not in range(0-6)")
     }
     user.settings.themeNR = settingsData.themeNR;
-    user.settings.entrySettings = settingsData.entrySettings;
     user.settings.trackPeriod = settingsData.trackPeriod;
     updateUser(user)
     return res.status(StatusCodes.OK).json({ message: "Settings updated successfully" });
