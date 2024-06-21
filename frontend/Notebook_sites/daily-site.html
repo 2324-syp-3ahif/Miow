@@ -51,8 +51,8 @@
                 <button onclick="toggleSelected(this)" class="emotion_button" id="tired">Tired</button>
             </div>
             <br>
-            <button  id="prev">Previous Day</button>
-            <button  id="next">Next Day</button>
+            <button onclick="changeDay(-1)" id="prev">Previous Day</button>
+            <button onclick="changeDay(1)" id="next">Next Day</button>
             <button onclick="submit()" id="submitbtn">Submit Note</button>
         </div>
 
@@ -94,7 +94,6 @@
 
 <div id="date-test"></div>
 <div id="entry"></div>
-<script>
-</script>
+<script>updateDateDisplay()</script>
 </body>
 </html>

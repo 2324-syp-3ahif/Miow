@@ -1,7 +1,7 @@
 ### GET entry by date (yyyy-mm-dd)
 GET http://localhost:3000/entry/day HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTg5MTcwNzEuODc3LCJpYXQiOjE3MTg5MTM0NzF9.tX-zGM21LbDCfTS0AlntCioH_NeGZr1g_PMt4mnUG3Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTg5NTY3NDMuMzU5LCJpYXQiOjE3MTg5NTMxNDN9.Ne8CoCLa7IzDPedibBNdaUpeTwVypHHiqE7oLym-DmI
 
 {
   "date": "2024-03-25"

@@ -2,7 +2,7 @@
   "name": "Miow",
   "version": "1.0.0",
   "description": "",
-  "main": "app.ts",
+  "main": "backend/brain/app.ts",
   "scripts": {
     "server-dev": "npx nodemon ./backend/brain/app.ts",
     "client-dev": "npx tsc --watch --project frontend",

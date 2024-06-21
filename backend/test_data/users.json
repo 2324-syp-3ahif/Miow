@@ -61,31 +61,171 @@
       },
       {
         "date": "",
-        "mood": 3,
+        "mood": 5,
         "period": 2,
         "emotions": {
           "excited": false,
-          "relaxed": true,
+          "relaxed": false,
           "proud": false,
           "hopeful": false,
           "happy": false,
           "lonely": false,
           "emo": false,
           "anxious": false,
-          "sad": true,
+          "sad": false,
           "angry": false,
-          "tired": true
+          "tired": false
         },
         "weather": {
           "sunny": false,
-          "windy": true,
+          "windy": false,
           "cloudy": false,
           "snowy": false,
-          "rainy": true
+          "rainy": false
         },
-        "sleep": 6,
-        "water": 4,
-        "text": "test"
+        "sleep": 8,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-06-16",
+        "mood": 3,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-06-26",
+        "mood": 3,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-06-21",
+        "mood": 4,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-06-19",
+        "mood": 5,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-06-20",
+        "mood": 5,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 8,
+        "water": 2,
+        "text": ""
       }
     ],
     "weeks": [

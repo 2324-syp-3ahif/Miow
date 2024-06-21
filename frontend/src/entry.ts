@@ -157,31 +157,46 @@ function getSelectedWeather() {
 
 
 // Initial load: Set today's date
-let currentDate = new Date();
+
+
 updateDateDisplay();
 
 // Function to update the displayed date
-function updateDateDisplay() {
+export function updateDateDisplay() {
+    let currentDate = new Date(new Date().toLocaleDateString('en-CA'));
     const dateElement = document.getElementById('date');
     if (dateElement) {
         dateElement.textContent = currentDate.toISOString().split('T')[0];
     }
 }
 
-// Event listeners for previous and next day buttons
-const prevButton = document.getElementById('prev') as HTMLButtonElement;
-const nextButton = document.getElementById('next') as HTMLButtonElement;
 
-prevButton.addEventListener('click', () => changeDay(-1));
-nextButton.addEventListener('click', () => changeDay(1));
-
-function changeDay(delta: number) {
-    currentDate.setDate(currentDate.getDate() + delta);
-    fetchEntryByDate(currentDate);
+export function changeDay(delta: number) {
+    const currentDateHtml= document.getElementById('date');
+    let currentDate= (currentDateHtml as HTMLSpanElement).textContent;
+    fetchEntryByDate(addDaysToDate(currentDate, delta))
 }
 
+function addDaysToDate(dateString: string, delta: number): string {
+    // Parse the dateString in yyyy-mm-dd format to a Date object
+    const [year, month, day] = dateString.split('-').map(Number);
+    const date = new Date(year, month - 1, day); // month - 1 because month in Date constructor is 0-based
+
+    // Add delta days to the date
+    date.setDate(date.getDate() + delta);
+
+    // Format the date as yyyy-mm-dd
+    const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+    const currentDateHtml= document.getElementById('date');
+     currentDateHtml.textContent=formattedDate;
+    return formattedDate;
+}
+
+
+
 // Function to fetch entry by date
-async function fetchEntryByDate(date: Date) {
+async function fetchEntryByDate(date: string) {
     const token = localStorage.getItem('token');
 
     if (!token) {
@@ -189,9 +204,8 @@ async function fetchEntryByDate(date: Date) {
         return;
     }
 
-    const dateString = date.toISOString().split('T')[0];
     try {
-        const response = await fetch(`http://localhost:3000/entry/day?date=${dateString}`, {
+        const response = await fetch(`http://localhost:3000/entry/day?date=${date}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -212,76 +226,134 @@ async function fetchEntryByDate(date: Date) {
     }
 }
 
-// Function to update UI with fetched data
-function updateUI(data: Entry) {
-    // Update mood
+async function updateUI(data: any) {
+    resetUI();
+    // Update Mood Buttons
     const moodButtons = document.querySelectorAll('.mood .emotion_button');
-    moodButtons.forEach(button => {
-        button.classList.remove('selected'); // Clear previously selected
-        const buttonId = button.id;
-        if (data.mood === 5 && buttonId === 'very-good') {
+    moodButtons.forEach((button: Element) => {
+        const moodId = button.id;
+        if (data.mood === getMoodValueFromId(moodId)) {
             button.classList.add('selected');
-        } else if (data.mood === 4 && buttonId === 'good') {
-            button.classList.add('selected');
-        } else if (data.mood === 3 && buttonId === 'meh') {
-            button.classList.add('selected');
-        } else if (data.mood === 2 && buttonId === 'bad') {
-            button.classList.add('selected');
-        } else if (data.mood === 1 && buttonId === 'very-bad') {
-            button.classList.add('selected');
+        } else {
+            button.classList.remove('selected');
         }
     });
 
-    // Update period
+    // Update Period Buttons
     const periodButtons = document.querySelectorAll('.period button img');
-    periodButtons.forEach(imgButton => {
-        imgButton.classList.remove('selected');
+    periodButtons.forEach((imgButton: Element) => {
         const imgSrc = imgButton.getAttribute('src');
-        if (data.period === 2 && (imgSrc === 'images/light_red_drop.png' || imgSrc === 'images/red_drop.png')) {
-            imgButton.classList.add('selected');
+        if (data.period === getPeriodValueFromSrc(imgSrc)) {
+            imgButton.parentElement?.classList.add('selected');
+        } else {
+            imgButton.parentElement?.classList.remove('selected');
         }
     });
 
-    // Update emotions
-    const emotionButtons = document.querySelectorAll('.emotion_button');
-    emotionButtons.forEach(button => {
-        const emotionName = button.id;
-        if (data.emotions && data.emotions[emotionName]) {
+    // Update Emotion Buttons
+    const emotionButtons = document.querySelectorAll('.emotions .emotion_button');
+    emotionButtons.forEach((button: Element) => {
+        const emotionId = button.id;
+        if (data.emotions[emotionId]) {
             button.classList.add('selected');
         } else {
             button.classList.remove('selected');
         }
     });
 
-    // Update weather
-    const weatherButtons = document.querySelectorAll('.weather_button');
-    weatherButtons.forEach(button => {
-        const weatherType = button.id;
-        if (data.weather && data.weather[weatherType]) {
+    // Update Weather Buttons
+    const weatherButtons = document.querySelectorAll('.weather .weather_button');
+    weatherButtons.forEach((button: Element) => {
+        const weatherId = button.id;
+        if (data.weather[weatherId]) {
             button.classList.add('selected');
         } else {
             button.classList.remove('selected');
         }
     });
 
-    // Update sleep
+    // Update Sleep Input
     const sleepInput = document.getElementById('sleep-input') as HTMLInputElement;
     sleepInput.value = data.sleep.toString();
 
-    // Update water
+    // Update Water Input
     const waterInput = document.getElementById('water-input') as HTMLInputElement;
     waterInput.value = data.water.toString();
 
-    // Update text
+    // Update Note Content
     const noteContent = document.getElementById('note-content') as HTMLTextAreaElement;
-    noteContent.value = data.text;
+    noteContent.value = data.text || '';
 }
 
-// Initial fetch for today's entry
-fetchEntryByDate(currentDate);
+// Helper function to get mood value from button id
+function getMoodValueFromId(id: string): number {
+    switch (id) {
+        case 'very-good':
+            return 5;
+        case 'good':
+            return 4;
+        case 'meh':
+            return 3;
+        case 'bad':
+            return 2;
+        case 'very-bad':
+            return 1;
+        default:
+            return 0; // Default value when no match
+    }
+}
+
+// Helper function to get period value from image src
+function getPeriodValueFromSrc(src: string | null): number {
+    switch (src) {
+        case 'images/light_red_drop.png':
+            return 0;
+        case 'images/red_drop.png':
+            return 2;
+        case 'images/grey_drop.png':
+        default:
+            return 0; // Default value when no match
+    }
+}
 
 
+function resetUI() {
+    // Reset Mood Buttons
+    const moodButtons = document.querySelectorAll('.mood .emotion_button');
+    moodButtons.forEach((button: Element) => {
+        button.classList.remove('selected');
+    });
 
+    // Reset Period Buttons
+    const periodButtons = document.querySelectorAll('.period button img');
+    periodButtons.forEach((imgButton: Element) => {
+        imgButton.parentElement?.classList.remove('selected');
+    });
+
+    // Reset Emotion Buttons
+    const emotionButtons = document.querySelectorAll('.emotions .emotion_button');
+    emotionButtons.forEach((button: Element) => {
+        button.classList.remove('selected');
+    });
+
+    // Reset Weather Buttons
+    const weatherButtons = document.querySelectorAll('.weather .weather_button');
+    weatherButtons.forEach((button: Element) => {
+        button.classList.remove('selected');
+    });
+
+    // Reset Sleep Input
+    const sleepInput = document.getElementById('sleep-input') as HTMLInputElement;
+    sleepInput.value = '0';
+
+    // Reset Water Input
+    const waterInput = document.getElementById('water-input') as HTMLInputElement;
+    waterInput.value = '0';
+
+    // Reset Note Content
+    const noteContent = document.getElementById('note-content') as HTMLTextAreaElement;
+    noteContent.value = '';
+}
 
 
 

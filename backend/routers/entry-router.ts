@@ -6,14 +6,19 @@ import {StatusCodes} from "http-status-codes";
 export const entryRouter = express.Router();
 
 //(yyyy-mm-dd) returns the entry from this day(so the user can edit it)
-entryRouter.get("/day",isAuthenticated,(req, res) =>{
+entryRouter.get("/day", isAuthenticated, (req, res) => {
     const currentUser = req.user.username;
-    const requestedDate = req.body.date;
-    const entry = getEntryByUserAndDate(currentUser,requestedDate);
+    const requestedDate = req.query.date as string;
+
+    if(!requestedDate) {
+        return res.status(StatusCodes.METHOD_NOT_ALLOWED).json(requestedDate);
+    }
+
+    const entry = getEntryByUserAndDate(currentUser, requestedDate);
     if (entry) {
         return res.status(StatusCodes.OK).json(entry);
     } else {
-        return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
+        return res.status(StatusCodes.NOT_FOUND).json({error: "User not found"});
     }
 });
 
@@ -25,7 +30,7 @@ entryRouter.post("/day", isAuthenticated, (req, res) => {
     if (addedEntry) {
         return res.status(StatusCodes.OK).json("Succsessfully added Entry!");
     } else {
-        return res.status(StatusCodes.BAD_REQUEST).json({ error: "Failed to add entry" });
+        return res.status(StatusCodes.BAD_REQUEST).json({error: "Failed to add entry"});
     }
 });
 
@@ -37,19 +42,19 @@ entryRouter.get("/week", isAuthenticated, (req, res) => {
     if (weekEntries) {
         return res.status(200).json(weekEntries);
     } else {
-        return res.status(404).json({ error: "Week entries not found" });
+        return res.status(404).json({error: "Week entries not found"});
     }
 });
 
 // POST  add a weekly entry for a specific date
-entryRouter.post("/week", isAuthenticated, (req,res) => {
-    const  date  = req.body.date;
-    const  entryData  = req.body.entryData;
+entryRouter.post("/week", isAuthenticated, (req, res) => {
+    const date = req.body.date;
+    const entryData = req.body.entryData;
     const currentUser = req.user.username;
     const addedEntry = addWeekEntry(currentUser, date, entryData);
     if (addedEntry) {
         return res.status(StatusCodes.OK).json("Successfully added weekly entry!");
     } else {
-        return res.status(StatusCodes.BAD_REQUEST).json({ error: "Failed to add weekly entry" });
+        return res.status(StatusCodes.BAD_REQUEST).json({error: "Failed to add weekly entry"});
     }
 });
