@@ -37,7 +37,7 @@ entryRouter.post("/day", isAuthenticated, (req, res) => {
 // GET retrieve the users weekly entries
 entryRouter.get("/week", isAuthenticated, (req, res) => {
     const currentUser = req.user.username;
-    const requestedDate = req.body.date;
+    const requestedDate =  req.query.date as string;
     const weekEntries = getWeekEntries(currentUser, requestedDate);
     if (weekEntries) {
         return res.status(200).json(weekEntries);

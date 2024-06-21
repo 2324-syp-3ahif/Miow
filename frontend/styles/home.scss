@@ -317,17 +317,16 @@ button:hover{
             font-color: $font_color;
         }
 
-
-
-        /* Helligkeit verringern, wenn nicht ausgewählt */
         .emotion_button:not(.selected),
         .weather_button:not(.selected),
-        .mood_button:not(.selected),
         .period-button:not(.selected) {
-            filter: brightness(70%);
+            filter: brightness(130%);
         }
 
-        /* Kein Helligkeitseffekt, wenn ausgewählt */
+        .mood_button:not(.selected){
+            filter: brightness(150%);
+        }
+
         .emotion_button.selected,
         .weather_button.selected,
         .mood_button.selected,
