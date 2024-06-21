@@ -1,13 +1,17 @@
+@charset "UTF-8";
 body {
-  background-color: #cdfcff;
+  background-color: #CDFCFF;
 }
+
 button {
   border: none;
   background-color: inherit;
 }
+
 button:hover {
   transform: scale(1.03);
 }
+
 .tags {
   display: flex;
   justify-content: space-around;
@@ -41,8 +45,9 @@ button:hover {
 .tags #settings-tag {
   filter: invert(97%) sepia(85%) saturate(1151%) hue-rotate(290deg) brightness(121%) contrast(106%);
 }
+
 .note-book {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   width: 90%;
   height: 90%;
   position: absolute;
@@ -61,7 +66,7 @@ button:hover {
   min-height: inherit;
   height: 97%;
   position: relative;
-  background-color: #fff6f6;
+  background-color: #FFF6F6;
   padding: 10px;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -83,7 +88,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: 30px 0;
 }
@@ -93,7 +98,7 @@ button:hover {
 .note-book #daily-notebook .left-site .mood span {
   margin-left: 10px;
 }
-.note-book #daily-notebook .left-site .mood .mood-circle {
+.note-book #daily-notebook .left-site .mood .mood_button {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -132,7 +137,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: 30px 0;
 }
@@ -158,7 +163,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 20px;
   margin: 30px 0;
   align-items: center;
@@ -175,7 +180,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 20px;
   margin: 30px 0;
   align-items: center;
@@ -185,7 +190,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: 30px 0;
   align-items: center;
@@ -195,7 +200,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: 30px 0;
   align-items: center;
@@ -206,7 +211,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: 30px 0;
 }
@@ -216,7 +221,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: 30px 0;
 }
@@ -224,9 +229,9 @@ button:hover {
   width: 100%;
   height: 250px;
   border: none;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   font-size: 1em;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   resize: none;
   outline: none;
   color: #603636;
@@ -241,7 +246,7 @@ button:hover {
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #ffb6b6;
+  background-color: #FFB6B6;
   font-size: 20px;
   font-color: #603636;
 }
@@ -254,25 +259,119 @@ button:hover {
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #ffb6b6;
+  background-color: #FFB6B6;
   font-size: 20px;
   font-color: #603636;
 }
-.note-book #daily-notebook .emotion_button:not(.selected), .note-book #daily-notebook .weather_button:not(.selected) {
+.note-book #daily-notebook .emotion_button:not(.selected),
+.note-book #daily-notebook .weather_button:not(.selected),
+.note-book #daily-notebook .mood_button:not(.selected),
+.note-book #daily-notebook .period-button:not(.selected) {
   filter: brightness(70%);
 }
-.note-book #daily-notebook .emotion_button.selected, .note-book #daily-notebook .weather_button.selected {
+.note-book #daily-notebook .emotion_button.selected,
+.note-book #daily-notebook .weather_button.selected,
+.note-book #daily-notebook .mood_button.selected,
+.note-book #daily-notebook .period-button.selected {
   filter: brightness(100%);
 }
-.note-book #daily-notebook .daily_number_input {
-  width: 60px;
-  height: 30px;
-  font-size: 20px;
+.note-book #monthly-notebook {
+  display: flex;
+  min-height: 10vh;
   justify-content: center;
-  margin-left: 10px;
-  border-color: rgba(204, 204, 204, 0);
-  background-color: rgba(255, 185, 185, 0.27);
+  height: 100%;
+}
+.note-book #monthly-notebook * {
+  font-family: "Poppins", sans-serif;
+}
+.note-book #monthly-notebook .calendar-container {
+  background: #fff;
+  width: 90%;
   border-radius: 10px;
+  padding: 0;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+.note-book #monthly-notebook .calendar-container header {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+.note-book #monthly-notebook header .calendar-navigation {
+  display: flex;
+}
+.note-book #monthly-notebook header .calendar-navigation span {
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 50%;
+  user-select: none;
+  color: #aeabab;
+  font-size: 1.9rem;
+}
+.note-book #monthly-notebook .calendar-navigation span:last-child {
+  margin-right: -10px;
+}
+.note-book #monthly-notebook header .calendar-navigation span:hover {
+  background: #f2f2f2;
+}
+.note-book #monthly-notebook header .calendar-current-date {
+  font-weight: 500;
+  font-size: 1.45rem;
+}
+.note-book #monthly-notebook .calendar-body {
+  padding: 20px;
+  border-top: 1px solid #dedede;
+}
+.note-book #monthly-notebook .calendar-body ul {
+  list-style: none;
+  flex-wrap: wrap;
+  display: flex;
+  text-align: center;
+}
+.note-book #monthly-notebook .calendar-body .calendar-dates {
+  margin-bottom: 20px;
+}
+.note-book #monthly-notebook .calendar-body li {
+  width: 14.2857142857%;
+  font-size: 1.07rem;
+  color: #414141;
+}
+.note-book #monthly-notebook .calendar-body .calendar-weekdays li {
+  cursor: default;
+  font-weight: 500;
+}
+.note-book #monthly-notebook .calendar-body .calendar-dates li {
+  margin-top: 60px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+.note-book #monthly-notebook .calendar-dates li.inactive {
+  color: #aaa;
+}
+.note-book #monthly-notebook .calendar-dates li.active {
+  color: #fff;
+}
+.note-book #monthly-notebook .calendar-dates li::before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.note-book #monthly-notebook .calendar-dates li.active::before {
+  background: #ffb2e7;
+}
+.note-book #monthly-notebook .calendar-dates li:not(.active):hover::before {
+  background: #e4e1e1;
 }
 .note-book #settings-notebook .options {
   display: flex;
@@ -299,3 +398,5 @@ button:hover {
   position: absolute;
   left: 50%;
 }
+
+/*# sourceMappingURL=home.css.map */
