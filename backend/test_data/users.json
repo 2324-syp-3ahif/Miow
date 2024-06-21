@@ -1,17 +1,5 @@
 [
   {
-    "username": "lela",
-    "password": "$2b$08$PhimQtSK8r9qlPVAcj2FEukec0lQBZiKP50jFhZZ3wiVsSYN2VRaS",
-    "entries": [],
-    "weeks": [],
-    "settings": {
-      "themeNR": 1,
-      "trackPeriod": true
-    }
-  }
-]
-[
-  {
     "username": "john",
     "password": "$2b$08$ua5QC.Q8beBQCy5N/JNNW.mgrSUOwjuml7k0G.V7LH25.ObBTcIsK",
     "entries": [
@@ -128,64 +116,8 @@
         "text": ""
       },
       {
-        "date": "2024-06-26",
-        "mood": 3,
-        "period": 2,
-        "emotions": {
-          "excited": false,
-          "relaxed": false,
-          "proud": false,
-          "hopeful": false,
-          "happy": false,
-          "lonely": false,
-          "emo": false,
-          "anxious": false,
-          "sad": false,
-          "angry": false,
-          "tired": false
-        },
-        "weather": {
-          "sunny": false,
-          "windy": false,
-          "cloudy": false,
-          "snowy": false,
-          "rainy": false
-        },
-        "sleep": 0,
-        "water": 2,
-        "text": ""
-      },
-      {
         "date": "2024-06-21",
         "mood": 4,
-        "period": 2,
-        "emotions": {
-          "excited": false,
-          "relaxed": false,
-          "proud": false,
-          "hopeful": false,
-          "happy": false,
-          "lonely": false,
-          "emo": false,
-          "anxious": false,
-          "sad": false,
-          "angry": false,
-          "tired": false
-        },
-        "weather": {
-          "sunny": false,
-          "windy": false,
-          "cloudy": false,
-          "snowy": false,
-          "rainy": false
-        },
-        "sleep": 0,
-        "water": 2,
-        "text": ""
-      },
-      {
-        "date": "2024-06-19",
-        "mood": 5,
         "period": 2,
         "emotions": {
           "excited": false,
@@ -238,6 +170,62 @@
         "sleep": 8,
         "water": 2,
         "text": ""
+      },
+      {
+        "date": "2024-06-19",
+        "mood": 5,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": true,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": true,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": true,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": "19er"
+      },
+      {
+        "date": "2024-06-26",
+        "mood": 3,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": "26 er"
       }
     ],
     "weeks": [

@@ -1,6 +1,6 @@
 export var BaseEntry:Entry= {
     date: "",
-    mood: 3,
+    mood: 0,
     period: 2,
     emotions: {
         exited: false,

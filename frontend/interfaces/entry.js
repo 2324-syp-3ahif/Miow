@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseEntry = void 0;
 exports.BaseEntry = {
     date: "",
-    mood: 3,
+    mood: 0,
     period: 2,
     emotions: {
         exited: false,
