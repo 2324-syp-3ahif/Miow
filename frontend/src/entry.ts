@@ -147,15 +147,6 @@ function getSelectedWeather() {
 }
 
 
-
-
-
-
-
-
-
-
-
 // Initial load: Set today's date
 
 
@@ -354,13 +345,6 @@ function resetUI() {
     const noteContent = document.getElementById('note-content') as HTMLTextAreaElement;
     noteContent.value = '';
 }
-
-
-
-
-
-
-
 
 function toggleSelected(button: { classList: { toggle: (arg0: string) => void; }; }) {
     button.classList.toggle("selected");

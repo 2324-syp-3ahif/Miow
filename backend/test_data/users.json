@@ -60,34 +60,6 @@
         "text": "test"
       },
       {
-        "date": "",
-        "mood": 5,
-        "period": 2,
-        "emotions": {
-          "excited": false,
-          "relaxed": false,
-          "proud": false,
-          "hopeful": false,
-          "happy": false,
-          "lonely": false,
-          "emo": false,
-          "anxious": false,
-          "sad": false,
-          "angry": false,
-          "tired": false
-        },
-        "weather": {
-          "sunny": false,
-          "windy": false,
-          "cloudy": false,
-          "snowy": false,
-          "rainy": false
-        },
-        "sleep": 8,
-        "water": 2,
-        "text": ""
-      },
-      {
         "date": "2024-06-16",
         "mood": 3,
         "period": 2,
@@ -112,62 +84,6 @@
           "rainy": false
         },
         "sleep": 0,
-        "water": 2,
-        "text": ""
-      },
-      {
-        "date": "2024-06-21",
-        "mood": 4,
-        "period": 2,
-        "emotions": {
-          "excited": false,
-          "relaxed": false,
-          "proud": false,
-          "hopeful": false,
-          "happy": false,
-          "lonely": false,
-          "emo": false,
-          "anxious": false,
-          "sad": false,
-          "angry": false,
-          "tired": false
-        },
-        "weather": {
-          "sunny": false,
-          "windy": false,
-          "cloudy": false,
-          "snowy": false,
-          "rainy": false
-        },
-        "sleep": 0,
-        "water": 2,
-        "text": ""
-      },
-      {
-        "date": "2024-06-20",
-        "mood": 5,
-        "period": 2,
-        "emotions": {
-          "excited": false,
-          "relaxed": false,
-          "proud": false,
-          "hopeful": false,
-          "happy": false,
-          "lonely": false,
-          "emo": false,
-          "anxious": false,
-          "sad": false,
-          "angry": false,
-          "tired": false
-        },
-        "weather": {
-          "sunny": false,
-          "windy": false,
-          "cloudy": false,
-          "snowy": false,
-          "rainy": false
-        },
-        "sleep": 8,
         "water": 2,
         "text": ""
       },
@@ -200,7 +116,175 @@
         "text": "19er"
       },
       {
+        "date": "2024-06-21",
+        "mood": 4,
+        "period": 2,
+        "emotions": {
+          "excited": true,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 8,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-06-20",
+        "mood": 3,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 8,
+        "water": 2,
+        "text": ""
+      },
+      {
         "date": "2024-06-26",
+        "mood": 3,
+        "period": 2,
+        "emotions": {
+          "excited": true,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": "Das ist hello :3"
+      },
+      {
+        "date": "NaN-NaN-NaN",
+        "mood": 5,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": true,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "",
+        "mood": 5,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": true,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 8,
+        "water": 2,
+        "text": ""
+      }
+    ],
+    "weeks": [
+      {
+        "year": 2024,
+        "startday": "03-25",
+        "endday": "03_30",
+        "text": "Sample weekly entry text"
+      }
+    ],
+    "settings": {
+      "themeNR": 1,
+      "trackPeriod": true
+    }
+  },
+  {
+    "username": "lela",
+    "password": "$2b$08$b2uF8YpdAHrA72mqjYCaJefROq//VrldpspSmofvIDxVGzhnW4xZu",
+    "entries": [],
+    "weeks": [],
+    "settings": {
+      "themeNR": 1,
+      "trackPeriod": true
+    }
+  },
+  {
+    "username": "lina",
+    "password": "$2b$08$SUANYHYVqreIYbjefwvrzeKmxTMiH4PiFI0fe96w4D6x0Tmc6VipO",
+    "entries": [
+      {
+        "date": "2024-06-21",
         "mood": 3,
         "period": 2,
         "emotions": {
@@ -225,17 +309,10 @@
         },
         "sleep": 0,
         "water": 2,
-        "text": "26 er"
+        "text": "bxhyv"
       }
     ],
-    "weeks": [
-      {
-        "year": 2024,
-        "startday": "03-25",
-        "endday": "03_30",
-        "text": "Sample weekly entry text"
-      }
-    ],
+    "weeks": [],
     "settings": {
       "themeNR": 1,
       "trackPeriod": true

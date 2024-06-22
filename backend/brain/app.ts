@@ -7,7 +7,6 @@ import {settingsRouter} from "../routers/setting-router";
 import {keineahnung} from "./dbrepo";
 import cors from "cors";
 
-dotenv.config();
 require('dotenv').config();
 export const app = express();
 app.use(express.json());

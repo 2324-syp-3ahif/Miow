@@ -3,175 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Monthly View</title>
+    <script src="../src/calendar.js"></script>
+    <link rel="stylesheet" href="../styles/home.css">
+
 </head>
 <body>
-<div id="monthly-notebook">
-    <div class="calendar-container">
-        <header class="calendar-header">
-            <p class="calendar-current-date"></p>
-            <div class="calendar-navigation">
+
+<div class="tags">
+    <button>
+        <a href="../home.html"> <img id="daily-tag" src="../images/tag.png" alt=""></a>
+    </button>
+    <button>
+        <a href="../Notebook_sites/weekly-site.html"> <img id="weekly-tag" src="../images/tag.png" alt=""></a>
+    </button>
+    <button>
+        <a href="../Notebook_sites/monthly-site.html"> <img id="monthly-tag" src="../images/tag.png" alt=""></a>
+    </button>
+    <button>
+        <a href="../Notebook_sites/settings-site.html"> <img  id="settings-tag" src="../images/tag.png" alt=""></a>
+    </button>
+</div>
+
+<div class="note-book">
+    <div class="inner-notebook">
+        <div onload="calendar()" id="monthly-notebook">
+            <div class="calendar-container">
+                <header class="calendar-header">
+                    <p class="calendar-current-date"></p>
+                    <div class="calendar-navigation">
                 <span id="calendar-prev"
                       class="material-symbols-rounded">
                     <
                 </span>
-                <span id="calendar-next"
-                      class="material-symbols-rounded">
+                        <span id="calendar-next"
+                              class="material-symbols-rounded">
                    >
                 </span>
-            </div>
-        </header>
+                    </div>
+                </header>
 
-        <div class="calendar-body">
-            <ul class="calendar-weekdays">
-                <li>Sun</li>
-                <li>Mon</li>
-                <li>Tue</li>
-                <li>Wed</li>
-                <li>Thu</li>
-                <li>Fri</li>
-                <li>Sat</li>
-            </ul>
-            <ul class="calendar-dates"></ul>
+                <div class="calendar-body">
+                    <ul class="calendar-weekdays">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                    </ul>
+                    <ul class="calendar-dates"></ul>
+                </div>
+            </div>
         </div>
     </div>
-
-    <script>
-        let date = new Date();
-        let year = date.getFullYear();
-        let month = date.getMonth();
-
-        const day = document.querySelector(".calendar-dates");
-
-        const currdate = document
-            .querySelector(".calendar-current-date");
-
-        const prenexIcons = document
-            .querySelectorAll(".calendar-navigation span");
-
-        // Array of month names
-        const months = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"
-        ];
-
-        const manipulate = () => {
-
-            let dayone = new Date(year, month, 1).getDay();
-
-            let lastdate = new Date(year, month + 1, 0).getDate();
-
-            let dayend = new Date(year, month, lastdate).getDay();
-
-            let monthlastdate = new Date(year, month, 0).getDate();
-
-            let lit = "";
-
-
-            for (let i = dayone; i > 0; i--) {
-                lit +=
-                    `<li class="inactive">${monthlastdate - i + 1}</li>`;
-            }
-
-
-            for (let i = 1; i <= lastdate; i++) {
-
-
-                let isToday = i === date.getDate()
-                && month === new Date().getMonth()
-                && year === new Date().getFullYear()
-                    ? "active"
-                    : "";
-                lit += `<li class="${isToday}">${i}</li>`;
-            }
-
-            for (let i = dayend; i < 6; i++) {
-                lit += `<li class="inactive">${i - dayend + 1}</li>`
-            }
-
-            currdate.innerText = `${months[month]} ${year}`;
-
-
-            day.innerHTML = lit;
-        }
-
-        manipulate();
-
-
-        prenexIcons.forEach(icon => {
-
-            icon.addEventListener("click", () => {
-
-                month = icon.id === "calendar-prev" ? month - 1 : month + 1;
-
-                if (month < 0 || month > 11) {
-
-                    date = new Date(year, month, new Date().getDate());
-
-                    year = date.getFullYear();
-
-                    month = date.getMonth();
-                }
-
-                else {
-
-                    date = new Date();
-                }
-
-                manipulate();
-            });
-        });
-
-        //junk code rn
-        function fetchMoodData(){
-
-        }
-
-         let moodData = fetchMoodData();
-
-        let dateElements = document.querySelectorAll('.calendar-dates li');
-
-
-        dateElements.forEach((dateElement, index) => {
-
-            let mood = moodData[index];
-
-            let color;
-            switch (mood) {
-                case 'very-good':
-                    color = '#22ec22';
-                    break;
-                case 'good':
-                    color = '#a3ff95';
-                    break;
-                case 'meh':
-                    color = '#ffda0c';
-                    break;
-                case 'bad':
-                    color = '#ffa056';
-                    break;
-                case 'very-bad':
-                    color = '#ff4d4d';
-                    break;
-                default:
-                    color = '#fff'; // Default color if no mood data
-            }
-
-            dateElement.style.backgroundColor = color;
-        });
-
-    </script>
-
-
 
 </div>
 </body>

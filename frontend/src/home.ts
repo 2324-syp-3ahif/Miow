@@ -54,100 +54,34 @@ function getDate() {
         })
 }
 
-function showNotebook(id : string){
-    const notebooks = ['daily-notebook', 'weekly-notebook', 'monthly-notebook', "yearly-notebook", "predicting-notebook", "settings-notebook"];
-    for (let notebook of notebooks){
-        const element = document.getElementById(notebook);
-        if(element){
-            element.style.display = "none";
-        }
-        else{
-            console.log("element not found");
-        }
-    }
-
-    const notebookShow = document.getElementById(id);
-    if(notebookShow){
-        notebookShow.style.display = "block";
-    }
-    else{
-        console.log("element not found");
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const notebooks = ["#daily-notebook", "#weekly-notebook", "#monthly-notebook", "#predicting-notebook", "#settings-notebook"];
-
-    const day =getDate();
-
-
-
-
-
-    const hideAllNotebooks = () => {
-        notebooks.forEach(notebook => {
-            const element = document.querySelector(notebook) as HTMLElement;
-            if (element) {
-                element.style.display = 'none';
-            }
-        });
-    }
-
-    hideAllNotebooks();
-    const dailyNotebook = document.querySelector("#daily-notebook") as HTMLElement;
-    if (dailyNotebook) {
-        dailyNotebook.style.display = 'block';
-    }
-
-    notebooks.forEach(notebook => {
-        const tag = notebook.replace("-notebook", "-tag");
-        const tagElement = document.querySelector(tag) as HTMLElement;
-        if (tagElement) {
-            tagElement.addEventListener('click', () => {
-                hideAllNotebooks();
-                const notebookElement = document.querySelector(notebook) as HTMLElement;
-                if (notebookElement) {
-                    notebookElement.style.display = 'block';
-                }
-
-                const activeElements = document.querySelectorAll(".tags img.active");
-                activeElements.forEach(element => {
-                    (element as HTMLElement).classList.remove("active");
-                });
-
-                tagElement.classList.add("active");
-            });
-        }
-    });
-});
-
-$(document).ready(function() {
-    const contents = document.querySelectorAll('.content div');
-      contents.forEach(content => {
-        (content as HTMLElement).style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    const contents = Array.from(document.querySelectorAll('.content div')) as HTMLElement[];
+    contents.forEach(content => {
+        content.style.display = 'none';
     });
 
-    const accountSettingsContent = document.getElementById('account-settings-content');
+    const accountSettingsContent = document.getElementById('account-settings-content') as HTMLElement | null;
     if (accountSettingsContent) {
-        (accountSettingsContent as HTMLElement).style.display = 'block';
+        accountSettingsContent.style.display = 'block';
     }
 
-    $('.opt-button').click(function() {
+    const optButtons = Array.from(document.querySelectorAll('.opt-button')) as HTMLElement[];
+    optButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
 
-        contents.forEach(content => {
-            (content as HTMLElement).style.display = 'none';
-        });
-
-        var buttonId = $(this).attr('id');
-        const content = document.getElementById(buttonId + '-content');
-        if (content) {
-            if ((content as HTMLElement).style.display === 'block') {
-                (content as HTMLElement).style.display = 'none';
-            } else {
-                (content as HTMLElement).style.display = 'block';
-
+            const buttonId = this.getAttribute('id');
+            const content = document.getElementById(buttonId + '-content') as HTMLElement | null;
+            if (content) {
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
             }
-        }
+        });
     });
 });
 

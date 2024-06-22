@@ -58,60 +58,6 @@ function getDate() {
         dateElement.textContent = data.date;
     });
 }
-function showNotebook(id) {
-    const notebooks = ['daily-notebook', 'weekly-notebook', 'monthly-notebook', "yearly-notebook", "predicting-notebook", "settings-notebook"];
-    for (let notebook of notebooks) {
-        const element = document.getElementById(notebook);
-        if (element) {
-            element.style.display = "none";
-        }
-        else {
-            console.log("element not found");
-        }
-    }
-    const notebookShow = document.getElementById(id);
-    if (notebookShow) {
-        notebookShow.style.display = "block";
-    }
-    else {
-        console.log("element not found");
-    }
-}
-document.addEventListener('DOMContentLoaded', () => {
-    const notebooks = ["#daily-notebook", "#weekly-notebook", "#monthly-notebook", "#predicting-notebook", "#settings-notebook"];
-    const day = getDate();
-    const hideAllNotebooks = () => {
-        notebooks.forEach(notebook => {
-            const element = document.querySelector(notebook);
-            if (element) {
-                element.style.display = 'none';
-            }
-        });
-    };
-    hideAllNotebooks();
-    const dailyNotebook = document.querySelector("#daily-notebook");
-    if (dailyNotebook) {
-        dailyNotebook.style.display = 'block';
-    }
-    notebooks.forEach(notebook => {
-        const tag = notebook.replace("-notebook", "-tag");
-        const tagElement = document.querySelector(tag);
-        if (tagElement) {
-            tagElement.addEventListener('click', () => {
-                hideAllNotebooks();
-                const notebookElement = document.querySelector(notebook);
-                if (notebookElement) {
-                    notebookElement.style.display = 'block';
-                }
-                const activeElements = document.querySelectorAll(".tags img.active");
-                activeElements.forEach(element => {
-                    element.classList.remove("active");
-                });
-                tagElement.classList.add("active");
-            });
-        }
-    });
-});
 $(document).ready(function () {
     const contents = document.querySelectorAll('.content div');
     contents.forEach(content => {
