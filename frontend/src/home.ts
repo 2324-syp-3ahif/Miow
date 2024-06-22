@@ -54,6 +54,7 @@ function getDate() {
         })
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const contents = Array.from(document.querySelectorAll('.content div')) as HTMLElement[];
     contents.forEach(content => {
