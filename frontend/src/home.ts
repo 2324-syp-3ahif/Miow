@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         content.style.display = 'none';
     });
 
+
     const accountSettingsContent = document.getElementById('account-settings-content') as HTMLElement | null;
     if (accountSettingsContent) {
         accountSettingsContent.style.display = 'block';
