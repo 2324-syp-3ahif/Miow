@@ -5,6 +5,7 @@ import {Week} from "../interfaces/week";
 import {ReturnHelper} from "../interfaces/returnHelper";
 import {StatusCodes} from "http-status-codes";
 import {getMonthData} from "./evaluate_repo";
+import {MonthData} from "../interfaces/monthdata";
 
 // Returns the Entry by User and Date
 export function getEntryByUserAndDate(username: string, date: string): Entry | null {
@@ -112,6 +113,7 @@ function isValidDateFormat(dateString: string): boolean {
 
 
 
+
 export function getWeekEntries(username: string, date: string): any | null {
     const user: User | undefined = getUser(username);
     if (!user) {
@@ -122,17 +124,20 @@ export function getWeekEntries(username: string, date: string): any | null {
     const firstDayOfWeek = getFirstDayOfWeek(requestedDate);
     const lastDayOfWeek = getLastDayOfWeek(firstDayOfWeek);
 
-    const months = new Set([
-        `${firstDayOfWeek.getFullYear()}-${(firstDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}`,
-        `${lastDayOfWeek.getFullYear()}-${(lastDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}`
-    ]);
+    // Generate month data in 'yyyy-mm-dd' format
+    const firstMonthDate = `${firstDayOfWeek.getFullYear()}-${(firstDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-01`;
+    const lastMonthDate = `${lastDayOfWeek.getFullYear()}-${(lastDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-01`;
 
-    const monthDataArray = Array.from(months).map(month => getMonthData(username, month));
+    // Get month data for both months if the week spans two months
+    const monthDataArray = [getMonthData(username, firstMonthDate)];
+    if (firstMonthDate !== lastMonthDate) {
+        monthDataArray.push(getMonthData(username, lastMonthDate));
+    }
 
     const weekEntries: Entry[] = [];
-    monthDataArray.forEach(monthData => {
-        monthData?.values.forEach(dayData => {
-            const entryDate = `${monthData.Date}-${dayData.day.padStart(2, '0')}`;
+    monthDataArray.forEach((monthData) => {
+        monthData?.values.forEach((dayData: { day: string; mood: number; period: number }) => {
+            const entryDate = `${monthData.Date.slice(0, 7)}-${dayData.day.padStart(2, '0')}`;
             const entryDateObj = new Date(entryDate);
             if (entryDateObj >= firstDayOfWeek && entryDateObj <= lastDayOfWeek) {
                 weekEntries.push({

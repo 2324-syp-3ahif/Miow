@@ -294,10 +294,10 @@ function getMoodColorClass(mood:number) :string{
 
 function getPeriodValueFromSrc(src: string | null): number {
     switch (src) {
-        case 'images/light_red_drop.png':
-            return 3;
         case 'images/red_drop.png':
             return 1;
+        case 'images/light_red_drop.png':
+            return 3;
         case 'images/grey_drop.png':
             return 2;
         default:
@@ -468,9 +468,19 @@ function updateWeekUI(data:any) {
         if (trackPeriod) {
             element.style.color = "white";
         } else {
-            element.style.color = (period == 1) ? "red" : "white";
+            switch (period) {
+                case 1:
+                    element.style.color = "red";
+                    break;
+                case 3:
+                    element.style.color = "pink";
+                    break;
+                default:
+                    element.style.color = "white";
+            }
         }
     });
+
 
 }
 
