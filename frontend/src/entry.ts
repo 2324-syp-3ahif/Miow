@@ -1,9 +1,6 @@
 import {Entry} from "../interfaces/entry";
 
-// Add event listener to the submit button
-
  async function submit(): Promise<void> {
-    // Retrieve token and username from localStorage
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
 
@@ -12,12 +9,11 @@ import {Entry} from "../interfaces/entry";
         return;
     }
 
-    // Gather data from the form
-    const date = document.getElementById("date")?.textContent.trim(); // Assuming you have the date element
-    const mood = getSelectedMood(); // Implement getSelectedMood() to get the selected mood value
-    const period = getSelectedPeriod(); // Implement getSelectedPeriod() to get the selected period value
-    const emotions = getSelectedEmotions(); // Implement getSelectedEmotions() to get selected emotions
-    const weather = getSelectedWeather(); // Implement getSelectedWeather() to get selected weather
+    const date = document.getElementById("date")?.textContent.trim();
+    const mood = getSelectedMood();
+    const period = getSelectedPeriod();
+    const emotions = getSelectedEmotions();
+    const weather = getSelectedWeather();
     const sleep = (document.getElementById("sleep-input") as HTMLInputElement)?.value.trim();
     const water = (document.getElementById("water-input") as HTMLInputElement)?.value.trim();
     const text = (document.getElementById("note-content") as HTMLTextAreaElement)?.value.trim();
@@ -32,8 +28,6 @@ import {Entry} from "../interfaces/entry";
         water: parseInt(water || '0', 10),
         text
     };
-
-    // Construct headers with Authorization Bearer token
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -57,18 +51,13 @@ import {Entry} from "../interfaces/entry";
     }
 }
 
-
-
 function getSelectedMood() {
     const moodButtons = document.querySelectorAll('.mood .emotion_button');
-    let selectedMood = 5; // Default mood value
-
+    let selectedMood = 0;
     moodButtons.forEach(button => {
         if (button.classList.contains('selected')) {
             const buttonId = button.id;
-            let moodValue = 5; // Default value if no specific value is defined
-
-            // Assign specific mood values based on button id
+            let moodValue = 0;
             switch (buttonId) {
                 case 'very-good':
                     moodValue = 5;
@@ -86,31 +75,27 @@ function getSelectedMood() {
                     moodValue = 1;
                     break;
                 default:
-                    moodValue = 5; // Default to highest mood value if none matched
+                    moodValue = 0;
                     break;
             }
-
             if (moodValue < selectedMood) {
                 selectedMood = moodValue;
             }
         }
     });
-
     return selectedMood;
 }
 
 
 function getSelectedPeriod() {
     const periodButtons = document.querySelectorAll('.period button img');
-    let selectedPeriod = 2; // Default period value (grey drop)
-
+    let selectedPeriod = 2;
     periodButtons.forEach(imgButton => {
         if (imgButton.classList.contains('selected')) {
             const imgSrc = imgButton.getAttribute('src');
             selectedPeriod=1;
         }
     });
-
     return selectedPeriod;
 }
 
@@ -118,32 +103,26 @@ function getSelectedPeriod() {
 function getSelectedEmotions() {
     const emotionButtons = document.querySelectorAll('.emotion_button');
     const emotions: { [key: string]: boolean } = {};
-
     emotionButtons.forEach(button => {
-        const emotionName = button.textContent?.trim().toLowerCase(); // Assuming button text is emotion name
+        const emotionName = button.textContent?.trim().toLowerCase();
         if (emotionName) {
             emotions[emotionName] = button.classList.contains('selected');
         }
     });
-
     return emotions;
 }
 
 function getSelectedWeather() {
     const weatherButtons = document.querySelectorAll('.weather_button');
     const weather: { [key: string]: boolean } = {};
-
     weatherButtons.forEach(button => {
-        const weatherType = button.textContent?.trim().toLowerCase(); // Assuming button text is weather type
+        const weatherType = button.textContent?.trim().toLowerCase();
         if (weatherType) {
             weather[weatherType] = button.classList.contains('selected');
         }
     });
-
     return weather;
 }
-
-
 
  function updateDateDisplay() {
     let currentDate = new Date(new Date().toLocaleDateString('en-CA'));
@@ -154,7 +133,6 @@ function getSelectedWeather() {
     changeDay(0);
 }
 
-
 function changeDay(delta: number) {
     const currentDateHtml= document.getElementById('date');
     let currentDate= (currentDateHtml as HTMLSpanElement).textContent;
@@ -162,27 +140,17 @@ function changeDay(delta: number) {
 }
 
 function addDaysToDate(dateString: string, delta: number): string {
-    // Parse the dateString in yyyy-mm-dd format to a Date object
     const [year, month, day] = dateString.split('-').map(Number);
-    const date = new Date(year, month - 1, day); // month - 1 because month in Date constructor is 0-based
-
-    // Add delta days to the date
+    const date = new Date(year, month - 1, day);
     date.setDate(date.getDate() + delta);
-
-    // Format the date as yyyy-mm-dd
     const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-
     const currentDateHtml= document.getElementById('date');
      currentDateHtml.textContent=formattedDate;
     return formattedDate;
 }
 
-
-
-// Function to fetch entry by date
 async function fetchEntryByDate(date: string) {
     const token = localStorage.getItem('token');
-
     if (!token) {
         console.error('Token not found in localStorage');
         return;
@@ -196,14 +164,10 @@ async function fetchEntryByDate(date: string) {
                 'Authorization': `Bearer ${token}`
             }
         });
-
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
-
         const responseData = await response.json();
-
-        // Update UI with fetched data
         updateUI(responseData);
     } catch (error) {
         console.error('Error fetching entry by date:', error);
@@ -269,7 +233,6 @@ async function updateUI(data: any) {
     noteContent.value = data.text || '';
 }
 
-// Helper function to get mood value from button id
 function getMoodValueFromId(id: string): number {
     switch (id) {
         case 'very-good':
@@ -283,11 +246,10 @@ function getMoodValueFromId(id: string): number {
         case 'very-bad':
             return 1;
         default:
-            return 0; // Default value when no match
+            return 0;
     }
 }
 
-// Helper function to get period value from image src
 function getPeriodValueFromSrc(src: string | null): number {
     switch (src) {
         case 'images/light_red_drop.png':
@@ -297,10 +259,9 @@ function getPeriodValueFromSrc(src: string | null): number {
         case 'images/grey_drop.png':
             return 2;
         default:
-            return 0; // Default value when no match
+            return 0;
     }
 }
-
 
 function resetUI() {
     // Reset Mood Buttons
@@ -355,39 +316,27 @@ function toggleSelected(button: { classList: { toggle: (arg0: string) => void; }
 
 async function updateWeek(weeks_difference_from_today: number) {
     let currentMondayDate = document.getElementById("week_date_mon")?.textContent;
-
     if (!currentMondayDate || !isValidDateString(currentMondayDate)) {
         currentMondayDate = getCurrentWeekStartDate(); // You might need to implement this function
     }
-
     let parts = currentMondayDate.split(" ");
     let month = parts[1]; // "June"
     let day = parseInt(parts[2].replace(',', '')); // 23
     let year = parseInt(parts[3]); // 2024
-
     if(year<100){
         year+=2000;
     }
-
-
-// Get the month index (0-based)
     const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
-
-// Create a new date object
     const currentDate = new Date(year, monthIndex, day);
     const targetDate = new Date(currentDate);
     targetDate.setDate(targetDate.getDate() + weeks_difference_from_today * 7);
-
-
      let month2 = targetDate.getMonth()+1;
      day = targetDate.getDate();
      year = targetDate.getFullYear();
-
     let formattedDate = `${year}-${month2.toString().padStart(2, '0')}-${day}`;
-
-
     const url = `http://localhost:3000/entry/week?date=${formattedDate}`;
     const token = localStorage.getItem('token');
+
     try {
         const response = await fetch(url, {
             method: "GET",
@@ -396,11 +345,9 @@ async function updateWeek(weeks_difference_from_today: number) {
                 "Authorization": `Bearer ${token}`
             }
         });
-
         if (!response.ok) {
             throw new Error("Failed to fetch data");
         }
-
         const data = await response.json();
         updateWeekUI(data);
     } catch (error) {
@@ -420,8 +367,6 @@ function getCurrentWeekStartDate(): string {
     const startOfWeek = new Date(today.setDate(diff));
     return startOfWeek.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
 }
-
-
 
 function updateWeekUI(data: any) {
     document.getElementById("note-content").textContent = data.text;
@@ -446,37 +391,31 @@ function updateWeekUI(data: any) {
     } else {
         document.getElementById("week_date_mon").style.color = "white";
     }
-
     if (data.Days.Tuesday.Period == 1) {
         document.getElementById("week_date_tue").style.color = "red";
     } else {
         document.getElementById("week_date_tue").style.color = "white";
     }
-
     if (data.Days.Wednesday.Period == 1) {
         document.getElementById("week_date_wed").style.color = "red";
     } else {
         document.getElementById("week_date_wed").style.color = "white";
     }
-
     if (data.Days.Thursday.Period == 1) {
         document.getElementById("week_date_thu").style.color = "red";
     } else {
         document.getElementById("week_date_thu").style.color = "white";
     }
-
     if (data.Days.Friday.Period == 1) {
         document.getElementById("week_date_fri").style.color = "red";
     } else {
         document.getElementById("week_date_fri").style.color = "white";
     }
-
     if (data.Days.Saturday.Period == 1) {
         document.getElementById("week_date_sat").style.color = "red";
     } else {
         document.getElementById("week_date_sat").style.color = "white";
     }
-
     if (data.Days.Sunday.Period == 1) {
         document.getElementById("week_date_sun").style.color = "red";
     } else {
@@ -500,29 +439,21 @@ function addDays(dateString: string, days: number): string {
     return date.toISOString().split('T')[0];
 }
 async function submit_week() {
-    const entryData = (document.getElementById("note-content") as HTMLTextAreaElement).value.trim(); // Assuming the textarea id is "note-content"
+    const entryData = (document.getElementById("note-content") as HTMLTextAreaElement).value.trim();
     const weekStartDate = document.getElementById("week_date_mon")?.textContent;
-
     if (!entryData || !weekStartDate) {
         console.error("Textarea content or week start date is missing.");
         return;
     }
 
-    // Extracting the date part from "Monday Mar 17, 24"
     const parts = weekStartDate.split(" ");
     const month = parts[1];
-    const day = parts[2].replace(',', ''); // Remove comma if present
+    const day = parts[2].replace(',', '');
     const year = parts[3];
-
-    // Convert month name to numerical representation (assuming English short month names)
     const monthIndex = new Date(Date.parse(`${month} 1, 2000`)).getMonth() + 1;
-
-    // Constructing the date in "yyyy-mm-dd" format
     const formattedDate = `20${year}-${monthIndex.toString().padStart(2, '0')}-${day.padStart(2, '0')}`;
-
     const url = "http://localhost:3000/entry/week/";
     const token = localStorage.getItem('token');
-
     const requestBody = {
         date: formattedDate,
         entryData: entryData
@@ -544,9 +475,7 @@ async function submit_week() {
 
         const responseData = await response.json();
         console.log("Week data submitted successfully:", responseData);
-        // Optionally, update UI or handle success message
     } catch (error) {
         console.error("Error submitting week data:", error);
-        // Optionally, update UI to indicate error
     }
 }

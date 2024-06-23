@@ -380,6 +380,12 @@
         "startday": "06-17",
         "endday": "06_23",
         "text": "Sample weekly entry text"
+      },
+      {
+        "year": 2024,
+        "startday": "06-10",
+        "endday": "06_16",
+        "text": "this is a very stupid week"
       }
     ],
     "settings": {
