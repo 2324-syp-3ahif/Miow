@@ -6,31 +6,6 @@
 
     <link rel="stylesheet" href="../styles/home.css">
     <style>
-    .week_body {
-        font-family: Arial, sans-serif;
-        background-color: #fff7f7;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    .week_container {
-        display: flex;
-        width: 80%;
-        background-color: white;
-        border: 1px solid #f5f5f5;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .week_left-side, .week_right-side {
-        width: 50%;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-    .week_right-side {
-        background-color: #ffecec;
-    }
     .week_header {
         display: flex;
         align-items: center;
@@ -75,70 +50,92 @@
         padding: 5px 0;
     }</style>
 </head>
-<body class="week_body">
-<div class="week_container">
-    <div class="week_left-side">
-        <div class="week_header">
-            <div class="week_weekly-log-title">Weekly Log</div>
-        </div>
-        <div class="week_weekly-goals">
-            <h2>Weekly Goals:</h2>
-            <textarea id="weekly-goals"></textarea>
-        </div>
-        <div class="week_day-log">
-            <div class="week_day">
-                <div class="week_date">Mon</div>
-                <div class="week_task-list">
-                    <p id="monday-log"></p>
-                </div>
-            </div>
-            <div class="week_day">
-                <div class="week_date">Tue</div>
-                <div class="week_task-list">
-                    <p id="tuesday-log"></p>
-                </div>
-            </div>
-            <div class="week_day">
-                <div class="week_date">Wed</div>
-                <div class="week_task-list">
-                    <p id="wednesday-log"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="week_right-side">
-        <div class="week_day-log">
-            <div class="week_day">
-                <div class="week_date">Thu</div>
-                <div class="week_task-list">
-                    <p id="thursday-log"></p>
-                </div>
-            </div>
-            <div class="week_day">
-                <div class="week_date">Fri</div>
-                <div class="week_task-list">
-                    <p id="friday-log"></p>
-                </div>
-            </div>
-            <div class="week_day">
-                <div class="week_date">Sat</div>
-                <div class="week_task-list">
-                    <p id="saturday-log"></p>
-                </div>
-            </div>
-            <div class="week_day">
-                <div class="week_date">Sun</div>
-                <div class="week_task-list">
-                    <p id="sunday-log"></p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <button onclick="changeWeek(-1)" id="week_prev">Previous Week</button>
-            <button onclick="changeWeek(1)" id="week_next">Next Week</button>
-        </div>
-    </div>
+
+
+<body>
+
+<div class="tags">
+    <button>
+        <a href="../home.html"> <img id="daily-tag" src="../images/tag.png" alt=""></a>
+    </button>
+    <button>
+        <a href="../Notebook_sites/weekly-site.html"> <img id="weekly-tag" src="../images/tag.png" alt=""></a>
+    </button>
+    <button>
+        <a href="../Notebook_sites/monthly-site.html"> <img id="monthly-tag" src="../images/tag.png" alt=""></a>
+    </button>
+    <button>
+        <a href="../Notebook_sites/settings-site.html"> <img  id="settings-tag" src="../images/tag.png" alt=""></a>
+    </button>
 </div>
-<script src="script.js"></script>
+
+
+<div class="note-book">
+    <div class="inner-notebook">
+        <div id="daily-notebook">
+            <div class="left-site">
+                <div class="week_header">
+                    <div class="week_weekly-log-title">Weekly Log</div>
+                </div>
+                <div class="week_weekly-goals">
+                    <h2>Weekly Goals:</h2>
+                    <textarea id="weekly-goals"></textarea>
+                </div>
+                <div class="week_day-log">
+                    <div class="week_day">
+                        <div class="week_date">Mon</div>
+                        <div class="week_task-list">
+                            <p id="monday-log"></p>
+                        </div>
+                    </div>
+                    <div class="week_day">
+                        <div class="week_date">Tue</div>
+                        <div class="week_task-list">
+                            <p id="tuesday-log"></p>
+                        </div>
+                    </div>
+                    <div class="week_day">
+                        <div class="week_date">Wed</div>
+                        <div class="week_task-list">
+                            <p id="wednesday-log"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="week_day-log">
+                    <div class="week_day">
+                        <div class="week_date">Thu</div>
+                        <div class="week_task-list">
+                            <p id="thursday-log"></p>
+                        </div>
+                    </div>
+                    <div class="week_day">
+                        <div class="week_date">Fri</div>
+                        <div class="week_task-list">
+                            <p id="friday-log"></p>
+                        </div>
+                    </div>
+                    <div class="week_day">
+                        <div class="week_date">Sat</div>
+                        <div class="week_task-list">
+                            <p id="saturday-log"></p>
+                        </div>
+                    </div>
+                    <div class="week_day">
+                        <div class="week_date">Sun</div>
+                        <div class="week_task-list">
+                            <p id="sunday-log"></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button onclick="changeWeek(-1)" id="week_prev">Previous Week</button>
+                    <button onclick="changeWeek(1)" id="week_next">Next Week</button>
+                </div>
+            </div>
+    </div>
+        </div>
+</div>
 </body>
-</html>>
+

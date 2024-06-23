@@ -95,15 +95,10 @@ function isValidDateFormat(dateString: string): boolean {
 }
 
 
-//calculate the last day of the week
-function getLastDayOfWeek(date: Date): Date {
-    const lastDayOfWeek = new Date(date.getTime());
-    lastDayOfWeek.setDate(lastDayOfWeek.getDate() - lastDayOfWeek.getDay() + 6); // Adjust to Sunday
-    return lastDayOfWeek;
-}
+
 
 //  get the weekly entry for a specific user
-export function getWeekEntries(username: string, date: string): { year: number; startday: string; endday: string; text: string; entries: Entry[] } | null {
+export function getWeekEntries(username: string, date: string): any | null {
     const user: User | undefined = getUser(username);
     if (!user) {
         return null; // no user? insert megamind meme here
@@ -111,24 +106,59 @@ export function getWeekEntries(username: string, date: string): { year: number; 
     const weekEntries: Entry[] = user.entries.filter(entry => {
         const entryDate = new Date(entry.date);
         const requestedDate = new Date(date);
-        const firstDayOfWeek = new Date(requestedDate);
-        firstDayOfWeek.setDate(firstDayOfWeek.getDate() - firstDayOfWeek.getDay());
+        const firstDayOfWeek = getFirstDayOfWeek(requestedDate);
         const lastDayOfWeek = getLastDayOfWeek(firstDayOfWeek);
         return entryDate >= firstDayOfWeek && entryDate <= lastDayOfWeek;
     });
     const requestedDate = new Date(date);
-    const firstDayOfWeek = new Date(requestedDate);
-    firstDayOfWeek.setDate(firstDayOfWeek.getDate() - firstDayOfWeek.getDay());
+    const firstDayOfWeek = getFirstDayOfWeek(requestedDate);
     const lastDayOfWeek = getLastDayOfWeek(firstDayOfWeek);
     const week: Week | undefined = user.weeks.find(week => week.startday === date.slice(5));
     const text: string = week ? week.text : "";
-    return {
-        year: requestedDate.getFullYear(),
-        startday: date.slice(5),
-        endday: lastDayOfWeek.toISOString().slice(5, 10).replace('-', '_'),
-        text: text,
-        entries: weekEntries
+
+    const days: { [key: string]: { Mood: number, Period: number, text: string } } = {
+        Monday: { Mood: 0, Period: 0, text: "" },
+        Tuesday: { Mood: 0, Period: 0, text: "" },
+        Wednesday: { Mood: 0, Period: 0, text: "" },
+        Thursday: { Mood: 0, Period: 0, text: "" },
+        Friday: { Mood: 0, Period: 0, text: "" },
+        Saturday: { Mood: 0, Period: 0, text: "" },
+        Sunday: { Mood: 0, Period: 0, text: "" }
     };
+
+    weekEntries.forEach(entry => {
+        const entryDate = new Date(entry.date);
+        const dayName = entryDate.toLocaleDateString('en-US', { weekday: 'long' });
+        if (days[dayName]) {
+            days[dayName].Mood = entry.mood;
+            days[dayName].Period = entry.period;
+            days[dayName].text = entry.text;
+        }
+    });
+
+    return {
+        requestedDate: requestedDate.toISOString().split('T')[0],
+        weekStartDay: firstDayOfWeek.toISOString().split('T')[0],
+        weekEndDay: lastDayOfWeek.toISOString().split('T')[0],
+        text: text,
+        Days: days
+    };
+}
+
+// Calculate the first day of the week (Monday)
+function getFirstDayOfWeek(date: Date): Date {
+    const firstDayOfWeek = new Date(date);
+    const day = firstDayOfWeek.getDay();
+    const diff = (day <= 1) ? day - 1 : day - 1 + 7;
+    firstDayOfWeek.setDate(firstDayOfWeek.getDate() - diff);
+    return firstDayOfWeek;
+}
+
+// Calculate the last day of the week (Sunday)
+function getLastDayOfWeek(date: Date): Date {
+    const lastDayOfWeek = new Date(date);
+    lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6); // Adjust to Sunday
+    return lastDayOfWeek;
 }
 
 // add a weekly entry for a specific user and date

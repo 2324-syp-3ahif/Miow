@@ -51,6 +51,7 @@ button:hover {
   transform: translate(-50%, -50%);
   background-color: #ffb9c2;
   color: #603636;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.26);
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
