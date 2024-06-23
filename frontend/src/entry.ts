@@ -1,5 +1,25 @@
 import {Entry} from "../interfaces/entry";
 
+
+
+
+
+function getSelectedPeriod() {
+    const periodButtons = document.querySelectorAll('.period button img');
+    let selectedPeriod = 2;
+    let idx=0;
+    periodButtons.forEach((imgButton) => {
+
+        if (imgButton.classList.contains('selected')&& idx===2){
+            console.log("hilfe");
+            selectedPeriod=1;
+        }
+        idx++;
+    });
+    return selectedPeriod;
+}
+
+
  async function submit(): Promise<void> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
@@ -87,17 +107,7 @@ function getSelectedMood() {
 }
 
 
-function getSelectedPeriod() {
-    const periodButtons = document.querySelectorAll('.period button img');
-    let selectedPeriod = 2;
-    periodButtons.forEach(imgButton => {
-        if (imgButton.classList.contains('selected')) {
-            const imgSrc = imgButton.getAttribute('src');
-            selectedPeriod=1;
-        }
-    });
-    return selectedPeriod;
-}
+
 
 
 function getSelectedEmotions() {

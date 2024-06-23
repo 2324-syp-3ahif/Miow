@@ -27,7 +27,7 @@ export function getMonthData(username: string, date: string) {
             monthData.values[entryDay-1].period=entry.period
         }
     }
-    return userData.settings.trackPeriod && new Date(Date.now()) < new Date(date) ? calculatePeriodsForThisMonth(monthData, username, year, month, day): monthData;
+    return userData.settings.trackPeriod  ? calculatePeriodsForThisMonth(monthData, username, year, month, day): monthData;
 }
 //steps(teile und herrsche!!!~die griechen):
 //1. go back from the current date, dont count the current cycle and save the last 6 or so cycles ( not current one) in a MenstrualClycle[] object
@@ -62,7 +62,7 @@ function getLastFiveMonthsData(username: string, year: string, month: string, da
     }
     let cyclelength = 0;
     let i = -1;
-    for (let j = 150; j >0; j--) {
+    for (let j = 300; j >0; j--) {
         let helpday = currentDay.toString().length !== 1 ? currentDay.toString() : 0 + currentDay.toString();
         let helpmonth = currentMonth.toString().length !== 1 ? currentMonth.toString():'0'+currentMonth;
         const targetDate = `${currentYear}-${helpmonth}-${helpday}`;
