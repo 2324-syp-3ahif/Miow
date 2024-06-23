@@ -103,12 +103,12 @@ function getSelectedPeriod() {
 function getSelectedEmotions() {
     const emotionButtons = document.querySelectorAll('.emotion_button');
     const emotions: { [key: string]: boolean } = {};
-    emotionButtons.forEach(button => {
-        const emotionName = button.textContent?.trim().toLowerCase();
+    for (let i = 5; i < emotionButtons.length; i++) {
+        const emotionName = (emotionButtons[i] as HTMLImageElement).id?.trim().toLowerCase();
         if (emotionName) {
-            emotions[emotionName] = button.classList.contains('selected');
+            emotions[emotionName] = emotionButtons[i].classList.contains('selected');
         }
-    });
+    }
     return emotions;
 }
 
@@ -116,7 +116,7 @@ function getSelectedWeather() {
     const weatherButtons = document.querySelectorAll('.weather_button');
     const weather: { [key: string]: boolean } = {};
     weatherButtons.forEach(button => {
-        const weatherType = button.textContent?.trim().toLowerCase();
+        const weatherType = (button as HTMLImageElement).id?.trim().toLowerCase();
         if (weatherType) {
             weather[weatherType] = button.classList.contains('selected');
         }
