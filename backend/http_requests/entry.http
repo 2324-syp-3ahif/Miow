@@ -45,7 +45,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 ### Get week data
 GET http://localhost:3000/entry/week?date=2024-06-23 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxNDI2ODAuMDYyLCJpYXQiOjE3MTkxMzkwODB9.UTghdQbF2n_Iyzt0Wf9132xWYQun6F6faywyksdNXK4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxNzIxMDcuNTYsImlhdCI6MTcxOTE2ODUwN30.ttyw0oLs6R-wvDw_V0ITdcersWBw-Ipmy8P0yUrOeqU
 
 ### post week data
 POST http://localhost:3000/entry/week/

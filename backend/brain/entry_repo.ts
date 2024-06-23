@@ -4,6 +4,7 @@ import {getUser, updateUser} from "./user_repo";
 import {Week} from "../interfaces/week";
 import {ReturnHelper} from "../interfaces/returnHelper";
 import {StatusCodes} from "http-status-codes";
+import {getMonthData} from "./evaluate_repo";
 
 // Returns the Entry by User and Date
 export function getEntryByUserAndDate(username: string, date: string): Entry | null {
@@ -11,12 +12,26 @@ export function getEntryByUserAndDate(username: string, date: string): Entry | n
     if (!user) {
         return null;
     }
-    var entry: Entry | undefined = user.entries.find((entry) => entry.date === date);
-    if(entry==undefined){
-        entry= BaseEntry;
+
+    const entry: Entry | undefined = user.entries.find((entry) => entry.date === date);
+    const monthData = getMonthData(username, date);
+
+    // Extract the day from the date
+    const day = date.split('-')[2];  // Assumes date is in 'YYYY-MM-DD' format
+
+    // Find the period for the specific day
+    const dayData = monthData?.values.find(d => d.day === day);
+    const period = dayData ? dayData.period : 2;  // Default period if dayData is not found
+
+    if (entry === undefined) {
+        // If entry is not found, create a new entry with the default values
+        return { ...BaseEntry, date, period };
+    } else {
+        // If entry is found, update the period
+        return { ...entry, period };
     }
-    return entry ? entry : null;
 }
+
 
 
 // Function to add an entry for a specific user
@@ -97,22 +112,39 @@ function isValidDateFormat(dateString: string): boolean {
 
 
 
-//  get the weekly entry for a specific user
 export function getWeekEntries(username: string, date: string): any | null {
     const user: User | undefined = getUser(username);
     if (!user) {
         return null; // no user? insert megamind meme here
     }
-    const weekEntries: Entry[] = user.entries.filter(entry => {
-        const entryDate = new Date(entry.date);
-        const requestedDate = new Date(date);
-        const firstDayOfWeek = getFirstDayOfWeek(requestedDate);
-        const lastDayOfWeek = getLastDayOfWeek(firstDayOfWeek);
-        return entryDate >= firstDayOfWeek && entryDate <= lastDayOfWeek;
-    });
+
     const requestedDate = new Date(date);
     const firstDayOfWeek = getFirstDayOfWeek(requestedDate);
     const lastDayOfWeek = getLastDayOfWeek(firstDayOfWeek);
+
+    const months = new Set([
+        `${firstDayOfWeek.getFullYear()}-${(firstDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}`,
+        `${lastDayOfWeek.getFullYear()}-${(lastDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}`
+    ]);
+
+    const monthDataArray = Array.from(months).map(month => getMonthData(username, month));
+
+    const weekEntries: Entry[] = [];
+    monthDataArray.forEach(monthData => {
+        monthData?.values.forEach(dayData => {
+            const entryDate = `${monthData.Date}-${dayData.day.padStart(2, '0')}`;
+            const entryDateObj = new Date(entryDate);
+            if (entryDateObj >= firstDayOfWeek && entryDateObj <= lastDayOfWeek) {
+                weekEntries.push({
+                    ...BaseEntry, // Use BaseEntry to ensure all fields are included
+                    date: entryDate,
+                    mood: dayData.mood,
+                    period: dayData.period
+                });
+            }
+        });
+    });
+
     const week: Week | undefined = user.weeks.find(week => week.startday === date.slice(5));
     const text: string = week ? week.text : "";
 
@@ -126,7 +158,7 @@ export function getWeekEntries(username: string, date: string): any | null {
         Sunday: { Mood: 0, Period: 0, text: "" }
     };
 
-    weekEntries.forEach(entry => {
+    weekEntries.forEach((entry: Entry) => {
         const entryDate = new Date(entry.date);
         const dayName = entryDate.toLocaleDateString('en-US', { weekday: 'long' });
         if (days[dayName]) {
@@ -137,9 +169,9 @@ export function getWeekEntries(username: string, date: string): any | null {
     });
 
     return {
-        requestedDate: requestedDate.getFullYear()+"-"+(requestedDate.getMonth()+1).toString().padStart(2, '0')+"-"+requestedDate.getDate(),
-        weekStartDay: firstDayOfWeek.getFullYear()+"-"+(firstDayOfWeek.getMonth()+1).toString().padStart(2, '0')+"-"+firstDayOfWeek.getDate(),
-        weekEndDay: lastDayOfWeek.getFullYear()+"-"+(lastDayOfWeek.getMonth()+1).toString().padStart(2, '0')+"-"+lastDayOfWeek.getDate(),
+        requestedDate: `${requestedDate.getFullYear()}-${(requestedDate.getMonth() + 1).toString().padStart(2, '0')}-${requestedDate.getDate()}`,
+        weekStartDay: `${firstDayOfWeek.getFullYear()}-${(firstDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-${firstDayOfWeek.getDate()}`,
+        weekEndDay: `${lastDayOfWeek.getFullYear()}-${(lastDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-${lastDayOfWeek.getDate()}`,
         text: text,
         Days: days
     };

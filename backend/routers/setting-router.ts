@@ -30,5 +30,5 @@ settingsRouter.get("", isAuthenticated, (req, res) => {
         return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
     }
     const u = user.settings;
-    return res.status(StatusCodes.OK).json({ u});
+    return res.status(StatusCodes.OK).json({u});
 });

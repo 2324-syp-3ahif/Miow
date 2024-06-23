@@ -1,7 +1,7 @@
 ###
 PUT http://localhost:3000/settings
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzE5MTUwNzc4LjMyNiwiaWF0IjoxNzE5MTQ3MTc4fQ.Uzu3hu8coHjX_q3KtNYjqoL3AI2lXSHCI3hdBq3I7EI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxNzAyMTguNjQ3LCJpYXQiOjE3MTkxNjY2MTh9.CUl91OaWXxYkUlq0uHPBBh6TC_eYWyqjPYgGnVXDp1I
 
 {
   "themeNR": 2,
@@ -10,4 +10,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 
 ###
 GET http://localhost:3000/settings
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzE5MTUwNzc4LjMyNiwiaWF0IjoxNzE5MTQ3MTc4fQ.Uzu3hu8coHjX_q3KtNYjqoL3AI2lXSHCI3hdBq3I7EI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxNzAyMTguNjQ3LCJpYXQiOjE3MTkxNjY2MTh9.CUl91OaWXxYkUlq0uHPBBh6TC_eYWyqjPYgGnVXDp1I
