@@ -345,3 +345,166 @@ function toggleSelected(button: { classList: { toggle: (arg0: string) => void; }
     button.classList.toggle("selected");
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//week stuff
+
+async function updateWeek(weeks_difference_from_today: number) {
+    // Get the currently displayed Monday date
+    let currentMondayDate = document.getElementById("week_date_mon")?.textContent;
+
+    // If currentMondayDate is empty or not in expected format, default to current week's start day
+    if (!currentMondayDate || !isValidDateString(currentMondayDate)) {
+        currentMondayDate = getCurrentWeekStartDate();
+    }
+
+    // Extract the date parts from the string
+    const parts = currentMondayDate.split(" ");
+    const month = parts[1];
+    const day = parts[2].replace(',', '');
+    const year = parts[3];
+
+    // Convert month name to numerical representation (assuming English short month names)
+    const monthIndex = new Date(Date.parse(`${month} 1, 2000`)).getMonth() + 1;
+
+    // Create a Date object from extracted parts
+    const currentDate = new Date(`${year}-${monthIndex}-${day}`);
+
+    // Calculate the target date by adding/subtracting weeks
+    const targetDate = new Date(currentDate);
+    targetDate.setDate(targetDate.getDate() + weeks_difference_from_today * 7);
+
+    // Format the target date to match the API endpoint's expected format
+    const formattedDate = targetDate.toISOString().split('T')[0];
+
+    const url = `http://localhost:3000/entry/week?date=${formattedDate}`;
+    const token = localStorage.getItem('token');
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch data");
+        }
+
+        const data = await response.json();
+        updateWeekUI(data);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+function isValidDateString(dateString: string): boolean {
+    // Check if dateString matches expected format "Monday Mar 11, 24"
+    const pattern = /^[A-Za-z]+ (\w{3}) (\d{1,2}), (\d{2,4})$/;
+    return pattern.test(dateString);
+}
+
+function getCurrentWeekStartDate(): string {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+    const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); // adjust when day is Sunday
+    const startOfWeek = new Date(today.setDate(diff));
+    return startOfWeek.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+
+
+function updateWeekUI(data: any) {
+    // Update the UI elements with data received from the API
+    document.getElementById("note-content").textContent = data.text;
+    document.getElementById("monday-log").textContent = data.Days.Monday.text;
+    document.getElementById("tuesday-log").textContent = data.Days.Tuesday.text;
+    document.getElementById("wednesday-log").textContent = data.Days.Wednesday.text;
+    document.getElementById("thursday-log").textContent = data.Days.Thursday.text;
+    document.getElementById("friday-log").textContent = data.Days.Friday.text;
+    document.getElementById("saturday-log").textContent = data.Days.Saturday.text;
+    document.getElementById("sunday-log").textContent = data.Days.Sunday.text;
+
+    // Update the dates in the week_date elements
+    document.getElementById("week_date_mon").textContent ="Monday "+ formatDate(data.weekStartDay); // Monday
+    document.getElementById("week_date_tue").textContent ="Tuesday "+ formatDate(addDays(data.weekStartDay, 1)); // Tuesday
+    document.getElementById("week_date_wed").textContent ="Wednesday "+ formatDate(addDays(data.weekStartDay, 2)); // Wednesday
+    document.getElementById("week_date_thu").textContent ="Thursday "+ formatDate(addDays(data.weekStartDay, 3)); // Thursday
+    document.getElementById("week_date_fri").textContent ="Friday "+ formatDate(addDays(data.weekStartDay, 4)); // Friday
+    document.getElementById("week_date_sat").textContent ="Saturday "+ formatDate(addDays(data.weekStartDay, 5)); // Saturday
+    document.getElementById("week_date_sun").textContent ="Sunday "+ formatDate(data.weekEndDay); // Sunday
+    document.getElementById("weekly_log").textContent="Weekly Log "+ formatDate(data.weekStartDay) +"  -  "+ formatDate( data.weekEndDay);
+
+    // Update the dates in the week_date elements and apply conditional styling
+    if (data.Days.Monday.Period == 1) {
+        document.getElementById("week_date_mon").style.color = "#FF7674";
+    } else {
+        document.getElementById("week_date_mon").style.color = "white";
+    }
+
+    if (data.Days.Tuesday.Period == 1) {
+        document.getElementById("week_date_tue").style.color = "red";
+    } else {
+        document.getElementById("week_date_tue").style.color = "white";
+    }
+
+    if (data.Days.Wednesday.Period == 1) {
+        document.getElementById("week_date_wed").style.color = "red";
+    } else {
+        document.getElementById("week_date_wed").style.color = "white";
+    }
+
+    if (data.Days.Thursday.Period == 1) {
+        document.getElementById("week_date_thu").style.color = "red";
+    } else {
+        document.getElementById("week_date_thu").style.color = "white";
+    }
+
+    if (data.Days.Friday.Period == 1) {
+        document.getElementById("week_date_fri").style.color = "red";
+    } else {
+        document.getElementById("week_date_fri").style.color = "white";
+    }
+
+    if (data.Days.Saturday.Period == 1) {
+        document.getElementById("week_date_sat").style.color = "red";
+    } else {
+        document.getElementById("week_date_sat").style.color = "white";
+    }
+
+    if (data.Days.Sunday.Period == 1) {
+        document.getElementById("week_date_sun").style.color = "red";
+    } else {
+        document.getElementById("week_date_sun").style.color = "white";
+    }
+}
+
+function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return `${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' ,year:'2-digit'})}`;
+}
+
+function addDays(dateString: string, days: number): string {
+    const date = new Date(dateString);
+    date.setDate(date.getDate() + days);
+    return date.toISOString().split('T')[0];
+}

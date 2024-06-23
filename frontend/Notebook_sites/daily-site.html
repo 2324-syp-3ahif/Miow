@@ -95,12 +95,14 @@
 <div id="date-test"></div>
 <div id="entry"></div>
 <script>
+    import {changeDay} from "../src/entry";
+
     let currentDate = new Date(new Date().toLocaleDateString('en-CA'));
     const dateElement = document.getElementById('date');
     if (dateElement) {
         dateElement.textContent = currentDate.toISOString().split('T')[0];
     }
-
+    changeDay(0);
 </script>
 </body>
 </html>

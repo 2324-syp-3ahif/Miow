@@ -58,8 +58,8 @@ function getDate() {
         dateElement.textContent = data.date;
     });
 }
-$(document).ready(function () {
-    const contents = document.querySelectorAll('.content div');
+document.addEventListener('DOMContentLoaded', function () {
+    const contents = Array.from(document.querySelectorAll('.content div'));
     contents.forEach(content => {
         content.style.display = 'none';
     });
@@ -67,20 +67,23 @@ $(document).ready(function () {
     if (accountSettingsContent) {
         accountSettingsContent.style.display = 'block';
     }
-    $('.opt-button').click(function () {
-        contents.forEach(content => {
-            content.style.display = 'none';
-        });
-        var buttonId = $(this).attr('id');
-        const content = document.getElementById(buttonId + '-content');
-        if (content) {
-            if (content.style.display === 'block') {
+    const optButtons = Array.from(document.querySelectorAll('.opt-button'));
+    optButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            contents.forEach(content => {
                 content.style.display = 'none';
+            });
+            const buttonId = this.getAttribute('id');
+            const content = document.getElementById(buttonId + '-content');
+            if (content) {
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                }
+                else {
+                    content.style.display = 'block';
+                }
             }
-            else {
-                content.style.display = 'block';
-            }
-        }
+        });
     });
 });
 function fetchRestEndpoint(route, method, data) {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Weekly View</title>
     <link rel="stylesheet" href="../styles/home.css">
+    <script src="../src/entry.js"></script>
 </head>
 <body>
 <div class="tags">
@@ -25,26 +26,26 @@
         <div id="daily-notebook">
             <div class="left-site">
                 <div id="Header">
-                    <h1>Weekly Log</h1>
+                    <h1 id="weekly_log">Weekly Log</h1>
                 </div>
                 <div class="daily-entry">
                     <textarea id="note-content" cols="30" rows="10" placeholder="Weekly Goals:" required></textarea>
                 </div>
                 <div class="week_day-log">
                     <div class="week_day">
-                        <div class="week_date">Mon</div>
+                        <div id="week_date_mon" class="week_date">Mon</div>
                         <div class="week_task-list">
                             <p id="monday-log"></p>
                         </div>
                     </div>
                     <div class="week_day">
-                        <div class="week_date">Tue</div>
+                        <div id="week_date_tue" class="week_date">Tue</div>
                         <div class="week_task-list">
                             <p id="tuesday-log"></p>
                         </div>
                     </div>
                     <div class="week_day">
-                        <div class="week_date">Wed</div>
+                        <div id="week_date_wed"  class="week_date">Wed</div>
                         <div class="week_task-list">
                             <p id="wednesday-log"></p>
                         </div>
@@ -54,25 +55,25 @@
             <div class="right-side">
                 <div class="week_day-log">
                     <div class="week_day">
-                        <div class="week_date">Thu</div>
+                        <div id="week_date_thu"  class="week_date">Thu</div>
                         <div class="week_task-list">
                             <p id="thursday-log"></p>
                         </div>
                     </div>
                     <div class="week_day">
-                        <div class="week_date">Fri</div>
+                        <div id="week_date_fri" class="week_date">Fri</div>
                         <div class="week_task-list">
                             <p id="friday-log"></p>
                         </div>
                     </div>
                     <div class="week_day">
-                        <div class="week_date">Sat</div>
+                        <div id="week_date_sat"  class="week_date">Sat</div>
                         <div class="week_task-list">
                             <p id="saturday-log"></p>
                         </div>
                     </div>
                     <div class="week_day">
-                        <div class="week_date">Sun</div>
+                        <div id="week_date_sun"  class="week_date">Sun</div>
                         <div class="week_task-list">
                             <p id="sunday-log"></p>
                         </div>
@@ -86,5 +87,8 @@
         </div>
     </div>
 </div>
+<script>
+    updateWeek(0);
+</script>
 </body>
 

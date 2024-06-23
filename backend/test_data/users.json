@@ -34,7 +34,7 @@
       {
         "date": "2024-03-25",
         "mood": 3,
-        "period": 2,
+        "period": 1,
         "emotions": {
           "exited": false,
           "relaxed": true,
@@ -236,6 +236,90 @@
           "relaxed": false,
           "proud": false,
           "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": true,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 8,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-03-26",
+        "mood": 1,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": true,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": true,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": "test2"
+      },
+      {
+        "date": "2024-03-27",
+        "mood": 5,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": false,
+          "happy": false,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": false,
+          "windy": false,
+          "cloudy": false,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-06-23",
+        "mood": 5,
+        "period": 2,
+        "emotions": {
+          "excited": false,
+          "relaxed": false,
+          "proud": false,
+          "hopeful": true,
           "happy": false,
           "lonely": false,
           "emo": false,
