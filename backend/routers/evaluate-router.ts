@@ -6,7 +6,7 @@ import {StatusCodes} from "http-status-codes";
 export const evaluateRouter = express.Router();
 
 // GET retrieve month data from the day given
-evaluateRouter.get("", isAuthenticated, (req, res) => {
+evaluateRouter.get("/", isAuthenticated, (req, res) => {
     const  date  = req.body.date;
     const currentUser = req.user.username;
     const monthData = getMonthData(currentUser, date);

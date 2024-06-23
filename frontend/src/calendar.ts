@@ -54,9 +54,14 @@ class Calendar {
             const dayElement = this.createDayElement(i.toString());
 
             const date = `${this.year}-${String(this.month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-            const entryData = await fetchEntryByDate(date);
+            const entryData = await fetchEntryByDateCalendar(date);
             if (entryData && entryData.mood) {
                 dayElement.classList.add(`mood-${entryData.mood}`);
+            }
+            const periodData = await fetchPeriodByDateCalendar();
+            if (periodData && periodData.period) {
+                console.log(periodData.period);
+                dayElement.classList.add(`period-${periodData.period}`);
             }
 
             if (isCurrentMonth && i === today.getDate()) {
@@ -88,7 +93,7 @@ class Calendar {
 
 }
 
-async function fetchEntryByDate(date: string) {
+async function fetchEntryByDateCalendar(date: string) {
     const token = localStorage.getItem('token');
     if (!token) {
         console.error('Token not found in localStorage');
@@ -110,6 +115,31 @@ async function fetchEntryByDate(date: string) {
         return responseData;
     } catch (error) {
         console.error('Error fetching entry by date:', error);
+    }
+}
+
+async function fetchPeriodByDateCalendar() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.error('Token not found in localStorage');
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3000/evaluate`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const responseData = await response.json();
+        return responseData;
+    } catch (error) {
+        console.error('Error fetching period by date:', error);
     }
 }
 
