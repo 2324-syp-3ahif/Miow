@@ -74,11 +74,39 @@ button:hover{
     color: $font_color;
 
 
-    box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
 
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+
+    .daily-entry{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        font-size: $font_size;
+        background-color: $input_color;
+        border-radius: 15px;
+        margin: 30px 0;
+
+
+        box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
+
+        textarea{
+            width: 100%;
+            height: 150px;
+            border: none;
+            background-color: $input_color;
+            font-size: 23px;
+            font-family: $main_font;
+            resize: none;
+            outline: none;
+            color: $font_color;
+            border-radius: 15px;
+
+        }
+    }
 
     .inner-notebook
     {
@@ -107,12 +135,11 @@ button:hover{
 
             .mood{
                 display: flex;
-                justify-content: center;
                 align-items: center;
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 10px;
+                border-radius: 15px;
                 margin: 30px 0;
                 box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
                 p{
@@ -176,7 +203,7 @@ button:hover{
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 10px;
+                border-radius: 15px;
                 margin: 30px 0;
 
                 #predicting{
@@ -209,7 +236,7 @@ button:hover{
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 20px;
+                border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
 
@@ -232,7 +259,7 @@ button:hover{
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 20px;
+                border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
 
@@ -245,7 +272,7 @@ button:hover{
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 10px;
+                border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
 
@@ -258,7 +285,7 @@ button:hover{
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 10px;
+                border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
 
@@ -272,7 +299,7 @@ button:hover{
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 10px;
+                border-radius: 15px;
                 margin: 30px 0;
 
                 box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -285,7 +312,7 @@ button:hover{
                 padding: 20px;
                 font-size: $font_size;
                 background-color: $input_color;
-                border-radius: 10px;
+                border-radius: 15px;
                 margin: 30px 0;
 
 
@@ -301,7 +328,7 @@ button:hover{
                     resize: none;
                     outline: none;
                     color: $font_color;
-                    border-radius: 5px;
+                    border-radius: 15px;
 
                 }
             }
@@ -477,6 +504,52 @@ button:hover{
     }
 
 
+    .week_weekly-goals {
+        margin-top: 20px;
+
+        border-radius: 15px;
+    }
+    .week_weekly-goals h2 {
+        font-size: 20px;
+        color: #ff6b6b;
+    }
+    .week_weekly-goals textarea {
+        width: 100%;
+        height: 150px;
+        border: none;
+        background-color: $input_color;
+        font-size: 25px;
+        font-family: $main_font;
+        resize: none;
+        outline: none;
+        color: $font_color;
+        margin:30px;
+    }
+    .week_day-log {
+        margin-top: 20px;
+    }
+    .week_day {
+        background-color: #ffd4d4;
+        border-radius: 15px;
+        box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
+        margin: 20px 0 20px 0;
+    }
+    .week_date {
+        font-size: 20px;
+        color: #fff;
+        padding:10px 10px 0 10px;
+    }
+    .week_task-list {
+        margin-top: 5px;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 0 0 15px 15px;
+        height: 90px;
+    }
+    .week_task-list p {
+        margin: 0;
+        padding: 5px;
+    }
     #weekly-notebook{
 
     }

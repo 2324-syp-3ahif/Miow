@@ -3,60 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Weekly View</title>
-
     <link rel="stylesheet" href="../styles/home.css">
-    <style>
-    .week_header {
-        display: flex;
-        align-items: center;
-    }
-    .week_weekly-log-title {
-        font-size: 24px;
-        font-weight: bold;
-    }
-    .week_weekly-goals {
-        margin-top: 20px;
-    }
-    .week_weekly-goals h2 {
-        font-size: 20px;
-        color: #ff6b6b;
-    }
-    .week_weekly-goals textarea {
-        width: 97%;
-        height: 150px;
-        border: 1px solid #ffd4d4;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-    }
-    .week_day-log {
-        margin-top: 20px;
-    }
-    .week_day {
-        background-color: #ffd4d4;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-    .week_date {
-        font-size: 18px;
-        color: #fff;
-        padding:10px;
-    }
-    .week_task-list {
-        margin-top: 10px;
-        background-color: #fff;
-        width: 100%;
-        border-radius: 0 0 5px 5px;
-    }
-    .week_task-list p {
-        margin: 0;
-        padding: 5px;
-    }</style>
 </head>
-
-
 <body>
-
 <div class="tags">
     <button>
         <a href="../home.html"> <img id="daily-tag" src="../images/tag.png" alt=""></a>
@@ -71,18 +20,15 @@
         <a href="../Notebook_sites/settings-site.html"> <img  id="settings-tag" src="../images/tag.png" alt=""></a>
     </button>
 </div>
-
-
 <div class="note-book">
     <div class="inner-notebook">
         <div id="daily-notebook">
             <div class="left-site">
                 <div id="Header">
-                    <h1>Daily Log</h1>
+                    <h1>Weekly Log</h1>
                 </div>
-                <div class="week_weekly-goals">
-                    <h2>Weekly Goals:</h2>
-                    <textarea id="weekly-goals"></textarea>
+                <div class="daily-entry">
+                    <textarea id="note-content" cols="30" rows="10" placeholder="Weekly Goals:" required></textarea>
                 </div>
                 <div class="week_day-log">
                     <div class="week_day">
@@ -137,8 +83,8 @@
                     <button onclick="changeWeek(1)" id="week_next">Next Week</button>
                 </div>
             </div>
-    </div>
         </div>
+    </div>
 </div>
 </body>
 

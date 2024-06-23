@@ -51,11 +51,33 @@ button:hover {
   transform: translate(-50%, -50%);
   background-color: #ffb9c2;
   color: #603636;
-  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.26);
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.note-book .daily-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 2.5em;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 30px 0;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+}
+.note-book .daily-entry textarea {
+  width: 100%;
+  height: 150px;
+  border: none;
+  background-color: #fff;
+  font-size: 23px;
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  outline: none;
+  color: #603636;
+  border-radius: 15px;
 }
 .note-book .inner-notebook {
   z-index: 1;
@@ -76,12 +98,11 @@ button:hover {
 }
 .note-book #daily-notebook .left-site .mood {
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
@@ -132,7 +153,7 @@ button:hover {
   padding: 20px;
   font-size: 2.5em;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 30px 0;
 }
 .note-book #daily-notebook .left-site .period #predicting {
@@ -158,7 +179,7 @@ button:hover {
   padding: 20px;
   font-size: 2.5em;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 15px;
   margin: 30px 0;
   align-items: center;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -176,7 +197,7 @@ button:hover {
   padding: 20px;
   font-size: 2.5em;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 15px;
   margin: 30px 0;
   align-items: center;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -187,7 +208,7 @@ button:hover {
   padding: 20px;
   font-size: 2.5em;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 30px 0;
   align-items: center;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -198,7 +219,7 @@ button:hover {
   padding: 20px;
   font-size: 2.5em;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 30px 0;
   align-items: center;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -210,7 +231,7 @@ button:hover {
   padding: 20px;
   font-size: 2.5em;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
@@ -221,7 +242,7 @@ button:hover {
   padding: 20px;
   font-size: 2.5em;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
@@ -235,7 +256,7 @@ button:hover {
   resize: none;
   outline: none;
   color: #603636;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 .note-book #daily-notebook .emotion_button {
   width: 80px;
@@ -370,6 +391,51 @@ button:hover {
 .note-book #monthly-notebook .calendar-dates li:not(.active):hover::before {
   background: #e4e1e1;
 }
+.note-book .week_weekly-goals {
+  margin-top: 20px;
+  border-radius: 15px;
+}
+.note-book .week_weekly-goals h2 {
+  font-size: 20px;
+  color: #ff6b6b;
+}
+.note-book .week_weekly-goals textarea {
+  width: 100%;
+  height: 150px;
+  border: none;
+  background-color: #fff;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  outline: none;
+  color: #603636;
+  margin: 30px;
+}
+.note-book .week_day-log {
+  margin-top: 20px;
+}
+.note-book .week_day {
+  background-color: #ffd4d4;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  margin: 20px 0 20px 0;
+}
+.note-book .week_date {
+  font-size: 20px;
+  color: #fff;
+  padding: 10px 10px 0 10px;
+}
+.note-book .week_task-list {
+  margin-top: 5px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 0 0 15px 15px;
+  height: 90px;
+}
+.note-book .week_task-list p {
+  margin: 0;
+  padding: 5px;
+}
 .note-book #settings-notebook .options {
   display: flex;
   flex-direction: column;
@@ -395,4 +461,3 @@ button:hover {
   position: absolute;
   left: 50%;
 }
- 
