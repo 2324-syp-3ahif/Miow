@@ -9,7 +9,7 @@ $font_size: 2.5em;
 
 $daily_tag: #FF7373;
 $weekly_tag: #FF9696;
-$monthly_tag: #FFB6B6;
+$monthly_tag: #ffe5e5;
 $yearly_tag: #FFCBCB;
 $predicting_tag: #FFE4E4;
 $settings_tag: #FFF1F1;
@@ -157,7 +157,9 @@ button:hover{
                     margin: 0 auto;
                     position: relative;
                     box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
                 }
+
 
                 #very-good{
 
@@ -323,13 +325,23 @@ button:hover{
             height: 80px;
             border-radius: 50px;
             border: none;
-            margin: 5px;
+            margin-left: 15px;
+            margin-bottom: 10px;
             display: inline-block;
             text-align: center;
             line-height: 50px;
             background-color: $monthly_tag ;
             font-size: 20px;
             font-color: $font_color;
+
+            img{
+
+                width: 100px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
         }
 
         .weather_button {

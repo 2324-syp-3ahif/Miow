@@ -255,13 +255,21 @@ button:hover {
   height: 80px;
   border-radius: 50px;
   border: none;
-  margin: 5px;
+  margin-left: 15px;
+  margin-bottom: 10px;
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #FFB6B6;
+  background-color: #ffe5e5;
   font-size: 20px;
   font-color: #603636;
+}
+.note-book #daily-notebook .emotion_button img {
+  width: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .note-book #daily-notebook .weather_button {
   width: 80px;
@@ -272,7 +280,7 @@ button:hover {
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #FFB6B6;
+  background-color: #ffe5e5;
   font-size: 20px;
   font-color: #603636;
 }
