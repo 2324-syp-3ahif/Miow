@@ -57,7 +57,7 @@ function getSelectedMood() {
     moodButtons.forEach(button => {
         if (button.classList.contains('selected')) {
             const buttonId = button.id;
-            let moodValue = 0;
+            let moodValue;
             switch (buttonId) {
                 case 'very-good':
                     moodValue = 5;
@@ -78,7 +78,7 @@ function getSelectedMood() {
                     moodValue = 0;
                     break;
             }
-            if (moodValue < selectedMood) {
+            if (moodValue > selectedMood) {
                 selectedMood = moodValue;
             }
         }

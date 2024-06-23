@@ -443,9 +443,37 @@
     }
   },
   {
-    "username": "admin",
+    "username": "adminn",
     "password": "$2b$08$HPkOV.31PSCfmKohUKMa9OAEPfwE5EAFVGJ5TLfb/8PSNQO06uZtu",
     "entries": [
+      {
+        "date": "2024-07-03",
+        "mood": 0,
+        "period": 2,
+        "emotions": {
+          "excited": true,
+          "relaxed": true,
+          "proud": false,
+          "hopeful": false,
+          "happy": true,
+          "lonely": false,
+          "emo": false,
+          "anxious": false,
+          "sad": false,
+          "angry": false,
+          "tired": false
+        },
+        "weather": {
+          "sunny": true,
+          "windy": false,
+          "cloudy": true,
+          "snowy": false,
+          "rainy": false
+        },
+        "sleep": 0,
+        "water": 2,
+        "text": ""
+      },
       {
         "date": "2024-06-23",
         "mood": 0,
@@ -477,7 +505,7 @@
     ],
     "weeks": [],
     "settings": {
-      "themeNR": 1,
+      "themeNR": "1",
       "trackPeriod": true
     }
   }

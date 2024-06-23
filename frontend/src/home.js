@@ -31,6 +31,64 @@ function loadSettings() {
         track.checked = false;
     }
 }
+function submitSettings() {
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log("UWU");
+        const track = document.getElementById('trackPeriod');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const token = localStorage.getItem('token');
+        const _newUsername = usernameInput.value;
+        let trackvalue = false;
+        if (track.value == "on") {
+            trackvalue = true;
+        }
+        if ((track.checked && !localStorage.getItem('trackPeriod')) || !track.checked && localStorage.getItem('trackPeriod')) {
+            const requestbody = {
+                themeNR: localStorage.getItem('themeNR'),
+                trackPeriod: trackvalue
+            };
+            try {
+                const response = yield fetch("http://localhost:3000/settings", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(requestbody)
+                });
+            }
+            catch (error) {
+                console.error("Error submitting week data:", error);
+            }
+        }
+        if (track.checked) {
+            localStorage.setItem('trackPeriod', 'true');
+        }
+        else {
+            localStorage.removeItem('trackPeriod');
+        }
+        if (localStorage.getItem('username') !== usernameInput.value) {
+            const requestbody = {
+                newUsername: _newUsername
+            };
+            try {
+                const response = yield fetch("http://localhost:3000/auth/change-username", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(requestbody)
+                });
+                logout();
+            }
+            catch (error) {
+                console.error("Error submitting week data:", error);
+            }
+        }
+    });
+}
 function deleteAccount() {
     return __awaiter(this, void 0, void 0, function* () {
         const token = localStorage.getItem('token');
