@@ -365,6 +365,21 @@ button:hover {
 .note-book #monthly-notebook .other-month {
   color: #d7d7d7;
 }
+.note-book #monthly-notebook .mood-1 {
+  background-color: #ff0000;
+}
+.note-book #monthly-notebook .mood-2 {
+  background-color: #ff7f00;
+}
+.note-book #monthly-notebook .mood-3 {
+  background-color: #ffff00;
+}
+.note-book #monthly-notebook .mood-4 {
+  background-color: #7fff00;
+}
+.note-book #monthly-notebook .mood-5 {
+  background-color: #00ff00;
+}
 .note-book .week_weekly-goals {
   margin-top: 20px;
   border-radius: 15px;

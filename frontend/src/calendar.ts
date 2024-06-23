@@ -1,4 +1,3 @@
-
 class Calendar {
     private date: Date;
     private month: number;
@@ -34,7 +33,7 @@ class Calendar {
         this.render();
     }
 
-    private render(): void {
+    private async render(): Promise<void>  {
         this.daysElement.innerHTML = '';
         this.displayElement.textContent = `${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(this.year, this.month))} ${this.year}`;
 
@@ -53,6 +52,12 @@ class Calendar {
 
         for (let i = 1; i <= daysInMonth; i++) {
             const dayElement = this.createDayElement(i.toString());
+
+            const date = `${this.year}-${String(this.month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+            const entryData = await fetchEntryByDate(date);
+            if (entryData && entryData.mood) {
+                dayElement.classList.add(`mood-${entryData.mood}`);
+            }
 
             if (isCurrentMonth && i === today.getDate()) {
                 dayElement.classList.add('current-date');
@@ -81,7 +86,31 @@ class Calendar {
         this.selectedElement.textContent = `Selected: ${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(this.year, this.month))} ${day}, ${this.year}`;
     }
 
+}
 
+async function fetchEntryByDate(date: string) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.error('Token not found in localStorage');
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3000/entry/day?date=${date}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const responseData = await response.json();
+        return responseData;
+    } catch (error) {
+        console.error('Error fetching entry by date:', error);
+    }
 }
 
 window.onload = () => {
