@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Monthly View</title>
-    <script src="../src/calendar.js"></script>
     <link rel="stylesheet" href="../styles/home.css">
+    <script type="text/javascript" src="../src/calendar.js"></script>
 
 </head>
 <body>
@@ -24,40 +24,42 @@
     </button>
 </div>
 
+
 <div class="note-book">
     <div class="inner-notebook">
-        <div onload="calendar()" id="monthly-notebook">
-            <div class="calendar-container">
-                <header class="calendar-header">
-                    <p class="calendar-current-date"></p>
-                    <div class="calendar-navigation">
-                <span id="calendar-prev"
-                      class="material-symbols-rounded">
-                    <
-                </span>
-                        <span id="calendar-next"
-                              class="material-symbols-rounded">
-                   >
-                </span>
-                    </div>
-                </header>
+        <div id="monthly-notebook">
+            <div class="container">
+                <div class="calendar">
+                    <header>
+                        <pre class="left">◀</pre>
 
-                <div class="calendar-body">
-                    <ul class="calendar-weekdays">
-                        <li>Sun</li>
-                        <li>Mon</li>
-                        <li>Tue</li>
-                        <li>Wed</li>
-                        <li>Thu</li>
-                        <li>Fri</li>
-                        <li>Sat</li>
-                    </ul>
-                    <ul class="calendar-dates"></ul>
+                        <div class="header-display">
+                            <p class="display">""</p>
+                        </div>
+
+                        <pre class="right">▶</pre>
+
+                    </header>
+
+                    <div class="week">
+                        <div>Su</div>
+                        <div>Mo</div>
+                        <div>Tu</div>
+                        <div>We</div>
+                        <div>Th</div>
+                        <div>Fr</div>
+                        <div>Sa</div>
+                    </div>
+                    <div class="days"></div>
+                </div>
+                <div class="display-selected">
+                    <p class="selected"></p>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+
 </body>
 </html>

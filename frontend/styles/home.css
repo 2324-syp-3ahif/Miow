@@ -1,13 +1,16 @@
 body {
-  background-color: #cdfcff;
+  background-color: #CDFCFF;
 }
+
 button {
   border: none;
   background-color: inherit;
 }
+
 button:hover {
   transform: scale(1.03);
 }
+
 .tags {
   display: flex;
   justify-content: space-around;
@@ -41,8 +44,9 @@ button:hover {
 .tags #settings-tag {
   filter: invert(97%) sepia(85%) saturate(1151%) hue-rotate(290deg) brightness(121%) contrast(106%);
 }
+
 .note-book {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   width: 90%;
   height: 90%;
   position: absolute;
@@ -62,7 +66,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -71,9 +75,9 @@ button:hover {
   width: 100%;
   height: 150px;
   border: none;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   font-size: 23px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   resize: none;
   outline: none;
   color: #603636;
@@ -84,7 +88,7 @@ button:hover {
   min-height: inherit;
   height: 97%;
   position: relative;
-  background-color: #fff6f6;
+  background-color: #FFF6F6;
   padding: 10px;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -101,7 +105,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -152,7 +156,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
 }
@@ -178,7 +182,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
   align-items: center;
@@ -196,7 +200,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
   align-items: center;
@@ -207,7 +211,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
   align-items: center;
@@ -218,7 +222,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
   align-items: center;
@@ -230,7 +234,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -241,7 +245,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -251,133 +255,146 @@ button:hover {
   height: 80px;
   border-radius: 50px;
   border: none;
-  margin: 5px;
+  margin-left: 15px;
+  margin-bottom: 10px;
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #ffb6b6;
+  background-color: #ffe5e5;
   font-size: 20px;
   font-color: #603636;
+}
+.note-book #daily-notebook .emotion_button img {
+  width: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .note-book #daily-notebook .weather_button {
   width: 80px;
   height: 80px;
   border-radius: 50px;
   border: none;
-  margin: 5px;
+  margin-left: 15px;
+  margin-bottom: 10px;
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #ffb6b6;
+  background-color: #ffe5e5;
   font-size: 20px;
   font-color: #603636;
 }
-.note-book #daily-notebook .emotion_button:not(.selected), .note-book #daily-notebook .weather_button:not(.selected), .note-book #daily-notebook .period-button:not(.selected) {
+.note-book #daily-notebook .weather_button img {
+  width: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.note-book #daily-notebook .emotion_button:not(.selected),
+.note-book #daily-notebook .weather_button:not(.selected),
+.note-book #daily-notebook .period-button:not(.selected) {
   filter: brightness(130%);
 }
 .note-book #daily-notebook .mood_button:not(.selected) {
   filter: brightness(150%);
 }
-.note-book #daily-notebook .emotion_button.selected, .note-book #daily-notebook .weather_button.selected, .note-book #daily-notebook .mood_button.selected, .note-book #daily-notebook .period-button.selected {
+.note-book #daily-notebook .emotion_button.selected,
+.note-book #daily-notebook .weather_button.selected,
+.note-book #daily-notebook .mood_button.selected,
+.note-book #daily-notebook .period-button.selected {
   filter: brightness(100%);
 }
-.note-book #monthly-notebook {
-  display: flex;
-  min-height: 10vh;
-  justify-content: center;
-  height: 100%;
-}
-.note-book #monthly-notebook * {
-  font-family: 'Poppins', sans-serif;
-}
-.note-book #monthly-notebook .calendar-container {
-  background: #fff;
-  width: 90%;
-  border-radius: 10px;
-  padding: 0;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-.note-book #monthly-notebook .calendar-container header {
+.note-book #monthly-notebook body {
+  background-color: #eaedf0;
   display: flex;
   align-items: center;
-  padding: 25px 30px 10px;
+  justify-content: center;
+}
+.note-book #monthly-notebook .container {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 35px;
+  padding: 0 1em;
+  margin-top: 2em;
+  width: 98%;
+}
+.note-book #monthly-notebook header {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.note-book #monthly-notebook .header-display {
+  display: flex;
+  align-items: center;
+}
+.note-book #monthly-notebook .header-display p {
+  color: #ff78a1;
+  margin: 5px;
+  font-size: 1.2rem;
+  word-spacing: 0.5rem;
+}
+.note-book #monthly-notebook pre {
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #ff78a1;
+}
+.note-book #monthly-notebook .days,
+.note-book #monthly-notebook .week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: auto;
+  padding: 0 20px;
   justify-content: space-between;
 }
-.note-book #monthly-notebook header .calendar-navigation {
+.note-book #monthly-notebook .week div,
+.note-book #monthly-notebook .days div {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  width: 5em;
+  border-radius: 100%;
 }
-.note-book #monthly-notebook header .calendar-navigation span {
-  height: 38px;
-  width: 38px;
-  margin: 0 1px;
-  cursor: pointer;
-  text-align: center;
-  line-height: 38px;
-  border-radius: 50%;
-  user-select: none;
-  color: #aeabab;
-  font-size: 1.9rem;
-}
-.note-book #monthly-notebook .calendar-navigation span:last-child {
-  margin-right: -10px;
-}
-.note-book #monthly-notebook header .calendar-navigation span:hover {
-  background: #f2f2f2;
-}
-.note-book #monthly-notebook header .calendar-current-date {
-  font-weight: 500;
-  font-size: 1.45rem;
-}
-.note-book #monthly-notebook .calendar-body {
-  padding: 20px;
-  border-top: 1px solid #dedede;
-}
-.note-book #monthly-notebook .calendar-body ul {
-  list-style: none;
-  flex-wrap: wrap;
-  display: flex;
-  text-align: center;
-}
-.note-book #monthly-notebook .calendar-body .calendar-dates {
-  margin-bottom: 20px;
-}
-.note-book #monthly-notebook .calendar-body li {
-  width: calc(100% / 7);
-  font-size: 1.07rem;
-  color: #414141;
-}
-.note-book #monthly-notebook .calendar-body .calendar-weekdays li {
-  cursor: default;
-  font-weight: 500;
-}
-.note-book #monthly-notebook .calendar-body .calendar-dates li {
-  margin-top: 60px;
-  position: relative;
-  z-index: 1;
+.note-book #monthly-notebook .days div:hover {
+  background: #ebedf0;
+  color: rgb(255, 84, 229);
   cursor: pointer;
 }
-.note-book #monthly-notebook .calendar-dates li.inactive {
-  color: #aaa;
+.note-book #monthly-notebook .week div {
+  opacity: 0.5;
 }
-.note-book #monthly-notebook .calendar-dates li.active {
+.note-book #monthly-notebook .current-date {
+  background-color: #ff78a1;
   color: #fff;
 }
-.note-book #monthly-notebook .calendar-dates li::before {
-  position: absolute;
-  content: "";
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+.note-book #monthly-notebook .display-selected {
+  margin-bottom: 10px;
+  padding: 20px 20px;
+  text-align: center;
 }
-.note-book #monthly-notebook .calendar-dates li.active::before {
-  background: #ffb2e7;
+.note-book #monthly-notebook .other-month {
+  color: #d7d7d7;
 }
-.note-book #monthly-notebook .calendar-dates li:not(.active):hover::before {
-  background: #e4e1e1;
+.note-book #monthly-notebook .mood-1 {
+  background-color: #ff0000;
+}
+.note-book #monthly-notebook .mood-2 {
+  background-color: #ff7f00;
+}
+.note-book #monthly-notebook .mood-3 {
+  background-color: #ffff00;
+}
+.note-book #monthly-notebook .mood-4 {
+  background-color: #7fff00;
+}
+.note-book #monthly-notebook .mood-5 {
+  background-color: #00ff00;
 }
 .note-book .week_weekly-goals {
   margin-top: 20px;
@@ -437,3 +454,5 @@ button:hover {
   position: absolute;
   left: 50%;
 }
+
+/*# sourceMappingURL=home.css.map */
