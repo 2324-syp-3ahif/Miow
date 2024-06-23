@@ -147,12 +147,7 @@ function getSelectedWeather() {
 }
 
 
-// Initial load: Set today's date
 
-
-updateDateDisplay();
-
-// Function to update the displayed date
 export function updateDateDisplay() {
     let currentDate = new Date(new Date().toLocaleDateString('en-CA'));
     const dateElement = document.getElementById('date');
