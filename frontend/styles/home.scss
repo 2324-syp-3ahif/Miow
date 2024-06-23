@@ -367,8 +367,7 @@ button:hover{
         }
 
         .emotion_button:not(.selected),
-        .weather_button:not(.selected),
-        .period-button:not(.selected) {
+        .weather_button:not(.selected){
             filter: brightness(130%);
         }
 
@@ -378,9 +377,13 @@ button:hover{
 
         .emotion_button.selected,
         .weather_button.selected,
-        .mood_button.selected,
-        .period-button.selected {
+        .mood_button.selected{
             filter: brightness(100%);
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .period-button-selected{
+            filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.45));
         }
 
     }

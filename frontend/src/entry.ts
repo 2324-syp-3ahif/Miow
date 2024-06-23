@@ -136,7 +136,7 @@ function getSelectedWeather() {
 function changeDay(delta: number) {
     const currentDateHtml= document.getElementById('date');
     let currentDate= (currentDateHtml as HTMLSpanElement).textContent;
-    fetchEntryByDate(addDaysToDate(currentDate, delta))
+    fetchEntryByDateAndUpdate(addDaysToDate(currentDate, delta))
 }
 
 function addDaysToDate(dateString: string, delta: number): string {
@@ -149,7 +149,7 @@ function addDaysToDate(dateString: string, delta: number): string {
     return formattedDate;
 }
 
-async function fetchEntryByDate(date: string) {
+async function fetchEntryByDateAndUpdate(date: string) {
     const token = localStorage.getItem('token');
     if (!token) {
         console.error('Token not found in localStorage');
@@ -307,8 +307,37 @@ function resetUI() {
     noteContent.value = '';
 }
 
-function toggleSelected(button: { classList: { toggle: (arg0: string) => void; }; }) {
-    button.classList.toggle("selected");
+function toggleSelected(button:any) {
+    if (button.id === 'very-good' || button.id === 'good' || button.id === 'bad' || button.id === 'very-bad' || button.id === 'meh') {
+        var buttonElement = document.getElementById('very-good');
+        buttonElement.classList.remove('selected');
+        buttonElement=document.getElementById('good');
+        buttonElement.classList.remove('selected');
+        buttonElement=document.getElementById('meh');
+        buttonElement.classList.remove('selected');
+        buttonElement=document.getElementById('bad');
+        buttonElement.classList.remove('selected');
+        buttonElement=document.getElementById('very-bad');
+        buttonElement.classList.remove('selected');
+        button.classList.add('selected');
+    }
+    else if(button.alt==='grey drop'|| button.alt==='light red drop'|| button.alt==='dark red drop'){
+        const buttons = ['button1', 'button2', 'button3'];
+        buttons.forEach((buttonId) => {
+            const btn = document.getElementById(buttonId) as HTMLButtonElement;
+            const img = btn.querySelector('img') as HTMLImageElement;
+            if (img === button) {
+                img.classList.add('selected');
+                img.classList.add('period-button-selected')
+            } else {
+                img.classList.remove('selected');
+                img.classList.remove('period-button-selected')
+            }
+        });
+    }
+    else {
+        button.classList.toggle("selected");
+    }
 }
 
 

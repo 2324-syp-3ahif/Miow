@@ -312,8 +312,8 @@
         "text": ""
       },
       {
-        "date": "2024-06-23",
-        "mood": 4,
+        "date": "2024-06-22",
+        "mood": 0,
         "period": 2,
         "emotions": {},
         "weather": {},
@@ -322,8 +322,18 @@
         "text": ""
       },
       {
-        "date": "2024-06-22",
-        "mood": 4,
+        "date": "2024-06-24",
+        "mood": 0,
+        "period": 2,
+        "emotions": {},
+        "weather": {},
+        "sleep": 0,
+        "water": 2,
+        "text": ""
+      },
+      {
+        "date": "2024-06-23",
+        "mood": 0,
         "period": 2,
         "emotions": {},
         "weather": {},
