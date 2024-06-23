@@ -1,5 +1,25 @@
+:root {
+  --primary-color: #ffb9c2;
+  --inner-color: #FFF6F6;
+  --input-color: rgb(255, 255, 255);
+  --input-color-two: rgba(255, 185, 185, 0.27);
+  --font-color: #603636;
+  --background-color: #CDFCFF;
+  --daily-tag: #FF7373;
+  --weekly-tag: #FF9696;
+  --monthly-tag: #ffe5e5;
+  --yearly-tag: #FFCBCB;
+  --predicting-tag: #FFE4E4;
+  --settings-tag: #FFF1F1;
+  --circle-size: 80px;
+  --font-size: 2.5em;
+  --main-font: "Roboto", sans-serif;
+  --accent-color: #ff78a1;
+  --accent-color-2: #ebedf0;
+}
+
 body {
-  background-color: #CDFCFF;
+  background-color: var(--background-color);
 }
 
 button {
@@ -53,8 +73,8 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffb9c2;
-  color: #603636;
+  background-color: var(--primary-color);
+  color: var(--font-color);
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -66,7 +86,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -75,12 +95,12 @@ button:hover {
   width: 100%;
   height: 150px;
   border: none;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   font-size: 23px;
   font-family: "Roboto", sans-serif;
   resize: none;
   outline: none;
-  color: #603636;
+  color: var(--font-color);
   border-radius: 15px;
 }
 .note-book .inner-notebook {
@@ -88,7 +108,7 @@ button:hover {
   min-height: inherit;
   height: 97%;
   position: relative;
-  background-color: #FFF6F6;
+  background-color: var(--inner-color);
   padding: 10px;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -105,7 +125,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -156,7 +176,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
 }
@@ -182,7 +202,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   align-items: center;
@@ -200,7 +220,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   align-items: center;
@@ -211,7 +231,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   align-items: center;
@@ -222,7 +242,7 @@ button:hover {
   flex-wrap: wrap;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   align-items: center;
@@ -234,7 +254,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -245,7 +265,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -262,7 +282,7 @@ button:hover {
   line-height: 50px;
   background-color: #ffe5e5;
   font-size: 20px;
-  font-color: #603636;
+  font-color: var(--font-color);
 }
 .note-book #daily-notebook .emotion_button img {
   width: 100px;
@@ -283,7 +303,7 @@ button:hover {
   line-height: 50px;
   background-color: #ffe5e5;
   font-size: 20px;
-  font-color: #603636;
+  font-color: var(--font-color);
 }
 .note-book #daily-notebook .weather_button img {
   width: 80px;
@@ -309,14 +329,14 @@ button:hover {
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.45));
 }
 .note-book #monthly-notebook body {
-  background-color: #eaedf0;
+  background-color: var(--input-color);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .note-book #monthly-notebook .container {
   display: inline-block;
-  background-color: #fff;
+  background-color: var(--input-color);
   border-radius: 35px;
   padding: 0 1em;
   margin-top: 2em;
@@ -334,7 +354,7 @@ button:hover {
   align-items: center;
 }
 .note-book #monthly-notebook .header-display p {
-  color: #ff78a1;
+  color: var(--accent-color);
   margin: 5px;
   font-size: 1.2rem;
   word-spacing: 0.5rem;
@@ -344,7 +364,7 @@ button:hover {
   margin: 0;
   cursor: pointer;
   font-size: 1.2rem;
-  color: #ff78a1;
+  color: var(--accent-color);
 }
 .note-book #monthly-notebook .days,
 .note-book #monthly-notebook .week {
@@ -364,7 +384,7 @@ button:hover {
   border-radius: 100%;
 }
 .note-book #monthly-notebook .days div:hover {
-  background: #ebedf0;
+  background: var(--accent-color-2);
   color: rgb(255, 84, 229);
   cursor: pointer;
 }
@@ -372,7 +392,8 @@ button:hover {
   opacity: 0.5;
 }
 .note-book #monthly-notebook .current-date {
-  font-weight: bold;
+  background-color: var(--accent-color);
+  color: var(--input-color);
 }
 .note-book #monthly-notebook .display-selected {
   margin-bottom: 10px;
@@ -397,12 +418,11 @@ button:hover {
 .note-book #monthly-notebook .mood-5 {
   background-color: #1fff1f;
 }
-
 .note-book #monthly-notebook .period-1 {
   border: 5px solid #ff0000;
 }
 .note-book #monthly-notebook .period-2 {
-  border: 5px solid #646464;
+  border: 5px solid rgba(87, 87, 87, 0.26);
 }
 .note-book #monthly-notebook .period-3 {
   border: 5px solid #ffb9b9;
@@ -466,7 +486,7 @@ button:hover {
   align-items: center;
   padding: 20px;
   font-size: 2.5em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--input-color);
   border-radius: 15px;
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);

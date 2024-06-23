@@ -5,7 +5,6 @@
     <title>Settings View</title>
 
     <script type="text/javascript" src="../src/home.js"></script>
-    <script type="text/javascript" src="../src/themes.js"></script>
     <link rel="stylesheet" href="../styles/home.css">
 </head>
 <body>
@@ -51,15 +50,17 @@
                         </form>
                     </div>
                     <div id="appearance-content">
-                       <h1>Themes</h1>
-                        <button><img src="../images/themes/matchapng.png" alt="Matcha" class="theme"></button>
-                        <button><img src="../images/themes/bubblegum.png" alt="Bubblegum" class="theme"></button>
-                        <button><img src="../images/themes/cottoncandy.png" alt="CottonCandy" class="theme"></button>
-                        <button><img src="../images/themes/dragona.png" alt="Dragona" class="theme"></button>
-                        <button><img src="../images/themes/dragonfruit.png" alt="Dragonfruit" class="theme"></button>
-                        <button><img src="../images/themes/gatorade.png" alt="Gatorade" class="theme"></button>
-                        <button><img src="../images/themes/lavafoodcake.png" alt="Lavafoodcake" class="theme"></button>
-                        <button><img src="../images/themes/peachpunch.png" alt="Peachpunch" class="theme"></button>
+                        <h1>Themes</h1>
+                        <button class="theme-button" id="Matcha"><img src="../images/themes/matchapng.png" alt="Matcha" class="theme"></button>
+                        <button class="theme-button" id="Bubblegum"><img src="../images/themes/bubblegum.png" alt="Bubblegum" class="theme"></button>
+                        <button class="theme-button" id="CottonCandy"><img src="../images/themes/cottoncandy.png" alt="CottonCandy" class="theme"></button>
+                        <button class="theme-button" id="Dragona"><img src="../images/themes/dragona.png" alt="Dragona" class="theme"></button>
+                        <button class="theme-button" id="Dragonfruit"><img src="../images/themes/dragonfruit.png" alt="Dragonfruit" class="theme"></button>
+                        <button class="theme-button" id="Gatorade"><img src="../images/themes/gatorade.png" alt="Gatorade" class="theme"></button>
+                        <button class="theme-button" id="Lavafoodcake"><img src="../images/themes/lavafoodcake.png" alt="Lavafoodcake" class="theme"></button>
+                        <button class="theme-button" id="Peachpunch"><img src="../images/themes/peachpunch.png" alt="Peachpunch" class="theme"></button>
+
+                        <button class="submit">Submit</button>
                     </div>
                     <div id="about-us-content">
                         <p>about us</p>
@@ -87,5 +88,7 @@
     });
 
 </script>
+
+<script type="text/javascript" src="../src/themes.js"></script>
 </body>
 </html>

@@ -14,90 +14,28 @@ $yearly_tag: #FFCBCB;
 $predicting_tag: #FFE4E4;
 $settings_tag: #FFF1F1;
 
-$themes: (
-        Matcha: (
-                primary-color: #b1bb10,
-                inner-color: #3599ff,
-                input-color: #fgh,
-                font-color: #ijk,
-                daily-tag: #lmn,
-        ),
-
-        Bubblegum: (
-                primary-color: #3926e7,
-                inner-color: #517191,
-                input-color: #fgh,
-                font-color: #ijk,
-                daily-tag: #lmn,
-        ),
-
-        CottonCandy: (
-                primary-color: #728849,
-                inner-color: #e11142,
-                input-color: #fgh,
-                font-color: #ijk,
-                daily-tag: #lmn,
-        ),
-
-
-        Dragona: (
-                primary-color: #7613af,
-                inner-color: #1678d2,
-                input-color: #fgh,
-                font-color: #ijk,
-                daily-tag: #lmn,
-        ),
-
-        Dragonfruit: (
-                primary-color: #abc,
-                inner-color: #def,
-                input-color: #fgh,
-                font-color: #ijk,
-                daily-tag: #lmn,
-        ),
-
-        Gatorade: (
-                primary-color: #abc,
-                inner-color: #def,
-                input-color: #fgh,
-                font-color: #ijk,
-                daily-tag: #lmn,
-        ),
-
-        Lavafoodcake: (
-                primary-color: #abc,
-                inner-color: #def,
-                input-color: #fgh,
-                font-color: #ijk,
-                daily-tag: #lmn,
-        ),
-
-        Peachpunch: (
-                primary-color: #abc,
-                inner-color: #def,
-                input-color: #fgh,
-                font-color: #ijk,
-                daily-tag: #lmn,
-        ),
-
-);
-
-@mixin generate-themes($themes) {
-    @each $theme, $map in $themes {
-        .theme-#{$theme} {
-            --primary-color: map-get($map, primary-color);
-            --inner-color: map-get($map, inner-color);
-            --input-color: map-get($map, input-color);
-            --font-color: map-get($map, font-color);
-            --daily-tag: map-get($map, daily-tag);
-            
-        }
-    }
+:root {
+    --primary-color: #ffb9c2;
+    --inner-color: #FFF6F6;
+    --input-color: rgb(255, 255, 255);
+    --input-color-two: rgba(255, 185, 185, 0.27);
+    --font-color: #603636;
+    --background-color: #CDFCFF;
+    --daily-tag: #FF7373;
+    --weekly-tag: #FF9696;
+    --monthly-tag: #ffe5e5;
+    --yearly-tag: #FFCBCB;
+    --predicting-tag: #FFE4E4;
+    --settings-tag: #FFF1F1;
+    --circle-size: 80px;
+    --font-size: 2.5em;
+    --main-font: 'Roboto', sans-serif;
+    --accent-color: #ff78a1;
+    --accent-color-2: #ebedf0;
 }
 
-
 body{
-    background-color: $background_color;
+    background-color: var(--background-color);
 }
 button{
     border: none;
@@ -152,8 +90,8 @@ button:hover{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: $primary_color;
-    color: $font_color;
+    background-color: var(--primary-color);
+    color : var(--font-color);
 
 
     padding: 10px;
@@ -168,7 +106,7 @@ button:hover{
         align-items: center;
         padding: 20px;
         font-size: $font_size;
-        background-color: $input_color;
+        background-color: var(--input-color);
         border-radius: 15px;
         margin: 30px 0;
 
@@ -179,12 +117,12 @@ button:hover{
             width: 100%;
             height: 150px;
             border: none;
-            background-color: $input_color;
+            background-color:  var(--input-color);
             font-size: 23px;
             font-family: $main_font;
             resize: none;
             outline: none;
-            color: $font_color;
+            color: var(--font-color);
             border-radius: 15px;
 
         }
@@ -196,7 +134,7 @@ button:hover{
         min-height: inherit;
         height: 97%;
         position: relative;
-        background-color: $inner_color;
+        background-color: var(--inner-color);
         padding: 10px;
         border-radius: 20px;
         box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -217,7 +155,7 @@ button:hover{
                 align-items: center;
                 padding: 20px;
                 font-size: $font_size;
-                background-color: $input_color;
+                background-color:  var(--input-color);
                 border-radius: 15px;
                 margin: 30px 0;
                 box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
@@ -283,7 +221,7 @@ button:hover{
                 align-items: center;
                 padding: 20px;
                 font-size: $font_size;
-                background-color: $input_color;
+                background-color:  var(--input-color);
                 border-radius: 15px;
                 margin: 30px 0;
 
@@ -316,7 +254,7 @@ button:hover{
                 flex-wrap: wrap;
                 padding: 20px;
                 font-size: $font_size;
-                background-color: $input_color;
+                background-color:  var(--input-color);
                 border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
@@ -339,7 +277,7 @@ button:hover{
                 flex-wrap: wrap;
                 padding: 20px;
                 font-size: $font_size;
-                background-color: $input_color;
+                background-color:  var(--input-color);
                 border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
@@ -352,7 +290,7 @@ button:hover{
                 flex-wrap: wrap;
                 padding: 20px;
                 font-size: $font_size;
-                background-color: $input_color;
+                background-color:  var(--input-color);
                 border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
@@ -365,7 +303,7 @@ button:hover{
                 flex-wrap: wrap;
                 padding: 20px;
                 font-size: $font_size;
-                background-color: $input_color;
+                background-color: var(--input-color);
                 border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
@@ -379,7 +317,7 @@ button:hover{
                 align-items: center;
                 padding: 20px;
                 font-size: $font_size;
-                background-color: $input_color;
+                background-color: var(--input-color);
                 border-radius: 15px;
                 margin: 30px 0;
 
@@ -392,7 +330,7 @@ button:hover{
                 align-items: center;
                 padding: 20px;
                 font-size: $font_size;
-                background-color: $input_color;
+                background-color: var(--input-color);
                 border-radius: 15px;
                 margin: 30px 0;
 
@@ -414,7 +352,7 @@ button:hover{
             line-height: 50px;
             background-color: $monthly_tag ;
             font-size: 20px;
-            font-color: $font_color;
+            font-color: var(--font-color);
 
             img{
                 width: 100px;
@@ -437,7 +375,7 @@ button:hover{
             line-height: 50px;
             background-color: $monthly_tag ;
             font-size: 20px;
-            font-color: $font_color;
+            font-color: var(--font-color);
 
             img{
                 width: 80px;
@@ -480,14 +418,14 @@ button:hover{
 
 
         body {
-            background-color: $main;
+            background-color: var(--input-color);
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .container {
             display: inline-block;
-            background-color: $white;
+            background-color: var(--input-color);
             border-radius: 35px;
             padding: 0 1em;
             margin-top: 2em;
@@ -507,7 +445,7 @@ button:hover{
         }
 
         .header-display p {
-            color: $accent;
+            color: var(--accent-color);
             margin: 5px;
             font-size: 1.2rem;
             word-spacing: 0.5rem;
@@ -518,7 +456,7 @@ button:hover{
             margin: 0;
             cursor: pointer;
             font-size: 1.2rem;
-            color: $accent;
+            color: var(--accent-color);
         }
 
         .days,
@@ -539,7 +477,7 @@ button:hover{
             border-radius: 100%;
         }
         .days div:hover {
-            background: $accent-2;
+            background: var(--accent-color-2);
             color: rgb(255, 84, 229);
             cursor: pointer;
         }
@@ -547,8 +485,8 @@ button:hover{
             opacity: 0.5;
         }
         .current-date {
-            background-color: $accent;
-            color: $white;
+            background-color: var(--accent-color);
+            color: var(--input-color);
         }
         .display-selected {
             margin-bottom: 10px;
@@ -664,7 +602,7 @@ button:hover{
             align-items: center;
             padding: 20px;
             font-size: $font_size;
-            background-color: $input_color;
+            background-color: var(--input-color);
             border-radius: 15px;
             margin: 30px 0;
             box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
