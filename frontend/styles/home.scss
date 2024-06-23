@@ -113,6 +113,7 @@ button:hover{
                 background-color: $input_color;
                 border-radius: 10px;
                 margin: 30px 0;
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
                 p{
                     margin: 10px 0;
 
@@ -166,6 +167,8 @@ button:hover{
             }
 
             .period{
+
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -208,6 +211,8 @@ button:hover{
                 border-radius: 20px;
                 margin: 30px 0;
                 align-items: center;
+
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
             }
 
         }
@@ -229,6 +234,8 @@ button:hover{
                 border-radius: 20px;
                 margin: 30px 0;
                 align-items: center;
+
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
             }
 
             .sleep{
@@ -240,6 +247,8 @@ button:hover{
                 border-radius: 10px;
                 margin: 30px 0;
                 align-items: center;
+
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
             }
 
             .water{
@@ -251,6 +260,8 @@ button:hover{
                 border-radius: 10px;
                 margin: 30px 0;
                 align-items: center;
+
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
             }
 
             .selfcare{
@@ -262,6 +273,8 @@ button:hover{
                 background-color: $input_color;
                 border-radius: 10px;
                 margin: 30px 0;
+
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
             }
 
             .daily-entry{
@@ -273,6 +286,9 @@ button:hover{
                 background-color: $input_color;
                 border-radius: 10px;
                 margin: 30px 0;
+
+
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
 
                 textarea{
                     width: 100%;
