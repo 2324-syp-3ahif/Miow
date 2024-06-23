@@ -108,9 +108,7 @@ function getSelectedPeriod() {
     periodButtons.forEach(imgButton => {
         if (imgButton.classList.contains('selected')) {
             const imgSrc = imgButton.getAttribute('src');
-            if (imgSrc === 'images/light_red_drop.png' || imgSrc === 'images/red_drop.png') {
-                selectedPeriod = 2; // Use value 2 for light red and dark red drops
-            }
+            selectedPeriod=1;
         }
     });
 
@@ -154,10 +152,11 @@ export function updateDateDisplay() {
     if (dateElement) {
         dateElement.textContent = currentDate.toISOString().split('T')[0];
     }
+    changeDay(0);
 }
 
 
-export function changeDay(delta: number) {
+function changeDay(delta: number) {
     const currentDateHtml= document.getElementById('date');
     let currentDate= (currentDateHtml as HTMLSpanElement).textContent;
     fetchEntryByDate(addDaysToDate(currentDate, delta))
@@ -293,10 +292,11 @@ function getMoodValueFromId(id: string): number {
 function getPeriodValueFromSrc(src: string | null): number {
     switch (src) {
         case 'images/light_red_drop.png':
-            return 0;
+            return 3;
         case 'images/red_drop.png':
-            return 2;
+            return 1;
         case 'images/grey_drop.png':
+            return 2;
         default:
             return 0; // Default value when no match
     }
@@ -309,34 +309,22 @@ function resetUI() {
     moodButtons.forEach((button: Element) => {
         button.classList.remove('selected');
     });
-
-    // Reset Period Buttons
     const periodButtons = document.querySelectorAll('.period button img');
     periodButtons.forEach((imgButton: Element) => {
         imgButton.parentElement?.classList.remove('selected');
     });
-
-    // Reset Emotion Buttons
     const emotionButtons = document.querySelectorAll('.emotions .emotion_button');
     emotionButtons.forEach((button: Element) => {
         button.classList.remove('selected');
     });
-
-    // Reset Weather Buttons
     const weatherButtons = document.querySelectorAll('.weather .weather_button');
     weatherButtons.forEach((button: Element) => {
         button.classList.remove('selected');
     });
-
-    // Reset Sleep Input
     const sleepInput = document.getElementById('sleep-input') as HTMLInputElement;
     sleepInput.value = '0';
-
-    // Reset Water Input
     const waterInput = document.getElementById('water-input') as HTMLInputElement;
     waterInput.value = '0';
-
-    // Reset Note Content
     const noteContent = document.getElementById('note-content') as HTMLTextAreaElement;
     noteContent.value = '';
 }
@@ -367,36 +355,21 @@ function toggleSelected(button: { classList: { toggle: (arg0: string) => void; }
 //week stuff
 
 async function updateWeek(weeks_difference_from_today: number) {
-    // Get the currently displayed Monday date
     let currentMondayDate = document.getElementById("week_date_mon")?.textContent;
-
-    // If currentMondayDate is empty or not in expected format, default to current week's start day
     if (!currentMondayDate || !isValidDateString(currentMondayDate)) {
         currentMondayDate = getCurrentWeekStartDate();
     }
-
-    // Extract the date parts from the string
     const parts = currentMondayDate.split(" ");
     const month = parts[1];
     const day = parts[2].replace(',', '');
     const year = parts[3];
-
-    // Convert month name to numerical representation (assuming English short month names)
     const monthIndex = new Date(Date.parse(`${month} 1, 2000`)).getMonth() + 1;
-
-    // Create a Date object from extracted parts
     const currentDate = new Date(`${year}-${monthIndex}-${day}`);
-
-    // Calculate the target date by adding/subtracting weeks
     const targetDate = new Date(currentDate);
     targetDate.setDate(targetDate.getDate() + weeks_difference_from_today * 7);
-
-    // Format the target date to match the API endpoint's expected format
     const formattedDate = targetDate.toISOString().split('T')[0];
-
     const url = `http://localhost:3000/entry/week?date=${formattedDate}`;
     const token = localStorage.getItem('token');
-
     try {
         const response = await fetch(url, {
             method: "GET",
@@ -418,7 +391,6 @@ async function updateWeek(weeks_difference_from_today: number) {
 }
 
 function isValidDateString(dateString: string): boolean {
-    // Check if dateString matches expected format "Monday Mar 11, 24"
     const pattern = /^[A-Za-z]+ (\w{3}) (\d{1,2}), (\d{2,4})$/;
     return pattern.test(dateString);
 }
@@ -426,7 +398,7 @@ function isValidDateString(dateString: string): boolean {
 function getCurrentWeekStartDate(): string {
     const today = new Date();
     const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
-    const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); // adjust when day is Sunday
+    const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
     const startOfWeek = new Date(today.setDate(diff));
     return startOfWeek.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
 }
@@ -434,7 +406,6 @@ function getCurrentWeekStartDate(): string {
 
 
 function updateWeekUI(data: any) {
-    // Update the UI elements with data received from the API
     document.getElementById("note-content").textContent = data.text;
     document.getElementById("monday-log").textContent = data.Days.Monday.text;
     document.getElementById("tuesday-log").textContent = data.Days.Tuesday.text;
@@ -443,8 +414,6 @@ function updateWeekUI(data: any) {
     document.getElementById("friday-log").textContent = data.Days.Friday.text;
     document.getElementById("saturday-log").textContent = data.Days.Saturday.text;
     document.getElementById("sunday-log").textContent = data.Days.Sunday.text;
-
-    // Update the dates in the week_date elements
     document.getElementById("week_date_mon").textContent ="Monday "+ formatDate(data.weekStartDay); // Monday
     document.getElementById("week_date_tue").textContent ="Tuesday "+ formatDate(addDays(data.weekStartDay, 1)); // Tuesday
     document.getElementById("week_date_wed").textContent ="Wednesday "+ formatDate(addDays(data.weekStartDay, 2)); // Wednesday
@@ -452,9 +421,7 @@ function updateWeekUI(data: any) {
     document.getElementById("week_date_fri").textContent ="Friday "+ formatDate(addDays(data.weekStartDay, 4)); // Friday
     document.getElementById("week_date_sat").textContent ="Saturday "+ formatDate(addDays(data.weekStartDay, 5)); // Saturday
     document.getElementById("week_date_sun").textContent ="Sunday "+ formatDate(data.weekEndDay); // Sunday
-    document.getElementById("weekly_log").textContent="Weekly Log "+ formatDate(data.weekStartDay) +"  -  "+ formatDate( data.weekEndDay);
-
-    // Update the dates in the week_date elements and apply conditional styling
+    document.getElementById("weekly_log").textContent="Weekly Log "+ formatDate2(data.weekStartDay) +"  -  "+ formatDate2( data.weekEndDay);
     if (data.Days.Monday.Period == 1) {
         document.getElementById("week_date_mon").style.color = "#FF7674";
     } else {
@@ -501,6 +468,11 @@ function updateWeekUI(data: any) {
 function formatDate(dateString: string): string {
     const date = new Date(dateString);
     return `${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' ,year:'2-digit'})}`;
+}
+
+function formatDate2(dateString: string): string {
+    const date = new Date(dateString);
+    return `${date.toLocaleDateString('en-US', {day: 'numeric', month: 'short' ,year:'numeric'})}`;
 }
 
 function addDays(dateString: string, days: number): string {

@@ -246,18 +246,6 @@ button:hover {
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
-.note-book #daily-notebook .right-side .daily-entry textarea {
-  width: 100%;
-  height: 250px;
-  border: none;
-  background-color: #fff;
-  font-size: 1em;
-  font-family: 'Roboto', sans-serif;
-  resize: none;
-  outline: none;
-  color: #603636;
-  border-radius: 15px;
-}
 .note-book #daily-notebook .emotion_button {
   width: 80px;
   height: 80px;
@@ -398,18 +386,6 @@ button:hover {
 .note-book .week_weekly-goals h2 {
   font-size: 20px;
   color: #ff6b6b;
-}
-.note-book .week_weekly-goals textarea {
-  width: 100%;
-  height: 150px;
-  border: none;
-  background-color: #fff;
-  font-size: 25px;
-  font-family: 'Roboto', sans-serif;
-  resize: none;
-  outline: none;
-  color: #603636;
-  margin: 30px;
 }
 .note-book .week_day-log {
   margin-top: 20px;
