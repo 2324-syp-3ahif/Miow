@@ -137,21 +137,35 @@ export function getWeekEntries(username: string, date: string): any | null {
     });
 
     return {
-        requestedDate: requestedDate.toISOString().split('T')[0],
-        weekStartDay: firstDayOfWeek.toISOString().split('T')[0],
-        weekEndDay: lastDayOfWeek.toISOString().split('T')[0],
+        requestedDate: requestedDate.getFullYear()+"-"+(requestedDate.getMonth()+1).toString().padStart(2, '0')+"-"+requestedDate.getDate(),
+        weekStartDay: firstDayOfWeek.getFullYear()+"-"+(firstDayOfWeek.getMonth()+1).toString().padStart(2, '0')+"-"+firstDayOfWeek.getDate(),
+        weekEndDay: lastDayOfWeek.getFullYear()+"-"+(lastDayOfWeek.getMonth()+1).toString().padStart(2, '0')+"-"+lastDayOfWeek.getDate(),
         text: text,
         Days: days
     };
 }
 
 // Calculate the first day of the week (Monday)
+
 function getFirstDayOfWeek(date: Date): Date {
-    const firstDayOfWeek = new Date(date);
-    const day = firstDayOfWeek.getDay();
-    const diff = (day <= 1) ? day - 1 : day - 1 + 7;
-    firstDayOfWeek.setDate(firstDayOfWeek.getDate() - diff);
-    return firstDayOfWeek;
+    // Copy the date to avoid mutating the original
+    const copiedDate = new Date(date.getTime());
+
+    // Get the day of the week (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
+    let dayOfWeek = copiedDate.getDay();
+
+    // Calculate how many days to subtract to get to Monday (considering Monday as the start of the week)
+    let diff = dayOfWeek - 1; // Because JavaScript's getDay() returns 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+
+    // Adjust if the current day is Sunday (getDay() returns 0)
+    if (dayOfWeek === 0) {
+        diff = 6; // Move back 6 days to get to Monday
+    }
+
+    // Calculate the first day of the week (Monday)
+    copiedDate.setDate(copiedDate.getDate() - diff);
+
+    return copiedDate;
 }
 
 // Calculate the last day of the week (Sunday)

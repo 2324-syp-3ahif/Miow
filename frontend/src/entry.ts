@@ -1,9 +1,8 @@
 import {Entry} from "../interfaces/entry";
 
 // Add event listener to the submit button
-const submitButton = document.getElementById("submitbtn");
 
-export async function submit(): Promise<void> {
+ async function submit(): Promise<void> {
     // Retrieve token and username from localStorage
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
@@ -146,7 +145,7 @@ function getSelectedWeather() {
 
 
 
-export function updateDateDisplay() {
+ function updateDateDisplay() {
     let currentDate = new Date(new Date().toLocaleDateString('en-CA'));
     const dateElement = document.getElementById('date');
     if (dateElement) {
@@ -356,18 +355,37 @@ function toggleSelected(button: { classList: { toggle: (arg0: string) => void; }
 
 async function updateWeek(weeks_difference_from_today: number) {
     let currentMondayDate = document.getElementById("week_date_mon")?.textContent;
+
     if (!currentMondayDate || !isValidDateString(currentMondayDate)) {
-        currentMondayDate = getCurrentWeekStartDate();
+        currentMondayDate = getCurrentWeekStartDate(); // You might need to implement this function
     }
-    const parts = currentMondayDate.split(" ");
-    const month = parts[1];
-    const day = parts[2].replace(',', '');
-    const year = parts[3];
-    const monthIndex = new Date(Date.parse(`${month} 1, 2000`)).getMonth() + 1;
-    const currentDate = new Date(`${year}-${monthIndex}-${day}`);
+
+    let parts = currentMondayDate.split(" ");
+    let month = parts[1]; // "June"
+    let day = parseInt(parts[2].replace(',', '')); // 23
+    let year = parseInt(parts[3]); // 2024
+
+    if(year<100){
+        year+=2000;
+    }
+
+
+// Get the month index (0-based)
+    const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
+
+// Create a new date object
+    const currentDate = new Date(year, monthIndex, day);
     const targetDate = new Date(currentDate);
     targetDate.setDate(targetDate.getDate() + weeks_difference_from_today * 7);
-    const formattedDate = targetDate.toISOString().split('T')[0];
+
+
+     let month2 = targetDate.getMonth()+1;
+     day = targetDate.getDate();
+     year = targetDate.getFullYear();
+
+    let formattedDate = `${year}-${month2.toString().padStart(2, '0')}-${day}`;
+
+
     const url = `http://localhost:3000/entry/week?date=${formattedDate}`;
     const token = localStorage.getItem('token');
     try {
@@ -422,6 +440,7 @@ function updateWeekUI(data: any) {
     document.getElementById("week_date_sat").textContent ="Saturday "+ formatDate(addDays(data.weekStartDay, 5)); // Saturday
     document.getElementById("week_date_sun").textContent ="Sunday "+ formatDate(data.weekEndDay); // Sunday
     document.getElementById("weekly_log").textContent="Weekly Log "+ formatDate2(data.weekStartDay) +"  -  "+ formatDate2( data.weekEndDay);
+    (document.getElementById("note-content")as HTMLTextAreaElement).value = data.text;
     if (data.Days.Monday.Period == 1) {
         document.getElementById("week_date_mon").style.color = "#FF7674";
     } else {
@@ -479,4 +498,55 @@ function addDays(dateString: string, days: number): string {
     const date = new Date(dateString);
     date.setDate(date.getDate() + days);
     return date.toISOString().split('T')[0];
+}
+async function submit_week() {
+    const entryData = (document.getElementById("note-content") as HTMLTextAreaElement).value.trim(); // Assuming the textarea id is "note-content"
+    const weekStartDate = document.getElementById("week_date_mon")?.textContent;
+
+    if (!entryData || !weekStartDate) {
+        console.error("Textarea content or week start date is missing.");
+        return;
+    }
+
+    // Extracting the date part from "Monday Mar 17, 24"
+    const parts = weekStartDate.split(" ");
+    const month = parts[1];
+    const day = parts[2].replace(',', ''); // Remove comma if present
+    const year = parts[3];
+
+    // Convert month name to numerical representation (assuming English short month names)
+    const monthIndex = new Date(Date.parse(`${month} 1, 2000`)).getMonth() + 1;
+
+    // Constructing the date in "yyyy-mm-dd" format
+    const formattedDate = `20${year}-${monthIndex.toString().padStart(2, '0')}-${day.padStart(2, '0')}`;
+
+    const url = "http://localhost:3000/entry/week/";
+    const token = localStorage.getItem('token');
+
+    const requestBody = {
+        date: formattedDate,
+        entryData: entryData
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to submit week data");
+        }
+
+        const responseData = await response.json();
+        console.log("Week data submitted successfully:", responseData);
+        // Optionally, update UI or handle success message
+    } catch (error) {
+        console.error("Error submitting week data:", error);
+        // Optionally, update UI to indicate error
+    }
 }

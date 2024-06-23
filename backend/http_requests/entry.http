@@ -43,13 +43,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 }
 
 ### Get week data
-GET http://localhost:3000/entry/week?date=2024-03-25 HTTP/1.1
+GET http://localhost:3000/entry/week?date=2024-06-23 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxMzExOTMuOTU2LCJpYXQiOjE3MTkxMjc1OTN9.ysp_BAGHarBXyiOc87ulUc2lomCNGEXd2dyuUP3POaM
-
-{
-  "date": "2024-03-25"
-}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxMzcxNzkuMDQ4LCJpYXQiOjE3MTkxMzM1Nzl9.NxWs9Gwj-scHc5MNeoJ0-Ia0R0hX7LxTaneDpPwNvg8
 
 ### post week data
 POST http://localhost:3000/entry/week/
@@ -57,6 +53,6 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxMzcxNzkuMDQ4LCJpYXQiOjE3MTkxMzM1Nzl9.NxWs9Gwj-scHc5MNeoJ0-Ia0R0hX7LxTaneDpPwNvg8
 
 {
-  "date": "2024-03-25",
+  "date": "2024-06-17",
   "entryData": "Sample weekly entry text"
 }

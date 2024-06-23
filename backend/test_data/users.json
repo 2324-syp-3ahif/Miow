@@ -374,6 +374,12 @@
         "startday": "03-25",
         "endday": "03_30",
         "text": "Sample weekly entry text"
+      },
+      {
+        "year": 2024,
+        "startday": "06-17",
+        "endday": "06_23",
+        "text": "Sample weekly entry text"
       }
     ],
     "settings": {
