@@ -1,136 +1,89 @@
- function calendar(){
-    let date: Date = new Date();
-    let year: number = date.getFullYear();
-    let month: number = date.getMonth();
 
-    const day: HTMLElement | null = document.querySelector(".calendar-dates");
+class Calendar {
+    private date: Date;
+    private month: number;
+    private year: number;
+    private daysElement: HTMLElement;
+    private displayElement: HTMLElement;
+    private selectedElement: HTMLElement;
 
-    const currdate: HTMLElement | null = document.querySelector(".calendar-current-date");
+    constructor() {
+        this.date = new Date();
+        this.month = this.date.getMonth();
+        this.year = this.date.getFullYear();
+        this.daysElement = document.querySelector('.days');
+        this.displayElement = document.querySelector('.display');
+        this.selectedElement = document.querySelector('.selected');
 
-    const prenexIcons: NodeListOf<HTMLElement> = document.querySelectorAll(".calendar-navigation span");
+        document.querySelector('.left').addEventListener('click', () => this.changeMonth(-1));
+        document.querySelector('.right').addEventListener('click', () => this.changeMonth(1));
 
-// Array of month names
-    const months: string[] = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-    ];
+        this.render();
+    }
 
-    const manipulate = (): void => {
+    private changeMonth(direction: number): void {
+        if (direction === -1 && this.month === 0) {
+            this.month = 11;
+            this.year--;
+        } else if (direction === 1 && this.month === 11) {
+            this.month = 0;
+            this.year++;
+        } else {
+            this.month += direction;
+        }
+        this.render();
+    }
 
-        let dayone: number = new Date(year, month, 1).getDay();
+    private render(): void {
+        this.daysElement.innerHTML = '';
+        this.displayElement.textContent = `${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(this.year, this.month))} ${this.year}`;
 
-        let lastdate: number = new Date(year, month + 1, 0).getDate();
+        const startDay = new Date(this.year, this.month, 1).getDay();
+        const daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+        const daysInPrevMonth = new Date(this.year, this.month, 0).getDate();
 
-        let dayend: number = new Date(year, month, lastdate).getDay();
+        const today = new Date();
+        const isCurrentMonth = today.getMonth() === this.month && today.getFullYear() === this.year;
 
-        let monthlastdate: number = new Date(year, month, 0).getDate();
-
-        let lit: string = "";
-
-
-        for (let i = dayone; i > 0; i--) {
-            lit += `<li class="inactive">${monthlastdate - i + 1}</li>`;
+        for (let i = 0; i < startDay; i++) {
+            const dayElement = this.createDayElement((daysInPrevMonth - startDay + i + 1).toString());
+            dayElement.classList.add('other-month');
+            this.daysElement.appendChild(dayElement);
         }
 
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dayElement = this.createDayElement(i.toString());
 
-        for (let i = 1; i <= lastdate; i++) {
+            if (isCurrentMonth && i === today.getDate()) {
+                dayElement.classList.add('current-date');
+            }
 
-
-            let isToday: string = i === date.getDate()
-            && month === new Date().getMonth()
-            && year === new Date().getFullYear()
-                ? "active"
-                : "";
-            lit += `<li class="${isToday}">${i}</li>`;
+            dayElement.addEventListener('click', () => this.selectDay(i));
+            this.daysElement.appendChild(dayElement);
         }
 
-        for (let i = dayend; i < 6; i++) {
-            lit += `<li class="inactive">${i - dayend + 1}</li>`
-        }
-
-        if (currdate) {
-            currdate.innerText = `${months[month]} ${year}`;
-        }
-
-        if (day) {
-            day.innerHTML = lit;
+        let nextMonthDay = 1;
+        while (this.daysElement.childElementCount < 42) {
+            const dayElement = this.createDayElement(nextMonthDay.toString());
+            dayElement.classList.add('other-month');
+            this.daysElement.appendChild(dayElement);
+            nextMonthDay++;
         }
     }
 
-    manipulate();
-
-
-    prenexIcons.forEach(icon => {
-
-        icon.addEventListener("click", () => {
-
-            month = icon.id === "calendar-prev" ? month - 1 : month + 1;
-
-            if (month < 0 || month > 11) {
-
-                date = new Date(year, month, new Date().getDate());
-
-                year = date.getFullYear();
-
-                month = date.getMonth();
-            }
-
-            else {
-
-                date = new Date();
-            }
-
-            manipulate();
-        });
-    });
-
-//junk code rn
-    function fetchMoodData(): string[] {
-        return [];
+    private createDayElement(day: string): HTMLElement {
+        const dayElement = document.createElement('div');
+        dayElement.textContent = day;
+        return dayElement;
     }
 
-    let moodData: string[] = fetchMoodData();
+    private selectDay(day: number): void {
+        this.selectedElement.textContent = `Selected: ${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(this.year, this.month))} ${day}, ${this.year}`;
+    }
 
-    let dateElements: NodeListOf<HTMLElement> = document.querySelectorAll('.calendar-dates li');
 
-
-    dateElements.forEach((dateElement, index) => {
-
-        let mood: string = moodData[index];
-
-        let color: string;
-        switch (mood) {
-            case 'very-good':
-                color = '#22ec22';
-                break;
-            case 'good':
-                color = '#a3ff95';
-                break;
-            case 'meh':
-                color = '#ffda0c';
-                break;
-            case 'bad':
-                color = '#ffa056';
-                break;
-            case 'very-bad':
-                color = '#ff4d4d';
-                break;
-            default:
-                color = '#fff'; // Default color if no mood data
-        }
-
-        dateElement.style.backgroundColor = color;
-        dateElement.style.color = '#000'; // Set text color to black
-    });
 }
 
+window.onload = () => {
+    new Calendar();
+};

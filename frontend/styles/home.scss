@@ -122,9 +122,6 @@ button:hover{
 
     #daily-notebook{
 
-
-
-
         .left-site
         {
             width: 50%;
@@ -370,125 +367,92 @@ button:hover{
 
 
     #monthly-notebook{
-        display: flex;
-        min-height: 10vh;
-        justify-content: center;
-        height: 100%;
 
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
+        $white: #fff;
+        $main: #eaedf0;
+        $accent: #ff78a1;
+        $accent-2: #ebedf0;
 
 
-        .calendar-container {
-            background: #fff;
-            width: 90%;
-            border-radius: 10px;
-            padding: 0;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .calendar-container header {
+        body {
+            background-color: $main;
             display: flex;
             align-items: center;
-            padding: 25px 30px 10px;
+            justify-content: center;
+        }
+        .container {
+            display: inline-block;
+            background-color: $white;
+            border-radius: 35px;
+            padding: 0 1em;
+            margin-top: 2em;
+            width: 98%;
+        }
+
+        header {
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .header-display {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-display p {
+            color: $accent;
+            margin: 5px;
+            font-size: 1.2rem;
+            word-spacing: 0.5rem;
+        }
+
+        pre {
+            padding: 10px;
+            margin: 0;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: $accent;
+        }
+
+        .days,
+        .week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            margin: auto;
+            padding: 0 20px;
             justify-content: space-between;
         }
-
-
-
-        header .calendar-navigation {
+        .week div,
+        .days div {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 5rem;
+            width: 5em;
+            border-radius: 100%;
         }
-
-        header .calendar-navigation span {
-            height: 38px;
-            width: 38px;
-            margin: 0 1px;
-            cursor: pointer;
-            text-align: center;
-            line-height: 38px;
-            border-radius: 50%;
-            user-select: none;
-            color: #aeabab;
-            font-size: 1.9rem;
-        }
-
-        .calendar-navigation span:last-child {
-            margin-right: -10px;
-        }
-
-        header .calendar-navigation span:hover {
-            background: #f2f2f2;
-        }
-
-        header .calendar-current-date {
-            font-weight: 500;
-            font-size: 1.45rem;
-        }
-
-        .calendar-body {
-            padding: 20px;
-            border-top: 1px solid #dedede;
-        }
-
-        .calendar-body ul {
-            list-style: none;
-            flex-wrap: wrap;
-            display: flex;
-            text-align: center;
-        }
-
-        .calendar-body .calendar-dates {
-            margin-bottom: 20px;
-        }
-
-        .calendar-body li {
-            width: calc(100% / 7);
-            font-size: 1.07rem;
-            color: #414141;
-        }
-
-        .calendar-body .calendar-weekdays li {
-            cursor: default;
-            font-weight: 500;
-        }
-
-        .calendar-body .calendar-dates li {
-            margin-top: 60px;
-            position: relative;
-            z-index: 1;
+        .days div:hover {
+            background: $accent-2;
+            color: rgb(255, 84, 229);
             cursor: pointer;
         }
-
-        .calendar-dates li.inactive {
-            color: #aaa;
+        .week div {
+            opacity: 0.5;
         }
-
-        .calendar-dates li.active {
-            color: #fff;
+        .current-date {
+            background-color: $accent;
+            color: $white;
         }
-
-        .calendar-dates li::before {
-            position: absolute;
-            content: "";
-            z-index: -1;
-            top: 50%;
-            left: 50%;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
+        .display-selected {
+            margin-bottom: 10px;
+            padding: 20px 20px;
+            text-align: center;
         }
-
-        .calendar-dates li.active::before {
-            background: #ffb2e7;
+        .other-month {
+            color: #d7d7d7;
         }
-
-        .calendar-dates li:not(.active):hover::before {
-            background: #e4e1e1;
-        }
-
     }
 
 
