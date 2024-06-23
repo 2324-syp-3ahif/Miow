@@ -5,7 +5,7 @@ import {MonthData} from "../interfaces/monthdata";
 // Retrieve month data for the specified user and date(yyyy-mm-dd)
 export function getMonthData(username: string, date: string) {
     const userData: User | undefined = getUser(username);
-    if (!userData) return null;
+    if (!userData || !date) return null;
     const [year, month, day] = date.split('-');
     const monthData: MonthData = {
         Message: "Ok",
