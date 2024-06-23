@@ -38,7 +38,7 @@ content-type: application/json
 }
 
 ###Test changing username
-PUT http://localhost:3000/api/auth/change-username
+PUT http://localhost:3000/auth/change-username
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEyOTY2MDAuMzEzLCJpYXQiOjE3MTEyOTMwMDB9.5wbT6gOQOS81WWsAiWpyC5alaXePNRdTGlcr1c46iLo
 
@@ -47,7 +47,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuY
 }
 
 ###Test changing password
-PUT http://localhost:3000/api/auth/change-password
+PUT http://localhost:3000/auth/change-password
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTEyOTY2MDAuMzEzLCJpYXQiOjE3MTEyOTMwMDB9.5wbT6gOQOS81WWsAiWpyC5alaXePNRdTGlcr1c46iLo
 

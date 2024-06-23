@@ -26,10 +26,22 @@ function loadSettings(){
 
 
 
+async function deleteAccount() {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch("//localhost:3000/auth/delete", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+        logout()
+    } catch (error) {
+        console.error("Error submitting week data:", error);
+    }
 
-
-
-
+}
 
 
 
