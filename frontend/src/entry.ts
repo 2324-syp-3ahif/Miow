@@ -250,6 +250,24 @@ function getMoodValueFromId(id: string): number {
     }
 }
 
+function getMoodColorClass(mood:number) :string{
+    switch(mood) {
+        case 5:
+            return 'very-good';
+        case 4:
+            return 'good';
+        case 3:
+            return 'meh';
+        case 2:
+            return 'bad';
+        case 1:
+            return 'very-bad';
+        default:
+            return '';
+    }
+}
+
+
 function getPeriodValueFromSrc(src: string | null): number {
     switch (src) {
         case 'images/light_red_drop.png':
@@ -316,8 +334,11 @@ function toggleSelected(button: { classList: { toggle: (arg0: string) => void; }
 
 async function updateWeek(weeks_difference_from_today: number) {
     let currentMondayDate = document.getElementById("week_date_mon")?.textContent;
-    if (!currentMondayDate || !isValidDateString(currentMondayDate)) {
-        currentMondayDate = getCurrentWeekStartDate(); // You might need to implement this function
+    if (!currentMondayDate ) {
+        currentMondayDate = getCurrentWeekStartDate();
+    }
+    else{
+
     }
     let parts = currentMondayDate.split(" ");
     let month = parts[1]; // "June"
@@ -333,7 +354,7 @@ async function updateWeek(weeks_difference_from_today: number) {
      let month2 = targetDate.getMonth()+1;
      day = targetDate.getDate();
      year = targetDate.getFullYear();
-    let formattedDate = `${year}-${month2.toString().padStart(2, '0')}-${day}`;
+    let formattedDate = `${year}-${month2.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     const url = `http://localhost:3000/entry/week?date=${formattedDate}`;
     const token = localStorage.getItem('token');
 
@@ -368,59 +389,27 @@ function getCurrentWeekStartDate(): string {
     return startOfWeek.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-function updateWeekUI(data: any) {
+function updateWeekUI(data:any) {
     document.getElementById("note-content").textContent = data.text;
-    document.getElementById("monday-log").textContent = data.Days.Monday.text;
-    document.getElementById("tuesday-log").textContent = data.Days.Tuesday.text;
-    document.getElementById("wednesday-log").textContent = data.Days.Wednesday.text;
-    document.getElementById("thursday-log").textContent = data.Days.Thursday.text;
-    document.getElementById("friday-log").textContent = data.Days.Friday.text;
-    document.getElementById("saturday-log").textContent = data.Days.Saturday.text;
-    document.getElementById("sunday-log").textContent = data.Days.Sunday.text;
-    document.getElementById("week_date_mon").textContent ="Monday "+ formatDate(data.weekStartDay); // Monday
-    document.getElementById("week_date_tue").textContent ="Tuesday "+ formatDate(addDays(data.weekStartDay, 1)); // Tuesday
-    document.getElementById("week_date_wed").textContent ="Wednesday "+ formatDate(addDays(data.weekStartDay, 2)); // Wednesday
-    document.getElementById("week_date_thu").textContent ="Thursday "+ formatDate(addDays(data.weekStartDay, 3)); // Thursday
-    document.getElementById("week_date_fri").textContent ="Friday "+ formatDate(addDays(data.weekStartDay, 4)); // Friday
-    document.getElementById("week_date_sat").textContent ="Saturday "+ formatDate(addDays(data.weekStartDay, 5)); // Saturday
-    document.getElementById("week_date_sun").textContent ="Sunday "+ formatDate(data.weekEndDay); // Sunday
-    document.getElementById("weekly_log").textContent="Weekly Log "+ formatDate2(data.weekStartDay) +"  -  "+ formatDate2( data.weekEndDay);
+
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    days.forEach(day => {
+        document.getElementById(`${day.toLowerCase()}-log`).textContent = data.Days[day].text;
+    });
+
+    days.forEach((day, index) => {
+        const dayDate = formatDate(addDays(data.weekStartDay, index));
+        const moodClass = getMoodColorClass(data.Days[day].Mood);
+        document.getElementById(`week_date_${day.toLowerCase().slice(0, 3)}`).innerHTML = `<span class="${moodClass}"></span>${day} ${dayDate}`;
+    });
+
+    document.getElementById("weekly_log").textContent = `Weekly Log ${formatDate2(data.weekStartDay)} - ${formatDate2(data.weekEndDay)}`;
     (document.getElementById("note-content")as HTMLTextAreaElement).value = data.text;
-    if (data.Days.Monday.Period == 1) {
-        document.getElementById("week_date_mon").style.color = "#FF7674";
-    } else {
-        document.getElementById("week_date_mon").style.color = "white";
-    }
-    if (data.Days.Tuesday.Period == 1) {
-        document.getElementById("week_date_tue").style.color = "red";
-    } else {
-        document.getElementById("week_date_tue").style.color = "white";
-    }
-    if (data.Days.Wednesday.Period == 1) {
-        document.getElementById("week_date_wed").style.color = "red";
-    } else {
-        document.getElementById("week_date_wed").style.color = "white";
-    }
-    if (data.Days.Thursday.Period == 1) {
-        document.getElementById("week_date_thu").style.color = "red";
-    } else {
-        document.getElementById("week_date_thu").style.color = "white";
-    }
-    if (data.Days.Friday.Period == 1) {
-        document.getElementById("week_date_fri").style.color = "red";
-    } else {
-        document.getElementById("week_date_fri").style.color = "white";
-    }
-    if (data.Days.Saturday.Period == 1) {
-        document.getElementById("week_date_sat").style.color = "red";
-    } else {
-        document.getElementById("week_date_sat").style.color = "white";
-    }
-    if (data.Days.Sunday.Period == 1) {
-        document.getElementById("week_date_sun").style.color = "red";
-    } else {
-        document.getElementById("week_date_sun").style.color = "white";
-    }
+
+    days.forEach(day => {
+        const period = data.Days[day].Period;
+        document.getElementById(`week_date_${day.toLowerCase().slice(0, 3)}`).style.color = (period == 1) ? "red" : "white";
+    });
 }
 
 function formatDate(dateString: string): string {
@@ -436,7 +425,7 @@ function formatDate2(dateString: string): string {
 function addDays(dateString: string, days: number): string {
     const date = new Date(dateString);
     date.setDate(date.getDate() + days);
-    return date.toISOString().split('T')[0];
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 async function submit_week() {
     const entryData = (document.getElementById("note-content") as HTMLTextAreaElement).value.trim();
