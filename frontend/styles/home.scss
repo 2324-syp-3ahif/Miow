@@ -335,7 +335,6 @@ button:hover{
             font-color: $font_color;
 
             img{
-
                 width: 100px;
                 position: absolute;
                 top: 50%;
@@ -349,13 +348,22 @@ button:hover{
             height: 80px;
             border-radius: 50px;
             border: none;
-            margin: 5px;
+            margin-left: 15px;
+            margin-bottom: 10px;
             display: inline-block;
             text-align: center;
             line-height: 50px;
             background-color: $monthly_tag ;
             font-size: 20px;
             font-color: $font_color;
+
+            img{
+                width: 80px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
         }
 
         .emotion_button:not(.selected),
