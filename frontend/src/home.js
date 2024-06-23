@@ -24,7 +24,7 @@ function logout() {
 function loadSettings() {
     const track = document.getElementById('trackPeriod');
     const currentTrack = localStorage.getItem('trackPeriod');
-    if (currentTrack) {
+    if (currentTrack == "true") {
         track.checked = true;
     }
     else {
@@ -40,33 +40,31 @@ function submitSettings() {
         const token = localStorage.getItem('token');
         const _newUsername = usernameInput.value;
         let trackvalue = false;
-        if (track.value == "on") {
+        if (track.checked) {
             trackvalue = true;
         }
-        if ((track.checked && !localStorage.getItem('trackPeriod')) || !track.checked && localStorage.getItem('trackPeriod')) {
-            const requestbody = {
-                themeNR: localStorage.getItem('themeNR'),
-                trackPeriod: trackvalue
-            };
-            try {
-                const response = yield fetch("http://localhost:3000/settings", {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    },
-                    body: JSON.stringify(requestbody)
-                });
-            }
-            catch (error) {
-                console.error("Error submitting week data:", error);
-            }
+        const requestbody = {
+            themeNR: localStorage.getItem('themeNR'),
+            trackPeriod: trackvalue
+        };
+        try {
+            const response = yield fetch("http://localhost:3000/settings", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(requestbody)
+            });
+        }
+        catch (error) {
+            console.error("Error submitting week data:", error);
         }
         if (track.checked) {
             localStorage.setItem('trackPeriod', 'true');
         }
         else {
-            localStorage.removeItem('trackPeriod');
+            localStorage.setItem('trackPeriod', 'false');
         }
         if (localStorage.getItem('username') !== usernameInput.value) {
             const requestbody = {

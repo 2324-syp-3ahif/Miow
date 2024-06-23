@@ -192,9 +192,11 @@ async function updateUI(data: any) {
     periodButtons.forEach((imgButton: Element) => {
         const imgSrc = imgButton.getAttribute('src');
         if (data.period === getPeriodValueFromSrc(imgSrc)) {
-            imgButton.parentElement?.classList.add('selected');
+            imgButton.classList.add('selected');
+            imgButton.classList.add('period-button-selected')
         } else {
-            imgButton.parentElement?.classList.remove('selected');
+            imgButton.classList.remove('selected');
+            imgButton.classList.remove('period-button-selected')
         }
     });
 
@@ -231,6 +233,18 @@ async function updateUI(data: any) {
     // Update Note Content
     const noteContent = document.getElementById('note-content') as HTMLTextAreaElement;
     noteContent.value = data.text || '';
+
+    let helpme=localStorage.getItem('trackPeriod');
+    if("false"==helpme){
+        const periodthigy=document.querySelectorAll('.period')[0];
+        (periodthigy as HTMLElement).innerHTML=
+            "                <span>\n" +
+            "                    Period:\n" +
+            "                </span>\n" +
+            "                    <span id=\"predicting\">\n" +
+            "                    Not Predicting\n" +
+            "                </span>";
+    }
 }
 
 function getMoodValueFromId(id: string): number {
@@ -435,10 +449,19 @@ function updateWeekUI(data:any) {
     document.getElementById("weekly_log").textContent = `Weekly Log ${formatDate2(data.weekStartDay)} - ${formatDate2(data.weekEndDay)}`;
     (document.getElementById("note-content")as HTMLTextAreaElement).value = data.text;
 
+    const trackPeriod = localStorage.getItem('trackPeriod') === "false";
+
     days.forEach(day => {
         const period = data.Days[day].Period;
-        document.getElementById(`week_date_${day.toLowerCase().slice(0, 3)}`).style.color = (period == 1) ? "red" : "white";
+        const element = document.getElementById(`week_date_${day.toLowerCase().slice(0, 3)}`);
+
+        if (trackPeriod) {
+            element.style.color = "white";
+        } else {
+            element.style.color = (period == 1) ? "red" : "white";
+        }
     });
+
 }
 
 function formatDate(dateString: string): string {

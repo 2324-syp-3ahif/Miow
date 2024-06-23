@@ -16,7 +16,7 @@ function logout(){
 function loadSettings(){
     const track = document.getElementById('trackPeriod') as HTMLInputElement;
     const currentTrack = localStorage.getItem('trackPeriod');
-    if (currentTrack) {
+    if (currentTrack=="true") {
         track.checked = true;
     } else {
        track.checked = false;
@@ -33,11 +33,10 @@ async function submitSettings() {
     const token = localStorage.getItem('token');
     const _newUsername = (usernameInput as HTMLInputElement).value;
     let trackvalue:boolean =false;
-    if((track as HTMLInputElement).value=="on"){
+    if((track as HTMLInputElement).checked){
         trackvalue=true;
     }
-    if(((track as HTMLInputElement).checked && !localStorage.getItem('trackPeriod'))||!(track as HTMLInputElement).checked && localStorage.getItem('trackPeriod')){
-        const requestbody={
+      const requestbody={
             themeNR: localStorage.getItem('themeNR'),
             trackPeriod:trackvalue
         }
@@ -53,12 +52,12 @@ async function submitSettings() {
         } catch (error) {
             console.error("Error submitting week data:", error);
         }
-    }
+
 
     if ((track as HTMLInputElement).checked) {
         localStorage.setItem('trackPeriod', 'true');
     } else {
-        localStorage.removeItem('trackPeriod');
+        localStorage.setItem('trackPeriod', 'false');
     }
     if (localStorage.getItem('username') !== (usernameInput as HTMLInputElement).value) {
         const requestbody={
