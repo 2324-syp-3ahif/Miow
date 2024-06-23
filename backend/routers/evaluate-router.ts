@@ -7,8 +7,8 @@ export const evaluateRouter = express.Router();
 
 // GET retrieve month data from the day given
 evaluateRouter.get("/", isAuthenticated, (req, res) => {
-    const  date  = req.body.date;
-    const currentUser = req.user.username;
+    const date = req.query.date as string;
+    const currentUser = req.query.username as string;
     const monthData = getMonthData(currentUser, date);
     if (monthData) {
         return res.status(StatusCodes.OK).json(monthData);

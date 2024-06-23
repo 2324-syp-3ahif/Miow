@@ -58,9 +58,8 @@ class Calendar {
             if (entryData && entryData.mood) {
                 dayElement.classList.add(`mood-${entryData.mood}`);
             }
-            const periodData = await fetchPeriodByDateCalendar();
+            const periodData = await fetchPeriodByDateCalendar(date);
             if (periodData && periodData.period) {
-                console.log(periodData.period);
                 dayElement.classList.add(`period-${periodData.period}`);
             }
 
@@ -118,7 +117,8 @@ async function fetchEntryByDateCalendar(date: string) {
     }
 }
 
-async function fetchPeriodByDateCalendar() {
+async function fetchPeriodByDateCalendar(date: string) {
+    const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     if (!token) {
         console.error('Token not found in localStorage');
@@ -126,7 +126,7 @@ async function fetchPeriodByDateCalendar() {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/evaluate`, {
+        const response = await fetch(`http://localhost:3000/evaluate?date=${date}&username=${username}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -136,8 +136,8 @@ async function fetchPeriodByDateCalendar() {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        const responseData = await response.json();
-        return responseData;
+        const periodData = await response.json();
+        return periodData;
     } catch (error) {
         console.error('Error fetching period by date:', error);
     }

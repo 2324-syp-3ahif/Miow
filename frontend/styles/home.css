@@ -398,6 +398,15 @@ button:hover {
 .note-book #monthly-notebook .mood-5 {
   background-color: #1fff1f;
 }
+.note-book #monthly-notebook .period-start {
+  border: 5px solid #868686;
+}
+.note-book #monthly-notebook .period-middle {
+  border: 5px solid #f59090;
+}
+.note-book #monthly-notebook .period-end {
+  border: 5px solid #b4006c;
+}
 .note-book #monthly-notebook .period-1 {
   border: 5px solid #868686;
 }
@@ -458,6 +467,18 @@ button:hover {
 .note-book #settings-notebook .opt-button:hover {
   background-color: #ffd6d6;
   color: #603636;
+}
+.note-book #settings-notebook .theme {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 2.5em;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  margin: 30px 0;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
 .note-book .vl {
   border-left: 2px solid rgba(211, 169, 139, 0.38);

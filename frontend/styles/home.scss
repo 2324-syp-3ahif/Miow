@@ -6,7 +6,7 @@ $font_color: #603636;
 $main_font: 'Roboto', sans-serif;
 $circle-size: 80px;
 $font_size: 2.5em;
-
+$background_color: #CDFCFF;
 $daily_tag: #FF7373;
 $weekly_tag: #FF9696;
 $monthly_tag: #ffe5e5;
@@ -14,8 +14,90 @@ $yearly_tag: #FFCBCB;
 $predicting_tag: #FFE4E4;
 $settings_tag: #FFF1F1;
 
+$themes: (
+        Matcha: (
+                primary-color: #b1bb10,
+                inner-color: #3599ff,
+                input-color: #fgh,
+                font-color: #ijk,
+                daily-tag: #lmn,
+        ),
+
+        Bubblegum: (
+                primary-color: #3926e7,
+                inner-color: #517191,
+                input-color: #fgh,
+                font-color: #ijk,
+                daily-tag: #lmn,
+        ),
+
+        CottonCandy: (
+                primary-color: #728849,
+                inner-color: #e11142,
+                input-color: #fgh,
+                font-color: #ijk,
+                daily-tag: #lmn,
+        ),
+
+
+        Dragona: (
+                primary-color: #7613af,
+                inner-color: #1678d2,
+                input-color: #fgh,
+                font-color: #ijk,
+                daily-tag: #lmn,
+        ),
+
+        Dragonfruit: (
+                primary-color: #abc,
+                inner-color: #def,
+                input-color: #fgh,
+                font-color: #ijk,
+                daily-tag: #lmn,
+        ),
+
+        Gatorade: (
+                primary-color: #abc,
+                inner-color: #def,
+                input-color: #fgh,
+                font-color: #ijk,
+                daily-tag: #lmn,
+        ),
+
+        Lavafoodcake: (
+                primary-color: #abc,
+                inner-color: #def,
+                input-color: #fgh,
+                font-color: #ijk,
+                daily-tag: #lmn,
+        ),
+
+        Peachpunch: (
+                primary-color: #abc,
+                inner-color: #def,
+                input-color: #fgh,
+                font-color: #ijk,
+                daily-tag: #lmn,
+        ),
+
+);
+
+@mixin generate-themes($themes) {
+    @each $theme, $map in $themes {
+        .theme-#{$theme} {
+            --primary-color: map-get($map, primary-color);
+            --inner-color: map-get($map, inner-color);
+            --input-color: map-get($map, input-color);
+            --font-color: map-get($map, font-color);
+            --daily-tag: map-get($map, daily-tag);
+            
+        }
+    }
+}
+
+
 body{
-    background-color: #CDFCFF;
+    background-color: $background_color;
 }
 button{
     border: none;
@@ -497,6 +579,18 @@ button:hover{
             background-color: #1fff1f;
         }
 
+        .period-start{
+            border: 5px solid #868686;
+        }
+
+        .period-middle{
+            border: 5px solid #f59090;
+        }
+
+        .period-end{
+            border: 5px solid #b4006c;
+        }
+
         .period-1 {
             border: 5px solid #868686;
         }
@@ -574,6 +668,54 @@ button:hover{
             background-color: #ffd6d6;
             color: #603636;
         }
+
+        .theme{
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: $font_size;
+            background-color: $input_color;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
+        }
+
+        .Matcha {
+
+        }
+
+        .Bubblegum {
+
+        }
+
+        .CottonCandy{
+
+        }
+
+        .Dragona{
+
+        }
+
+        .Dragonfruit{
+
+        }
+
+        .Gatorade{
+
+        }
+
+        .Lavafoodcake{
+
+        }
+
+        .Peachpunch{
+
+        }
+
+
+
     }
 
     .vl {
