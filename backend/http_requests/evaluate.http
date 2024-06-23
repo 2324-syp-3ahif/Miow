@@ -1,14 +1,14 @@
 ### test in john
-GET http://localhost:3000/evaluate
+PUT http://localhost:3000/evaluate
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxNzg3NDIuNzE0LCJpYXQiOjE3MTkxNzUxNDJ9.uAW0tvX34-0MiyznY6Q6ZrRdhDVIspEisnTgvqXKPXQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxODYyOTguMzk0LCJpYXQiOjE3MTkxODI2OTh9.67eUEjU6niq_Xg7beBUg9j-5CpEph8X7zl_QfKRk7tg
 
 {
   "date": "2024-06-25"
 }
 
 ### test for future john
-GET http://localhost:3000/evaluate
+PUT http://localhost:3000/evaluate
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTkxNzg3NDIuNzE0LCJpYXQiOjE3MTkxNzUxNDJ9.uAW0tvX34-0MiyznY6Q6ZrRdhDVIspEisnTgvqXKPXQ
 

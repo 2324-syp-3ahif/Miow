@@ -372,8 +372,7 @@ button:hover {
   opacity: 0.5;
 }
 .note-book #monthly-notebook .current-date {
-  background-color: #ff78a1;
-  color: #fff;
+  font-weight: bold;
 }
 .note-book #monthly-notebook .display-selected {
   margin-bottom: 10px;
@@ -398,23 +397,15 @@ button:hover {
 .note-book #monthly-notebook .mood-5 {
   background-color: #1fff1f;
 }
-.note-book #monthly-notebook .period-start {
-  border: 5px solid #868686;
-}
-.note-book #monthly-notebook .period-middle {
-  border: 5px solid #f59090;
-}
-.note-book #monthly-notebook .period-end {
-  border: 5px solid #b4006c;
-}
+
 .note-book #monthly-notebook .period-1 {
-  border: 5px solid #868686;
+  border: 5px solid #ff0000;
 }
 .note-book #monthly-notebook .period-2 {
-  border: 5px solid #f59090;
+  border: 5px solid #646464;
 }
 .note-book #monthly-notebook .period-3 {
-  border: 5px solid #b4006c;
+  border: 5px solid #ffb9b9;
 }
 .note-book .week_weekly-goals {
   margin-top: 20px;

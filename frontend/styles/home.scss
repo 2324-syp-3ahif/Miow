@@ -579,28 +579,16 @@ button:hover{
             background-color: #1fff1f;
         }
 
-        .period-start{
-            border: 5px solid #868686;
+        .period-1 {//on period
+            border: 5px solid #ff0000;
         }
 
-        .period-middle{
-            border: 5px solid #f59090;
+        .period-2 {//not on period
+            border: 5px solid rgba(87, 87, 87, 0.26);
         }
 
-        .period-end{
-            border: 5px solid #b4006c;
-        }
-
-        .period-1 {
-            border: 5px solid #868686;
-        }
-
-        .period-2 {
-            border: 5px solid #f59090;
-        }
-
-        .period-3 {
-            border: 5px solid #b4006c;
+        .period-3 {//predited period
+            border: 5px solid #ffb9b9;
         }
 
     }
