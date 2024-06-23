@@ -3,7 +3,7 @@ import {isAuthenticated} from "../middleware/auth-handlers";
 import {User} from "../interfaces/user";
 import {getUser, updateUser} from "../brain/user_repo";
 import {StatusCodes} from "http-status-codes";
-import {aboutUs, privacyPolicy, termsOfService} from "../brain/setting_repo";
+import {aboutUs} from "../brain/setting_repo";
 
 export const settingsRouter = express.Router();
 
@@ -31,5 +31,5 @@ settingsRouter.get("", isAuthenticated, (req, res) => {
         return res.status(StatusCodes.NOT_FOUND).json({ error: "User not found" });
     }
     const u = user.settings;
-    return res.status(StatusCodes.OK).json({ u, aboutUs, termsOfService, privacyPolicy });
+    return res.status(StatusCodes.OK).json({ u, aboutUs});
 });

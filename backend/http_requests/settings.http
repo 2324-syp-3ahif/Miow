@@ -1,26 +1,13 @@
 ###
-PUT http://localhost:3000/api/settings
+PUT http://localhost:3000/settings
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTE0MDQwNTEuOTUzLCJpYXQiOjE3MTE0MDA0NTF9.SPsGr-vbhXun0KW1hwI8ZZoUPbjq6w9ti4eTzwVSWKM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzE5MTUwNzc4LjMyNiwiaWF0IjoxNzE5MTQ3MTc4fQ.Uzu3hu8coHjX_q3KtNYjqoL3AI2lXSHCI3hdBq3I7EI
 
 {
-  "ThemeNR": 2,
-  "entrySettings": {
-    "fixed_blocks": {
-      "date": "2024-03-25",
-      "mood": 5,
-      "emotions": {
-        "exited": 1
-      },
-      "text": "Example entry",
-      "period": 2
-    },
-    "icon_blocks": [],
-    "number_blocks": []
-  },
+  "themeNR": 2,
   "trackPeriod": true
 }
 
 ###
-GET http://localhost:3000/api/settings
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiam9obiJ9LCJleHAiOjE3MTE0MDUwOTAuODQzLCJpYXQiOjE3MTE0MDE0OTB9.fOkMetVqOvBtnFEPGS3wVVDifWauF__bt50ArZ-gogY
+GET http://localhost:3000/settings
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzE5MTUwNzc4LjMyNiwiaWF0IjoxNzE5MTQ3MTc4fQ.Uzu3hu8coHjX_q3KtNYjqoL3AI2lXSHCI3hdBq3I7EI

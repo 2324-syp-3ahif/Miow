@@ -35,6 +35,16 @@ async function login(): Promise<void> {
                     const token = data.accessToken;
                     localStorage.setItem('token', token);
                     localStorage.setItem('username', username);
+                    const response2 = await fetch(`http://localhost:3000/settings`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    const responseData = await response2.json();
+                    localStorage.setItem('trackPeriod', responseData.u.trackPeriod);
+                    localStorage.setItem('themeNR', responseData.u.themeNR);
 
                     window.location.href = `/home.html`;
 

@@ -43,6 +43,16 @@ function login() {
                         const token = data.accessToken;
                         localStorage.setItem('token', token);
                         localStorage.setItem('username', username);
+                        const response2 = yield fetch(`http://localhost:3000/settings`, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            }
+                        });
+                        const responseData = yield response2.json();
+                        localStorage.setItem('trackPeriod', responseData.u.trackPeriod);
+                        localStorage.setItem('themeNR', responseData.u.themeNR);
                         window.location.href = `/home.html`;
                     }
                     else {

@@ -389,8 +389,8 @@
       }
     ],
     "settings": {
-      "themeNR": 1,
-      "trackPeriod": true
+      "trackPeriod": true,
+      "themeNR": 1
     }
   },
   {
@@ -439,6 +439,16 @@
     "weeks": [],
     "settings": {
       "themeNR": 1,
+      "trackPeriod": true
+    }
+  },
+  {
+    "username": "admin",
+    "password": "$2b$08$ZxfEdkWuZv2BhKx1nAWm0uzAW.jw4zNhLnAt0MnBdvQ5Lh/AvSriu",
+    "entries": [],
+    "weeks": [],
+    "settings": {
+      "themeNR": 2,
       "trackPeriod": true
     }
   }

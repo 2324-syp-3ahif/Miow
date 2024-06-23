@@ -430,7 +430,7 @@ function addDays(dateString: string, days: number): string {
 async function submit_week() {
     const entryData = (document.getElementById("note-content") as HTMLTextAreaElement).value.trim();
     const weekStartDate = document.getElementById("week_date_mon")?.textContent;
-    if (!entryData || !weekStartDate) {
+    if ( !weekStartDate) {
         console.error("Textarea content or week start date is missing.");
         return;
     }
