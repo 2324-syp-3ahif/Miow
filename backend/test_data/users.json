@@ -312,60 +312,24 @@
         "text": ""
       },
       {
-        "date": "2024-06-22",
-        "mood": 5,
+        "date": "2024-06-23",
+        "mood": 4,
         "period": 2,
-        "emotions": {
-          "excited": false,
-          "relaxed": false,
-          "proud": false,
-          "hopeful": false,
-          "happy": false,
-          "lonely": false,
-          "emo": false,
-          "anxious": false,
-          "sad": false,
-          "angry": false,
-          "tired": false
-        },
-        "weather": {
-          "sunny": false,
-          "windy": false,
-          "cloudy": false,
-          "snowy": false,
-          "rainy": false
-        },
-        "sleep": 0,
+        "emotions": {},
+        "weather": {},
+        "sleep": 8,
         "water": 2,
         "text": ""
       },
       {
-        "date": "2024-06-23",
-        "mood": 3,
-        "period": 1,
-        "emotions": {
-          "excited": false,
-          "relaxed": false,
-          "proud": false,
-          "hopeful": false,
-          "happy": true,
-          "lonely": false,
-          "emo": false,
-          "anxious": true,
-          "sad": false,
-          "angry": false,
-          "tired": false
-        },
-        "weather": {
-          "sunny": true,
-          "windy": false,
-          "cloudy": false,
-          "snowy": true,
-          "rainy": false
-        },
+        "date": "2024-06-22",
+        "mood": 4,
+        "period": 2,
+        "emotions": {},
+        "weather": {},
         "sleep": 8,
         "water": 2,
-        "text": "Hello its sunday"
+        "text": ""
       }
     ],
     "weeks": [
@@ -476,7 +440,7 @@
       },
       {
         "date": "2024-06-23",
-        "mood": 0,
+        "mood": 5,
         "period": 2,
         "emotions": {
           "excited": false,

@@ -1,1 +1,0 @@
-export let aboutUs:string="about...";
