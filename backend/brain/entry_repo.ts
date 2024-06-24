@@ -113,7 +113,6 @@ function isValidDateFormat(dateString: string): boolean {
 
 
 
-
 export function getWeekEntries(username: string, date: string): any | null {
     const user: User | undefined = getUser(username);
     if (!user) {
@@ -140,18 +139,18 @@ export function getWeekEntries(username: string, date: string): any | null {
             const entryDate = `${monthData.Date.slice(0, 7)}-${dayData.day.padStart(2, '0')}`;
             const entryDateObj = new Date(entryDate);
             if (entryDateObj >= firstDayOfWeek && entryDateObj <= lastDayOfWeek) {
+                // Find the text for the current entry from the user's entries
+                const userEntry = user.entries.find(entry => entry.date === entryDate);
                 weekEntries.push({
                     ...BaseEntry, // Use BaseEntry to ensure all fields are included
                     date: entryDate,
                     mood: dayData.mood,
-                    period: dayData.period
+                    period: dayData.period,
+                    text: userEntry ? userEntry.text : ""
                 });
             }
         });
     });
-
-    const week: Week | undefined = user.weeks.find(week => week.startday === date.slice(5));
-    const text: string = week ? week.text : "";
 
     const days: { [key: string]: { Mood: number, Period: number, text: string } } = {
         Monday: { Mood: 0, Period: 0, text: "" },
@@ -169,7 +168,7 @@ export function getWeekEntries(username: string, date: string): any | null {
         if (days[dayName]) {
             days[dayName].Mood = entry.mood;
             days[dayName].Period = entry.period;
-            days[dayName].text = entry.text;
+            days[dayName].text = entry.text; // Assign text from entry
         }
     });
 
@@ -177,10 +176,11 @@ export function getWeekEntries(username: string, date: string): any | null {
         requestedDate: `${requestedDate.getFullYear()}-${(requestedDate.getMonth() + 1).toString().padStart(2, '0')}-${requestedDate.getDate()}`,
         weekStartDay: `${firstDayOfWeek.getFullYear()}-${(firstDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-${firstDayOfWeek.getDate()}`,
         weekEndDay: `${lastDayOfWeek.getFullYear()}-${(lastDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-${lastDayOfWeek.getDate()}`,
-        text: text,
         Days: days
     };
 }
+
+
 
 // Calculate the first day of the week (Monday)
 

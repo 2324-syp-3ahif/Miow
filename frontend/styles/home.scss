@@ -242,7 +242,7 @@ button:hover{
                     align-self: center;
                     justify-self: right;
 
-                    width: 50px;
+                    width: 75px;
                     margin-left: 10px;
 
                     display: inline-block;
@@ -256,12 +256,12 @@ button:hover{
                 flex-wrap: wrap;
                 padding: 20px;
                 font-size: $font_size;
-                background-color:  var(--input-color);
+                background-color:  var(--inner-color);
                 border-radius: 15px;
                 margin: 30px 0;
                 align-items: center;
 
-                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.09);
+                box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.1);
             }
 
         }
@@ -343,8 +343,8 @@ button:hover{
             }
         }
         .emotion_button {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50px;
             border: none;
             margin-left: 15px;
@@ -352,7 +352,7 @@ button:hover{
             display: inline-block;
             text-align: center;
             line-height: 50px;
-            background-color: $monthly_tag ;
+            background-color: $weekly_tag ;
             font-size: 20px;
             font-color: var(--font-color);
 
