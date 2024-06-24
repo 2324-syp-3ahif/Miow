@@ -85,7 +85,7 @@ authRouter.post("/login", (req: express.Request<{}, {}, UserCredentials> , res) 
         res.status(StatusCodes.NOT_FOUND).json("User does not exist");
         return;
     }
-    if (!bcrypt.compareSync(loginUser.password, user.password)) { // Compare plaintext password with stored hashed password
+    if (!bcrypt.compareSync(loginUser.password, user.password)) {
         return res.status(StatusCodes.UNAUTHORIZED).json("Wrong password");
     }
     const userClaims = {

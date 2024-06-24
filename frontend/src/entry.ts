@@ -1,9 +1,5 @@
 import {Entry} from "../interfaces/entry";
 
-
-
-
-
 function getSelectedPeriod() {
     const periodButtons = document.querySelectorAll('.period button img');
     let selectedPeriod = 2;
@@ -18,7 +14,6 @@ function getSelectedPeriod() {
     });
     return selectedPeriod;
 }
-
 
  async function submit(): Promise<void> {
     const token = localStorage.getItem('token');
@@ -105,10 +100,6 @@ function getSelectedMood() {
     });
     return selectedMood;
 }
-
-
-
-
 
 function getSelectedEmotions() {
     const emotionButtons = document.querySelectorAll('.emotion_button');

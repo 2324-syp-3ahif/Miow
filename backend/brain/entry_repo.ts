@@ -17,23 +17,17 @@ export function getEntryByUserAndDate(username: string, date: string): Entry | n
     const entry: Entry | undefined = user.entries.find((entry) => entry.date === date);
     const monthData = getMonthData(username, date);
 
-    // Extract the day from the date
     const day = date.split('-')[2];  // Assumes date is in 'YYYY-MM-DD' format
 
-    // Find the period for the specific day
     const dayData = monthData?.values.find(d => d.day === day);
     const period = dayData ? dayData.period : 2;  // Default period if dayData is not found
 
     if (entry === undefined) {
-        // If entry is not found, create a new entry with the default values
         return { ...BaseEntry, date, period };
     } else {
-        // If entry is found, update the period
         return { ...entry, period };
     }
 }
-
-
 
 // Function to add an entry for a specific user
 export function addEntry(username: string, entryData: Entry) {
@@ -110,24 +104,19 @@ function isValidDateFormat(dateString: string): boolean {
     return true;
 }
 
-
-
-
 export function getWeekEntries(username: string, date: string): any | null {
     const user: User | undefined = getUser(username);
     if (!user) {
-        return null; // no user? insert megamind meme here
+        return null;
     }
 
     const requestedDate = new Date(date);
     const firstDayOfWeek = getFirstDayOfWeek(requestedDate);
     const lastDayOfWeek = getLastDayOfWeek(firstDayOfWeek);
 
-    // Generate month data in 'yyyy-mm-dd' format
     const firstMonthDate = `${firstDayOfWeek.getFullYear()}-${(firstDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-01`;
     const lastMonthDate = `${lastDayOfWeek.getFullYear()}-${(lastDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-01`;
 
-    // Get month data for both months if the week spans two months
     const monthDataArray = [getMonthData(username, firstMonthDate)];
     if (firstMonthDate !== lastMonthDate) {
         monthDataArray.push(getMonthData(username, lastMonthDate));
@@ -139,10 +128,9 @@ export function getWeekEntries(username: string, date: string): any | null {
             const entryDate = `${monthData.Date.slice(0, 7)}-${dayData.day.padStart(2, '0')}`;
             const entryDateObj = new Date(entryDate);
             if (entryDateObj >= firstDayOfWeek && entryDateObj <= lastDayOfWeek) {
-                // Find the text for the current entry from the user's entries
                 const userEntry = user.entries.find(entry => entry.date === entryDate);
                 weekEntries.push({
-                    ...BaseEntry, // Use BaseEntry to ensure all fields are included
+                    ...BaseEntry,
                     date: entryDate,
                     mood: dayData.mood,
                     period: dayData.period,
@@ -168,7 +156,7 @@ export function getWeekEntries(username: string, date: string): any | null {
         if (days[dayName]) {
             days[dayName].Mood = entry.mood;
             days[dayName].Period = entry.period;
-            days[dayName].text = entry.text; // Assign text from entry
+            days[dayName].text = entry.text;
         }
     });
     const week: Week | undefined = user.weeks.find(week => week.startday === date.slice(5));
@@ -182,35 +170,22 @@ export function getWeekEntries(username: string, date: string): any | null {
     };
 }
 
-
-
 // Calculate the first day of the week (Monday)
-
 function getFirstDayOfWeek(date: Date): Date {
-    // Copy the date to avoid mutating the original
     const copiedDate = new Date(date.getTime());
-
-    // Get the day of the week (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
     let dayOfWeek = copiedDate.getDay();
-
-    // Calculate how many days to subtract to get to Monday (considering Monday as the start of the week)
-    let diff = dayOfWeek - 1; // Because JavaScript's getDay() returns 0 for Sunday, 1 for Monday, ..., 6 for Saturday
-
-    // Adjust if the current day is Sunday (getDay() returns 0)
+    let diff = dayOfWeek - 1;
     if (dayOfWeek === 0) {
-        diff = 6; // Move back 6 days to get to Monday
+        diff = 6;
     }
-
-    // Calculate the first day of the week (Monday)
     copiedDate.setDate(copiedDate.getDate() - diff);
-
     return copiedDate;
 }
 
 // Calculate the last day of the week (Sunday)
 function getLastDayOfWeek(date: Date): Date {
     const lastDayOfWeek = new Date(date);
-    lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6); // Adjust to Sunday
+    lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
     return lastDayOfWeek;
 }
 

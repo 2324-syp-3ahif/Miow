@@ -56,7 +56,7 @@ export function updateUserPassword(username: string, newPw: string, newPasswordH
     return {response:"Password Updated Succsessfully",status:StatusCodes.ACCEPTED}
 }
 
-//deleting a user from db, returns tru if succsessfull
+//deleting a user from db, returns tru if succsessfully
 export function deleteUserByUsername(username: string): boolean {
     const index = users.findIndex(u => u.username === username);
     if (index !== -1) {

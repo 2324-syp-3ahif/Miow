@@ -11,8 +11,6 @@ function logout(){
             }
 }
 
-
-
 function loadSettings(){
     const track = document.getElementById('trackPeriod') as HTMLInputElement;
     const currentTrack = localStorage.getItem('trackPeriod');
@@ -22,8 +20,6 @@ function loadSettings(){
        track.checked = false;
     }
 }
-
-
 
 async function submitSettings() {
     console.log("UWU");

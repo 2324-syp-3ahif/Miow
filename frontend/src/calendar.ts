@@ -36,11 +36,9 @@ class Calendar {
     private async render(): Promise<void>  {
         this.daysElement.innerHTML = '';
         this.displayElement.textContent = `${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(this.year, this.month))} ${this.year}`;
-
         const startDay = new Date(this.year, this.month, 1).getDay();
         const daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
         const daysInPrevMonth = new Date(this.year, this.month, 0).getDate();
-
         const today = new Date();
         const isCurrentMonth = today.getMonth() === this.month && today.getFullYear() === this.year;
 
@@ -50,11 +48,8 @@ class Calendar {
             dayElement.classList.add('other-month');
             this.daysElement.appendChild(dayElement);
         }
-
-
+        //this month
         const periodData = await fetchPeriodByDateCalendar(this.year+"-"+(this.month+1).toString().padStart(2, '0')+"-01");
-
-
         if (periodData && periodData.values) {
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayStr = day.toString().padStart(2, '0');
@@ -141,7 +136,7 @@ async function fetchPeriodByDateCalendar(date: string) {
         return periodData;
     } catch (error) {
         console.error('Error fetching period by date:', error);
-        return undefined; // Gib undefined zurück, wenn ein Fehler auftritt.
+        return undefined;
     }
 }
 

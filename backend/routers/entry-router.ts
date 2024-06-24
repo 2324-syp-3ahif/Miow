@@ -9,11 +9,9 @@ export const entryRouter = express.Router();
 entryRouter.get("/day", isAuthenticated, (req, res) => {
     const currentUser = req.user.username;
     const requestedDate = req.query.date as string;
-
     if(!requestedDate) {
         return res.status(StatusCodes.METHOD_NOT_ALLOWED).json(requestedDate);
     }
-
     const entry = getEntryByUserAndDate(currentUser, requestedDate);
     if (entry) {
         return res.status(StatusCodes.OK).json(entry);
