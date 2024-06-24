@@ -171,11 +171,13 @@ export function getWeekEntries(username: string, date: string): any | null {
             days[dayName].text = entry.text; // Assign text from entry
         }
     });
-
+    const week: Week | undefined = user.weeks.find(week => week.startday === date.slice(5));
+    const text: string = week ? week.text : "";
     return {
         requestedDate: `${requestedDate.getFullYear()}-${(requestedDate.getMonth() + 1).toString().padStart(2, '0')}-${requestedDate.getDate()}`,
         weekStartDay: `${firstDayOfWeek.getFullYear()}-${(firstDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-${firstDayOfWeek.getDate()}`,
         weekEndDay: `${lastDayOfWeek.getFullYear()}-${(lastDayOfWeek.getMonth() + 1).toString().padStart(2, '0')}-${lastDayOfWeek.getDate()}`,
+        text: text,
         Days: days
     };
 }
