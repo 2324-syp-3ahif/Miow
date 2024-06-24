@@ -29,11 +29,9 @@ body {
   height: 500px;
   margin-left: -230px;
   margin-top: -250px;
-  border-radius: 10px;
-
+  border-radius: 18px;
   background-color: white;
-
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.29);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.29);
 
   h1 {
 
@@ -41,7 +39,7 @@ body {
     font-size: 50px;
   }
   button {
-    background-color: $primary_color;
+    background-color: #ffb9c2;
     color: white;
     border: none;
     border-radius: 5px;
@@ -50,7 +48,7 @@ body {
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
-
+    box-shadow: 0 0 10px rgb(0 0 0 / 33%);
   }
 
   .input-box {
@@ -64,10 +62,10 @@ body {
       width: 80%;
       padding: 10px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 10px;
       margin-bottom: 10px;
       font-size: 18px;
-
+      box-shadow: 0 0 10px rgb(0 0 0 / 14%);
     }
   }
 

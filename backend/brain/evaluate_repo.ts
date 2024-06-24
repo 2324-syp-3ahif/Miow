@@ -171,7 +171,10 @@ function addCalculatedDataToMonthData(monthData: MonthData, updatedLastCycle: Me
             if (!monthData.values[dayNumber]) {
                 monthData.values[dayNumber].period = 3;
             } else {
-                monthData.values[dayNumber].period = 3;
+                if(monthData.values[dayNumber].period!=1) {
+
+                    monthData.values[dayNumber].period = 3;
+                }
             }
         }
     }

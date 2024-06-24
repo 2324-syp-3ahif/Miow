@@ -1,36 +1,32 @@
 :root {
   --primary-color: #ffb9c2;
-  --inner-color: #FFF6F6;
-  --input-color: rgb(255, 255, 255);
+  --inner-color: #fff6f6;
+  --input-color: #fff;
   --input-color-two: rgba(255, 185, 185, 0.27);
   --font-color: #603636;
-  --background-color: #CDFCFF;
-  --daily-tag: #FF7373;
-  --weekly-tag: #FF9696;
+  --background-color: #cdfcff;
+  --daily-tag: #ff7373;
+  --weekly-tag: #ff9696;
   --monthly-tag: #ffe5e5;
-  --yearly-tag: #FFCBCB;
-  --predicting-tag: #FFE4E4;
-  --settings-tag: #FFF1F1;
+  --yearly-tag: #ffcbcb;
+  --predicting-tag: #ffe4e4;
+  --settings-tag: #fff1f1;
   --circle-size: 80px;
   --font-size: 2.5em;
-  --main-font: "Roboto", sans-serif;
+  --main-font: 'Roboto', sans-serif;
   --accent-color: #ff78a1;
   --accent-color-2: #ebedf0;
 }
-
 body {
   background-color: var(--background-color);
 }
-
 button {
   border: none;
   background-color: inherit;
 }
-
 button:hover {
   transform: scale(1.03);
 }
-
 .tags {
   display: flex;
   justify-content: space-around;
@@ -64,9 +60,8 @@ button:hover {
 .tags #settings-tag {
   filter: invert(97%) sepia(85%) saturate(1151%) hue-rotate(290deg) brightness(121%) contrast(106%);
 }
-
 .note-book {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 90%;
   height: 90%;
   position: absolute;
@@ -97,7 +92,7 @@ button:hover {
   border: none;
   background-color: var(--input-color);
   font-size: 23px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   resize: none;
   outline: none;
   color: var(--font-color);
@@ -280,7 +275,7 @@ button:hover {
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #FF9696;
+  background-color: #ff9696;
   font-size: 20px;
   font-color: var(--font-color);
 }
@@ -301,7 +296,7 @@ button:hover {
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #ffffff;
+  background-color: #fff;
   font-size: 20px;
   font-color: var(--font-color);
 }
@@ -312,16 +307,13 @@ button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.note-book #daily-notebook .emotion_button:not(.selected),
-.note-book #daily-notebook .weather_button:not(.selected) {
+.note-book #daily-notebook .emotion_button:not(.selected), .note-book #daily-notebook .weather_button:not(.selected) {
   filter: brightness(130%);
 }
 .note-book #daily-notebook .mood_button:not(.selected) {
   filter: brightness(150%);
 }
-.note-book #daily-notebook .emotion_button.selected,
-.note-book #daily-notebook .weather_button.selected,
-.note-book #daily-notebook .mood_button.selected {
+.note-book #daily-notebook .emotion_button.selected, .note-book #daily-notebook .weather_button.selected, .note-book #daily-notebook .mood_button.selected {
   filter: brightness(100%);
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
@@ -344,7 +336,7 @@ button:hover {
 }
 .note-book #monthly-notebook header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 10px;
 }
@@ -353,20 +345,19 @@ button:hover {
   align-items: center;
 }
 .note-book #monthly-notebook .header-display p {
-  color: var(--accent-color);
+  color: var(--font-color);
   margin: 5px;
-  font-size: 1.2rem;
+  font-size: 20px;
   word-spacing: 0.5rem;
 }
 .note-book #monthly-notebook pre {
   padding: 10px;
   margin: 0;
   cursor: pointer;
-  font-size: 1.2rem;
-  color: var(--accent-color);
+  font-size: 15px;
+  color: var(--font-color);
 }
-.note-book #monthly-notebook .days,
-.note-book #monthly-notebook .week {
+.note-book #monthly-notebook .days, .note-book #monthly-notebook .week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin: auto;
@@ -375,8 +366,7 @@ button:hover {
   justify-items: center;
   align-items: center;
 }
-.note-book #monthly-notebook .week div,
-.note-book #monthly-notebook .days div {
+.note-book #monthly-notebook .week div, .note-book #monthly-notebook .days div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -387,7 +377,8 @@ button:hover {
 }
 .note-book #monthly-notebook .days div:hover {
   background: var(--accent-color-2);
-  color: rgb(255, 84, 229);
+  color: var(--font-color);
+  font-weight: bold;
   cursor: pointer;
 }
 .note-book #monthly-notebook .current-date {
@@ -418,7 +409,7 @@ button:hover {
   background-color: #1fff1f;
 }
 .note-book #monthly-notebook .period-1 {
-  border: 5px solid #ff0000;
+  border: 5px solid #f00;
 }
 .note-book #monthly-notebook .period-2 {
   border: 5px solid rgba(87, 87, 87, 0.26);
@@ -465,7 +456,7 @@ button:hover {
   border: none;
   background-color: var(--input-color);
   font-size: 23px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   resize: none;
   outline: none;
   color: var(--font-color);
@@ -502,11 +493,16 @@ button:hover {
   margin: 30px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
+.note-book #settings-notebook .vl {
+  border-left: 2px solid rgba(211, 169, 139, 0.38);
+  height: 95%;
+  position: absolute;
+  left: 15%;
+  top: 20px;
+}
 .note-book .vl {
   border-left: 2px solid rgba(211, 169, 139, 0.38);
   height: 100%;
   position: absolute;
   left: 50%;
 }
-
-/*# sourceMappingURL=home.css.map */
