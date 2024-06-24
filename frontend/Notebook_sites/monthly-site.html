@@ -6,7 +6,48 @@
     <link rel="stylesheet" href="../styles/home.css">
     <script type="text/javascript" src="../src/home.js" ></script>
     <script type="text/javascript" src="../src/calendar.js"></script>
+    <style>
 
+        form {
+            background-color: #FFF6F6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            color: #603636;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button[type="submit"] {
+            background-color: #ffb9c2;
+            color: #603636;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s;
+        }
+    </style>
 </head>
 <body>
 
@@ -52,10 +93,6 @@
                         <div>Sa</div>
                     </div>
                     <div class="days"></div>
-                </div>
-                <div>
-                    <button id="view-mood">View Mood</button>
-                    <button id="view-period">View Period</button>
                 </div>
             </div>
         </div>

@@ -9,10 +9,12 @@ $font_size: 2.5em;
 $background_color: #CDFCFF;
 $daily_tag: #FF7373;
 $weekly_tag: #FF9696;
-$monthly_tag: #ffe5e5;
+$monthly_tag: #ffffff;
 $yearly_tag: #FFCBCB;
 $predicting_tag: #FFE4E4;
 $settings_tag: #FFF1F1;
+
+
 
 :root {
     --primary-color: #ffb9c2;
@@ -341,8 +343,8 @@ button:hover{
             }
         }
         .emotion_button {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50px;
             border: none;
             margin-left: 15px;
@@ -355,7 +357,7 @@ button:hover{
             font-color: var(--font-color);
 
             img{
-                width: 100px;
+                width: 80px;
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -409,36 +411,36 @@ button:hover{
     }
 
 
-    #monthly-notebook{
-
+    #monthly-notebook {
         $white: #fff;
         $main: #eaedf0;
-        $accent: #ff78a1;
+        $accent: #603636;
         $accent-2: #ebedf0;
-
 
         body {
             background-color: var(--input-color);
             display: flex;
             align-items: center;
             justify-content: center;
+
         }
+
         .container {
             display: inline-block;
-            background-color: var(--input-color);
             border-radius: 35px;
             padding: 0 1em;
-            margin-top: 2em;
-            width: 98%;
+            width: 70%;
+            margin: 20px 0 0 13%;
+            transform: scale(1.1);
         }
 
         header {
-            margin: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
         }
+
         .header-display {
             display: flex;
             align-items: center;
@@ -464,25 +466,27 @@ button:hover{
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             margin: auto;
-            padding: 0 20px;
-            justify-content: space-between;
+            padding: 0 0px;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
         }
+
         .week div,
         .days div {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 5rem;
-            width: 5em;
-            border-radius: 100%;
+            width: 5rem;
+            border-radius: 15px;
+            margin: 0 0 0 3px;
         }
+
         .days div:hover {
             background: var(--accent-color-2);
             color: rgb(255, 84, 229);
             cursor: pointer;
-        }
-        .week div {
-            opacity: 0.5;
         }
         .current-date {
             background-color: var(--accent-color);
@@ -498,38 +502,38 @@ button:hover{
         }
 
         .mood-1 {
-            background-color: #ff1818;
+            background-color: rgba(255, 24, 24, 0.5);
         }
 
         .mood-2 {
-            background-color: #ff8713;
+            background-color: rgba(255, 135, 19, 0.5);
         }
 
         .mood-3 {
-            background-color: #ffff27;
+            background-color: rgba(255, 255, 39, 0.5);
         }
 
         .mood-4 {
-            background-color: #8bff17;
+            background-color: rgba(139, 255, 23, 0.5);
         }
 
         .mood-5 {
             background-color: #1fff1f;
         }
 
-        .period-1 {//on period
+        .period-1 { // on period
             border: 5px solid #ff0000;
         }
 
-        .period-2 {//not on period
+        .period-2 { // not on period
             border: 5px solid rgba(87, 87, 87, 0.26);
         }
 
-        .period-3 {//predited period
+        .period-3 { // predicted period
             border: 5px solid #ffb9b9;
         }
-
     }
+
 
 
     .week_weekly-goals {
@@ -572,6 +576,21 @@ button:hover{
     }
 
     #settings-notebook{
+
+        textarea{
+            width: 100%;
+            height: 150px;
+            border: none;
+            background-color:  var(--input-color);
+            font-size: 23px;
+            font-family: $main_font;
+            resize: none;
+            outline: none;
+            color: var(--font-color);
+            border-radius: 15px;
+
+        }
+
         .options{
             display:flex;
             flex-direction: column;

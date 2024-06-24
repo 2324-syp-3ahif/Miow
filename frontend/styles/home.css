@@ -1,36 +1,32 @@
 :root {
   --primary-color: #ffb9c2;
-  --inner-color: #FFF6F6;
-  --input-color: rgb(255, 255, 255);
+  --inner-color: #fff6f6;
+  --input-color: #fff;
   --input-color-two: rgba(255, 185, 185, 0.27);
   --font-color: #603636;
-  --background-color: #CDFCFF;
-  --daily-tag: #FF7373;
-  --weekly-tag: #FF9696;
+  --background-color: #cdfcff;
+  --daily-tag: #ff7373;
+  --weekly-tag: #ff9696;
   --monthly-tag: #ffe5e5;
-  --yearly-tag: #FFCBCB;
-  --predicting-tag: #FFE4E4;
-  --settings-tag: #FFF1F1;
+  --yearly-tag: #ffcbcb;
+  --predicting-tag: #ffe4e4;
+  --settings-tag: #fff1f1;
   --circle-size: 80px;
   --font-size: 2.5em;
-  --main-font: "Roboto", sans-serif;
+  --main-font: 'Roboto', sans-serif;
   --accent-color: #ff78a1;
   --accent-color-2: #ebedf0;
 }
-
 body {
   background-color: var(--background-color);
 }
-
 button {
   border: none;
   background-color: inherit;
 }
-
 button:hover {
   transform: scale(1.03);
 }
-
 .tags {
   display: flex;
   justify-content: space-around;
@@ -64,9 +60,8 @@ button:hover {
 .tags #settings-tag {
   filter: invert(97%) sepia(85%) saturate(1151%) hue-rotate(290deg) brightness(121%) contrast(106%);
 }
-
 .note-book {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 90%;
   height: 90%;
   position: absolute;
@@ -97,7 +92,7 @@ button:hover {
   border: none;
   background-color: var(--input-color);
   font-size: 23px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   resize: none;
   outline: none;
   color: var(--font-color);
@@ -271,8 +266,8 @@ button:hover {
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
 .note-book #daily-notebook .emotion_button {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50px;
   border: none;
   margin-left: 15px;
@@ -280,12 +275,12 @@ button:hover {
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #ffe5e5;
+  background-color: #fff;
   font-size: 20px;
   font-color: var(--font-color);
 }
 .note-book #daily-notebook .emotion_button img {
-  width: 100px;
+  width: 80px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -301,7 +296,7 @@ button:hover {
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #ffe5e5;
+  background-color: #fff;
   font-size: 20px;
   font-color: var(--font-color);
 }
@@ -312,16 +307,13 @@ button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.note-book #daily-notebook .emotion_button:not(.selected),
-.note-book #daily-notebook .weather_button:not(.selected) {
+.note-book #daily-notebook .emotion_button:not(.selected), .note-book #daily-notebook .weather_button:not(.selected) {
   filter: brightness(130%);
 }
 .note-book #daily-notebook .mood_button:not(.selected) {
   filter: brightness(150%);
 }
-.note-book #daily-notebook .emotion_button.selected,
-.note-book #daily-notebook .weather_button.selected,
-.note-book #daily-notebook .mood_button.selected {
+.note-book #daily-notebook .emotion_button.selected, .note-book #daily-notebook .weather_button.selected, .note-book #daily-notebook .mood_button.selected {
   filter: brightness(100%);
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
@@ -336,14 +328,13 @@ button:hover {
 }
 .note-book #monthly-notebook .container {
   display: inline-block;
-  background-color: var(--input-color);
   border-radius: 35px;
   padding: 0 1em;
-  margin-top: 2em;
-  width: 98%;
+  width: 70%;
+  margin: 20px 0 0 13%;
+  transform: scale(1.1);
 }
 .note-book #monthly-notebook header {
-  margin: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -366,30 +357,28 @@ button:hover {
   font-size: 1.2rem;
   color: var(--accent-color);
 }
-.note-book #monthly-notebook .days,
-.note-book #monthly-notebook .week {
+.note-book #monthly-notebook .days, .note-book #monthly-notebook .week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin: auto;
-  padding: 0 20px;
-  justify-content: space-between;
+  padding: 0 0px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
-.note-book #monthly-notebook .week div,
-.note-book #monthly-notebook .days div {
+.note-book #monthly-notebook .week div, .note-book #monthly-notebook .days div {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 5rem;
-  width: 5em;
-  border-radius: 100%;
+  width: 5rem;
+  border-radius: 15px;
+  margin: 0 0 0 3px;
 }
 .note-book #monthly-notebook .days div:hover {
   background: var(--accent-color-2);
-  color: rgb(255, 84, 229);
+  color: #ff54e5;
   cursor: pointer;
-}
-.note-book #monthly-notebook .week div {
-  opacity: 0.5;
 }
 .note-book #monthly-notebook .current-date {
   background-color: var(--accent-color);
@@ -404,22 +393,22 @@ button:hover {
   color: #d7d7d7;
 }
 .note-book #monthly-notebook .mood-1 {
-  background-color: #ff1818;
+  background-color: rgba(255, 24, 24, 0.5);
 }
 .note-book #monthly-notebook .mood-2 {
-  background-color: #ff8713;
+  background-color: rgba(255, 135, 19, 0.5);
 }
 .note-book #monthly-notebook .mood-3 {
-  background-color: #ffff27;
+  background-color: rgba(255, 255, 39, 0.5);
 }
 .note-book #monthly-notebook .mood-4 {
-  background-color: #8bff17;
+  background-color: rgba(139, 255, 23, 0.5);
 }
 .note-book #monthly-notebook .mood-5 {
   background-color: #1fff1f;
 }
 .note-book #monthly-notebook .period-1 {
-  border: 5px solid #ff0000;
+  border: 5px solid #f00;
 }
 .note-book #monthly-notebook .period-2 {
   border: 5px solid rgba(87, 87, 87, 0.26);
@@ -460,6 +449,18 @@ button:hover {
   margin: 0;
   padding: 5px;
 }
+.note-book #settings-notebook textarea {
+  width: 100%;
+  height: 150px;
+  border: none;
+  background-color: var(--input-color);
+  font-size: 23px;
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  outline: none;
+  color: var(--font-color);
+  border-radius: 15px;
+}
 .note-book #settings-notebook .options {
   display: flex;
   flex-direction: column;
@@ -497,5 +498,4 @@ button:hover {
   position: absolute;
   left: 50%;
 }
-
-/*# sourceMappingURL=home.css.map */
+ 

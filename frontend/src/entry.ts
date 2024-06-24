@@ -473,7 +473,7 @@ function updateWeekUI(data:any) {
                     element.style.color = "red";
                     break;
                 case 3:
-                    element.style.color = "pink";
+                    element.style.color = "#ffa0a0";
                     break;
                 default:
                     element.style.color = "white";
